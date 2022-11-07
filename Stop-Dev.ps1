@@ -1,0 +1,1 @@
+docker-compose -f (Join-Path $PSScriptRoot 'compose-dev.yaml') down

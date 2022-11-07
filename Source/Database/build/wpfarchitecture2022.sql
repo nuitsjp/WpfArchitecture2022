@@ -1,0 +1,278 @@
+use AdventureWorks;
+
+--------------------------------------------------------------------------------------
+-- 「今日」のdatetimeを取得する。
+-- getdate()から変換した場合、テストが困難になるためスカラー関数を利用する。
+-- 
+-- 特にAdventureWorksのサンプルが作成された日付から、実行時の日付を現在そてして扱うと
+-- 不都合が多いため、「今日」を「2014-07-01」に固定する
+--------------------------------------------------------------------------------------
+drop function if exists GetToday
+go
+
+create function GetToday()
+returns date
+as
+begin
+	return convert(date, '2014-07-01')
+end
+go
+
+--select dbo.GetToday() as Today
+go
+
+--------------------------------------------------------------------------------------
+-- 平均リードタイムから、不定期不定量発注方式の在庫日数を取得する
+--------------------------------------------------------------------------------------
+drop function if exists Purchasing.GetInventoryDays
+go
+
+create function Purchasing.GetInventoryDays(
+	@AverageLeadTime int
+)
+returns int
+as
+begin
+	return @AverageLeadTime + GREATEST(4, CEILING(@AverageLeadTime * 0.2));
+end
+go
+
+--select Purchasing.GetInventoryDays(10) as InventoryDays
+go
+
+--------------------------------------------------------------------------------------
+-- 日別平均出荷数を求める期間の日数を取得する
+--------------------------------------------------------------------------------------
+drop function if exists Purchasing.GetAverageDailyShipmentsPeriodDays
+go
+
+create function Purchasing.GetAverageDailyShipmentsPeriodDays()
+returns int
+as
+begin
+	return 90;
+end
+go
+
+--select Purchasing.GetAverageDailyShipmentsPeriodDays() as AverageDailyShipmentsPeriodDays
+go
+
+--------------------------------------------------------------------------------------
+-- 製品別標準購入先ベンダー
+-- 不定期不定量発注方式に利用するリードタイムと在庫日数を持つ
+--------------------------------------------------------------------------------------
+drop view if exists Purchasing.StandardProductVendor
+go
+
+create view Purchasing.StandardProductVendor 
+as
+select
+	RankedProductVendor.ProductID,
+	RankedProductVendor.BusinessEntityID,
+	AverageLeadTime,
+	Purchasing.GetInventoryDays(AverageLeadTime) as InventoryDays,
+	StandardPrice,
+	LastReceiptCost,
+	LastReceiptDate,
+	MinOrderQty,
+	MaxOrderQty,
+	isnull(OnOrderQty, 0) as OnOrderQty,
+	UnitMeasureCode,
+	ModifiedDate
+from
+	(
+		select
+			ROW_NUMBER() OVER (
+				PARTITION BY 
+					ProductVendor.ProductId 
+				ORDER BY 
+					Vendor.PreferredVendorStatus DESC,
+					ProductVendor.StandardPrice
+			) AS Rank,
+			ProductVendor.ProductID,
+			ProductVendor.BusinessEntityID,
+			ProductVendor.AverageLeadTime,
+			ProductVendor.StandardPrice,
+			ProductVendor.LastReceiptCost,
+			ProductVendor.LastReceiptDate,
+			ProductVendor.MinOrderQty,
+			ProductVendor.MaxOrderQty,
+			ProductVendor.OnOrderQty,
+			ProductVendor.UnitMeasureCode,
+			ProductVendor.ModifiedDate
+		from
+			Purchasing.ProductVendor
+			inner join Purchasing.Vendor
+				on	ProductVendor.BusinessEntityID = Vendor.BusinessEntityID
+	) as RankedProductVendor
+where
+	Rank = 1
+go
+
+--select * from Purchasing.StandardProductVendor
+
+
+--------------------------------------------------------------------------------------
+-- すべての製品の製品別在庫
+--------------------------------------------------------------------------------------
+drop view if exists Purchasing.ProductInventory
+go
+
+create view Purchasing.ProductInventory as
+select
+	Product.ProductID,
+	isnull(sum(ProductInventory.Quantity), 0) as Quantity
+from
+	Production.Product
+	left outer join Production.ProductInventory
+		on Product.ProductID = ProductInventory.ProductID
+group by
+	Product.ProductID
+go
+
+--select * from Purchasing.ProductInventory
+go
+
+--------------------------------------------------------------------------------------
+-- すべての製品の製品別未受領数
+-- 発注しているがまだ未受領の数量
+--------------------------------------------------------------------------------------
+drop view if exists Purchasing.ProductUnclaimedPurchase
+go
+
+create view Purchasing.ProductUnclaimedPurchase as
+select
+	Product.ProductID,
+	isnull(convert(int, sum(OrderQty)), 0) as Quantity
+from	
+	-- 販売データが2014年6月までしかないのに対して、発注関連はそれ以降も長期にわたって存在している
+	-- おそらくテストデータが適切ではない部分があるが、ここでは発注が過去日かつ受領日が未来のものを集計する
+	Production.Product
+	left outer join Purchasing.PurchaseOrderDetail
+		on	Product.ProductID = PurchaseOrderDetail.ProductID
+		and dbo.GetToday() < PurchaseOrderDetail.DueDate
+	left outer join Purchasing.PurchaseOrderHeader
+		on	PurchaseOrderDetail.PurchaseOrderID = PurchaseOrderHeader.PurchaseOrderID
+		and PurchaseOrderHeader.OrderDate < dbo.GetToday()
+group by
+	Product.ProductID
+go
+
+--select * from Purchasing.ProductUnclaimedPurchase
+go
+
+--------------------------------------------------------------------------------------
+-- 販売実績のある製品の、製品別の１日当たり平均出荷量（不定期不定量発注方式の用語）
+-- 実際には販売量を利用する
+--------------------------------------------------------------------------------------
+drop view if exists Purchasing.ProductAverageDailyShipment
+go
+
+create view Purchasing.ProductAverageDailyShipment as
+select
+	SpecialOfferProduct.ProductID,
+	convert(float, sum(SalesOrderDetail.OrderQty)) / Purchasing.GetAverageDailyShipmentsPeriodDays() as Quantity
+from
+	Sales.SpecialOfferProduct
+	inner join Sales.SalesOrderDetail
+		on	SpecialOfferProduct.ProductID = SalesOrderDetail.ProductID
+		and	SpecialOfferProduct.SpecialOfferID = SalesOrderDetail.SpecialOfferID
+	inner join Sales.SalesOrderHeader
+		on	SalesOrderDetail.SalesOrderID = SalesOrderHeader.SalesOrderID
+where
+	SalesOrderHeader.OrderDate between DATEADD(DAY, Purchasing.GetAverageDailyShipmentsPeriodDays() * -1, dbo.GetToday()) and dbo.GetToday()
+group by
+	SpecialOfferProduct.ProductID
+go
+
+--select * from Purchasing.ProductAverageDailyShipment
+go
+
+--------------------------------------------------------------------------------------
+-- 販売実績のある製品の、製品別の出荷対応日数（不定期不定量発注方式の用語）
+--------------------------------------------------------------------------------------
+drop view if exists Purchasing.ProductShipmentResponseDays
+go
+
+create view Purchasing.ProductShipmentResponseDays
+as
+select
+	ProductAverageDailyShipment.ProductID,									-- 製品ID
+	FLOOR(
+		(ProductInventory.Quantity + ProductUnclaimedPurchase.Quantity) 
+		/ ProductAverageDailyShipment.Quantity) as ShipmentResponseDays,	-- 出荷対応日数
+	ProductInventory.Quantity as Inventory,									-- 在庫数
+		ProductUnclaimedPurchase.Quantity as UnclaimedPurchase,				-- 未受領数
+	ProductAverageDailyShipment.Quantity as AverageDailyShipment			-- １日当たり平均出荷量
+from
+	Purchasing.ProductAverageDailyShipment
+	inner join Purchasing.ProductInventory
+		on	ProductAverageDailyShipment.ProductID = ProductInventory.ProductID
+	inner join Purchasing.ProductUnclaimedPurchase
+		on	ProductAverageDailyShipment.ProductID = ProductUnclaimedPurchase.ProductID
+go
+
+--select * from Purchasing.ProductShipmentResponseDays order by ShipmentResponseDays
+go
+
+--------------------------------------------------------------------------------------
+-- 要購入製品
+--------------------------------------------------------------------------------------
+drop view if exists Purchasing.ProductRequiringPurchase
+go
+
+create view Purchasing.ProductRequiringPurchase as
+select
+	StandardProductVendor.BusinessEntityID as VendorID,
+	Vendor.Name as VendorName,
+	ProductCategory.ProductCategoryID,
+	ProductCategory.Name as ProductCategoryName,
+	ProductSubcategory.ProductSubcategoryID,
+	ProductSubcategory.Name as ProductSubcategoryName,
+	Product.ProductID,
+	Product.Name,
+	ceiling(
+		StandardProductVendor.InventoryDays 
+		+ ProductShipmentResponseDays.AverageDailyShipment) as PurchasingQuantity,	-- 発注数
+	ProductShipmentResponseDays.ShipmentResponseDays,								-- 出荷対応日数
+	StandardProductVendor.AverageLeadTime,											-- 
+	ProductShipmentResponseDays.Inventory,
+	ProductShipmentResponseDays.UnclaimedPurchase,
+	ProductShipmentResponseDays.AverageDailyShipment
+from
+	Production.Product
+	inner join Purchasing.StandardProductVendor
+		on	Product.ProductID = StandardProductVendor.ProductID
+	inner join Purchasing.ProductShipmentResponseDays
+		on	Product.ProductID = ProductShipmentResponseDays.ProductID
+	inner join Production.ProductSubcategory
+		on	Product.ProductSubcategoryID = ProductSubcategory.ProductSubcategoryID
+	inner join Production.ProductCategory
+		on	ProductSubcategory.ProductCategoryID = ProductCategory.ProductCategoryID
+	inner join Purchasing.Vendor
+		on	StandardProductVendor.BusinessEntityID = Vendor.BusinessEntityID
+where
+	Product.MakeFlag = 0
+	and ProductShipmentResponseDays.ShipmentResponseDays < StandardProductVendor.AverageLeadTime
+go
+
+select * from Purchasing.ProductRequiringPurchase
+go
+
+--------------------------------------------------------------------------------------
+-- データベースを終了し、構築した内容をファイルへ書き出す
+--------------------------------------------------------------------------------------
+ALTER DATABASE AdventureWorks SET OFFLINE
+GO
+
+EXEC sp_detach_db AdventureWorks
+GO
+
+USE [master];
+GO
+
+PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
+GO
+
+
+SET NOEXEC OFF
