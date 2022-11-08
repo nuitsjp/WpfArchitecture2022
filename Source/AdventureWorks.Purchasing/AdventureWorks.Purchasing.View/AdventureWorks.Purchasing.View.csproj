@@ -6,7 +6,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Kamishibai.View" Version="1.1.0" />
+		<PackageReference Include="C1.WPF.Core.Ja" />
+		<PackageReference Include="FontAwesome6.Fonts" />
+		<PackageReference Include="Kamishibai.View" />
 	</ItemGroup>
 
 	<ItemGroup>

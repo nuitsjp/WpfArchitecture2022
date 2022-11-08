@@ -1,5 +1,7 @@
 <Project>
 	<ItemGroup>
+		<PackageReference Update="C1.WPF.Core.Ja" Version="6.0.20222.276" />
+		<PackageReference Update="FontAwesome6.Fonts" Version="2.5.1" />
 		<PackageReference Update="Kamishibai" Version="1.1.0" />
 		<PackageReference Update="Kamishibai.Hosting" Version="1.1.1" />
 		<PackageReference Update="Kamishibai.View" Version="1.1.0" />
