@@ -12,26 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AdventureWorks.Purchasing.ViewModel;
-using AdventureWorks.Purchasing.ViewModel.Menu;
 
-namespace AdventureWorks.Purchasing.View.Page
+namespace AdventureWorks.Purchasing.View.RePurchasing
 {
     /// <summary>
-    /// MenuPage.xaml の相互作用ロジック
+    /// RequiringPurchaseProductsPage.xaml の相互作用ロジック
     /// </summary>
-    public partial class MenuPage : UserControl
+    public partial class RequiringPurchaseProductsPage : UserControl
     {
-        public MenuPage()
+        public RequiringPurchaseProductsPage()
         {
             InitializeComponent();
-        }
-    }
-
-    public class MenuDesignViewModel : MenuViewModel
-    {
-        public MenuDesignViewModel(IPresentationService presentationService) : base(default!)
-        {
         }
     }
 }

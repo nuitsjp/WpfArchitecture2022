@@ -9,9 +9,11 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:control="clr-namespace:AdventureWorks.Purchasing.View.Control"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance {x:Type local:MenuDesignViewModel}, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <control:MenuItemButton Icon="OpencartBrands"
-                                MenuLabel="再発注"/>
+                                MenuLabel="再発注"
+                                Command="{Binding NavigateRePurchasingCommand}"/>
     </Grid>
 </UserControl>

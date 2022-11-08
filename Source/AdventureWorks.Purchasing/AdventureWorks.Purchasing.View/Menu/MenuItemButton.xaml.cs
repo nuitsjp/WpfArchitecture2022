@@ -44,5 +44,14 @@ namespace AdventureWorks.Purchasing.View.Control
             get => (string) GetValue(MenuLabelProperty);
             set => SetValue(MenuLabelProperty, value);
         }
+
+        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
+            nameof(Command), typeof(ICommand), typeof(MenuItemButton), new PropertyMetadata(default(ICommand)));
+
+        public ICommand Command
+        {
+            get => (ICommand) GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
     }
 }

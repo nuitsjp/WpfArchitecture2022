@@ -7,7 +7,8 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d"
              x:Name="MyInstance">
-    <Button Width="150" Height="200" Background="White">
+    <Button Width="150" Height="200" Background="White"
+            Command="{Binding ElementName=MyInstance, Path=Command}">
         <Button.Effect>
             <DropShadowEffect Color="MidnightBlue" BlurRadius="12" ShadowDepth="5" Direction="330" />
         </Button.Effect>
