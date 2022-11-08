@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AdventureWorks.Purchasing.ViewModel;
 
-namespace AdventureWorks.Purchasing.View
+namespace AdventureWorks.Purchasing.View.Page
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// MenuPage.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuPage : UserControl
     {
-        public MainWindow()
+        public MenuPage()
         {
             InitializeComponent();
         }

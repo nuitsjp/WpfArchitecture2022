@@ -13,9 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 		..\Directory.Build.targets = ..\Directory.Build.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.View", "AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj", "{6348F16E-F36D-4D2D-96C0-8A35D01E45D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.View", "AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj", "{6348F16E-F36D-4D2D-96C0-8A35D01E45D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.App", "AdventureWorks.Purchasing.App\AdventureWorks.Purchasing.App.csproj", "{DF213721-1A45-4CB2-B3C2-BB4E7A72B10E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.App", "AdventureWorks.Purchasing.App\AdventureWorks.Purchasing.App.csproj", "{DF213721-1A45-4CB2-B3C2-BB4E7A72B10E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.ViewModel", "AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj", "{5FB539F4-CBBD-48F5-864C-F2192C22AE5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DF213721-1A45-4CB2-B3C2-BB4E7A72B10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF213721-1A45-4CB2-B3C2-BB4E7A72B10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF213721-1A45-4CB2-B3C2-BB4E7A72B10E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB539F4-CBBD-48F5-864C-F2192C22AE5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB539F4-CBBD-48F5-864C-F2192C22AE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB539F4-CBBD-48F5-864C-F2192C22AE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB539F4-CBBD-48F5-864C-F2192C22AE5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

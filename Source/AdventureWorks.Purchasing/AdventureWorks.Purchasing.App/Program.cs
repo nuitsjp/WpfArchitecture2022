@@ -1,13 +1,16 @@
-﻿using AdventureWorks.Purchasing.View;
+﻿using System.Windows.Controls;
+using AdventureWorks.Purchasing.View;
+using AdventureWorks.Purchasing.View.Page;
+using AdventureWorks.Purchasing.ViewModel;
+using Kamishibai;
+using Microsoft.Extensions.Hosting;
 
-namespace AdventureWorks.Purchasing.App;
+// Create a builder by specifying the application and main window.
+var builder = KamishibaiApplication<App, MainWindow>.CreateBuilder();
 
-public class Program
-{
-    [STAThread]
-    public static void Main()
-    {
-        View.App app = new();
-        app.Run(new MainWindow());
-    }
-}
+builder.Services.AddPresentation<MainWindow, MainViewModel>();
+builder.Services.AddPresentation<MenuPage, MenuViewModel>();
+
+// Build and run the application.
+var app = builder.Build();
+await app.RunAsync();
