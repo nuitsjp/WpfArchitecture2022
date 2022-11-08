@@ -1,15 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="UnitGenerator" >
+    <PackageReference Include="UnitGenerator" Version="1.4.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="UnitGeneratorTemplate" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
+    <PackageReference Include="UnitGeneratorTemplate" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
