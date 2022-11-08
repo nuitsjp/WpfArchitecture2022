@@ -7,8 +7,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="C1.WPF.Core.Ja" />
-		<PackageReference Include="FontAwesome6.Fonts" />
+		<PackageReference Include="C1.Xaml.WPF.Theming.Office2016.Ja" />
 		<PackageReference Include="Kamishibai.View" />
+		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -5,9 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdventureWorks.Purchasing.View.Page"
              xmlns:fa="http://schemas.fontawesome.com/icons/fonts/properties"
+             xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:control="clr-namespace:AdventureWorks.Purchasing.View.Control"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Image fa:FontAwesome.Icon="Solid_Flag"/>
+        <control:MenuItemButton Icon="{x:Static iconPacks:PackIconFontAwesomeKind.OpencartBrands}"
+                                MenuLabel="再発注"/>
     </Grid>
 </UserControl>

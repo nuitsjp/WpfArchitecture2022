@@ -1,10 +1,12 @@
 <Project>
 	<ItemGroup>
 		<PackageReference Update="C1.WPF.Core.Ja" Version="6.0.20222.276" />
-		<PackageReference Update="FontAwesome6.Fonts" Version="2.5.1" />
+		<PackageReference Update="C1.Xaml.WPF.Theming.Office2016.Ja" Version="4.6.20222.773" />
+		<PackageReference Update="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Update="Kamishibai" Version="1.1.0" />
 		<PackageReference Update="Kamishibai.Hosting" Version="1.1.1" />
 		<PackageReference Update="Kamishibai.View" Version="1.1.0" />
+		<PackageReference Update="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
 		<PackageReference Update="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Update="Wpf.Extensions.Hosting" Version="1.1.2" />
 	</ItemGroup>

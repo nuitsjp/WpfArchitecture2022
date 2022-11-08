@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="AdventureWorks.Purchasing.View.Control.MenuItemButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdventureWorks.Purchasing.View.Control"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d"
+             x:Name="MyInstance">
+    <Button Width="150" Height="200" Background="White">
+        <Button.Effect>
+            <DropShadowEffect Color="MidnightBlue" BlurRadius="12" ShadowDepth="5" Direction="330" />
+        </Button.Effect>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <iconPacks:PackIconFontAwesome Kind="{Binding ElementName=MyInstance, Path=Icon}"
+                                               Width="50"
+                                               Height="50"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="{Binding ElementName=MyInstance, Path=MenuLabel}" 
+                       Style="{StaticResource ContentTextBlock}"
+                       HorizontalAlignment="Center" 
+                       TextWrapping="Wrap"/>
+        </Grid>
+    </Button>
+</UserControl>
