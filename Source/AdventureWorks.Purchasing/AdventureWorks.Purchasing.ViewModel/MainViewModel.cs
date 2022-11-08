@@ -1,6 +1,4 @@
 ﻿using Kamishibai;
-using Microsoft.Toolkit.Mvvm.Input;
-using System.Windows.Input;
 
 namespace AdventureWorks.Purchasing.ViewModel;
 
