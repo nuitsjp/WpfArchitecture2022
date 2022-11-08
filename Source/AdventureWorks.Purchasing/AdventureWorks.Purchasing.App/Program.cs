@@ -2,6 +2,7 @@
 using AdventureWorks.Purchasing.View;
 using AdventureWorks.Purchasing.View.Page;
 using AdventureWorks.Purchasing.ViewModel;
+using AdventureWorks.Purchasing.ViewModel.Menu;
 using Kamishibai;
 using Microsoft.Extensions.Hosting;
 
