@@ -1,2 +1,5 @@
 ﻿Name,Type,Description,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
-UserId,int,ID of Unit,"{0:###,###,###}",,,,,,,value < 20,,,,
+ProductId,int,ID of Product,,,,,,,,,,,✅,
+ProductCategoryId,int,ID of ProductCategory,,,,,,,,,,,✅,
+ProductSubcategoryId,int,ID of ProductSubcategory,,,,,,,,,,,✅,
+UnitMeasureCode,int,Code of UnitMeasure,,,,,,,,,,,✅,

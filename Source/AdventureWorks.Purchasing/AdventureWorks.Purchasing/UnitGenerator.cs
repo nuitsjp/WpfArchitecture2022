@@ -4,15 +4,43 @@ namespace AdventureWorks.Purchasing
 {
 
     /// <summary>
-    /// ID of Unit
+    /// ID of Vendor
     /// </summary>
-    [UnitOf(typeof(int), UnitGenerateOptions.Validate, "{0:###,###,###}")]
-    public partial struct UserId
+    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct VendorId
     {
-        private partial void Validate()
-        {
-            if (value < 20 is false) throw new Exception($"Invalid value range: {value}");
-        }
+    }
+
+    /// <summary>
+    /// ID of PurchaseOrder
+    /// </summary>
+    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct PurchaseOrderId
+    {
+    }
+
+    /// <summary>
+    /// ID of PurchaseOrderDetail
+    /// </summary>
+    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct PurchaseOrderDetailId
+    {
+    }
+
+    /// <summary>
+    /// ID of ShipMethod
+    /// </summary>
+    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct ShipMethodId
+    {
+    }
+
+    /// <summary>
+    /// Vendor account (identification) number.
+    /// </summary>
+    [UnitOf(typeof(string), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct AccountNumber
+    {
     }
 
 }

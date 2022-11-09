@@ -1,0 +1,3 @@
+﻿Name,Type,Description,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
+EmployeeId,int,ID of Employee,,,,,,,,,,,✅,
+Money,Decimal,,,,,,,,,,,,✅,

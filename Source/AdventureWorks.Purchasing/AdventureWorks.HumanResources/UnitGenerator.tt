@@ -1,0 +1,194 @@
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#  
+var validateException = "Exception";
+var validateExceptionMessage = "Invalid value range: {value}";
+#>
+using UnitGenerator;
+
+namespace AdventureWorks.HumanResources
+{
+
+<#
+var filePath = Host.ResolvePath("UnitGenerator.csv");
+using var reader = new StreamReader(File.Open(filePath, FileMode.Open), Encoding.GetEncoding("Shift_JIS"));
+var items = ParseCsv(reader);
+foreach(var item in items)
+{
+    var name = item[0];
+    var type = item[1];
+    var description = item[2];
+    var stringFormat = item[3];
+    var options = new List<string>();
+    if(IsNotEmpty(item[4])) options.Add("UnitGenerateOptions.ImplicitOperator");
+    if(IsNotEmpty(item[5])) options.Add("UnitGenerateOptions.ParseMethod");
+    if(IsNotEmpty(item[6])) options.Add("UnitGenerateOptions.MinMaxMethod");
+    if(IsNotEmpty(item[7])) options.Add("UnitGenerateOptions.ArithmeticOperator");
+    if(IsNotEmpty(item[8])) options.Add("UnitGenerateOptions.ValueArithmeticOperator");
+    if(IsNotEmpty(item[9])) options.Add("UnitGenerateOptions.Comparable");
+    if(IsNotEmpty(item[10])) options.Add("UnitGenerateOptions.Validate");
+    if(IsNotEmpty(item[11])) options.Add("UnitGenerateOptions.JsonConverter");
+    if(IsNotEmpty(item[12])) options.Add("UnitGenerateOptions.MessagePackFormatter");
+    if(IsNotEmpty(item[13])) options.Add("UnitGenerateOptions.DapperTypeHandler");
+    if(IsNotEmpty(item[14])) options.Add("UnitGenerateOptions.EntityFrameworkValueConverter");
+
+    var hasValidate = 5 < item[10].Length;
+    var validateRule = item[10];
+
+    var option = string.Join(" | ", options);
+
+    var optionArgs = new StringBuilder();
+    if (IsNotEmpty(stringFormat) || options.Any())
+    {
+        optionArgs.Append(", ");
+        if (options.Any())
+        {
+            optionArgs.Append(string.Join(" | ", options));
+        }
+        else
+        {
+            optionArgs.Append("UnitGenerateOptions.None");
+        }
+
+        if (IsNotEmpty(stringFormat))
+        {
+            optionArgs.Append(", \"");
+            optionArgs.Append(stringFormat);
+            optionArgs.Append('"');
+        }
+    }
+#>
+    /// <summary>
+    /// <#= description #>
+    /// </summary>
+    [UnitOf(typeof(<#= type #>)<#= optionArgs.ToString() #>)]
+    public partial struct <#= name #>
+    {
+<#  
+    if(hasValidate)
+    {
+#>
+        private partial void Validate()
+        {
+            if (<#= validateRule #> is false) throw new <#= validateException #>($"<#= validateExceptionMessage #>");
+        }
+<#  
+    }
+#>
+    }
+
+<#
+}
+#>
+}
+<#+
+
+private IEnumerable<string[]> ParseCsv(TextReader reader)
+{
+    var line = reader.ReadLine();
+    if(line is null) yield break;
+
+    for (line = reader.ReadLine(); line is not null; line = reader.ReadLine())
+    {
+        var cells = new List<string>();
+        var cell = new StringBuilder();
+        bool isTopOfCell = true;
+        bool isEscaped = false;
+        for (var i = 0; i < line.Length; i++)
+        {
+            var character = line[i];
+            if (isTopOfCell)
+            {
+                if (character == '"')
+                {
+                    // 先頭なのでエスケープされたセル。読み飛ばす。
+                    isEscaped = true;
+                    isTopOfCell = false;
+                }
+                else if (character == ',')
+                {
+                    // 空のセル
+                    cells.Add(cell.ToString());
+                    cell.Clear();
+                    isTopOfCell = true;
+                }
+                else 
+                {
+                    // セルの1文字目としてあつかう
+                    cell.Append(character);
+                    isTopOfCell = false;
+                }
+            }
+            else
+            {
+                if (character == ',' && isEscaped)
+                {
+                    // エスケープされているので値としてあつかう
+                    cell.Append(character);
+                    isTopOfCell = false;
+                }
+                else if (character == ',' && isEscaped is false)
+                {
+                    // エスケープされていないのでセルの区切りとしてあつかう
+                    cells.Add(cell.ToString());
+                    cell.Clear();
+                    isTopOfCell = true;
+                }
+                else if (character == '"')
+                {
+                    if (line.Length - 1 == i)
+                    {
+                        // 最後のインデックスなので閉じのダブルクォーテーションとして判断し何もしない
+                    }
+                    else
+                    {
+                        var nextCharacter = line[i + 1];
+                        if (nextCharacter == ',')
+                        {
+                            // セルの末尾なのでつぎのセルへ
+                            i++;
+                            cells.Add(cell.ToString());
+                            cell.Clear();
+                            isTopOfCell = true;
+                            isEscaped = false;
+                        }
+                        else if (nextCharacter == '"')
+                        {
+                            // エスケープされたダブルクォーテーション
+                            i++;
+                            cell.Append('"');
+                            isTopOfCell = false;
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
+                    }
+                }
+                else
+                {
+                    // 通常の値
+                    cell.Append(character);
+                    isTopOfCell = false;
+                }
+            }
+        }
+        cells.Add(cell.ToString());
+        yield return cells.ToArray();
+    }
+}
+
+public static bool IsNotEmpty(string value)
+{
+    return 0 < value.Trim().Length;
+}
+
+#>
+
+

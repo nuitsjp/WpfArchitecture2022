@@ -1,0 +1,7 @@
+﻿Name,Type,Description,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
+RevisionNumber,short,,,,,,,,,,,,✅,
+EmployeeId,int,,,,,,,,,,,,✅,
+Money,decimal,,,,,,,,,,,,✅,
+ModifiedDateTime,DateTime,,,,,,,,,,,,✅,
+Days,int,Number of days,,,,,,,,,,,✅,
+Date,DateTime,Date without time,,,,,,,,,,,,
