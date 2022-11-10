@@ -5,12 +5,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Dapper"/>
+		<PackageReference Include="Dapper" />
 		<PackageReference Include="UnitGenerator">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="UnitGeneratorTemplate"/>
+		<PackageReference Include="UnitGeneratorTemplate" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

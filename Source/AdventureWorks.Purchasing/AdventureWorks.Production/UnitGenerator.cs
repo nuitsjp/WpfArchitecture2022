@@ -30,7 +30,7 @@ namespace AdventureWorks.Production
     /// <summary>
     /// Code of UnitMeasure
     /// </summary>
-    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    [UnitOf(typeof(string), UnitGenerateOptions.DapperTypeHandler)]
     public partial struct UnitMeasureCode
     {
     }

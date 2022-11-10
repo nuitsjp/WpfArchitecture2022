@@ -2,4 +2,4 @@
 ProductId,int,ID of Product,,,,,,,,,,,✅,
 ProductCategoryId,int,ID of ProductCategory,,,,,,,,,,,✅,
 ProductSubcategoryId,int,ID of ProductSubcategory,,,,,,,,,,,✅,
-UnitMeasureCode,int,Code of UnitMeasure,,,,,,,,,,,✅,
+UnitMeasureCode,string,Code of UnitMeasure,,,,,,,,,,,✅,

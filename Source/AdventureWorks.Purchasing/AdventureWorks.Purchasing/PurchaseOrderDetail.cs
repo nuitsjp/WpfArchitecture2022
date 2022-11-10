@@ -10,9 +10,9 @@ public record PurchaseOrderDetail
     /// <param name="purchaseOrderId"></param>
     /// <param name="purchaseOrderDetailId"></param>
     /// <param name="dueDate"></param>
-    /// <param name="orderQuantity"></param>
     /// <param name="productId"></param>
     /// <param name="unitPrice"></param>
+    /// <param name="orderQuantity"></param>
     /// <param name="lineTotal"></param>
     /// <param name="receiveQuantity"></param>
     /// <param name="rejectedQuantity"></param>
@@ -20,8 +20,8 @@ public record PurchaseOrderDetail
     /// <param name="modifiedDateTime"></param>
     public PurchaseOrderDetail(
         PurchaseOrderId purchaseOrderId, 
-        PurchaseOrderDetailId purchaseOrderDetailId, 
-        DateTime dueDate, 
+        PurchaseOrderDetailId purchaseOrderDetailId,
+        Date dueDate, 
         short orderQuantity, 
         ProductId productId, 
         Money unitPrice, 
@@ -34,9 +34,9 @@ public record PurchaseOrderDetail
         PurchaseOrderId = purchaseOrderId;
         PurchaseOrderDetailId = purchaseOrderDetailId;
         DueDate = dueDate;
-        OrderQuantity = orderQuantity;
         ProductId = productId;
         UnitPrice = unitPrice;
+        OrderQuantity = orderQuantity;
         LineTotal = lineTotal;
         ReceiveQuantity = receiveQuantity;
         RejectedQuantity = rejectedQuantity;
@@ -48,24 +48,14 @@ public record PurchaseOrderDetail
     /// 未発注の発注明細をインスタンス化する。
     /// </summary>
     /// <param name="dueDate"></param>
-    /// <param name="orderQuantity"></param>
     /// <param name="productId"></param>
     /// <param name="unitPrice"></param>
-    /// <param name="lineTotal"></param>
-    /// <param name="receiveQuantity"></param>
-    /// <param name="rejectedQuantity"></param>
-    /// <param name="stockedQuantity"></param>
-    /// <param name="modifiedDateTime"></param>
+    /// <param name="orderQuantity"></param>
     public PurchaseOrderDetail(
-        DateTime dueDate,
-        short orderQuantity,
+        Date dueDate,
         ProductId productId,
         Money unitPrice,
-        Money lineTotal,
-        decimal receiveQuantity,
-        decimal rejectedQuantity,
-        decimal stockedQuantity,
-        ModifiedDateTime modifiedDateTime) :
+        short orderQuantity) :
         this(
             PurchaseOrderId.Unregistered,
             PurchaseOrderDetailId.Unregistered,
@@ -73,23 +63,24 @@ public record PurchaseOrderDetail
             orderQuantity,
             productId,
             unitPrice,
-            lineTotal,
-            receiveQuantity,
-            rejectedQuantity,
-            stockedQuantity,
-            modifiedDateTime)
+            unitPrice * orderQuantity,
+            0,
+            0,
+            0,
+            ModifiedDateTime.Unregistered)
     {
     }
 
     public PurchaseOrderId PurchaseOrderId  { get; }
     public PurchaseOrderDetailId PurchaseOrderDetailId  { get; }
-    public DateTime DueDate  { get; }
-    public short OrderQuantity  { get; }
+    public Date DueDate  { get; }
     public ProductId ProductId  { get; }
     public Money UnitPrice  { get; }
+    public short OrderQuantity { get; }
     public Money LineTotal  { get; }
     public decimal ReceiveQuantity  { get; }
     public decimal RejectedQuantity  { get; }
     public decimal StockedQuantity  { get; }
     public ModifiedDateTime ModifiedDateTime  { get; }
+
 }

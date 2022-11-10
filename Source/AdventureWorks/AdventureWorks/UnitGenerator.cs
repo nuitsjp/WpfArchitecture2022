@@ -46,8 +46,24 @@ namespace AdventureWorks
     /// <summary>
     /// Date without time
     /// </summary>
-    [UnitOf(typeof(DateTime))]
+    [UnitOf(typeof(DateTime), UnitGenerateOptions.DapperTypeHandler)]
     public partial struct Date
+    {
+    }
+
+    /// <summary>
+    /// Weight
+    /// </summary>
+    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct Gram
+    {
+    }
+
+    /// <summary>
+    /// ID of SalesTaxRate
+    /// </summary>
+    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct SalesTaxRateId
     {
     }
 
