@@ -10,6 +10,7 @@ public class Vendor
         bool isPreferredVendor, 
         bool isActive, 
         Uri purchasingWebServiceUrl, 
+        TaxRate taxRate, 
         ModifiedDateTime modifiedDateTime, 
         IReadOnlyList<VendorProduct> vendorProducts)
     {
@@ -20,6 +21,7 @@ public class Vendor
         IsPreferredVendor = isPreferredVendor;
         IsActive = isActive;
         PurchasingWebServiceUrl = purchasingWebServiceUrl;
+        TaxRate = taxRate;
         ModifiedDateTime = modifiedDateTime;
         VendorProducts = vendorProducts;
     }
@@ -31,6 +33,7 @@ public class Vendor
     public bool IsPreferredVendor { get; }
     public bool IsActive { get; }
     public Uri PurchasingWebServiceUrl { get; }
+    public TaxRate TaxRate { get; }
     public ModifiedDateTime ModifiedDateTime { get; }
     public IReadOnlyList<VendorProduct> VendorProducts { get; }
 }

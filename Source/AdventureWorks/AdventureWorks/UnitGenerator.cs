@@ -54,16 +54,24 @@ namespace AdventureWorks
     /// <summary>
     /// Weight
     /// </summary>
-    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+    [UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
     public partial struct Gram
     {
     }
 
     /// <summary>
-    /// ID of SalesTaxRate
+    /// TaxRate
     /// </summary>
-    [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
-    public partial struct SalesTaxRateId
+    [UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct TaxRate
+    {
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
+    public partial struct DollarPerGram
     {
     }
 

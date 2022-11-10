@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Production;
-
-namespace AdventureWorks.Purchasing;
+﻿namespace AdventureWorks.Purchasing;
 
 public class PurchaseOrder
 {
@@ -27,9 +25,9 @@ public class PurchaseOrder
         OrderStatus status, 
         EmployeeId employeeId, 
         VendorId vendorId, 
-        ShipMethodId shipMethodId, 
-        DateTime orderDate, 
-        DateTime? shipDate, 
+        ShipMethodId shipMethodId,
+        Date orderDate,
+        Date? shipDate, 
         Dollar subTotal, 
         Dollar taxAmount, 
         Dollar freight, 
@@ -68,7 +66,7 @@ public class PurchaseOrder
         EmployeeId employeeId,
         VendorId vendorId,
         ShipMethodId shipMethodId,
-        DateTime orderDate,
+        Date orderDate,
         Dollar subTotal,
         Dollar taxAmount,
         Dollar freight,
@@ -97,8 +95,8 @@ public class PurchaseOrder
     public EmployeeId EmployeeId { get; }
     public VendorId VendorId { get; }
     public ShipMethodId ShipMethodId { get; }
-    public DateTime OrderDate { get; }
-    public DateTime? ShipDate { get; }
+    public Date OrderDate { get; }
+    public Date? ShipDate { get; }
     public Dollar SubTotal { get; }
     public Dollar TaxAmount { get; }
     public Dollar Freight { get; }
@@ -106,12 +104,4 @@ public class PurchaseOrder
     public ModifiedDateTime ModifiedDateTime { get; }
     public IReadOnlyList<PurchaseOrderDetail> Details { get; }
 
-}
-
-public class PurchaseOrderBuilder
-{
-    public PurchaseOrder Build()
-    {
-        throw new NotImplementedException();
-    }
 }
