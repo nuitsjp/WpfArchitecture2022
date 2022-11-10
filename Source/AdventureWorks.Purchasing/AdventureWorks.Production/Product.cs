@@ -7,8 +7,8 @@ public class Product
         string name, 
         string productNumber, 
         string color, 
-        Money standardPrice, 
-        Money listPrice, 
+        Dollar standardPrice, 
+        Dollar listPrice, 
         Gram weight, 
         ModifiedDateTime modifiedDateTime)
     {
@@ -26,8 +26,8 @@ public class Product
     public string Name { get; }
     public string ProductNumber { get; }
     public string Color { get; }
-    public Money StandardPrice { get; }
-    public Money ListPrice { get; }
+    public Dollar StandardPrice { get; }
+    public Dollar ListPrice { get; }
     public Gram Weight { get; }
     public ModifiedDateTime ModifiedDateTime { get; }
 }

@@ -24,8 +24,8 @@ public record PurchaseOrderDetail
         Date dueDate, 
         short orderQuantity, 
         ProductId productId, 
-        Money unitPrice, 
-        Money lineTotal, 
+        Dollar unitPrice, 
+        Dollar lineTotal, 
         decimal receiveQuantity, 
         decimal rejectedQuantity, 
         decimal stockedQuantity, 
@@ -54,7 +54,7 @@ public record PurchaseOrderDetail
     public PurchaseOrderDetail(
         Date dueDate,
         ProductId productId,
-        Money unitPrice,
+        Dollar unitPrice,
         short orderQuantity) :
         this(
             PurchaseOrderId.Unregistered,
@@ -75,9 +75,9 @@ public record PurchaseOrderDetail
     public PurchaseOrderDetailId PurchaseOrderDetailId  { get; }
     public Date DueDate  { get; }
     public ProductId ProductId  { get; }
-    public Money UnitPrice  { get; }
+    public Dollar UnitPrice  { get; }
     public short OrderQuantity { get; }
-    public Money LineTotal  { get; }
+    public Dollar LineTotal  { get; }
     public decimal ReceiveQuantity  { get; }
     public decimal RejectedQuantity  { get; }
     public decimal StockedQuantity  { get; }

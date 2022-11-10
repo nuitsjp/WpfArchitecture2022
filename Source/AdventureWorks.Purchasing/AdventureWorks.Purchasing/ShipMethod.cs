@@ -5,8 +5,8 @@ public class ShipMethod
     public ShipMethod(
         ShipMethodId shipMethodId, 
         string name, 
-        Money shipBase, 
-        Money shipRate, 
+        Dollar shipBase, 
+        Dollar shipRate, 
         ModifiedDateTime modifiedDateTime)
     {
         ShipMethodId = shipMethodId;
@@ -18,7 +18,7 @@ public class ShipMethod
 
     public ShipMethodId ShipMethodId { get; }
     public string Name { get; }
-    public Money ShipBase { get; }
-    public Money ShipRate { get; }
+    public Dollar ShipBase { get; }
+    public Dollar ShipRate { get; }
     public ModifiedDateTime ModifiedDateTime { get; }
 }

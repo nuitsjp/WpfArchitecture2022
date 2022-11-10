@@ -7,8 +7,8 @@ public class VendorProduct
     public VendorProduct(
         ProductId productId, 
         Days averageLeadTime, 
-        Money standardPrice, 
-        Money lastReceiptCost, 
+        Dollar standardPrice, 
+        Dollar lastReceiptCost, 
         Date lastReceipt, 
         int minOrderQuantity, 
         int maxOrderQuantity, 
@@ -30,8 +30,8 @@ public class VendorProduct
 
     public ProductId ProductId { get; }
     public Days AverageLeadTime { get; }
-    public Money StandardPrice { get; }
-    public Money LastReceiptCost { get; }
+    public Dollar StandardPrice { get; }
+    public Dollar LastReceiptCost { get; }
     public Date LastReceipt { get; }
     public int MinOrderQuantity { get; }
     public int MaxOrderQuantity { get; }

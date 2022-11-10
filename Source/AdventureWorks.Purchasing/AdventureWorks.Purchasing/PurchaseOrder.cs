@@ -30,10 +30,10 @@ public class PurchaseOrder
         ShipMethodId shipMethodId, 
         DateTime orderDate, 
         DateTime? shipDate, 
-        Money subTotal, 
-        Money taxAmount, 
-        Money freight, 
-        Money totalDue, 
+        Dollar subTotal, 
+        Dollar taxAmount, 
+        Dollar freight, 
+        Dollar totalDue, 
         ModifiedDateTime modifiedDateTime, 
         IReadOnlyList<PurchaseOrderDetail> details)
     {
@@ -69,9 +69,9 @@ public class PurchaseOrder
         VendorId vendorId,
         ShipMethodId shipMethodId,
         DateTime orderDate,
-        Money subTotal,
-        Money taxAmount,
-        Money freight,
+        Dollar subTotal,
+        Dollar taxAmount,
+        Dollar freight,
         IReadOnlyList<PurchaseOrderDetail> details) :
         this(
             PurchaseOrderId.Unregistered,
@@ -99,10 +99,10 @@ public class PurchaseOrder
     public ShipMethodId ShipMethodId { get; }
     public DateTime OrderDate { get; }
     public DateTime? ShipDate { get; }
-    public Money SubTotal { get; }
-    public Money TaxAmount { get; }
-    public Money Freight { get; }
-    public Money TotalDue { get; }
+    public Dollar SubTotal { get; }
+    public Dollar TaxAmount { get; }
+    public Dollar Freight { get; }
+    public Dollar TotalDue { get; }
     public ModifiedDateTime ModifiedDateTime { get; }
     public IReadOnlyList<PurchaseOrderDetail> Details { get; }
 

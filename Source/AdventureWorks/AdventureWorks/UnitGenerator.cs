@@ -23,7 +23,7 @@ namespace AdventureWorks
     /// 
     /// </summary>
     [UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
-    public partial struct Money
+    public partial struct Dollar
     {
     }
 
