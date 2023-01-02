@@ -1,4 +1,14 @@
+using UnitGenerator;
+
 namespace AdventureWorks;
+
+/// <summary>
+/// 
+/// </summary>
+[UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
+public partial struct Dollar
+{
+}
 
 public partial struct Dollar
 {
@@ -21,6 +31,7 @@ public partial struct Dollar
     {
         return new Dollar(z.value / quantity);
     }
+
     public static Dollar operator *(Dollar z, TaxRate taxRate)
     {
         return new Dollar(z.value * taxRate.AsPrimitive() / 100);
@@ -33,5 +44,4 @@ public partial struct DollarPerGram
     {
         return new Dollar(rate.value * gram.AsPrimitive());
     }
-
 }

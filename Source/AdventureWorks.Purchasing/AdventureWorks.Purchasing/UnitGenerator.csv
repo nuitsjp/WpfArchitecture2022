@@ -1,6 +1,0 @@
-﻿Name,Type,Description,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
-VendorId,int,ID of Vendor,,,,,,,,,,,✅,
-PurchaseOrderId,int,ID of PurchaseOrder,,,,,,,,,,,✅,
-PurchaseOrderDetailId,int,ID of PurchaseOrderDetail,,,,,,,,,,,✅,
-ShipMethodId,int,ID of ShipMethod,,,,,,,,,,,✅,
-AccountNumber,string,Vendor account (identification) number.,,,,,,,,,,,✅,

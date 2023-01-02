@@ -1,5 +1,0 @@
-﻿Name,Type,Description,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
-ProductId,int,ID of Product,,,,,,,,,,,✅,
-ProductCategoryId,int,ID of ProductCategory,,,,,,,,,,,✅,
-ProductSubcategoryId,int,ID of ProductSubcategory,,,,,,,,,,,✅,
-UnitMeasureCode,string,Code of UnitMeasure,,,,,,,,,,,✅,

@@ -1,2 +1,0 @@
-﻿Name,Type,Description,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
-UserId,int,ID of Unit,"{0:###,###,###}",,,,,,,value < 20,,,,

@@ -1,4 +1,14 @@
+using UnitGenerator;
+
 namespace AdventureWorks;
+
+/// <summary>
+/// 
+/// </summary>
+[UnitOf(typeof(DateTime), UnitGenerateOptions.DapperTypeHandler)]
+public partial struct ModifiedDateTime
+{
+}
 
 public partial struct ModifiedDateTime
 {
