@@ -1,12 +1,10 @@
-﻿using System.Windows.Controls;
-using AdventureWorks.Purchasing.View;
+﻿using AdventureWorks.Purchasing.View;
 using AdventureWorks.Purchasing.View.Page;
 using AdventureWorks.Purchasing.View.RePurchasing;
 using AdventureWorks.Purchasing.ViewModel;
 using AdventureWorks.Purchasing.ViewModel.Menu;
 using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 using Kamishibai;
-using Microsoft.Extensions.Hosting;
 
 // Create a builder by specifying the application and main window.
 var builder = KamishibaiApplication<App, MainWindow>.CreateBuilder();

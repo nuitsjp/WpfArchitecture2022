@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace AdventureWorks.Purchasing;
+﻿namespace AdventureWorks.Purchasing;
 
 public interface IPurchaseOrderRepository
 {
