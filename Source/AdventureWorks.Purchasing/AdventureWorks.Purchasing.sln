@@ -27,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A1E6E7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.UseCase.RePurchasing", "AdventureWorks.Purchasing.UseCase.RePurchasing\AdventureWorks.Purchasing.UseCase.RePurchasing.csproj", "{B7300D8E-0237-4768-91C6-052A658C5D20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.HumanResources", "AdventureWorks.HumanResources\AdventureWorks.HumanResources.csproj", "{00280A26-10D4-4F19-9F8E-85788B4E238B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.HumanResources", "AdventureWorks.HumanResources\AdventureWorks.HumanResources.csproj", "{00280A26-10D4-4F19-9F8E-85788B4E238B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Database", "AdventureWorks.Database\AdventureWorks.Database.csproj", "{FBD603BA-B6A4-4EE3-851C-0E6D0306B65D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{00280A26-10D4-4F19-9F8E-85788B4E238B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00280A26-10D4-4F19-9F8E-85788B4E238B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00280A26-10D4-4F19-9F8E-85788B4E238B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD603BA-B6A4-4EE3-851C-0E6D0306B65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD603BA-B6A4-4EE3-851C-0E6D0306B65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD603BA-B6A4-4EE3-851C-0E6D0306B65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD603BA-B6A4-4EE3-851C-0E6D0306B65D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
