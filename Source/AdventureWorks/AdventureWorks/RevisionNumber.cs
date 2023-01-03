@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// 
 /// </summary>
-[UnitOf(typeof(short), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(short))]
 public partial struct RevisionNumber
 {
     public static readonly RevisionNumber Unregistered = new(short.MinValue);

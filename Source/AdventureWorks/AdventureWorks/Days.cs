@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// Number of days
 /// </summary>
-[UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(int))]
 public partial struct Days
 {
 }

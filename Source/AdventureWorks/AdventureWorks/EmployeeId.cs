@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// 
 /// </summary>
-[UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(int))]
 public partial struct EmployeeId
 {
 }

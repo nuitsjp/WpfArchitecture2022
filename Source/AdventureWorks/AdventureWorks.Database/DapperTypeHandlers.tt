@@ -25,6 +25,8 @@ namespace AdventureWorks.Database;
 		(UnitName: "ModifiedDateTime", UnitType: typeof(DateTime)),
 		(UnitName: "RevisionNumber", UnitType: typeof(short)),
 		(UnitName: "TaxRate", UnitType: typeof(decimal)),
+		(UnitName: "Quantity", UnitType: typeof(int)),
+		(UnitName: "FloatQuantity", UnitType: typeof(float)),
 	};
 
 
@@ -32,6 +34,8 @@ namespace AdventureWorks.Database;
     {
         {typeof(short), DbType.Int16},
         {typeof(int), DbType.Int32},
+        {typeof(float), DbType.Double},
+        {typeof(double), DbType.Double},
         {typeof(decimal), DbType.Decimal},
         {typeof(DateTime), DbType.DateTime},
     };

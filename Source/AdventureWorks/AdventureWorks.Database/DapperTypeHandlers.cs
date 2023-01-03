@@ -141,6 +141,36 @@ public class TaxRateTypeHandler : SqlMapper.TypeHandler<TaxRate>
 }
 
 
+public class QuantityTypeHandler : SqlMapper.TypeHandler<Quantity>
+{
+    public override void SetValue(IDbDataParameter parameter, Quantity value)
+    {
+        parameter.DbType = DbType.Int32;
+        parameter.Value = value.AsPrimitive();
+    }
+
+    public override Quantity Parse(object value)
+    {
+        return new Quantity((System.Int32)value);
+    }
+}
+
+
+public class FloatQuantityTypeHandler : SqlMapper.TypeHandler<FloatQuantity>
+{
+    public override void SetValue(IDbDataParameter parameter, FloatQuantity value)
+    {
+        parameter.DbType = DbType.Double;
+        parameter.Value = value.AsPrimitive();
+    }
+
+    public override FloatQuantity Parse(object value)
+    {
+        return new FloatQuantity((System.Single)value);
+    }
+}
+
+
 class TypeHandlerInitializer
 {
     #pragma warning disable CA2255
@@ -157,5 +187,7 @@ class TypeHandlerInitializer
         SqlMapper.AddTypeHandler(new ModifiedDateTimeTypeHandler());
         SqlMapper.AddTypeHandler(new RevisionNumberTypeHandler());
         SqlMapper.AddTypeHandler(new TaxRateTypeHandler());
+        SqlMapper.AddTypeHandler(new QuantityTypeHandler());
+        SqlMapper.AddTypeHandler(new FloatQuantityTypeHandler());
     }
 }

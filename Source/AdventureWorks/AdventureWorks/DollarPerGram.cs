@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// 
 /// </summary>
-[UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(decimal))]
 public partial struct DollarPerGram
 {
     public static Dollar operator *(DollarPerGram rate, Gram gram)

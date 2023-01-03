@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// 
 /// </summary>
-[UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(decimal))]
 public partial struct Dollar
 {
     public static Dollar operator +(Dollar z, Dollar w)

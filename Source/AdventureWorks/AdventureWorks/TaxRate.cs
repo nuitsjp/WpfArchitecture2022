@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// TaxRate
 /// </summary>
-[UnitOf(typeof(decimal), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(decimal))]
 public partial struct TaxRate
 {
 }

@@ -5,7 +5,7 @@ namespace AdventureWorks;
 /// <summary>
 /// Date without time
 /// </summary>
-[UnitOf(typeof(DateTime), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(DateTime))]
 public partial struct Date
 {
     public static Date operator +(Date date, Days days)

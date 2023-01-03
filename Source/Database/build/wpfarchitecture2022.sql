@@ -197,13 +197,16 @@ go
 create view Purchasing.ProductShipmentResponseDays
 as
 select
-	ProductAverageDailyShipment.ProductID,									-- 製品ID
-	FLOOR(
-		(ProductInventory.Quantity + ProductUnclaimedPurchase.Quantity) 
-		/ ProductAverageDailyShipment.Quantity) as ShipmentResponseDays,	-- 出荷対応日数
-	ProductInventory.Quantity as Inventory,									-- 在庫数
-		ProductUnclaimedPurchase.Quantity as UnclaimedPurchase,				-- 未受領数
-	ProductAverageDailyShipment.Quantity as AverageDailyShipment			-- １日当たり平均出荷量
+	-- 製品ID
+	ProductAverageDailyShipment.ProductID,
+	-- 出荷対応日数
+	FLOOR((ProductInventory.Quantity + ProductUnclaimedPurchase.Quantity) / ProductAverageDailyShipment.Quantity) as ShipmentResponseDays,
+	-- 在庫数
+	ProductInventory.Quantity as InventoryQuantity,
+	-- 未受領数
+	ProductUnclaimedPurchase.Quantity as UnclaimedPurchaseQuantity,
+	-- １日当たり平均出荷量
+	ProductAverageDailyShipment.Quantity as AverageDailyShipmentQuantity
 from
 	Purchasing.ProductAverageDailyShipment
 	inner join Purchasing.ProductInventory
@@ -223,32 +226,50 @@ go
 
 create view Purchasing.ProductRequiringPurchase as
 select
+	-- 発注先ベンダーID
 	StandardProductVendor.BusinessEntityID as VendorID,
+	-- 発注先ベンダー名
 	Vendor.Name as VendorName,
+	-- プロダクトカテゴリーID
 	ProductCategory.ProductCategoryID,
+	-- プロダクトカテゴリー名
 	ProductCategory.Name as ProductCategoryName,
+	-- プロダクトサブカテゴリーID
 	ProductSubcategory.ProductSubcategoryID,
+	-- プロダクトサブカテゴリー名
 	ProductSubcategory.Name as ProductSubcategoryName,
+	-- プロダクトID
 	Product.ProductID,
+	-- プロダクト名
 	Product.Name,
-	ceiling(
-		StandardProductVendor.InventoryDays 
-		+ ProductShipmentResponseDays.AverageDailyShipment) as PurchasingQuantity,	-- 発注数
-	ProductShipmentResponseDays.ShipmentResponseDays,								-- 出荷対応日数
-	StandardProductVendor.AverageLeadTime,											-- 
-	ProductShipmentResponseDays.Inventory,
-	ProductShipmentResponseDays.UnclaimedPurchase,
-	ProductShipmentResponseDays.AverageDailyShipment
+	-- 発注数
+	convert(int, ceiling(StandardProductVendor.InventoryDays * ProductShipmentResponseDays.AverageDailyShipmentQuantity)) as PurchasingQuantity,
+	-- 出荷対応日数
+	ProductShipmentResponseDays.ShipmentResponseDays,
+	-- 平均リードタイム[日]
+	StandardProductVendor.AverageLeadTime,
+	-- 在庫数
+	ProductShipmentResponseDays.InventoryQuantity,
+	-- 未受領数
+	ProductShipmentResponseDays.UnclaimedPurchaseQuantity,
+	-- １日当たり平均出荷量
+	ProductShipmentResponseDays.AverageDailyShipmentQuantity
 from
+	-- 製品
 	Production.Product
+	-- 製品別標準購入先ベンダー
 	inner join Purchasing.StandardProductVendor
 		on	Product.ProductID = StandardProductVendor.ProductID
+	-- 製品別の出荷対応日数
 	inner join Purchasing.ProductShipmentResponseDays
 		on	Product.ProductID = ProductShipmentResponseDays.ProductID
+	-- 製品サブカテゴリー
 	inner join Production.ProductSubcategory
 		on	Product.ProductSubcategoryID = ProductSubcategory.ProductSubcategoryID
+	-- 製品カテゴリー
 	inner join Production.ProductCategory
 		on	ProductSubcategory.ProductCategoryID = ProductCategory.ProductCategoryID
+	-- 製品ベンダー
 	inner join Purchasing.Vendor
 		on	StandardProductVendor.BusinessEntityID = Vendor.BusinessEntityID
 where
