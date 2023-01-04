@@ -1,4 +1,6 @@
 ﻿using System.Windows.Controls;
+using AdventureWorks.Purchasing.UseCase.RePurchasing;
+using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 
 namespace AdventureWorks.Purchasing.View.RePurchasing
 {
@@ -10,6 +12,13 @@ namespace AdventureWorks.Purchasing.View.RePurchasing
         public RequiringPurchaseProductsPage()
         {
             InitializeComponent();
+        }
+    }
+
+    public class RequiringPurchaseProductsDesignViewModel : RequiringPurchaseProductsViewModel
+    {
+        public RequiringPurchaseProductsDesignViewModel() : base(default!)
+        {
         }
     }
 }

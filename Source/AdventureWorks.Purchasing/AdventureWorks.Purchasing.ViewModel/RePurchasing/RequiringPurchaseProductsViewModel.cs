@@ -1,12 +1,17 @@
-﻿using AdventureWorks.Purchasing.UseCase.RePurchasing;
+﻿using System.Collections.ObjectModel;
+using AdventureWorks.Purchasing.UseCase.RePurchasing;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Kamishibai;
 
 namespace AdventureWorks.Purchasing.ViewModel.RePurchasing;
 
 [Navigate]
-public class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
+[INotifyPropertyChanged]
+public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
 {
     private readonly IRePurchasingService _rePurchasingService;
+
+    public ObservableCollection<RequiringPurchaseProduct> RequiringPurchaseProducts { get; } = new();
 
     public RequiringPurchaseProductsViewModel(
         [Inject] IRePurchasingService rePurchasingService)
@@ -14,8 +19,8 @@ public class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
         _rePurchasingService = rePurchasingService;
     }
 
-    public Task OnNavigatedAsync(PostForwardEventArgs args)
+    public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        return _rePurchasingService.GetRequiringPurchaseProductsAsync();
+        RequiringPurchaseProducts.Replace(await _rePurchasingService.GetRequiringPurchaseProductsAsync());
     }
 }

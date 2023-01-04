@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sg="http://schemas.grapecity.com/windows/spreadgrid/2012"
              xmlns:local="clr-namespace:AdventureWorks.Purchasing.View.RePurchasing"
+             d:DataContext="{d:DesignInstance {x:Type local:RequiringPurchaseProductsDesignViewModel}, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <sg:GcSpreadGrid 
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Top" 
-            DocumentUri="/AdventureWorks.Purchasing.View;component/RePurchasing/RePurchasingList.sgxml"/>
+            AutoGenerateColumns="False"
+            DocumentUri="/AdventureWorks.Purchasing.View;component/RePurchasing/RePurchasingList.sgxml"
+            ItemsSource="{Binding RequiringPurchaseProducts}"/>
     </Grid>
 </UserControl>
