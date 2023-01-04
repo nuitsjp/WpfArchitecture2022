@@ -1,6 +1,5 @@
 ﻿// ReSharper disable RedundantNameQualifier
 using System.Data;
-using System.Runtime.CompilerServices;
 using Dapper;
 
 namespace AdventureWorks.Purchasing;

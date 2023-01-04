@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Production;
+﻿namespace AdventureWorks.Purchasing.Production;
 
 public class Product
 {

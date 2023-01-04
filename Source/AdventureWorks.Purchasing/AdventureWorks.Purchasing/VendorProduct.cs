@@ -1,4 +1,5 @@
-﻿using AdventureWorks.Production;
+﻿using ProductId = AdventureWorks.Purchasing.Production.ProductId;
+using UnitMeasureCode = AdventureWorks.Purchasing.Production.UnitMeasureCode;
 
 namespace AdventureWorks.Purchasing;
 

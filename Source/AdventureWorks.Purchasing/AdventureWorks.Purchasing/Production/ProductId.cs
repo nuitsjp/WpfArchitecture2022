@@ -1,11 +1,11 @@
 using UnitGenerator;
 
-namespace AdventureWorks.Production;
+namespace AdventureWorks.Purchasing.Production;
 
 /// <summary>
-/// ID of ProductSubcategory
+/// ID of Product
 /// </summary>
 [UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
-public partial struct ProductSubcategoryId
+public partial struct ProductId
 {
 }

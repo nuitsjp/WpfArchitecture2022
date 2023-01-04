@@ -6,13 +6,12 @@
              xmlns:fa="http://schemas.fontawesome.com/icons/fonts/properties"
              xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:control="clr-namespace:AdventureWorks.Purchasing.View.Control"
              xmlns:local="clr-namespace:AdventureWorks.Purchasing.View.Menu"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type local:MenuDesignViewModel}, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <control:MenuItemButton Icon="OpencartBrands"
+        <local:MenuItemButton Icon="OpencartBrands"
                                 MenuLabel="再発注"
                                 Command="{Binding NavigateRePurchasingCommand}"/>
     </Grid>

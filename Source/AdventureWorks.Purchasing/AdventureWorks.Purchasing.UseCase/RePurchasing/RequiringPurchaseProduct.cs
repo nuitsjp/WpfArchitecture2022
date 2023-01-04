@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Production;
+﻿using AdventureWorks.Purchasing.Production;
 
 namespace AdventureWorks.Purchasing.UseCase.RePurchasing;
 
