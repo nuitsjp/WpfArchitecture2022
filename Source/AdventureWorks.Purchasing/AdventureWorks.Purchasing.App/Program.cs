@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Database;
-using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
+﻿using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using AdventureWorks.Purchasing.View;
 using AdventureWorks.Purchasing.View.Menu;
@@ -9,8 +8,9 @@ using AdventureWorks.Purchasing.ViewModel.Menu;
 using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 using Kamishibai;
 
-TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.TypeHandlerInitializer.Initialize();
+AdventureWorks.Database.TypeHandlerInitializer.Initialize();
+AdventureWorks.Purchasing.Database.TypeHandlerInitializer.Initialize();
+AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
 
 // Create a builder by specifying the application and main window.
 var builder = KamishibaiApplication<App, MainWindow>.CreateBuilder();

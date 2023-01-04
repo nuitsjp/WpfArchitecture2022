@@ -145,17 +145,17 @@ public class QuantityTypeHandler : SqlMapper.TypeHandler<Quantity>
     }
 }
 
-public class FloatQuantityTypeHandler : SqlMapper.TypeHandler<FloatQuantity>
+public class DoubleQuantityTypeHandler : SqlMapper.TypeHandler<DoubleQuantity>
 {
-    public override void SetValue(IDbDataParameter parameter, FloatQuantity value)
+    public override void SetValue(IDbDataParameter parameter, DoubleQuantity value)
     {
         parameter.DbType = DbType.Double;
         parameter.Value = value.AsPrimitive();
     }
 
-    public override FloatQuantity Parse(object value)
+    public override DoubleQuantity Parse(object value)
     {
-        return new FloatQuantity((System.Single)value);
+        return new DoubleQuantity((System.Double)value);
     }
 }
 
@@ -174,7 +174,7 @@ public static class TypeHandlerInitializer
         SqlMapper.AddTypeHandler(new RevisionNumberTypeHandler());
         SqlMapper.AddTypeHandler(new TaxRateTypeHandler());
         SqlMapper.AddTypeHandler(new QuantityTypeHandler());
-        SqlMapper.AddTypeHandler(new FloatQuantityTypeHandler());
+        SqlMapper.AddTypeHandler(new DoubleQuantityTypeHandler());
     }
 }
 

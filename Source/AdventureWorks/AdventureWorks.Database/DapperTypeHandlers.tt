@@ -20,7 +20,7 @@
 		(UnitName: "RevisionNumber", UnitType: typeof(short)),
 		(UnitName: "TaxRate", UnitType: typeof(decimal)),
 		(UnitName: "Quantity", UnitType: typeof(int)),
-		(UnitName: "FloatQuantity", UnitType: typeof(float)),
+		(UnitName: "DoubleQuantity", UnitType: typeof(double)),
 	};
 #>
 

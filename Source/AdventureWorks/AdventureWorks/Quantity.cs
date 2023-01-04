@@ -10,12 +10,3 @@ public partial struct Quantity
 {
     
 }
-
-/// <summary>
-/// Quantity of float
-/// </summary>
-[UnitOf(typeof(float))]
-public partial struct FloatQuantity
-{
-
-}

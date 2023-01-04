@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Dapper" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="DapperTypeHandlers.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>DapperTypeHandlers.tt</DependentUpon>
+		</None>
+		<None Include="Production\DapperTypeHandlers.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>DapperTypeHandlers.tt</DependentUpon>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="DapperTypeHandlers.tt">
+			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>DapperTypeHandlers.cs</LastGenOutput>
+		</None>
+		<None Update="Production\DapperTypeHandlers.tt">
+		  <Generator>TextTemplatingFileGenerator</Generator>
+		  <LastGenOutput>DapperTypeHandlers.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="DapperTypeHandlers.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>DapperTypeHandlers.tt</DependentUpon>
+		</Compile>
+		<Compile Update="Production\DapperTypeHandlers.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>DapperTypeHandlers.tt</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+</Project>

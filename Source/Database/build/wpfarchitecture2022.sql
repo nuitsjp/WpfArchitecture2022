@@ -200,7 +200,7 @@ select
 	-- 製品ID
 	ProductAverageDailyShipment.ProductID,
 	-- 出荷対応日数
-	FLOOR((ProductInventory.Quantity + ProductUnclaimedPurchase.Quantity) / ProductAverageDailyShipment.Quantity) as ShipmentResponseDays,
+	convert(int, FLOOR((ProductInventory.Quantity + ProductUnclaimedPurchase.Quantity) / ProductAverageDailyShipment.Quantity)) as ShipmentResponseDays,
 	-- 在庫数
 	ProductInventory.Quantity as InventoryQuantity,
 	-- 未受領数
@@ -241,7 +241,7 @@ select
 	-- プロダクトID
 	Product.ProductID,
 	-- プロダクト名
-	Product.Name,
+	Product.Name as ProductName,
 	-- 発注数
 	convert(int, ceiling(StandardProductVendor.InventoryDays * ProductShipmentResponseDays.AverageDailyShipmentQuantity)) as PurchasingQuantity,
 	-- 出荷対応日数

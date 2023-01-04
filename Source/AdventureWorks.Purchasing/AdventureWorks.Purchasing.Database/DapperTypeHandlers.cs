@@ -2,8 +2,7 @@
 using System.Data;
 using Dapper;
 
-namespace AdventureWorks.Purchasing;
-
+namespace AdventureWorks.Purchasing.Database;
 
 public class VendorIdTypeHandler : SqlMapper.TypeHandler<VendorId>
 {
@@ -27,3 +26,4 @@ public static class TypeHandlerInitializer
         SqlMapper.AddTypeHandler(new VendorIdTypeHandler());
     }
 }
+

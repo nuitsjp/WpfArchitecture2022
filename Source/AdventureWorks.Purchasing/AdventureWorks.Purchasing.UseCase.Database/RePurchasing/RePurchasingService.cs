@@ -22,7 +22,20 @@ public class RePurchasingService : IRePurchasingService
         return (await connection.QueryAsync<RequiringPurchaseProduct>(
             @"
 select
-    VendorId
+    VendorId,
+    VendorName,
+    ProductCategoryId,
+    ProductCategoryName,
+    ProductSubcategoryId,
+    ProductSubcategoryName,
+    ProductId,
+    ProductName,
+    PurchasingQuantity,
+    ShipmentResponseDays,
+    AverageLeadTime,
+    InventoryQuantity,
+    UnclaimedPurchaseQuantity,
+    AverageDailyShipmentQuantity
 from
     Purchasing.ProductRequiringPurchase"))
             .ToList();
