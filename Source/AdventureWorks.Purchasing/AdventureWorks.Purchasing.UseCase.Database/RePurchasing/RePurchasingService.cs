@@ -31,6 +31,7 @@ select
     ProductId,
     ProductName,
     PurchasingQuantity,
+    UnitPrice,
     ShipmentResponseDays,
     AverageLeadTime,
     InventoryQuantity,

@@ -18,14 +18,14 @@ public partial struct Dollar
         return new Dollar(z.value - w.value);
     }
 
-    public static Dollar operator *(Dollar z, int quantity)
+    public static Dollar operator *(Dollar z, Quantity quantity)
     {
-        return new Dollar(z.value * quantity);
+        return new Dollar(z.value * quantity.AsPrimitive());
     }
 
-    public static Dollar operator /(Dollar z, int quantity)
+    public static Dollar operator /(Dollar z, Quantity quantity)
     {
-        return new Dollar(z.value / quantity);
+        return new Dollar(z.value / quantity.AsPrimitive());
     }
 
     public static Dollar operator *(Dollar z, TaxRate taxRate)

@@ -244,6 +244,8 @@ select
 	Product.Name as ProductName,
 	-- 発注数
 	convert(int, ceiling(StandardProductVendor.InventoryDays * ProductShipmentResponseDays.AverageDailyShipmentQuantity)) as PurchasingQuantity,
+	-- 標準単価
+	StandardProductVendor.StandardPrice as UnitPrice,
 	-- 出荷対応日数
 	ProductShipmentResponseDays.ShipmentResponseDays,
 	-- 平均リードタイム[日]

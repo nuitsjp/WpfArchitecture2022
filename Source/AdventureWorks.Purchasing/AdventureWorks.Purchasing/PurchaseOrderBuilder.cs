@@ -22,7 +22,7 @@ public class PurchaseOrderBuilder
         _orderDate = orderDate;
     }
 
-    public void AddProduct(Product product, short quantity)
+    public void AddProduct(Product product, Quantity quantity)
     {
         var vendorProduct = _vendor
             .VendorProducts
