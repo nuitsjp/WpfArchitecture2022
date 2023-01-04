@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<UseWPF>true</UseWPF>
 		<EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
@@ -12,6 +13,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.Database\AdventureWorks.Purchasing.UseCase.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj" />
 	</ItemGroup>
 

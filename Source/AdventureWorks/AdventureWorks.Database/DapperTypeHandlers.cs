@@ -1,10 +1,9 @@
-﻿// ReSharper disable RedundantNameQualifier
+﻿
+// ReSharper disable RedundantNameQualifier
 using System.Data;
-using System.Runtime.CompilerServices;
 using Dapper;
 
 namespace AdventureWorks.Database;
-
 
 public class DateTypeHandler : SqlMapper.TypeHandler<Date>
 {
@@ -20,7 +19,6 @@ public class DateTypeHandler : SqlMapper.TypeHandler<Date>
     }
 }
 
-
 public class DaysTypeHandler : SqlMapper.TypeHandler<Days>
 {
     public override void SetValue(IDbDataParameter parameter, Days value)
@@ -34,7 +32,6 @@ public class DaysTypeHandler : SqlMapper.TypeHandler<Days>
         return new Days((System.Int32)value);
     }
 }
-
 
 public class DollarTypeHandler : SqlMapper.TypeHandler<Dollar>
 {
@@ -50,7 +47,6 @@ public class DollarTypeHandler : SqlMapper.TypeHandler<Dollar>
     }
 }
 
-
 public class DollarPerGramTypeHandler : SqlMapper.TypeHandler<DollarPerGram>
 {
     public override void SetValue(IDbDataParameter parameter, DollarPerGram value)
@@ -64,7 +60,6 @@ public class DollarPerGramTypeHandler : SqlMapper.TypeHandler<DollarPerGram>
         return new DollarPerGram((System.Decimal)value);
     }
 }
-
 
 public class EmployeeIdTypeHandler : SqlMapper.TypeHandler<EmployeeId>
 {
@@ -80,7 +75,6 @@ public class EmployeeIdTypeHandler : SqlMapper.TypeHandler<EmployeeId>
     }
 }
 
-
 public class GramTypeHandler : SqlMapper.TypeHandler<Gram>
 {
     public override void SetValue(IDbDataParameter parameter, Gram value)
@@ -94,7 +88,6 @@ public class GramTypeHandler : SqlMapper.TypeHandler<Gram>
         return new Gram((System.Decimal)value);
     }
 }
-
 
 public class ModifiedDateTimeTypeHandler : SqlMapper.TypeHandler<ModifiedDateTime>
 {
@@ -110,7 +103,6 @@ public class ModifiedDateTimeTypeHandler : SqlMapper.TypeHandler<ModifiedDateTim
     }
 }
 
-
 public class RevisionNumberTypeHandler : SqlMapper.TypeHandler<RevisionNumber>
 {
     public override void SetValue(IDbDataParameter parameter, RevisionNumber value)
@@ -124,7 +116,6 @@ public class RevisionNumberTypeHandler : SqlMapper.TypeHandler<RevisionNumber>
         return new RevisionNumber((System.Int16)value);
     }
 }
-
 
 public class TaxRateTypeHandler : SqlMapper.TypeHandler<TaxRate>
 {
@@ -140,7 +131,6 @@ public class TaxRateTypeHandler : SqlMapper.TypeHandler<TaxRate>
     }
 }
 
-
 public class QuantityTypeHandler : SqlMapper.TypeHandler<Quantity>
 {
     public override void SetValue(IDbDataParameter parameter, Quantity value)
@@ -154,7 +144,6 @@ public class QuantityTypeHandler : SqlMapper.TypeHandler<Quantity>
         return new Quantity((System.Int32)value);
     }
 }
-
 
 public class FloatQuantityTypeHandler : SqlMapper.TypeHandler<FloatQuantity>
 {
@@ -171,12 +160,9 @@ public class FloatQuantityTypeHandler : SqlMapper.TypeHandler<FloatQuantity>
 }
 
 
-class TypeHandlerInitializer
+public static class TypeHandlerInitializer
 {
-    #pragma warning disable CA2255
-    [ModuleInitializer]
-    #pragma warning restore CA2255
-    public static void Init()
+    public static void Initialize()
     {
         SqlMapper.AddTypeHandler(new DateTypeHandler());
         SqlMapper.AddTypeHandler(new DaysTypeHandler());
@@ -191,3 +177,4 @@ class TypeHandlerInitializer
         SqlMapper.AddTypeHandler(new FloatQuantityTypeHandler());
     }
 }
+

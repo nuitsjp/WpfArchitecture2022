@@ -22,35 +22,36 @@ public record RequiringPurchaseProduct
     /// <param name="unclaimedPurchaseQuantity"></param>
     /// <param name="averageDailyShipmentQuantity"></param>
     public RequiringPurchaseProduct(
-        VendorId vendorId, 
-        string vendorName, 
-        ProductCategoryId productCategoryId, 
-        string productCategoryName, 
-        ProductSubcategoryId productSubcategoryId, 
-        string productSubcategoryName, 
-        ProductId productId, 
-        string productName, 
-        Quantity purchasingQuantity, 
-        Days shipmentResponseDays, 
-        Days averageLeadTime, 
-        Quantity inventoryQuantity, 
-        Quantity unclaimedPurchaseQuantity, 
-        FloatQuantity averageDailyShipmentQuantity)
+        VendorId vendorId 
+        //string vendorName, 
+        //ProductCategoryId productCategoryId, 
+        //string productCategoryName, 
+        //ProductSubcategoryId productSubcategoryId, 
+        //string productSubcategoryName, 
+        //ProductId productId, 
+        //string productName, 
+        //Quantity purchasingQuantity, 
+        //Days shipmentResponseDays, 
+        //Days averageLeadTime, 
+        //Quantity inventoryQuantity, 
+        //Quantity unclaimedPurchaseQuantity, 
+        //FloatQuantity averageDailyShipmentQuantity
+        )
     {
         VendorId = vendorId;
-        VendorName = vendorName;
-        ProductCategoryId = productCategoryId;
-        ProductCategoryName = productCategoryName;
-        ProductSubcategoryId = productSubcategoryId;
-        ProductSubcategoryName = productSubcategoryName;
-        ProductId = productId;
-        ProductName = productName;
-        PurchasingQuantity = purchasingQuantity;
-        ShipmentResponseDays = shipmentResponseDays;
-        AverageLeadTime = averageLeadTime;
-        InventoryQuantity = inventoryQuantity;
-        UnclaimedPurchaseQuantity = unclaimedPurchaseQuantity;
-        AverageDailyShipmentQuantity = averageDailyShipmentQuantity;
+        //VendorName = vendorName;
+        //ProductCategoryId = productCategoryId;
+        //ProductCategoryName = productCategoryName;
+        //ProductSubcategoryId = productSubcategoryId;
+        //ProductSubcategoryName = productSubcategoryName;
+        //ProductId = productId;
+        //ProductName = productName;
+        //PurchasingQuantity = purchasingQuantity;
+        //ShipmentResponseDays = shipmentResponseDays;
+        //AverageLeadTime = averageLeadTime;
+        //InventoryQuantity = inventoryQuantity;
+        //UnclaimedPurchaseQuantity = unclaimedPurchaseQuantity;
+        //AverageDailyShipmentQuantity = averageDailyShipmentQuantity;
     }
 
     public VendorId VendorId { get; }

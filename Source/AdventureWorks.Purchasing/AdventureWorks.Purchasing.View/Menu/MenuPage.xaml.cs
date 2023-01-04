@@ -1,8 +1,7 @@
 ﻿using System.Windows.Controls;
-using AdventureWorks.Purchasing.ViewModel;
 using AdventureWorks.Purchasing.ViewModel.Menu;
 
-namespace AdventureWorks.Purchasing.View.Page
+namespace AdventureWorks.Purchasing.View.Menu
 {
     /// <summary>
     /// MenuPage.xaml の相互作用ロジック
@@ -17,7 +16,7 @@ namespace AdventureWorks.Purchasing.View.Page
 
     public class MenuDesignViewModel : MenuViewModel
     {
-        public MenuDesignViewModel(IPresentationService presentationService) : base(default!)
+        public MenuDesignViewModel() : base(default!)
         {
         }
     }

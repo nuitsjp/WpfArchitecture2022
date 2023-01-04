@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" />
 	  <PackageReference Include="Kamishibai" />
@@ -7,6 +11,10 @@
 
 	<ItemGroup>
 	  <Folder Include="RePurchasing\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
 	</ItemGroup>
 
 </Project>

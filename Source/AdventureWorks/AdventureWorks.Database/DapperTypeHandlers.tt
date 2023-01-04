@@ -6,14 +6,8 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-// ReSharper disable RedundantNameQualifier
-using System.Data;
-using System.Runtime.CompilerServices;
-using Dapper;
-
-namespace AdventureWorks.Database;
-
 <#
+	var @namespace = "AdventureWorks.Database";
 	var types = new []
 	{
 		(UnitName: "Date", UnitType: typeof(DateTime)),
@@ -28,54 +22,6 @@ namespace AdventureWorks.Database;
 		(UnitName: "Quantity", UnitType: typeof(int)),
 		(UnitName: "FloatQuantity", UnitType: typeof(float)),
 	};
-
-
-    var typeMapping = new Dictionary<Type, DbType>
-    {
-        {typeof(short), DbType.Int16},
-        {typeof(int), DbType.Int32},
-        {typeof(float), DbType.Double},
-        {typeof(double), DbType.Double},
-        {typeof(decimal), DbType.Decimal},
-        {typeof(DateTime), DbType.DateTime},
-    };
-
-	foreach (var type in types)
-	{
 #>
 
-public class <#= type.UnitName #>TypeHandler : SqlMapper.TypeHandler<<#= type.UnitName #>>
-{
-    public override void SetValue(IDbDataParameter parameter, <#= type.UnitName #> value)
-    {
-        parameter.DbType = DbType.<#= typeMapping[type.UnitType] #>;
-        parameter.Value = value.AsPrimitive();
-    }
-
-    public override <#= type.UnitName #> Parse(object value)
-    {
-        return new <#= type.UnitName #>((<#= type.UnitType #>)value);
-    }
-}
-
-<#
-	}
-#>
-
-class TypeHandlerInitializer
-{
-    #pragma warning disable CA2255
-    [ModuleInitializer]
-    #pragma warning restore CA2255
-    public static void Init()
-    {
-<#
-    foreach (var type in types)
-	{
-#>
-        SqlMapper.AddTypeHandler(new <#= type.UnitName #>TypeHandler());
-<#
-    }
-#>
-    }
-}
+<#@ include file="DapperTypeHandlers.t4" once="true" #>
