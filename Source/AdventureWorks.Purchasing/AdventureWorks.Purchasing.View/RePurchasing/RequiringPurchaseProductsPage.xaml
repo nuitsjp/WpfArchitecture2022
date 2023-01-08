@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal"
@@ -19,14 +20,22 @@
             <Button Content="キャンセル"
                     Style="{StaticResource NegativeButton}"
                     Command="{Binding GoBackCommand}"/>
-            <Button Content="発注"
-                    Style="{StaticResource PositiveButton}"/>
         </StackPanel>
         <sg:GcSpreadGrid Grid.Row="1"
                          HorizontalAlignment="Stretch" 
-                         VerticalAlignment="Top" 
+                         VerticalAlignment="Stretch" 
                          AutoGenerateColumns="False"
                          DocumentUri="/AdventureWorks.Purchasing.View;component/RePurchasing/RePurchasingList.sgxml"
-                         ItemsSource="{Binding RequiringPurchaseProducts}"/>
+                         ItemsSource="{Binding RequiringPurchaseProducts}"
+                         SelectedItem="{Binding SelectedRequiringPurchaseProduct, Mode=TwoWay}"/>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="{Binding SelectedRequiringPurchaseProduct.VendorName}"
+                       Style="{StaticResource ContentTextBlock}"/>
+            <Button Content="発注"
+                    Style="{StaticResource PositiveButton}"
+                    Command="{Binding PurchaseCommand}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

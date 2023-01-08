@@ -13,6 +13,10 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
     private readonly IRePurchasingService _rePurchasingService;
     private readonly IPresentationService _presentationService;
 
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(PurchaseCommand))]
+    private RequiringPurchaseProduct? _selectedRequiringPurchaseProduct;
+
     public ObservableCollection<RequiringPurchaseProduct> RequiringPurchaseProducts { get; } = new();
 
     public RequiringPurchaseProductsViewModel(
@@ -30,4 +34,15 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
 
     [RelayCommand]
     private Task GoBackAsync() => _presentationService.GoBackAsync();
+
+    [RelayCommand(CanExecute = nameof(CanPurchaseAsync))]
+    private Task PurchaseAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    private bool CanPurchaseAsync()
+    {
+        return _selectedRequiringPurchaseProduct is not null;
+    }
 }
