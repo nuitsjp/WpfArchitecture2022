@@ -25,7 +25,7 @@
                          HorizontalAlignment="Stretch" 
                          VerticalAlignment="Stretch" 
                          AutoGenerateColumns="False"
-                         DocumentUri="/AdventureWorks.Purchasing.View;component/RePurchasing/RePurchasingList.sgxml"
+                         DocumentUri="/AdventureWorks.Purchasing.View;component/RePurchasing/RequiringPurchaseProductsList.sgxml"
                          ItemsSource="{Binding RequiringPurchaseProducts}"
                          SelectedItem="{Binding SelectedRequiringPurchaseProduct, Mode=TwoWay}"/>
         <StackPanel Grid.Row="2"

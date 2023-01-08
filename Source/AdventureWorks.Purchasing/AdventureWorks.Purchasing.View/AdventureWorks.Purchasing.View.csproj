@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="RePurchasing\RePurchasingList.sgxml" />
+	  <None Remove="RePurchasing\RequiringPurchaseProductsList.sgxml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="RePurchasing\RePurchasingList.sgxml" />
+	  <Resource Include="RePurchasing\RequiringPurchaseProductsList.sgxml" />
 	</ItemGroup>
 
 </Project>
