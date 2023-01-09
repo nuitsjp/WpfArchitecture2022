@@ -1,25 +1,23 @@
-﻿using AdventureWorks.Purchasing.UseCase.RePurchasing;
+﻿using AdventureWorks.Database;
+using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using Dapper;
 using Microsoft.Data.SqlClient;
 
 namespace AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 public class RePurchasingService : IRePurchasingService
 {
+    private readonly IDatabase _database;
+
+    public RePurchasingService(IDatabase database)
+    {
+        _database = database;
+    }
+
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {
-        var connectionString = new SqlConnectionStringBuilder
-        {
-            DataSource = "localhost",
-            UserID = "sa",
-            Password = "P@ssw0rd!",
-            InitialCatalog = "AdventureWorks",
-            TrustServerCertificate = true
-        }.ToString();
+        using var transaction = _database.BeginTransaction();
 
-        await using var connection = new SqlConnection(connectionString);
-        connection.Open();
-
-        return (await connection.QueryAsync<RequiringPurchaseProduct>(
+        return (await transaction.Connection.QueryAsync<RequiringPurchaseProduct>(
             @"
 select
     VendorId,

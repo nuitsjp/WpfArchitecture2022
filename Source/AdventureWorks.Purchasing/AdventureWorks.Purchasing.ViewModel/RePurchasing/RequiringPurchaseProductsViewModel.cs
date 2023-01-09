@@ -11,6 +11,7 @@ namespace AdventureWorks.Purchasing.ViewModel.RePurchasing;
 public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
 {
     private readonly IRePurchasingService _rePurchasingService;
+    private readonly IVendorRepository _vendorRepository;
     private readonly IPresentationService _presentationService;
 
     [ObservableProperty]
@@ -21,9 +22,11 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
 
     public RequiringPurchaseProductsViewModel(
         [Inject] IRePurchasingService rePurchasingService, 
+        [Inject] IVendorRepository vendorRepository, 
         [Inject] IPresentationService presentationService)
     {
         _rePurchasingService = rePurchasingService;
+        _vendorRepository = vendorRepository;
         _presentationService = presentationService;
     }
 
@@ -36,9 +39,13 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
     private Task GoBackAsync() => _presentationService.GoBackAsync();
 
     [RelayCommand(CanExecute = nameof(CanPurchaseAsync))]
-    private Task PurchaseAsync()
+    private async Task PurchaseAsync()
     {
-        throw new NotImplementedException();
+        var vendor = await _vendorRepository.GetVendorByIdAsync(_selectedRequiringPurchaseProduct!.VendorId);
+        var requiringPurchaseProducts = RequiringPurchaseProducts
+            .Where(x => x.VendorId == _selectedRequiringPurchaseProduct!.VendorId);
+
+        await _presentationService.NavigateToRePurchasingAsync(vendor, requiringPurchaseProducts);
     }
 
     private bool CanPurchaseAsync()

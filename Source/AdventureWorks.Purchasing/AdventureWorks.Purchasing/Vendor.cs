@@ -9,7 +9,7 @@ public class Vendor
         CreditRating creditRating, 
         bool isPreferredVendor, 
         bool isActive, 
-        Uri purchasingWebServiceUrl, 
+        Uri? purchasingWebServiceUrl, 
         TaxRate taxRate, 
         ModifiedDateTime modifiedDateTime, 
         IReadOnlyList<VendorProduct> vendorProducts)
@@ -32,7 +32,7 @@ public class Vendor
     public CreditRating CreditRating { get; }
     public bool IsPreferredVendor { get; }
     public bool IsActive { get; }
-    public Uri PurchasingWebServiceUrl { get; }
+    public Uri? PurchasingWebServiceUrl { get; }
     public TaxRate TaxRate { get; }
     public ModifiedDateTime ModifiedDateTime { get; }
     public IReadOnlyList<VendorProduct> VendorProducts { get; }

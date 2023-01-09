@@ -17,7 +17,7 @@ namespace AdventureWorks.Purchasing.View.RePurchasing
 
     public class RequiringPurchaseProductsDesignViewModel : RequiringPurchaseProductsViewModel
     {
-        public RequiringPurchaseProductsDesignViewModel() : base(default!, default!)
+        public RequiringPurchaseProductsDesignViewModel() : base(default!, default!, default!)
         {
         }
     }
