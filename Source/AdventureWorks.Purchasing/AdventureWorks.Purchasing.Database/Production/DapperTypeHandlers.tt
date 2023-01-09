@@ -11,6 +11,9 @@
 	var types = new []
 	{
 		(UnitName: "ProductId", UnitType: typeof(int)),
+		(UnitName: "ProductCategoryId", UnitType: typeof(int)),
+		(UnitName: "ProductSubcategoryId", UnitType: typeof(int)),
+		(UnitName: "UnitMeasureCode", UnitType: typeof(string)),
 	};
 #>
 using AdventureWorks.Purchasing.Production;

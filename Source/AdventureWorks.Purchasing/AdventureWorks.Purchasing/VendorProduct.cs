@@ -10,10 +10,9 @@ public class VendorProduct
         Days averageLeadTime, 
         Dollar standardPrice, 
         Dollar lastReceiptCost, 
-        Date lastReceipt, 
-        int minOrderQuantity, 
-        int maxOrderQuantity, 
-        int onOrderQuantity, 
+        Quantity minOrderQuantity,
+        Quantity maxOrderQuantity,
+        Quantity? onOrderQuantity, 
         UnitMeasureCode unitMeasureCode, 
         ModifiedDateTime modifiedDateTime)
     {
@@ -21,7 +20,6 @@ public class VendorProduct
         AverageLeadTime = averageLeadTime;
         StandardPrice = standardPrice;
         LastReceiptCost = lastReceiptCost;
-        LastReceipt = lastReceipt;
         MinOrderQuantity = minOrderQuantity;
         MaxOrderQuantity = maxOrderQuantity;
         OnOrderQuantity = onOrderQuantity;
@@ -33,10 +31,9 @@ public class VendorProduct
     public Days AverageLeadTime { get; }
     public Dollar StandardPrice { get; }
     public Dollar LastReceiptCost { get; }
-    public Date LastReceipt { get; }
-    public int MinOrderQuantity { get; }
-    public int MaxOrderQuantity { get; }
-    public int OnOrderQuantity { get; }
+    public Quantity MinOrderQuantity { get; }
+    public Quantity MaxOrderQuantity { get; }
+    public Quantity? OnOrderQuantity { get; }
     public UnitMeasureCode UnitMeasureCode { get; }
     public ModifiedDateTime ModifiedDateTime { get; }
 }

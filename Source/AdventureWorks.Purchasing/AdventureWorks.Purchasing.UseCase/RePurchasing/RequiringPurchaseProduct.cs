@@ -23,7 +23,7 @@ public record RequiringPurchaseProduct
     /// <param name="unclaimedPurchaseQuantity"></param>
     /// <param name="averageDailyShipmentQuantity"></param>
     public RequiringPurchaseProduct(
-        VendorId vendorId, 
+        VendorId vendorId,
         string vendorName,
         ProductCategoryId productCategoryId,
         string productCategoryName,

@@ -1,4 +1,6 @@
 ﻿using AdventureWorks.Database;
+using AdventureWorks.Purchasing;
+using AdventureWorks.Purchasing.Database;
 using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using AdventureWorks.Purchasing.View;
@@ -37,6 +39,7 @@ builder.Services.AddPresentation<MenuPage, MenuViewModel>();
 builder.Services.AddPresentation<RequiringPurchaseProductsPage, RequiringPurchaseProductsViewModel>();
 builder.Services.AddPresentation<RePurchasingPage, RePurchasingViewModel>();
 builder.Services.AddTransient<IRePurchasingService, RePurchasingService>();
+builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 
 // Build and run the application.
 var app = builder.Build();

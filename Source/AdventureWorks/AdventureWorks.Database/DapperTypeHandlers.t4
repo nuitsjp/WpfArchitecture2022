@@ -13,6 +13,7 @@ namespace <#= @namespace #>;
         {typeof(double), DbType.Double},
         {typeof(decimal), DbType.Decimal},
         {typeof(DateTime), DbType.DateTime},
+        {typeof(string), DbType.String},
     };
 
 	foreach (var type in types)

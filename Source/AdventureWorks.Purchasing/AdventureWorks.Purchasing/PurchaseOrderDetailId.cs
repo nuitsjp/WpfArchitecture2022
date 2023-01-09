@@ -5,7 +5,7 @@ namespace AdventureWorks.Purchasing;
 /// <summary>
 /// ID of PurchaseOrderDetail
 /// </summary>
-[UnitOf(typeof(int), UnitGenerateOptions.DapperTypeHandler)]
+[UnitOf(typeof(int))]
 public partial struct PurchaseOrderDetailId
 {
 }
