@@ -1,14 +1,13 @@
-﻿using AdventureWorks.Purchasing.UseCase.RePurchasing;
+﻿using AdventureWorks;
+using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
 
 namespace AdventureWorks.Purchasing.ViewModel.RePurchasing;
 
 [Navigate]
-public partial class RePurchasingViewModel : INavigatedAsyncAware
+public partial class RePurchasingViewModel
 {
-    private readonly Vendor _vendor;
-    private readonly IList<RequiringPurchaseProduct> _requiringPurchaseProducts;
     private readonly IPresentationService _presentationService;
 
     public RePurchasingViewModel(
@@ -16,19 +15,21 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         IEnumerable<RequiringPurchaseProduct> requiringPurchaseProducts,
         [Inject] IPresentationService presentationService)
     {
-        _vendor = vendor;
-        _requiringPurchaseProducts = requiringPurchaseProducts.ToList();
+        Vendor = vendor;
+        RequiringPurchaseProducts = requiringPurchaseProducts.ToList();
         _presentationService = presentationService;
+        TotalPrice =
+            RequiringPurchaseProducts.Sum(x => x.LineTotal)
+            * Vendor.TaxRate;
     }
+
+    public Vendor Vendor { get; }
+    public IList<RequiringPurchaseProduct> RequiringPurchaseProducts { get; }
+
+    public Dollar TotalPrice { get; }
 
     [RelayCommand]
     public Task GoBackAsync() => _presentationService.GoBackAsync();
-
-    public Task OnNavigatedAsync(PostForwardEventArgs args)
-    {
-        throw new NotImplementedException();
-    }
-
 
     [RelayCommand]
     private Task PurchaseAsync()
@@ -36,3 +37,4 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         throw new NotImplementedException();
     }
 }
+

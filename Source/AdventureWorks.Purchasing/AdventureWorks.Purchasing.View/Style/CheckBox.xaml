@@ -9,4 +9,9 @@
 
     </Style>
 
+    <Style x:Key="ReadOnlyCheckBox" TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBase}">
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+    </Style>
+
 </ResourceDictionary>
