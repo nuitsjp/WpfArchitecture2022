@@ -14,6 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 	  <ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
 	</ItemGroup>
 

@@ -1,4 +1,8 @@
-﻿using AdventureWorks.Database;
+﻿using AdventureWorks.Authentication;
+using AdventureWorks.Authentication.Client;
+using AdventureWorks.Authentication.Service;
+using AdventureWorks.Authentication.Service.Database;
+using AdventureWorks.Database;
 using AdventureWorks.Purchasing;
 using AdventureWorks.Purchasing.Database;
 using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
@@ -11,10 +15,10 @@ using AdventureWorks.Purchasing.ViewModel.Menu;
 using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 using Kamishibai;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.DependencyInjection;
 
 AdventureWorks.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.TypeHandlerInitializer.Initialize();
+AdventureWorks.Authentication.Service.Database.TypeHandlerInitializer.Initialize();
+AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
 AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
 
 // Create a builder by specifying the application and main window.
@@ -30,6 +34,10 @@ var connectionString = new SqlConnectionStringBuilder
     TrustServerCertificate = true
 }.ToString();
 builder.Services.AddTransient<IDatabase>(_ => new Database(connectionString));
+
+// 認証
+builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
 // メニュー
 builder.Services.AddPresentation<MainWindow, MainViewModel>();
