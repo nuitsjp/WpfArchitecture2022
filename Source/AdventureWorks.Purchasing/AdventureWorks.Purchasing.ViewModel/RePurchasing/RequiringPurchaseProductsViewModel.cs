@@ -10,7 +10,7 @@ namespace AdventureWorks.Purchasing.ViewModel.RePurchasing;
 [INotifyPropertyChanged]
 public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
 {
-    private readonly IRePurchasingService _rePurchasingService;
+    private readonly IRePurchasingQueryService _rePurchasingQueryService;
     private readonly IVendorRepository _vendorRepository;
     private readonly IPresentationService _presentationService;
 
@@ -21,18 +21,18 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
     public ObservableCollection<RequiringPurchaseProduct> RequiringPurchaseProducts { get; } = new();
 
     public RequiringPurchaseProductsViewModel(
-        [Inject] IRePurchasingService rePurchasingService, 
+        [Inject] IRePurchasingQueryService rePurchasingQueryService, 
         [Inject] IVendorRepository vendorRepository, 
         [Inject] IPresentationService presentationService)
     {
-        _rePurchasingService = rePurchasingService;
+        _rePurchasingQueryService = rePurchasingQueryService;
         _vendorRepository = vendorRepository;
         _presentationService = presentationService;
     }
 
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        RequiringPurchaseProducts.Replace(await _rePurchasingService.GetRequiringPurchaseProductsAsync());
+        RequiringPurchaseProducts.Replace(await _rePurchasingQueryService.GetRequiringPurchaseProductsAsync());
     }
 
     [RelayCommand]

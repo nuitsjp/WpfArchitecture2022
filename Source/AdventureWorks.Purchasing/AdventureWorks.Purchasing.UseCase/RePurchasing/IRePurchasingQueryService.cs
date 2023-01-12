@@ -1,6 +1,6 @@
 ﻿namespace AdventureWorks.Purchasing.UseCase.RePurchasing;
 
-public interface IRePurchasingService
+public interface IRePurchasingQueryService
 {
     Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync();
 }
