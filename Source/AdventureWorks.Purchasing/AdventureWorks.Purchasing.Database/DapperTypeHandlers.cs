@@ -18,12 +18,27 @@ public class VendorIdTypeHandler : SqlMapper.TypeHandler<VendorId>
     }
 }
 
+public class ShipMethodIdTypeHandler : SqlMapper.TypeHandler<ShipMethodId>
+{
+    public override void SetValue(IDbDataParameter parameter, ShipMethodId value)
+    {
+        parameter.DbType = DbType.Int32;
+        parameter.Value = value.AsPrimitive();
+    }
+
+    public override ShipMethodId Parse(object value)
+    {
+        return new ShipMethodId((System.Int32)value);
+    }
+}
+
 
 public static class TypeHandlerInitializer
 {
     public static void Initialize()
     {
         SqlMapper.AddTypeHandler(new VendorIdTypeHandler());
+        SqlMapper.AddTypeHandler(new ShipMethodIdTypeHandler());
     }
 }
 

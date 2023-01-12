@@ -14,9 +14,9 @@ public class VendorRepository : IVendorRepository
 
     public async Task<Vendor> GetVendorByIdAsync(VendorId vendorId)
     {
-        using var transaction = _database.BeginTransaction();
+        using var connection = _database.Open();
 
-        var products = await transaction.Connection
+        var products = await connection
             .QueryAsync<VendorProduct>(@"
 select
 	ProductID,
@@ -37,7 +37,7 @@ where
                     VendorId = vendorId
                 });
 
-        var vendor = await transaction.Connection
+        var vendor = await connection
             .QuerySingleAsync(@"
 select
 	Vendor.BusinessEntityID as VendorId,

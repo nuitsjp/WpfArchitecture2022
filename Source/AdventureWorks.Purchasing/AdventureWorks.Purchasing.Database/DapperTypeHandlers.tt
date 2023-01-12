@@ -11,6 +11,7 @@
 	var types = new []
 	{
 		(UnitName: "VendorId", UnitType: typeof(int)),
+		(UnitName: "ShipMethodId", UnitType: typeof(int)),
 	};
 #>
 <#@ include file="..\..\AdventureWorks\AdventureWorks.Database\DapperTypeHandlers.t4" once="true" #>

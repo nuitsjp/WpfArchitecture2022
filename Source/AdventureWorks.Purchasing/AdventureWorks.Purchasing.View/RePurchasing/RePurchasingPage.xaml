@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:AdventureWorks.Purchasing.View.RePurchasing"
              xmlns:sg="http://schemas.grapecity.com/windows/spreadgrid/2012"
              xmlns:converter="clr-namespace:AdventureWorks.View.Converter;assembly=AdventureWorks.View"
+             xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type local:RePurchasingDesignViewModel}, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -69,6 +70,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -88,6 +90,11 @@
                        Text="{Binding TotalPrice, Converter={StaticResource DollarConverter}}"
                        HorizontalAlignment="Right"/>
 
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="配送方法"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text=":"/>
+            <c1:C1ComboBox Grid.Row="2" Grid.Column="2" Width="200"
+                           ItemsSource="{Binding ShipMethods}"
+                           DisplayMemberPath="Name"/>
         </Grid>
 
         <StackPanel Grid.Row="4"

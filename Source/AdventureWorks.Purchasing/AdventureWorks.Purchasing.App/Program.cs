@@ -47,6 +47,7 @@ builder.Services.AddPresentation<RequiringPurchaseProductsPage, RequiringPurchas
 builder.Services.AddPresentation<RePurchasingPage, RePurchasingViewModel>();
 builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
+builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 
 // Build and run the application.
 var app = builder.Build();
