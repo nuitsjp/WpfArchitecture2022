@@ -17,7 +17,6 @@ using Kamishibai;
 using Microsoft.Data.SqlClient;
 
 AdventureWorks.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Authentication.Service.Database.TypeHandlerInitializer.Initialize();
 AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
 AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
 

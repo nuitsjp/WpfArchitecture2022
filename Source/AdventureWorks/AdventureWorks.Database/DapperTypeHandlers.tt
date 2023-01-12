@@ -15,6 +15,7 @@
 		(UnitName: "Dollar", UnitType: typeof(decimal)),
 		(UnitName: "DollarPerGram", UnitType: typeof(decimal)),
 		(UnitName: "EmployeeId", UnitType: typeof(int)),
+		(UnitName: "LoginId", UnitType: typeof(string)),
 		(UnitName: "Gram", UnitType: typeof(decimal)),
 		(UnitName: "ModifiedDateTime", UnitType: typeof(DateTime)),
 		(UnitName: "RevisionNumber", UnitType: typeof(short)),

@@ -14,8 +14,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Client\AdventureWorks.Authentication.Client.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Service.Database\AdventureWorks.Authentication.Service.Database.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Service\AdventureWorks.Authentication.Service.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />

@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Authentication;
+﻿namespace AdventureWorks;
 
 public class Employee
 {

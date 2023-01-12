@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\AdventureWorks.Authentication.Service\AdventureWorks.Authentication.Service.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 	</ItemGroup>
 

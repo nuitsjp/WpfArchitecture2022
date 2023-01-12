@@ -35,10 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authenticati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Client", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Client\AdventureWorks.Authentication.Client.csproj", "{CEA2CB38-9FC7-4F00-BFBC-1B114E652DC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Service", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Service\AdventureWorks.Authentication.Service.csproj", "{18C2D8B9-27CB-4027-86A0-70B9703E7265}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Service.Database", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Service.Database\AdventureWorks.Authentication.Service.Database.csproj", "{98C71B69-B359-45BF-85EC-97C92B533085}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Authentication", "AdventureWorks.Authentication", "{71082F78-D494-41D9-8165-30FA1A4A51A6}"
 EndProject
 Global
@@ -95,14 +91,6 @@ Global
 		{CEA2CB38-9FC7-4F00-BFBC-1B114E652DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEA2CB38-9FC7-4F00-BFBC-1B114E652DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEA2CB38-9FC7-4F00-BFBC-1B114E652DC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18C2D8B9-27CB-4027-86A0-70B9703E7265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18C2D8B9-27CB-4027-86A0-70B9703E7265}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18C2D8B9-27CB-4027-86A0-70B9703E7265}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18C2D8B9-27CB-4027-86A0-70B9703E7265}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98C71B69-B359-45BF-85EC-97C92B533085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98C71B69-B359-45BF-85EC-97C92B533085}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98C71B69-B359-45BF-85EC-97C92B533085}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98C71B69-B359-45BF-85EC-97C92B533085}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,8 +101,6 @@ Global
 		{78458938-354E-472F-9C9E-102ADAB5A9F1} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{DC22EB30-E9C0-440A-A4CC-5562F68BE91C} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 		{CEA2CB38-9FC7-4F00-BFBC-1B114E652DC2} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
-		{18C2D8B9-27CB-4027-86A0-70B9703E7265} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
-		{98C71B69-B359-45BF-85EC-97C92B533085} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

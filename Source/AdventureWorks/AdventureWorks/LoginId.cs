@@ -1,6 +1,6 @@
 ﻿using UnitGenerator;
 
-namespace AdventureWorks.Authentication;
+namespace AdventureWorks;
 
 [UnitOf(typeof(string))]
 public partial struct LoginId

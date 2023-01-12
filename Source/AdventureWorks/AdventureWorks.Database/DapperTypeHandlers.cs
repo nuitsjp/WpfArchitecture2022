@@ -75,6 +75,20 @@ public class EmployeeIdTypeHandler : SqlMapper.TypeHandler<EmployeeId>
     }
 }
 
+public class LoginIdTypeHandler : SqlMapper.TypeHandler<LoginId>
+{
+    public override void SetValue(IDbDataParameter parameter, LoginId value)
+    {
+        parameter.DbType = DbType.String;
+        parameter.Value = value.AsPrimitive();
+    }
+
+    public override LoginId Parse(object value)
+    {
+        return new LoginId((System.String)value);
+    }
+}
+
 public class GramTypeHandler : SqlMapper.TypeHandler<Gram>
 {
     public override void SetValue(IDbDataParameter parameter, Gram value)
@@ -169,6 +183,7 @@ public static class TypeHandlerInitializer
         SqlMapper.AddTypeHandler(new DollarTypeHandler());
         SqlMapper.AddTypeHandler(new DollarPerGramTypeHandler());
         SqlMapper.AddTypeHandler(new EmployeeIdTypeHandler());
+        SqlMapper.AddTypeHandler(new LoginIdTypeHandler());
         SqlMapper.AddTypeHandler(new GramTypeHandler());
         SqlMapper.AddTypeHandler(new ModifiedDateTimeTypeHandler());
         SqlMapper.AddTypeHandler(new RevisionNumberTypeHandler());
