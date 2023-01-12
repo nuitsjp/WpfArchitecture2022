@@ -4,11 +4,11 @@ using Dapper;
 using Microsoft.Data.SqlClient;
 
 namespace AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
-public class RePurchasingService : IRePurchasingService
+public class RePurchasingQueryService : IRePurchasingQueryService
 {
     private readonly IDatabase _database;
 
-    public RePurchasingService(IDatabase database)
+    public RePurchasingQueryService(IDatabase database)
     {
         _database = database;
     }

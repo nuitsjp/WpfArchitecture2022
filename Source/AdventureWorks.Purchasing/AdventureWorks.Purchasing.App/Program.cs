@@ -17,7 +17,7 @@ using Kamishibai;
 using Microsoft.Data.SqlClient;
 
 AdventureWorks.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
+AdventureWorks.Purchasing.Database.TypeHandlerInitializer.Initialize();
 AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
 
 // Create a builder by specifying the application and main window.
