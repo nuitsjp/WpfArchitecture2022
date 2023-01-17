@@ -3,10 +3,36 @@
 # docker start adventureworks
 docker-compose -f (Join-Path $PSScriptRoot 'compose-dev.yaml') up -d
 
+## データベースへの接続
+$connectionString = 'Data Source=localhost;Initial Catalog=AdventureWorks;User ID=sa;Password=P@ssw0rd!'
 
-# update
-# 	HumanResources.Employee
-# set
-# 	LoginID = 'DESKTOP-AUA6P9K\atsus'
-# where
-# 	BusinessEntityID = 260
+$user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+$sqlQuery = "
+update 
+    HumanResources.Employee 
+set 
+    LoginID = '$user' 
+where 
+    BusinessEntityID = 260;
+
+select 'Updated login user.'"
+
+while ($true) {
+    $connection = New-Object System.Data.SQLClient.SQLConnection $connectionString
+    $sqlCommand = New-Object System.Data.SQLClient.SQLCommand($sqlQuery, $connection)
+    try {
+        $connection.Open()
+        
+        Write-Host $sqlCommand.ExecuteScalar()    
+        break
+    }
+    catch {
+        Write-Host "SQL Server 起動待機..."
+        Start-Sleep -Seconds 1
+    }
+    finally {
+        $connection.Dispose()
+        $sqlCommand.Dispose()
+    }
+}
+
