@@ -16,9 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
-    <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MessagePack\AdventureWorks.MessagePack.csproj" />
     <ProjectReference Include="..\AdventureWorks.Purchasing.Database\AdventureWorks.Purchasing.Database.csproj" />
-    <ProjectReference Include="..\AdventureWorks.Purchasing.MessagePack\AdventureWorks.Purchasing.MessagePack.csproj" />
     <ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.Database\AdventureWorks.Purchasing.UseCase.Database.csproj" />
     <ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.RePurchasing.Client\AdventureWorks.Purchasing.UseCase.RePurchasing.Client.csproj" />
   </ItemGroup>

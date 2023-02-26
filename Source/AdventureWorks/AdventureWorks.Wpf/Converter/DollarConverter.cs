@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
 
-namespace AdventureWorks.View.Converter;
+namespace AdventureWorks.Wpf.Converter;
 
 public class DollarConverter : IValueConverter
 {

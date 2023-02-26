@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Kamishibai.View" />
+		<PackageReference Include="Wpf.Extensions.Hosting" Version="1.1.2" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
+	</ItemGroup>
+
+</Project>

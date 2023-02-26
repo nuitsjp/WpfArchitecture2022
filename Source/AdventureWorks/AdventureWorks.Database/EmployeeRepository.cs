@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Authentication.Service;
-using Dapper;
+﻿using Dapper;
 
 namespace AdventureWorks.Database;
 

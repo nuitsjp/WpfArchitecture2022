@@ -8,18 +8,37 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="appsettings.Development.json" />
+	  <None Remove="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="appsettings.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Kamishibai.Hosting" />
 		<PackageReference Include="Wpf.Extensions.Hosting" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Client\AdventureWorks.Authentication.Client.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.MagicOnion.Client\AdventureWorks.Authentication.MagicOnion.Client.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MessagePack\AdventureWorks.MessagePack.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Wpf\AdventureWorks.Wpf.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.Database\AdventureWorks.Purchasing.Database.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Purchasing.MessagePack\AdventureWorks.Purchasing.MessagePack.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.Database\AdventureWorks.Purchasing.UseCase.Database.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.RePurchasing.Client\AdventureWorks.Purchasing.UseCase.RePurchasing.Client.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />

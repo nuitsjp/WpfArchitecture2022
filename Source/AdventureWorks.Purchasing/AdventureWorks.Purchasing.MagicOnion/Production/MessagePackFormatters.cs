@@ -6,7 +6,7 @@
 using MessagePack;
 using MessagePack.Formatters;
 
-namespace AdventureWorks.Purchasing.MessagePack.Production;
+namespace AdventureWorks.Purchasing.MagicOnion.Production;
 
 public class ProductIdFormatter : IMessagePackFormatter<ProductId>
 {
@@ -80,12 +80,12 @@ public class CustomResolver : IFormatterResolver
         // use outer helper method.
         static FormatterCache()
         {
-            Formatter = (IMessagePackFormatter<T>)SampleCustomResolverGetFormatterHelper.GetFormatter(typeof(T));
+            Formatter = (IMessagePackFormatter<T>)CustomResolverGetFormatterHelper.GetFormatter(typeof(T));
         }
     }
 }
 
-internal static class SampleCustomResolverGetFormatterHelper
+internal static class CustomResolverGetFormatterHelper
 {
     static readonly Dictionary<Type, object> Formatters = new()
     {

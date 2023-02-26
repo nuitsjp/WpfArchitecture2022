@@ -7,11 +7,11 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.Purchasing.MessagePack";
+	var @namespace = "AdventureWorks.Purchasing.MagicOnion";
 	var types = new []
 	{
 		(UnitName: "VendorId", UnitType: typeof(int)),
 		(UnitName: "ShipMethodId", UnitType: typeof(int)),
 	};
 #>
-<#@ include file="..\..\AdventureWorks\AdventureWorks.MessagePack\MessagePackFormatters.t4" once="true" #>
+<#@ include file="..\..\AdventureWorks\AdventureWorks.MagicOnion\MessagePackFormatters.t4" once="true" #>

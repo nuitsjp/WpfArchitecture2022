@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Authentication.Service
+﻿namespace AdventureWorks
 {
     public interface IEmployeeRepository
     {

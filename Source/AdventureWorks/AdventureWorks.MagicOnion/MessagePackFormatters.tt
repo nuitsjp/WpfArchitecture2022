@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.MessagePack";
+	var @namespace = "AdventureWorks.MagicOnion";
 	var types = new []
 	{
 		(UnitName: "Date", UnitType: typeof(DateTime)),

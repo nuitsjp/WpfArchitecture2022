@@ -15,9 +15,11 @@
   <ItemGroup>
     <PackageReference Include="Dapper" />
     <PackageReference Include="Microsoft.Data.SqlClient" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
     <ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
   </ItemGroup>
 

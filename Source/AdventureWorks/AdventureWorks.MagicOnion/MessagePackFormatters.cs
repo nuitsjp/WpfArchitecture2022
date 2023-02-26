@@ -5,7 +5,7 @@
 using MessagePack;
 using MessagePack.Formatters;
 
-namespace AdventureWorks.MessagePack;
+namespace AdventureWorks.MagicOnion;
 
 public class DateFormatter : IMessagePackFormatter<Date>
 {
@@ -175,12 +175,12 @@ public class CustomResolver : IFormatterResolver
         // use outer helper method.
         static FormatterCache()
         {
-            Formatter = (IMessagePackFormatter<T>)SampleCustomResolverGetFormatterHelper.GetFormatter(typeof(T));
+            Formatter = (IMessagePackFormatter<T>)CustomResolverGetFormatterHelper.GetFormatter(typeof(T));
         }
     }
 }
 
-internal static class SampleCustomResolverGetFormatterHelper
+internal static class CustomResolverGetFormatterHelper
 {
     static readonly Dictionary<Type, object> Formatters = new()
     {

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MagicOnion.Client" />
+	</ItemGroup>
+
+</Project>

@@ -1,6 +1,6 @@
 ﻿
 using AdventureWorks.Authentication;
-using AdventureWorks.Authentication.Client;
+using AdventureWorks.Authentication.MagicOnion.Client;
 using AdventureWorks.Purchasing;
 using AdventureWorks.Purchasing.Database;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
@@ -16,48 +16,24 @@ using Kamishibai;
 using MagicOnion.Client;
 using MessagePack.Resolvers;
 using MessagePack;
-using Microsoft.Data.SqlClient;
-using System.Threading.Channels;
-using AdventureWorks.Database;
-using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
+using AdventureWorks.MagicOnion;
 
 
-// Create a builder by specifying the application and main window.
-var builder = KamishibaiApplication<App, MainWindow>.CreateBuilder();
+var builder = new AdventureWorks.Wpf.ApplicationBuilder<App, MainWindow>(KamishibaiApplication<App, MainWindow>.CreateBuilder());
 
 // MagicOnion
-StaticCompositeResolver.Instance.Register(
-    StandardResolver.Instance,
-    AdventureWorks.MessagePack.CustomResolver.Instance,
-    AdventureWorks.Purchasing.MessagePack.CustomResolver.Instance,
-    AdventureWorks.Purchasing.MessagePack.Production.CustomResolver.Instance,
-    ContractlessStandardResolver.Instance
-);
-MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
-    .WithResolver(StaticCompositeResolver.Instance);
-
+MessagePackInitializer messagePackInitializer = new();
+AdventureWorks.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
+AdventureWorks.Purchasing.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
 
 // Database
-AdventureWorks.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
-
-var connectionString = new SqlConnectionStringBuilder
-{
-    DataSource = "localhost",
-    UserID = "sa",
-    Password = "P@ssw0rd!",
-    InitialCatalog = "AdventureWorks",
-    TrustServerCertificate = true
-}.ToString();
-builder.Services.AddTransient<IDatabase>(_ => new Database(connectionString));
+AdventureWorks.Database.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.Database.Initializer.Initialize(builder.Services);
+AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder.Services);
 
 
 // 認証
-builder.Services.AddSingleton<IAuthenticationService>(_ => 
-    new AuthenticationService(
-        MagicOnionClient.Create<IAuthenticationServiceServer>(
-            GrpcChannel.ForAddress("https://localhost:5101"))));
+builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
 
 // メニュー
 builder.Services.AddPresentation<MainWindow, MainViewModel>();
@@ -73,6 +49,8 @@ builder.Services.AddTransient(_ =>
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 
-// Build and run the application.
+
+// Initialize and run the application.
+messagePackInitializer.Initialize();
 var app = builder.Build();
 await app.RunAsync();

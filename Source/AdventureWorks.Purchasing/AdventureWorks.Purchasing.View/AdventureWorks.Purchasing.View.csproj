@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.View\AdventureWorks.View.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Wpf\AdventureWorks.Wpf.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>

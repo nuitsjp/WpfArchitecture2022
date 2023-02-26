@@ -11,15 +11,19 @@
 			<DependentUpon>DapperTypeHandlers.tt</DependentUpon>
 		</None>
 		<None Include="Production\DapperTypeHandlers.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>DapperTypeHandlers.tt</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>DapperTypeHandlers.tt</DependentUpon>
 		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,8 +32,8 @@
 			<LastGenOutput>DapperTypeHandlers.cs</LastGenOutput>
 		</None>
 		<None Update="Production\DapperTypeHandlers.tt">
-		  <Generator>TextTemplatingFileGenerator</Generator>
-		  <LastGenOutput>DapperTypeHandlers.cs</LastGenOutput>
+			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>DapperTypeHandlers.cs</LastGenOutput>
 		</None>
 	</ItemGroup>
 
@@ -44,9 +48,9 @@
 			<DependentUpon>DapperTypeHandlers.tt</DependentUpon>
 		</Compile>
 		<Compile Update="Production\DapperTypeHandlers.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>DapperTypeHandlers.tt</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>DapperTypeHandlers.tt</DependentUpon>
 		</Compile>
 	</ItemGroup>
 

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MagicOnion.Server" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.Database\AdventureWorks.Purchasing.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.Database\AdventureWorks.Purchasing.UseCase.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.RePurchasing.Client\AdventureWorks.Purchasing.UseCase.RePurchasing.Client.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.RePurchasing\AdventureWorks.Purchasing.UseCase.RePurchasing.csproj" />
+	</ItemGroup>
+
+</Project>

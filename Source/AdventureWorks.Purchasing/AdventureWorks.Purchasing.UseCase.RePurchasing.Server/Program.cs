@@ -1,8 +1,5 @@
-using AdventureWorks.Database;
 using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
-using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.Data.SqlClient;
@@ -23,22 +20,10 @@ MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
     .WithResolver(StaticCompositeResolver.Instance);
 
 // Database
-AdventureWorks.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
+AdventureWorks.Database.Initializer.Initialize(builder.Services, builder.Configuration);
+AdventureWorks.Purchasing.Database.Initializer.Initialize(builder.Services);
+AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder.Services);
 
-var connectionString = new SqlConnectionStringBuilder
-{
-    DataSource = "localhost",
-    UserID = "sa",
-    Password = "P@ssw0rd!",
-    InitialCatalog = "AdventureWorks",
-    TrustServerCertificate = true
-}.ToString();
-builder.Services.AddTransient<IDatabase>(_ => new Database(connectionString));
-
-// Add services to the container.
-builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
 
 var app = builder.Build();
 
