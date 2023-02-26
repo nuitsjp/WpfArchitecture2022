@@ -3,7 +3,7 @@ using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Client;
+namespace AdventureWorks.Purchasing.MagicOnion.Client.UseCase.RePurchasing;
 
 public class RePurchasingQueryClient : IRePurchasingQueryService
 {
