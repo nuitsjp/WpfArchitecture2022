@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using AdventureWorks;
 using AdventureWorks.Authentication;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using CommunityToolkit.Mvvm.Input;

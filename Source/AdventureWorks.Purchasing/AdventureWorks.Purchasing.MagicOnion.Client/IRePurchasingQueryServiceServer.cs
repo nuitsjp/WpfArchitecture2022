@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Purchasing.Production;
-using MagicOnion;
-using MessagePack;
+﻿using MagicOnion;
 
 namespace AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
 

@@ -1,5 +1,3 @@
-﻿using MessagePack.Formatters;
-
-namespace AdventureWorks.MagicOnion;
+﻿namespace AdventureWorks.MagicOnion;
 
 public record MagicOnionConfig(string Address);

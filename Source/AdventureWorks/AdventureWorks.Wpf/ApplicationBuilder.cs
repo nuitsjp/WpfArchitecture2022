@@ -1,7 +1,5 @@
 ﻿using System.Windows;
 using AdventureWorks.Extensions;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Wpf;
 

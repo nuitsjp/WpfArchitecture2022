@@ -5,9 +5,10 @@ var builder = new AdventureWorks.AspNetCore.ApplicationBuilder(WebApplication.Cr
 
 // MagicOnion
 AdventureWorks.MagicOnion.MessagePackInitializer messagePackInitializer = new();
-AdventureWorks.Authentication.MagicOnion.Server.Initializer.Initialize(builder);
+
 AdventureWorks.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
-AdventureWorks.Purchasing.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
+AdventureWorks.Authentication.MagicOnion.Server.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder, messagePackInitializer);
 
 // Database
 AdventureWorks.Database.Initializer.Initialize(builder);

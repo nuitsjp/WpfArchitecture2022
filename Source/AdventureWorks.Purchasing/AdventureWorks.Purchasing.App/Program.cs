@@ -4,19 +4,15 @@ using AdventureWorks.Authentication.MagicOnion.Client;
 using AdventureWorks.Purchasing;
 using AdventureWorks.Purchasing.Database;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
 using AdventureWorks.Purchasing.View;
 using AdventureWorks.Purchasing.View.Menu;
 using AdventureWorks.Purchasing.View.RePurchasing;
 using AdventureWorks.Purchasing.ViewModel;
 using AdventureWorks.Purchasing.ViewModel.Menu;
 using AdventureWorks.Purchasing.ViewModel.RePurchasing;
-using Grpc.Net.Client;
 using Kamishibai;
-using MagicOnion.Client;
-using MessagePack.Resolvers;
-using MessagePack;
 using AdventureWorks.MagicOnion;
+using AdventureWorks.Purchasing.MagicOnion.Client;
 
 
 var builder = new AdventureWorks.Wpf.ApplicationBuilder<App, MainWindow>(KamishibaiApplication<App, MainWindow>.CreateBuilder());
@@ -24,7 +20,7 @@ var builder = new AdventureWorks.Wpf.ApplicationBuilder<App, MainWindow>(Kamishi
 // MagicOnion
 MessagePackInitializer messagePackInitializer = new();
 AdventureWorks.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
-AdventureWorks.Purchasing.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
+AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder, messagePackInitializer);
 
 // Database
 AdventureWorks.Database.Initializer.Initialize(builder);
@@ -43,9 +39,6 @@ builder.Services.AddPresentation<MenuPage, MenuViewModel>();
 builder.Services.AddPresentation<RequiringPurchaseProductsPage, RequiringPurchaseProductsViewModel>();
 builder.Services.AddPresentation<RePurchasingPage, RePurchasingViewModel>();
 builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryClient>();
-builder.Services.AddTransient(_ =>
-    MagicOnionClient.Create<IRePurchasingQueryServiceServer>(
-        GrpcChannel.ForAddress("https://localhost:5001")));
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 

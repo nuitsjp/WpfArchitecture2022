@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.ViewModel.RePurchasing;
+﻿using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 
 namespace AdventureWorks.Purchasing.View.RePurchasing
 {

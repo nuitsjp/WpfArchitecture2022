@@ -1,7 +1,5 @@
 ﻿using AdventureWorks.Extensions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Protocols;
 
 namespace AdventureWorks.Database;
 
