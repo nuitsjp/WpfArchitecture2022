@@ -1,0 +1,28 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+	var @namespace = "AdventureWorks.MessagePack";
+	var types = new []
+	{
+		(UnitName: "Date", UnitType: typeof(DateTime)),
+		(UnitName: "Days", UnitType: typeof(int)),
+		(UnitName: "Dollar", UnitType: typeof(decimal)),
+		(UnitName: "DollarPerGram", UnitType: typeof(decimal)),
+		(UnitName: "EmployeeId", UnitType: typeof(int)),
+		(UnitName: "LoginId", UnitType: typeof(string)),
+		(UnitName: "Gram", UnitType: typeof(decimal)),
+		(UnitName: "ModifiedDateTime", UnitType: typeof(DateTime)),
+		(UnitName: "RevisionNumber", UnitType: typeof(short)),
+		(UnitName: "TaxRate", UnitType: typeof(decimal)),
+		(UnitName: "Quantity", UnitType: typeof(int)),
+		(UnitName: "DoubleQuantity", UnitType: typeof(double)),
+	};
+#>
+
+<#@ include file="MessagePackFormatters.t4" once="true" #>

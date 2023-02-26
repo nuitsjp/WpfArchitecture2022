@@ -1,0 +1,88 @@
+﻿// ReSharper disable RedundantNameQualifier
+// ReSharper disable ArrangeTrailingCommaInMultilineLists
+// ReSharper disable BuiltInTypeReferenceStyle
+using MessagePack;
+using MessagePack.Formatters;
+
+namespace <#= @namespace #>;
+
+<#
+    var typeMapping = new Dictionary<Type, DbType>
+    {
+        {typeof(short), DbType.Int16},
+        {typeof(int), DbType.Int32},
+        {typeof(float), DbType.Double},
+        {typeof(double), DbType.Double},
+        {typeof(decimal), DbType.Decimal},
+        {typeof(DateTime), DbType.DateTime},
+        {typeof(string), DbType.String},
+    };
+
+	foreach (var type in types)
+	{
+#>
+public class <#= type.UnitName #>Formatter : IMessagePackFormatter<<#= type.UnitName #>>
+{
+    public void Serialize(ref MessagePackWriter writer, <#= type.UnitName #> value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<<#= type.UnitType #>>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public <#= type.UnitName #> Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new <#= type.UnitName #>(options.Resolver.GetFormatterWithVerify<<#= type.UnitType #>>().Deserialize(ref reader, options));
+    }
+}
+<#
+    }
+#>
+
+public class CustomResolver : IFormatterResolver
+{
+    // Resolver should be singleton.
+    public static readonly IFormatterResolver Instance = new CustomResolver();
+
+    private CustomResolver()
+    {
+    }
+
+    // GetFormatter<T>'s get cost should be minimized so use type cache.
+    public IMessagePackFormatter<T> GetFormatter<T>()
+    {
+        return FormatterCache<T>.Formatter;
+    }
+
+    private static class FormatterCache<T>
+    {
+        public static readonly IMessagePackFormatter<T> Formatter;
+
+        // generic's static constructor should be minimized for reduce type generation size!
+        // use outer helper method.
+        static FormatterCache()
+        {
+            Formatter = (IMessagePackFormatter<T>)SampleCustomResolverGetFormatterHelper.GetFormatter(typeof(T));
+        }
+    }
+}
+
+internal static class SampleCustomResolverGetFormatterHelper
+{
+    static readonly Dictionary<Type, object> Formatters = new()
+    {
+<#
+    foreach (var type in types)
+	{
+#>
+        {typeof(<#= type.UnitName #>), new <#= type.UnitName #>Formatter()},
+<#
+    }
+#>
+    };
+
+    internal static object GetFormatter(Type t)
+    {
+        return Formatters.TryGetValue(t, out var formatter) 
+            ? formatter
+            : null!;
+    }
+}

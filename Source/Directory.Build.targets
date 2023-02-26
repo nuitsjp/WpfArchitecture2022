@@ -7,7 +7,9 @@
 		<PackageReference Update="Kamishibai" Version="1.1.0" />
 		<PackageReference Update="Kamishibai.Hosting" Version="1.1.1" />
 		<PackageReference Update="Kamishibai.View" Version="1.1.0" />
+		<PackageReference Update="MagicOnion.Server" Version="5.1.2" />
 		<PackageReference Update="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
+		<PackageReference Update="MessagePack" Version="2.4.59" />
 		<PackageReference Update="Microsoft.Data.SqlClient" Version="5.0.1" />
 		<PackageReference Update="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Update="UnitGenerator" Version="1.4.10"/>

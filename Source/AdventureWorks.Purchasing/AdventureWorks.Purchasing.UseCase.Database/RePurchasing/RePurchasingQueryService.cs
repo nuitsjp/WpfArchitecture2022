@@ -15,9 +15,9 @@ public class RePurchasingQueryService : IRePurchasingQueryService
 
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {
-        using var transaction = _database.BeginTransaction();
+        using var connection = _database.Open();
 
-        return (await transaction.Connection.QueryAsync<RequiringPurchaseProduct>(
+        return (await connection.QueryAsync<RequiringPurchaseProduct>(
             @"
 select
     VendorId,

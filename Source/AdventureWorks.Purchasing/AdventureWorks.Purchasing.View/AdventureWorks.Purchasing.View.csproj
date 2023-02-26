@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Converter\**" />
+	  <EmbeddedResource Remove="Converter\**" />
+	  <None Remove="Converter\**" />
+	  <Page Remove="Converter\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="RePurchasing\RePurchasingPageList.sgxml" />
 	  <None Remove="RePurchasing\RequiringPurchaseProductsList.sgxml" />
 	</ItemGroup>
@@ -20,18 +27,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.View\AdventureWorks.View.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
-		<ProjectReference Include="..\AdventureWorks.View\AdventureWorks.View.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Resource Include="RePurchasing\RePurchasingPageList.sgxml" />
 	  <Resource Include="RePurchasing\RequiringPurchaseProductsList.sgxml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Converter\" />
 	</ItemGroup>
 
 </Project>

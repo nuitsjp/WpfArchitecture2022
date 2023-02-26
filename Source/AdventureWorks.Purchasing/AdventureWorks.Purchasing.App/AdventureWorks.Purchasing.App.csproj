@@ -16,14 +16,16 @@
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Client\AdventureWorks.Authentication.Client.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MessagePack\AdventureWorks.MessagePack.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.Database\AdventureWorks.Purchasing.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.MessagePack\AdventureWorks.Purchasing.MessagePack.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.Database\AdventureWorks.Purchasing.UseCase.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.RePurchasing.Client\AdventureWorks.Purchasing.UseCase.RePurchasing.Client.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
-		<ProjectReference Include="..\AdventureWorks.View\AdventureWorks.View.csproj" />
 	</ItemGroup>
 
 </Project>
