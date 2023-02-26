@@ -1,6 +1,5 @@
 ﻿using AdventureWorks.MagicOnion;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 

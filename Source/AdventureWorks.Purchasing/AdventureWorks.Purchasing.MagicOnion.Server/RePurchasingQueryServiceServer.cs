@@ -1,5 +1,5 @@
-﻿using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
+﻿using AdventureWorks.Purchasing.MagicOnion.Client;
+using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using MagicOnion;
 using MagicOnion.Server;
 

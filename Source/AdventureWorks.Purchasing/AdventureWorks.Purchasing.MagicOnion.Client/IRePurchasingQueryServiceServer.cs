@@ -1,6 +1,7 @@
-﻿using MagicOnion;
+﻿using AdventureWorks.Purchasing.UseCase.RePurchasing;
+using MagicOnion;
 
-namespace AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
+namespace AdventureWorks.Purchasing.MagicOnion.Client;
 
 public interface IRePurchasingQueryServiceServer : IService<IRePurchasingQueryServiceServer>
 {
