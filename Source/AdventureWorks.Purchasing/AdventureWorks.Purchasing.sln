@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.View", "..\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MessagePack", "..\AdventureWorks\AdventureWorks.MessagePack\AdventureWorks.MessagePack.csproj", "{B2D7DC34-D482-4556-A221-7FF2EA1CC8E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.MessagePack", "AdventureWorks.Purchasing.MessagePack\AdventureWorks.Purchasing.MessagePack.csproj", "{8B4860FC-FBAC-44FE-BA6F-0DC50D0B5F57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.MessagePack", "AdventureWorks.Purchasing.MessagePack\AdventureWorks.Purchasing.MessagePack.csproj", "{8B4860FC-FBAC-44FE-BA6F-0DC50D0B5F57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Server", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Server\AdventureWorks.Authentication.Server.csproj", "{A52CFA7D-756B-4A50-B790-D117916D32FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,10 @@ Global
 		{8B4860FC-FBAC-44FE-BA6F-0DC50D0B5F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B4860FC-FBAC-44FE-BA6F-0DC50D0B5F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B4860FC-FBAC-44FE-BA6F-0DC50D0B5F57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52CFA7D-756B-4A50-B790-D117916D32FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52CFA7D-756B-4A50-B790-D117916D32FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52CFA7D-756B-4A50-B790-D117916D32FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52CFA7D-756B-4A50-B790-D117916D32FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +144,7 @@ Global
 		{CEA2CB38-9FC7-4F00-BFBC-1B114E652DC2} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 		{58B0C67E-474F-409C-B6DB-D3830EAC63FD} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{B2D7DC34-D482-4556-A221-7FF2EA1CC8E3} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{A52CFA7D-756B-4A50-B790-D117916D32FC} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

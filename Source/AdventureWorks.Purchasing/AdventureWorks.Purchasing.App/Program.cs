@@ -1,12 +1,8 @@
 ﻿
 using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Client;
-using AdventureWorks.Authentication.Service;
-using AdventureWorks.Authentication.Service.Database;
-using AdventureWorks.Database;
 using AdventureWorks.Purchasing;
 using AdventureWorks.Purchasing.Database;
-using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
 using AdventureWorks.Purchasing.View;
@@ -21,10 +17,25 @@ using MagicOnion.Client;
 using MessagePack.Resolvers;
 using MessagePack;
 using Microsoft.Data.SqlClient;
+using System.Threading.Channels;
+using AdventureWorks.Database;
+using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 
 
 // Create a builder by specifying the application and main window.
 var builder = KamishibaiApplication<App, MainWindow>.CreateBuilder();
+
+// MagicOnion
+StaticCompositeResolver.Instance.Register(
+    StandardResolver.Instance,
+    AdventureWorks.MessagePack.CustomResolver.Instance,
+    AdventureWorks.Purchasing.MessagePack.CustomResolver.Instance,
+    AdventureWorks.Purchasing.MessagePack.Production.CustomResolver.Instance,
+    ContractlessStandardResolver.Instance
+);
+MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
+    .WithResolver(StaticCompositeResolver.Instance);
+
 
 // Database
 AdventureWorks.Database.TypeHandlerInitializer.Initialize();
@@ -41,23 +52,12 @@ var connectionString = new SqlConnectionStringBuilder
 }.ToString();
 builder.Services.AddTransient<IDatabase>(_ => new Database(connectionString));
 
-// GrpcChannel
-builder.Services.AddTransient(_ => GrpcChannel.ForAddress("https://localhost:5001"));
-
-StaticCompositeResolver.Instance.Register(
-    StandardResolver.Instance,
-    AdventureWorks.MessagePack.CustomResolver.Instance,
-    AdventureWorks.Purchasing.MessagePack.CustomResolver.Instance,
-    AdventureWorks.Purchasing.MessagePack.Production.CustomResolver.Instance,
-    ContractlessStandardResolver.Instance
-);
-MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
-    .WithResolver(StaticCompositeResolver.Instance);
-
 
 // 認証
-builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
-builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddSingleton<IAuthenticationService>(_ => 
+    new AuthenticationService(
+        MagicOnionClient.Create<IAuthenticationServiceServer>(
+            GrpcChannel.ForAddress("https://localhost:5101"))));
 
 // メニュー
 builder.Services.AddPresentation<MainWindow, MainViewModel>();
@@ -67,6 +67,9 @@ builder.Services.AddPresentation<MenuPage, MenuViewModel>();
 builder.Services.AddPresentation<RequiringPurchaseProductsPage, RequiringPurchaseProductsViewModel>();
 builder.Services.AddPresentation<RePurchasingPage, RePurchasingViewModel>();
 builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryClient>();
+builder.Services.AddTransient(_ =>
+    MagicOnionClient.Create<IRePurchasingQueryServiceServer>(
+        GrpcChannel.ForAddress("https://localhost:5001")));
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 

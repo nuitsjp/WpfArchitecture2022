@@ -1,34 +1,35 @@
 ﻿using AdventureWorks.Authentication.Service;
 
-namespace AdventureWorks.Authentication.Client
+namespace AdventureWorks.Authentication.Client;
+
+public class AuthenticationService : IAuthenticationService
 {
-    public class AuthenticationService : IAuthenticationService
+    private readonly IAuthenticationServiceServer _server;
+    private Employee? _currentEmployee;
+
+    public AuthenticationService(IAuthenticationServiceServer server)
     {
-        private readonly IEmployeeRepository _employeeRepository;
-        private Employee? _currentEmployee;
+        _server = server;
+    }
 
-        public AuthenticationService(IEmployeeRepository employeeRepository)
+    public Employee CurrentEmployee
+    {
+        get
         {
-            _employeeRepository = employeeRepository;
-        }
-
-        public Employee CurrentEmployee
-        {
-            get
+            if (_currentEmployee is null)
             {
-                if (_currentEmployee is null)
-                {
-                    throw new InvalidOperationException("TryAuthenticateAsyncを正常終了後のみ利用可能です。");
-                }
-
-                return _currentEmployee;
+                throw new InvalidOperationException("TryAuthenticateAsyncを正常終了後のみ利用可能です。");
             }
-        }
 
-        public async Task<bool> TryAuthenticateAsync()
-        {
-            var userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            return await _employeeRepository.TryGetEmployeeByIdAsync(new LoginId(userName), out _currentEmployee);
+            return _currentEmployee;
         }
+    }
+
+    public async Task<bool> TryAuthenticateAsync()
+    {
+        var userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+        _currentEmployee = await _server.GetEmployeeAsync(new LoginId(userName));
+
+        return _currentEmployee is not null;
     }
 }

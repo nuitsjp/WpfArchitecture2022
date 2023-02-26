@@ -5,16 +5,15 @@ namespace AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
 
 public class RePurchasingQueryClient : IRePurchasingQueryService
 {
-    private readonly GrpcChannel _channel;
+    private readonly IRePurchasingQueryServiceServer _server;
 
-    public RePurchasingQueryClient(GrpcChannel channel)
+    public RePurchasingQueryClient(IRePurchasingQueryServiceServer server)
     {
-        _channel = channel;
+        _server = server;
     }
 
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {
-        var client = MagicOnionClient.Create<IRePurchasingQueryServiceServer>(_channel);
-        return await client.GetRequiringPurchaseProductsAsync();
+        return await _server.GetRequiringPurchaseProductsAsync();
     }
 }

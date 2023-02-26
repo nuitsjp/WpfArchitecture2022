@@ -1,10 +1,8 @@
+using AdventureWorks.Authentication.Service;
+using AdventureWorks.Authentication.Service.Database;
 using AdventureWorks.Database;
-using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing.Client;
-using MagicOnion.Server;
-using MessagePack;
 using MessagePack.Resolvers;
+using MessagePack;
 using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,17 +13,13 @@ builder.Services.AddMagicOnion(); // Add this line(MagicOnion.Server)
 StaticCompositeResolver.Instance.Register(
     StandardResolver.Instance,
     AdventureWorks.MessagePack.CustomResolver.Instance,
-    AdventureWorks.Purchasing.MessagePack.CustomResolver.Instance,
-    AdventureWorks.Purchasing.MessagePack.Production.CustomResolver.Instance,
     ContractlessStandardResolver.Instance
 );
 MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
     .WithResolver(StaticCompositeResolver.Instance);
 
 // Database
-AdventureWorks.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.TypeHandlerInitializer.Initialize();
-AdventureWorks.Purchasing.Database.Production.TypeHandlerInitializer.Initialize();
+TypeHandlerInitializer.Initialize();
 
 var connectionString = new SqlConnectionStringBuilder
 {
@@ -37,10 +31,11 @@ var connectionString = new SqlConnectionStringBuilder
 }.ToString();
 builder.Services.AddTransient<IDatabase>(_ => new Database(connectionString));
 
-// Add services to the container.
-builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
+builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 app.MapMagicOnionService();
