@@ -10,14 +10,12 @@ using AdventureWorks.Purchasing.ViewModel;
 using AdventureWorks.Purchasing.ViewModel.Menu;
 using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 using Kamishibai;
-using AdventureWorks.MagicOnion;
 
-var builder = new AdventureWorks.Wpf.ApplicationBuilder<App, MainWindow>(KamishibaiApplication<App, MainWindow>.CreateBuilder());
+var builder = AdventureWorks.Wpf.ApplicationBuilder<App, MainWindow>.CreateBuilder();
 
 // MagicOnion
-MessagePackInitializer messagePackInitializer = new();
-AdventureWorks.MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
-AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder, messagePackInitializer);
+AdventureWorks.MagicOnion.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder);
 
 // Database
 AdventureWorks.Database.Initializer.Initialize(builder);
@@ -40,6 +38,5 @@ builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 
 
 // Initialize and run the application.
-messagePackInitializer.Initialize();
 var app = builder.Build();
 await app.RunAsync();

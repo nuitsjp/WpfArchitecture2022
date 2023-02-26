@@ -11,6 +11,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
+		<ProjectReference Include="..\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
 		<ProjectReference Include="..\AdventureWorks\AdventureWorks.csproj" />
 	</ItemGroup>
 

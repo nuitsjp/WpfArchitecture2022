@@ -6,6 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Kamishibai.Hosting" />
 		<PackageReference Include="Kamishibai.View" />
 		<PackageReference Include="Wpf.Extensions.Hosting" Version="1.1.2" />
 	</ItemGroup>

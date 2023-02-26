@@ -8,9 +8,9 @@ namespace AdventureWorks.Purchasing.MagicOnion.Client;
 
 public static class Initializer
 {
-    public static void Initialize(IApplicationBuilder builder, MessagePackInitializer messagePackInitializer)
+    public static void Initialize(IApplicationBuilder builder)
     {
-        MagicOnion.Initializer.Initialize(builder, messagePackInitializer);
+        MagicOnion.Initializer.Initialize(builder);
 
         builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryClient>();
     }

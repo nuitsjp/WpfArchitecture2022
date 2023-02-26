@@ -1,13 +1,14 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.AspNetCore;
+using AdventureWorks.Extensions;
 using AdventureWorks.MagicOnion;
 
 namespace AdventureWorks.Purchasing.MagicOnion;
 
 public static class Initializer
 {
-    public static void Initialize(IApplicationBuilder builder, MessagePackInitializer messagePackInitializer)
+    public static void Initialize(IApplicationBuilder builder)
     {
-        messagePackInitializer.Add(CustomResolver.Instance);
-        messagePackInitializer.Add(Production.CustomResolver.Instance);
+        builder.Add(CustomResolver.Instance);
+        builder.Add(Production.CustomResolver.Instance);
     }
 }
