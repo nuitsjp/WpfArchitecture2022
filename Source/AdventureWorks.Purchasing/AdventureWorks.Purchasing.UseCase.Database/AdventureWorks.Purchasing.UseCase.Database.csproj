@@ -6,7 +6,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.RePurchasing\AdventureWorks.Purchasing.UseCase.RePurchasing.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

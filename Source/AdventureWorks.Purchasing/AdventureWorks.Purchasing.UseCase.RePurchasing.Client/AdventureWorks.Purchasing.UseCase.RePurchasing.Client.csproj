@@ -10,8 +10,4 @@
     <PackageReference Include="MagicOnion.Client" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -3,7 +3,7 @@ using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using MagicOnion;
 using MagicOnion.Server;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Server;
+namespace AdventureWorks.Purchasing.MagicOnion.Server.UseCase.RePurchasing;
 
 public class RePurchasingQueryServiceServer : ServiceBase<IRePurchasingQueryServiceServer>, IRePurchasingQueryServiceServer
 {
