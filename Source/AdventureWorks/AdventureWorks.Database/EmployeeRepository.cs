@@ -1,7 +1,7 @@
-﻿using AdventureWorks.Database;
+﻿using AdventureWorks.Authentication.Service;
 using Dapper;
 
-namespace AdventureWorks.Authentication.Service.Database;
+namespace AdventureWorks.Database;
 
 public class EmployeeRepository : IEmployeeRepository
 {

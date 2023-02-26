@@ -1,5 +1,4 @@
 using AdventureWorks.Authentication.Service;
-using AdventureWorks.Authentication.Service.Database;
 using AdventureWorks.Database;
 using MessagePack.Resolvers;
 using MessagePack;
