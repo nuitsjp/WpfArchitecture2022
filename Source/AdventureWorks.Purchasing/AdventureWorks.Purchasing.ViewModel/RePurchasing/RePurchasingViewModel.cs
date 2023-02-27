@@ -1,17 +1,23 @@
 ﻿using System.Collections.ObjectModel;
 using AdventureWorks.Authentication;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
 
 namespace AdventureWorks.Purchasing.ViewModel.RePurchasing;
 
 [Navigate]
+[INotifyPropertyChanged]
 public partial class RePurchasingViewModel : INavigatedAsyncAware
 {
     private readonly IPresentationService _presentationService;
     private readonly IAuthenticationService _authenticationService;
     private readonly IShipMethodRepository _shipMethodRepository;
+
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(PurchaseCommand))]
+    private ShipMethod? _selectedShipMethod;
 
     public RePurchasingViewModel(
         Vendor vendor,
@@ -45,7 +51,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     [RelayCommand]
     public Task GoBackAsync() => _presentationService.GoBackAsync();
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanPurchase))]
     private Task PurchaseAsync()
     {
         //PurchaseOrderBuilder builder =
@@ -56,5 +62,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         //        )
         throw new NotImplementedException();
     }
+
+    private bool CanPurchase() => _selectedShipMethod is not null;
 }
 

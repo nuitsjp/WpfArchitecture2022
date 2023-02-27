@@ -38,7 +38,7 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
     [RelayCommand]
     private Task GoBackAsync() => _presentationService.GoBackAsync();
 
-    [RelayCommand(CanExecute = nameof(CanPurchaseAsync))]
+    [RelayCommand(CanExecute = nameof(CanPurchase))]
     private async Task PurchaseAsync()
     {
         var vendor = await _vendorRepository.GetVendorByIdAsync(_selectedRequiringPurchaseProduct!.VendorId);
@@ -48,7 +48,7 @@ public partial class RequiringPurchaseProductsViewModel : INavigatedAsyncAware
         await _presentationService.NavigateToRePurchasingAsync(vendor, requiringPurchaseProducts);
     }
 
-    private bool CanPurchaseAsync()
+    private bool CanPurchase()
     {
         return _selectedRequiringPurchaseProduct is not null;
     }

@@ -27,7 +27,7 @@
                          AutoGenerateColumns="False"
                          DocumentUri="/AdventureWorks.Purchasing.View;component/RePurchasing/RequiringPurchaseProductsList.sgxml"
                          ItemsSource="{Binding RequiringPurchaseProducts}"
-                         SelectedItem="{Binding SelectedRequiringPurchaseProduct, Mode=TwoWay}"/>
+                         SelectedItem="{Binding SelectedRequiringPurchaseProduct, Mode=OneWayToSource}"/>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">

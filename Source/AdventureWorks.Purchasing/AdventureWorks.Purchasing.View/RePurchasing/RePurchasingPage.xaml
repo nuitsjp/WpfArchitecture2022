@@ -94,6 +94,7 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Text=":"/>
             <c1:C1ComboBox Grid.Row="2" Grid.Column="2" Width="200"
                            ItemsSource="{Binding ShipMethods}"
+                           SelectedItem="{Binding SelectedShipMethod, Mode=OneWayToSource}"
                            DisplayMemberPath="Name"/>
         </Grid>
 
