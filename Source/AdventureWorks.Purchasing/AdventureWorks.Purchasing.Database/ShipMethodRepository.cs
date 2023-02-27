@@ -13,7 +13,7 @@ public class ShipMethodRepository : IShipMethodRepository
         _database = database;
     }
 
-    public async Task<IEnumerable<ShipMethod>> GetShipMethodsAsync()
+    public async Task<IList<ShipMethod>> GetShipMethodsAsync()
     {
         using var connection = _database.Open();
 

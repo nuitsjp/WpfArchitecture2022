@@ -6,6 +6,18 @@ using MessagePack.Formatters;
 
 namespace AdventureWorks.Purchasing.MagicOnion;
 
+public class AccountNumberFormatter : IMessagePackFormatter<AccountNumber>
+{
+    public void Serialize(ref MessagePackWriter writer, AccountNumber value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.String>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public AccountNumber Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new AccountNumber(options.Resolver.GetFormatterWithVerify<System.String>().Deserialize(ref reader, options));
+    }
+}
 public class VendorIdFormatter : IMessagePackFormatter<VendorId>
 {
     public void Serialize(ref MessagePackWriter writer, VendorId value, MessagePackSerializerOptions options)
@@ -63,6 +75,7 @@ internal static class CustomResolverGetFormatterHelper
 {
     static readonly Dictionary<Type, object> Formatters = new()
     {
+        {typeof(AccountNumber), new AccountNumberFormatter()},
         {typeof(VendorId), new VendorIdFormatter()},
         {typeof(ShipMethodId), new ShipMethodIdFormatter()},
     };

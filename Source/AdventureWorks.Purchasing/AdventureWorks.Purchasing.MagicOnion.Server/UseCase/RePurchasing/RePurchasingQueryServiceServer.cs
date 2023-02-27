@@ -8,14 +8,12 @@ namespace AdventureWorks.Purchasing.MagicOnion.Server.UseCase.RePurchasing;
 public class RePurchasingQueryServiceServer : ServiceBase<IRePurchasingQueryServiceServer>, IRePurchasingQueryServiceServer
 {
     private readonly IRePurchasingQueryService _service;
-#pragma warning disable CS1998
     public RePurchasingQueryServiceServer(IRePurchasingQueryService service)
     {
         _service = service;
     }
 
     public async UnaryResult<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
-#pragma warning restore CS1998
     {
         try
         {

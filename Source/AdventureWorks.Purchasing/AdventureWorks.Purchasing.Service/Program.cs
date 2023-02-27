@@ -1,20 +1,14 @@
-using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing;
-
 var builder = AdventureWorks.AspNetCore.ApplicationBuilder.CreateBuilder(args);
 
-// MagicOnion
-AdventureWorks.MagicOnion.Initializer.Initialize(builder);
+// 認証サービスの初期化
 AdventureWorks.Authentication.MagicOnion.Server.Initializer.Initialize(builder);
+
+// 購買サービスの初期化
 AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);
 
-// Database
-AdventureWorks.Database.Initializer.Initialize(builder);
+// リポジトリーの初期化
 AdventureWorks.Purchasing.Database.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder);
 
-builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
-
 var app = builder.Build();
 app.Run();
-

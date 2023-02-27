@@ -10,6 +10,7 @@
 	var @namespace = "AdventureWorks.Purchasing.MagicOnion";
 	var types = new []
 	{
+		(UnitName: "AccountNumber", UnitType: typeof(string)),
 		(UnitName: "VendorId", UnitType: typeof(int)),
 		(UnitName: "ShipMethodId", UnitType: typeof(int)),
 	};

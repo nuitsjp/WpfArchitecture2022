@@ -1,12 +1,5 @@
 ﻿var builder = AdventureWorks.Purchasing.View.App.CreateBuilder();
 
-
-// Database
-AdventureWorks.Database.Initializer.Initialize(builder);
-AdventureWorks.Purchasing.Database.Initializer.Initialize(builder);
-AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder);
-
-
 // 認証サービスを初期化する。
 AdventureWorks.Authentication.MagicOnion.Client.Initializer.Initialize(builder);
 

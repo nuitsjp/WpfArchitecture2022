@@ -10,6 +10,8 @@ public static class Initializer
 {
     public static void Initialize(IApplicationBuilder builder)
     {
+        AdventureWorks.Database.Initializer.Initialize(builder);
+
         TypeHandlerInitializer.Initialize();
 
         builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();

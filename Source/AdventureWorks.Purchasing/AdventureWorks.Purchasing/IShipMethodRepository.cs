@@ -2,5 +2,5 @@
 
 public interface IShipMethodRepository
 {
-    Task<IEnumerable<ShipMethod>> GetShipMethodsAsync();
+    Task<IList<ShipMethod>> GetShipMethodsAsync();
 }
