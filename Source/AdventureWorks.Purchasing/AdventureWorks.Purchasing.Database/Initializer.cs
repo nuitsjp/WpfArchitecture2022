@@ -1,15 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AdventureWorks.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Purchasing.Database;
 
 public static class Initializer
 {
-    public static void Initialize(IServiceCollection services)
+    public static void Initialize(IApplicationBuilder builder)
     {
         TypeHandlerInitializer.Initialize();
         Production.TypeHandlerInitializer.Initialize();
 
-        services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
-        services.AddTransient<IVendorRepository, VendorRepository>();
+        builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
+        builder.Services.AddTransient<IVendorRepository, VendorRepository>();
     }
 }

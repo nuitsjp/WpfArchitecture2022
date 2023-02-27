@@ -10,8 +10,8 @@ AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);
 
 // Database
 AdventureWorks.Database.Initializer.Initialize(builder);
-AdventureWorks.Purchasing.Database.Initializer.Initialize(builder.Services);
-AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder.Services);
+AdventureWorks.Purchasing.Database.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder);
 
 builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
 

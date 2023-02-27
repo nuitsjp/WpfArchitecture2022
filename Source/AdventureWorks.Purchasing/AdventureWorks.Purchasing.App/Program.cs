@@ -1,42 +1,21 @@
-﻿
-using AdventureWorks.Authentication;
-using AdventureWorks.Authentication.MagicOnion.Client;
-using AdventureWorks.Purchasing;
-using AdventureWorks.Purchasing.Database;
-using AdventureWorks.Purchasing.View;
-using AdventureWorks.Purchasing.View.Menu;
-using AdventureWorks.Purchasing.View.RePurchasing;
-using AdventureWorks.Purchasing.ViewModel;
-using AdventureWorks.Purchasing.ViewModel.Menu;
-using AdventureWorks.Purchasing.ViewModel.RePurchasing;
-using Kamishibai;
+﻿var builder = AdventureWorks.Purchasing.View.App.CreateBuilder();
 
-var builder = AdventureWorks.Wpf.ApplicationBuilder<App, MainWindow>.CreateBuilder();
-
-// MagicOnion
-AdventureWorks.MagicOnion.Initializer.Initialize(builder);
-AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder);
 
 // Database
 AdventureWorks.Database.Initializer.Initialize(builder);
-AdventureWorks.Purchasing.Database.Initializer.Initialize(builder.Services);
-AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder.Services);
+AdventureWorks.Purchasing.Database.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder);
 
 
-// 認証
-builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+// 認証サービスを初期化する。
+AdventureWorks.Authentication.MagicOnion.Client.Initializer.Initialize(builder);
 
-// メニュー
-builder.Services.AddPresentation<MainWindow, MainViewModel>();
-builder.Services.AddPresentation<MenuPage, MenuViewModel>();
+// 購買サービスのクライアントを初期化する。
+AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder);
 
-// 再発注
-builder.Services.AddPresentation<RequiringPurchaseProductsPage, RequiringPurchaseProductsViewModel>();
-builder.Services.AddPresentation<RePurchasingPage, RePurchasingViewModel>();
-builder.Services.AddTransient<IVendorRepository, VendorRepository>();
-builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
+// View & ViewModelを初期化する。
+AdventureWorks.Purchasing.View.Initializer.Initialize(builder);
 
-
-// Initialize and run the application.
+// アプリケーションをビルドし実行する。
 var app = builder.Build();
 await app.RunAsync();
