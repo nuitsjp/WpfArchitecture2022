@@ -33,7 +33,14 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
         return _applicationBuilder.Build();
     }
 
-    public void Add(IFormatterResolver resolver) => _resolvers.Add(resolver);
+    public void Add(IFormatterResolver resolver)
+    {
+        if (_resolvers.Contains(resolver))
+        {
+            return;
+        }
+        _resolvers.Add(resolver);
+    }
 
     public static ApplicationBuilder<TApplication, TWindow> CreateBuilder()
     {

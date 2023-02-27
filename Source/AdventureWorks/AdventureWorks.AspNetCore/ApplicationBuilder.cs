@@ -22,8 +22,23 @@ public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
 
     public IServiceCollection Services => _builder.Services;
     public IConfiguration Configuration => _builder.Configuration;
-    public void Add(Assembly serviceAssembly) => _serviceAssemblies.Add(serviceAssembly);
-    public void Add(IFormatterResolver resolver) => _resolvers.Add(resolver);
+    public void Add(Assembly serviceAssembly)
+    {
+        if (_serviceAssemblies.Contains(serviceAssembly))
+        {
+            return;
+        }
+        _serviceAssemblies.Add(serviceAssembly);
+    }
+
+    public void Add(IFormatterResolver resolver)
+    {
+        if (_resolvers.Contains(resolver))
+        {
+            return;
+        }
+        _resolvers.Add(resolver);
+    }
 
     public IHost Build()
     {
