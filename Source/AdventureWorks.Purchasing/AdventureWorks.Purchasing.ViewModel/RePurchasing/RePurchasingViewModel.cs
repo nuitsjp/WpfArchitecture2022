@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using AdventureWorks.Authentication;
+using AdventureWorks.Purchasing.Production;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -14,6 +15,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     private readonly IPresentationService _presentationService;
     private readonly IAuthenticationService _authenticationService;
     private readonly IShipMethodRepository _shipMethodRepository;
+    private readonly IProductRepository _productRepository;
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(PurchaseCommand))]
@@ -24,13 +26,15 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         IEnumerable<RequiringPurchaseProduct> requiringPurchaseProducts,
         [Inject] IPresentationService presentationService,
         [Inject] IAuthenticationService authenticationService,
-        [Inject] IShipMethodRepository shipMethodRepository)
+        [Inject] IShipMethodRepository shipMethodRepository, 
+        [Inject] IProductRepository productRepository)
     {
         Vendor = vendor;
         RequiringPurchaseProducts = requiringPurchaseProducts.ToList();
         _presentationService = presentationService;
         _authenticationService = authenticationService;
         _shipMethodRepository = shipMethodRepository;
+        _productRepository = productRepository;
         TotalPrice =
             RequiringPurchaseProducts.Sum(x => x.LineTotal)
             * Vendor.TaxRate;
@@ -52,15 +56,20 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     public Task GoBackAsync() => _presentationService.GoBackAsync();
 
     [RelayCommand(CanExecute = nameof(CanPurchase))]
-    private Task PurchaseAsync()
+    private async Task PurchaseAsync()
     {
-        //PurchaseOrderBuilder builder =
-        //    new(
-        //        _authenticationService.CurrentEmployee.Id,
-        //        Vendor,
+        PurchaseOrderBuilder builder =
+            new(
+                _authenticationService.CurrentEmployee.Id,
+                Vendor,
+                _selectedShipMethod!, // 未選択の場合コマンドが実行されないため、nullではない。
+                Date.Today);
 
-        //        )
-        throw new NotImplementedException();
+        foreach (var requiringPurchaseProduct in RequiringPurchaseProducts)
+        {
+            var product = await _productRepository.GetProductByIdAsync(requiringPurchaseProduct.ProductId);
+            builder.AddProduct(product, requiringPurchaseProduct.PurchasingQuantity);
+        }
     }
 
     private bool CanPurchase() => _selectedShipMethod is not null;

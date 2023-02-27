@@ -8,6 +8,7 @@ namespace AdventureWorks;
 [UnitOf(typeof(DateTime))]
 public partial struct Date
 {
+    public static Date Today => (Date) DateTime.Today;
     public static Date operator +(Date date, Days days)
         => new(date.value.AddDays(days.AsPrimitive()));
 

@@ -12,4 +12,8 @@
     <ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Production\" />
+  </ItemGroup>
+
 </Project>

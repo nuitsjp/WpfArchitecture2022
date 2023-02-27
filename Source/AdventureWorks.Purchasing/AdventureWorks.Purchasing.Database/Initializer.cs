@@ -1,4 +1,6 @@
 ﻿using AdventureWorks.Extensions;
+using AdventureWorks.Purchasing.Database.Production;
+using AdventureWorks.Purchasing.Production;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Purchasing.Database;
@@ -14,5 +16,6 @@ public static class Initializer
 
         builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
         builder.Services.AddTransient<IVendorRepository, VendorRepository>();
+        builder.Services.AddTransient<IProductRepository, ProductRepository>();
     }
 }
