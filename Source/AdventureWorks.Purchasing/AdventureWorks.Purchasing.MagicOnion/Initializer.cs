@@ -1,6 +1,4 @@
-﻿using AdventureWorks.AspNetCore;
-using AdventureWorks.Extensions;
-using AdventureWorks.MagicOnion;
+﻿using AdventureWorks.Extensions;
 
 namespace AdventureWorks.Purchasing.MagicOnion;
 

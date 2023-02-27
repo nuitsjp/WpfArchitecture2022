@@ -6,7 +6,7 @@ namespace AdventureWorks.Purchasing.View.Menu
     /// <summary>
     /// MenuPage.xaml の相互作用ロジック
     /// </summary>
-    public partial class MenuPage : UserControl
+    public partial class MenuPage
     {
         public MenuPage()
         {

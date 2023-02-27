@@ -8,7 +8,7 @@ public class PurchaseOrderBuilder
     private readonly Vendor _vendor;
     private readonly ShipMethod _shipMethod;
     private readonly Date _orderDate;
-    private readonly IList<(Production.Product Product, PurchaseOrderDetail PurchaseOrderDetail)> _details = new List<(Product, PurchaseOrderDetail)>();
+    private readonly IList<(Product Product, PurchaseOrderDetail PurchaseOrderDetail)> _details = new List<(Product, PurchaseOrderDetail)>();
 
     public PurchaseOrderBuilder(
         EmployeeId employeeId, 

@@ -1,5 +1,4 @@
 ﻿using AdventureWorks.Extensions;
-using AdventureWorks.MagicOnion;
 using AdventureWorks.Purchasing.MagicOnion.Client.UseCase.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using Microsoft.Extensions.DependencyInjection;

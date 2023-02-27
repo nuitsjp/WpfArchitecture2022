@@ -5,9 +5,7 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
-    <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBase}">
-
-    </Style>
+    <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBase}" />
 
     <Style x:Key="ReadOnlyCheckBox" TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBase}">
         <Setter Property="IsHitTestVisible" Value="False"/>

@@ -4,6 +4,14 @@ using MagicOnion.Server;
 
 namespace AdventureWorks.Authentication.MagicOnion.Server;
 
+/// <summary>
+/// 認証サービスサーバー。
+/// </summary>
+/// <remarks>
+/// アセンブリーを解析してサービス登録するため、参照している箇所が無いように見えるが実際には利用されているため
+/// 警告を抑制する。
+/// </remarks>
+// ReSharper disable once UnusedMember.Global
 public class AuthenticationServiceServer : ServiceBase<IAuthenticationServiceServer>, IAuthenticationServiceServer
 {
     private readonly IEmployeeRepository _employeeRepository;

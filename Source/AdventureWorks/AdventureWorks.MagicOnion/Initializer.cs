@@ -1,5 +1,4 @@
-﻿using AdventureWorks.AspNetCore;
-using AdventureWorks.Extensions;
+﻿using AdventureWorks.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

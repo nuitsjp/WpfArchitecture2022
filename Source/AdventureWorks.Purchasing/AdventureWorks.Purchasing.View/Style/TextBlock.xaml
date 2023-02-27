@@ -6,11 +6,8 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
-    <Style x:Key="ContentTextBlock" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-    </Style>
+    <Style x:Key="ContentTextBlock" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}" />
 
-    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-
-    </Style>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}" />
 
 </ResourceDictionary>

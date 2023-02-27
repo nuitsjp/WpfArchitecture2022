@@ -31,6 +31,7 @@
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
+            <!-- ReSharper disable once Xaml.PossibleNullReferenceException -->
             <TextBlock Text="{Binding SelectedRequiringPurchaseProduct.VendorName}"
                        Style="{StaticResource ContentTextBlock}"/>
             <Button Content="発注"

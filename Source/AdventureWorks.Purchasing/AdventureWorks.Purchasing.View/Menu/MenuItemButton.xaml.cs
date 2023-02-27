@@ -8,7 +8,7 @@ namespace AdventureWorks.Purchasing.View.Menu
     /// <summary>
     /// MenuItemButton.xaml の相互作用ロジック
     /// </summary>
-    public partial class MenuItemButton : UserControl
+    public partial class MenuItemButton
     {
         public MenuItemButton()
         {
