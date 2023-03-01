@@ -15,6 +15,7 @@ public static class Initializer
         Production.TypeHandlerInitializer.Initialize();
 
         builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
+        builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepository>();
         builder.Services.AddTransient<IVendorRepository, VendorRepository>();
         builder.Services.AddTransient<IProductRepository, ProductRepository>();
     }

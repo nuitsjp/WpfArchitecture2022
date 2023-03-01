@@ -30,7 +30,7 @@ public class PurchaseOrderBuilder
         _details.Add(
             (
                 product,
-                new PurchaseOrderDetail(
+                PurchaseOrderDetail.NewOrderDetail(
                     _orderDate + vendorProduct.AverageLeadTime,
                     product.ProductId,
                     vendorProduct.StandardPrice,
@@ -49,7 +49,7 @@ public class PurchaseOrderBuilder
             .Sum();
         Dollar freight = _shipMethod.ShipRate * totalWeight;
 
-        return new(
+        return PurchaseOrder.NewOrder(
             _employeeId,
             _vendor.VendorId,
             _shipMethod.ShipMethodId,

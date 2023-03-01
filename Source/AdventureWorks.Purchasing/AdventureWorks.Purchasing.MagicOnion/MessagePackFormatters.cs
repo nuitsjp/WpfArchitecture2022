@@ -30,6 +30,30 @@ public class VendorIdFormatter : IMessagePackFormatter<VendorId>
         return new VendorId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
     }
 }
+public class PurchaseOrderIdFormatter : IMessagePackFormatter<PurchaseOrderId>
+{
+    public void Serialize(ref MessagePackWriter writer, PurchaseOrderId value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.Int32>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public PurchaseOrderId Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new PurchaseOrderId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
+    }
+}
+public class PurchaseOrderDetailIdFormatter : IMessagePackFormatter<PurchaseOrderDetailId>
+{
+    public void Serialize(ref MessagePackWriter writer, PurchaseOrderDetailId value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.Int32>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public PurchaseOrderDetailId Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new PurchaseOrderDetailId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
+    }
+}
 public class ShipMethodIdFormatter : IMessagePackFormatter<ShipMethodId>
 {
     public void Serialize(ref MessagePackWriter writer, ShipMethodId value, MessagePackSerializerOptions options)
@@ -77,6 +101,8 @@ internal static class CustomResolverGetFormatterHelper
     {
         {typeof(AccountNumber), new AccountNumberFormatter()},
         {typeof(VendorId), new VendorIdFormatter()},
+        {typeof(PurchaseOrderId), new PurchaseOrderIdFormatter()},
+        {typeof(PurchaseOrderDetailId), new PurchaseOrderDetailIdFormatter()},
         {typeof(ShipMethodId), new ShipMethodIdFormatter()},
     };
 

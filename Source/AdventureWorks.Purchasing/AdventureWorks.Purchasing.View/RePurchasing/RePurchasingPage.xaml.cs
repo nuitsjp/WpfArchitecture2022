@@ -14,7 +14,15 @@ public partial class RePurchasingPage
 
 public class RePurchasingDesignViewModel : RePurchasingViewModel
 {
-    public RePurchasingDesignViewModel() : base(default!, default!, default!, default!, default!, default!)
+    public RePurchasingDesignViewModel() : 
+        base(
+            default!, 
+            default!, 
+            default!,
+            default!,
+            default!,
+            default!, 
+            default!)
     {
     }
 }

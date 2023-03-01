@@ -13,9 +13,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     public Task<bool> TryGetEmployeeByIdAsync(LoginId loginId, out Employee employee)
     {
-        using var transaction = _database.BeginTransaction();
+        using var connection = _database.Open();
 
-        var task = transaction.Connection.QuerySingleOrDefaultAsync<Employee>(@"
+        var task = connection.QuerySingleOrDefaultAsync<Employee>(@"
 select
 	BusinessEntityID as Id,
 	LoginID as LoginId

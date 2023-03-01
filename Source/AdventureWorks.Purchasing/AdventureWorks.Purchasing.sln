@@ -35,23 +35,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authenticati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.MagicOnion.Server", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj", "{2B7343C4-BE79-4B90-9925-88390FEA2196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.Service", "AdventureWorks.Purchasing.Service\AdventureWorks.Purchasing.Service.csproj", "{7AB126AB-CEAF-4FA4-A203-D3CE1875CFA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.Service", "AdventureWorks.Purchasing.Service\AdventureWorks.Purchasing.Service.csproj", "{7AB126AB-CEAF-4FA4-A203-D3CE1875CFA4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion", "..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj", "{CC5BAD6C-1E62-4A3C-8515-8AE0D43D48AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Extensions", "AdventureWorks.Extensions\AdventureWorks.Extensions.csproj", "{0A93E868-BA56-46BF-A199-33628BBEF9B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Extensions", "AdventureWorks.Extensions\AdventureWorks.Extensions.csproj", "{0A93E868-BA56-46BF-A199-33628BBEF9B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf", "..\AdventureWorks\AdventureWorks.Wpf\AdventureWorks.Wpf.csproj", "{1FDEB5E4-7205-441C-9D9C-6C05D394E51A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.MagicOnion", "AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj", "{EA61D00D-4CA6-4F8D-B7D6-7B313A84D495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.AspNetCore", "..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj", "{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore", "..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj", "{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.MagicOnion.Server", "AdventureWorks.Purchasing.MagicOnion.Server\AdventureWorks.Purchasing.MagicOnion.Server.csproj", "{3B43FDA8-96D2-4C79-BAEC-D568C1F894BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.MagicOnion.Server", "AdventureWorks.Purchasing.MagicOnion.Server\AdventureWorks.Purchasing.MagicOnion.Server.csproj", "{3B43FDA8-96D2-4C79-BAEC-D568C1F894BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.MagicOnion.Client", "AdventureWorks.Purchasing.MagicOnion.Client\AdventureWorks.Purchasing.MagicOnion.Client.csproj", "{B9AFE47A-2243-4F2F-8332-C2C43D7EA1B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.MagicOnion.Client", "AdventureWorks.Purchasing.MagicOnion.Client\AdventureWorks.Purchasing.MagicOnion.Client.csproj", "{B9AFE47A-2243-4F2F-8332-C2C43D7EA1B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.UseCase", "AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj", "{8D60DF6D-373F-41D1-A3B8-C7B5DFEC9368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.UseCase", "AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj", "{8D60DF6D-373F-41D1-A3B8-C7B5DFEC9368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.System", "..\AdventureWorks\AdventureWorks.System\AdventureWorks.System.csproj", "{6C230923-40EA-4326-AF9E-D16A6F0A0433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +141,10 @@ Global
 		{8D60DF6D-373F-41D1-A3B8-C7B5DFEC9368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D60DF6D-373F-41D1-A3B8-C7B5DFEC9368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D60DF6D-373F-41D1-A3B8-C7B5DFEC9368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C230923-40EA-4326-AF9E-D16A6F0A0433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C230923-40EA-4326-AF9E-D16A6F0A0433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C230923-40EA-4326-AF9E-D16A6F0A0433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C230923-40EA-4326-AF9E-D16A6F0A0433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +159,7 @@ Global
 		{0A93E868-BA56-46BF-A199-33628BBEF9B9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{1FDEB5E4-7205-441C-9D9C-6C05D394E51A} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{6C230923-40EA-4326-AF9E-D16A6F0A0433} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

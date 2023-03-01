@@ -62,7 +62,7 @@ public class PurchaseOrder
     /// <param name="taxAmount"></param>
     /// <param name="freight"></param>
     /// <param name="details"></param>
-    public PurchaseOrder(
+    public static PurchaseOrder NewOrder(
         EmployeeId employeeId,
         VendorId vendorId,
         ShipMethodId shipMethodId,
@@ -70,23 +70,23 @@ public class PurchaseOrder
         Dollar subTotal,
         Dollar taxAmount,
         Dollar freight,
-        IReadOnlyList<PurchaseOrderDetail> details) :
-        this(
-            PurchaseOrderId.Unregistered,
-            RevisionNumber.Unregistered, 
-            OrderStatus.Pending, 
-            employeeId, 
-            vendorId, 
-            shipMethodId, 
-            orderDate, 
-            null, 
-            subTotal, 
-            taxAmount, 
-            freight, 
-            subTotal + taxAmount + freight, 
-            ModifiedDateTime.Unregistered, 
-            details)
+        IReadOnlyList<PurchaseOrderDetail> details)
     {
+        return new(
+            PurchaseOrderId.Unregistered,
+            RevisionNumber.Unregistered,
+            OrderStatus.Pending,
+            employeeId,
+            vendorId,
+            shipMethodId,
+            orderDate,
+            null,
+            subTotal,
+            taxAmount,
+            freight,
+            subTotal + taxAmount + freight,
+            ModifiedDateTime.Unregistered,
+            details);
     }
 
     public PurchaseOrderId Id { get; }

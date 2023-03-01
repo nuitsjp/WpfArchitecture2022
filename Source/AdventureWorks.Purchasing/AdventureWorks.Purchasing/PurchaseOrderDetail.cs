@@ -51,12 +51,13 @@ public record PurchaseOrderDetail
     /// <param name="productId"></param>
     /// <param name="unitPrice"></param>
     /// <param name="orderQuantity"></param>
-    public PurchaseOrderDetail(
+    public static PurchaseOrderDetail NewOrderDetail(
         Date dueDate,
         ProductId productId,
         Dollar unitPrice,
-        Quantity orderQuantity) :
-        this(
+        Quantity orderQuantity)
+    {
+        return new(
             PurchaseOrderId.Unregistered,
             PurchaseOrderDetailId.Unregistered,
             dueDate,
@@ -67,8 +68,7 @@ public record PurchaseOrderDetail
             0,
             0,
             0,
-            ModifiedDateTime.Unregistered)
-    {
+            ModifiedDateTime.Unregistered);
     }
 
     public PurchaseOrderId PurchaseOrderId  { get; }

@@ -8,9 +8,5 @@ namespace AdventureWorks.Purchasing;
 [UnitOf(typeof(int))]
 public partial struct PurchaseOrderId
 {
-}
-
-public partial struct PurchaseOrderId
-{
     public static readonly PurchaseOrderId Unregistered = new(int.MinValue);
 }

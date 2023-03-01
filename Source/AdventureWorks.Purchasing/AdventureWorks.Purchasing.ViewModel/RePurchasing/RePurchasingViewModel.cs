@@ -16,6 +16,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     private readonly IAuthenticationService _authenticationService;
     private readonly IShipMethodRepository _shipMethodRepository;
     private readonly IProductRepository _productRepository;
+    private readonly IPurchaseOrderRepository _purchaseOrderRepository;
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(PurchaseCommand))]
@@ -27,7 +28,8 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         [Inject] IPresentationService presentationService,
         [Inject] IAuthenticationService authenticationService,
         [Inject] IShipMethodRepository shipMethodRepository, 
-        [Inject] IProductRepository productRepository)
+        [Inject] IProductRepository productRepository, 
+        [Inject] IPurchaseOrderRepository purchaseOrderRepository)
     {
         Vendor = vendor;
         RequiringPurchaseProducts = requiringPurchaseProducts.ToList();
@@ -35,6 +37,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         _authenticationService = authenticationService;
         _shipMethodRepository = shipMethodRepository;
         _productRepository = productRepository;
+        _purchaseOrderRepository = purchaseOrderRepository;
         TotalPrice =
             RequiringPurchaseProducts.Sum(x => x.LineTotal)
             * Vendor.TaxRate;
@@ -70,6 +73,10 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
             var product = await _productRepository.GetProductByIdAsync(requiringPurchaseProduct.ProductId);
             builder.AddProduct(product, requiringPurchaseProduct.PurchasingQuantity);
         }
+
+
+        var purchaseOrder = builder.Build();
+        await _purchaseOrderRepository.RegisterAsync(purchaseOrder);
     }
 
     private bool CanPurchase() => _selectedShipMethod is not null;

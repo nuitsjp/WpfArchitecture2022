@@ -12,6 +12,8 @@
 	{
 		(UnitName: "AccountNumber", UnitType: typeof(string)),
 		(UnitName: "VendorId", UnitType: typeof(int)),
+		(UnitName: "PurchaseOrderId", UnitType: typeof(int)),
+		(UnitName: "PurchaseOrderDetailId", UnitType: typeof(int)),
 		(UnitName: "ShipMethodId", UnitType: typeof(int)),
 	};
 #>

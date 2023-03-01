@@ -5,7 +5,6 @@ namespace AdventureWorks.Database;
 
 public class Transaction : ITransaction
 {
-    private bool _disposed;
     private readonly TransactionScope _transactionScope;
 
     public Transaction(TransactionScope transactionScope, IDbConnection connection)
@@ -29,14 +28,9 @@ public class Transaction : ITransaction
 
     protected virtual void Dispose(bool disposing)
     {
-        if (disposing)
-        {
-            if (_disposed is false)
-            {
-                _transactionScope.Dispose();
-                Connection.Dispose();
-                _disposed = true;
-            }
-        }
+        if (!disposing) return;
+
+        Connection.DisposeQuiet();
+        _transactionScope.Dispose();
     }
 }

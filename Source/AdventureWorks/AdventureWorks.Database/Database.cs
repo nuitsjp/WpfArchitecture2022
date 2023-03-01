@@ -15,7 +15,7 @@ public class Database : IDatabase
 
     public ITransaction BeginTransaction()
     {
-        var scope = new TransactionScope();
+        var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         try
         {
             var connection = new SqlConnection(_connectionString);
@@ -26,7 +26,7 @@ public class Database : IDatabase
         catch
         {
             // コネクション接続でエラーとなった場合、TransactionScopeを破棄する。
-            scope.Dispose();
+            scope.DisposeQuiet();
             throw;
         }
     }
@@ -42,7 +42,7 @@ public class Database : IDatabase
         catch
         {
             // Openに失敗した場合、Disposeは不要だと思われるが、念のため解放しておく。
-            connection.Dispose();
+            connection.DisposeQuiet();
             throw;
         }
     }
