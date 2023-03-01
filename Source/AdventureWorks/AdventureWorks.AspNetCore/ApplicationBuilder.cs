@@ -1,10 +1,15 @@
 ﻿using System.Reflection;
+using AdventureWorks.Database;
+using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
 
 namespace AdventureWorks.AspNetCore;
 public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
@@ -42,6 +47,19 @@ public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
 
     public IHost Build()
     {
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+            .WriteTo.Console()
+            .WriteTo.MSSqlServer(
+                connectionString: ConnectionStringProvider.Resolve(this),
+                sinkOptions: new MSSqlServerSinkOptions
+                {
+                    TableName = "LogEvents",
+                    AutoCreateSqlTable = true
+                })
+            .CreateLogger();
+
+        _builder.Host.UseSerilog();
         _builder.Services.AddGrpc();
         _builder.Services.AddMagicOnion(_serviceAssemblies.ToArray());
 
@@ -54,6 +72,7 @@ public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
         var app = _builder.Build();
         app.UseHttpsRedirection();
         app.MapMagicOnionService();
+        app.UseSerilogRequestLogging();
         return app;
     }
 

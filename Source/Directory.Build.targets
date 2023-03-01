@@ -16,6 +16,8 @@
 		<PackageReference Update="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Update="UnitGenerator" Version="1.4.10"/>
 		<PackageReference Update="UnitGeneratorTemplate" Version="1.0.0" />
+		<PackageReference Update="Serilog.AspNetCore" Version="6.1.0" />
+		<PackageReference Update="Serilog.Sinks.MSSqlServer" Version="6.2.0" />
 		<PackageReference Update="Wpf.Extensions.Hosting" Version="1.1.2" />
 	</ItemGroup>
 </Project>

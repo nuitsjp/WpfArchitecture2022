@@ -1,8 +1,12 @@
 ﻿using System.Windows;
+using AdventureWorks.Database;
 using AdventureWorks.Extensions;
 using Kamishibai;
 using MessagePack;
 using MessagePack.Resolvers;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
 
 namespace AdventureWorks.Wpf;
 
@@ -24,6 +28,17 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     public IConfiguration Configuration => _applicationBuilder.Configuration;
     public IHost Build()
     {
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .WriteTo.MSSqlServer(
+                connectionString: ConnectionStringProvider.Resolve(this),
+                sinkOptions: new MSSqlServerSinkOptions
+                {
+                    TableName = "LogEvents",
+                    AutoCreateSqlTable = true
+                })
+            .CreateLogger();
+
         _resolvers.Insert(0, StandardResolver.Instance);
         _resolvers.Add(ContractlessStandardResolver.Instance);
         StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
