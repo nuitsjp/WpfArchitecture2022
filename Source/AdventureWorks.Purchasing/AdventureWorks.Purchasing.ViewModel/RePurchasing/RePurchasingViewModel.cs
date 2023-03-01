@@ -77,6 +77,10 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
 
         var purchaseOrder = builder.Build();
         await _purchaseOrderRepository.RegisterAsync(purchaseOrder);
+
+
+        _presentationService.ShowMessage(Properties.Resources.RegistrationCompleted);
+        await _presentationService.GoBackAsync();
     }
 
     private bool CanPurchase() => _selectedShipMethod is not null;
