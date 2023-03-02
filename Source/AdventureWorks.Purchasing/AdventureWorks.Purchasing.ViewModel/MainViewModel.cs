@@ -1,5 +1,8 @@
-﻿using AdventureWorks.Authentication;
+﻿using System.Diagnostics;
+using AdventureWorks.Authentication;
 using Kamishibai;
+using PostSharp.Aspects;
+using PostSharp.Serialization;
 
 namespace AdventureWorks.Purchasing.ViewModel;
 
@@ -28,3 +31,4 @@ public class MainViewModel : INavigatedAsyncAware
         }
     }
 }
+

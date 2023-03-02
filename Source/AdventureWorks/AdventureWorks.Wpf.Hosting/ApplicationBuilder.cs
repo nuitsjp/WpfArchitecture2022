@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 using AdventureWorks.Database;
 using AdventureWorks.Extensions;
+using AdventureWorks.Wpf.ViewModel;
 using Kamishibai;
 using MessagePack;
 using MessagePack.Resolvers;
@@ -8,7 +10,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.MSSqlServer;
 
-namespace AdventureWorks.Wpf;
+namespace AdventureWorks.Wpf.Hosting;
 
 public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     where TApplication : Application
@@ -29,15 +31,23 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     public IHost Build()
     {
         Log.Logger = new LoggerConfiguration()
+#if DEBUG
+            .WriteTo.Debug()
+            .MinimumLevel.Debug()
+#endif
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
             .WriteTo.MSSqlServer(
+                restrictedToMinimumLevel: LogEventLevel.Information,
                 connectionString: ConnectionStringProvider.Resolve(this),
                 sinkOptions: new MSSqlServerSinkOptions
                 {
                     TableName = "LogEvents",
                     AutoCreateSqlTable = true
                 })
+#if DEBUG
+#endif
             .CreateLogger();
+        LoggingAspect.Logger = new ViewModelLogger();
 
         _resolvers.Insert(0, StandardResolver.Instance);
         _resolvers.Add(ContractlessStandardResolver.Instance);
@@ -60,5 +70,23 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     public static ApplicationBuilder<TApplication, TWindow> CreateBuilder()
     {
         return new(KamishibaiApplication<TApplication, TWindow>.CreateBuilder());
+    }
+}
+
+public class ViewModelLogger : IViewModelLogger
+{
+    public void LogEntry(MethodBase method, object[] args)
+    {
+        Log.Debug("{Type}.{Method}({Args}) Entry", method.ReflectedType!.FullName, method.Name, args);
+    }
+
+    public void LogSuccess(MethodBase method, object[] args)
+    {
+        Log.Debug("{Type}.{Method}({Args}) Success", method.ReflectedType!.FullName, method.Name, args);
+    }
+
+    public void LogException(MethodBase method, Exception exception, object[] args)
+    {
+        Log.Debug(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
     }
 }

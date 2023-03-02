@@ -1,4 +1,7 @@
-﻿var builder = AdventureWorks.Purchasing.View.App.CreateBuilder();
+﻿using AdventureWorks.Wpf;
+using AdventureWorks.Wpf.Hosting;
+
+var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 
 // 認証サービスを初期化する。
 AdventureWorks.Authentication.MagicOnion.Client.Initializer.Initialize(builder);

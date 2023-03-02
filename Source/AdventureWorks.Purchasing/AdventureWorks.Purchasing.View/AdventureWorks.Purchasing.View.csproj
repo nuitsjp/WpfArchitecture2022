@@ -23,11 +23,13 @@
 		<PackageReference Include="C1.Xaml.WPF.Theming.Office2016.Ja" />
 		<PackageReference Include="GrapeCity.Wpf.SpreadGrid.ja" Version="4.0.0" />
 		<PackageReference Include="Kamishibai.View" />
+		<PackageReference Include="Kamishibai.Hosting" />
 		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Wpf\AdventureWorks.Wpf.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>

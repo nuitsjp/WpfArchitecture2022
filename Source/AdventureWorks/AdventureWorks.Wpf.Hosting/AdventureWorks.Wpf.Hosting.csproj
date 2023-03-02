@@ -8,6 +8,7 @@
 	<ItemGroup>
 		<PackageReference Include="Kamishibai.Hosting" />
 		<PackageReference Include="Kamishibai.View" />
+		<PackageReference Include="Serilog.Sinks.Debug" />
 		<PackageReference Include="Serilog.Sinks.MSSqlServer" />
 		<PackageReference Include="Wpf.Extensions.Hosting" />
 	</ItemGroup>
@@ -17,6 +18,7 @@
 		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
 	</ItemGroup>
 
 </Project>
