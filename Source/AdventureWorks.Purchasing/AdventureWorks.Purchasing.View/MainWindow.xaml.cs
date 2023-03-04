@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace AdventureWorks.Purchasing.View
+﻿namespace AdventureWorks.Purchasing.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

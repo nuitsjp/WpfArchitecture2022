@@ -1,8 +1,6 @@
 ﻿using AdventureWorks.MagicOnion;
-using Grpc.Core;
 using Grpc.Net.Client;
 using MagicOnion.Client;
-using System.Net;
 
 namespace AdventureWorks.Authentication.MagicOnion.Client;
 

@@ -1,7 +1,5 @@
 ﻿using System.Text;
 using AdventureWorks.Database;
-using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
@@ -40,6 +38,7 @@ namespace AdventureWorks.Serilog
                 .CreateLogger();
         }
 
+        // ReSharper disable UnusedParameter.Local
         private static string GetMinimumLevel(string connectionString, string applicationName)
         {
 #if DEBUG

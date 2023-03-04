@@ -1,5 +1,4 @@
-﻿using System.Windows.Controls;
-using AdventureWorks.Purchasing.ViewModel.Menu;
+﻿using AdventureWorks.Purchasing.ViewModel.Menu;
 
 namespace AdventureWorks.Purchasing.View.Menu
 {

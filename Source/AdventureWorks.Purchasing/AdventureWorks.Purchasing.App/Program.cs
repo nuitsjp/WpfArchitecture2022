@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Wpf;
-using AdventureWorks.Wpf.Hosting;
+﻿using AdventureWorks.Wpf.Hosting;
 
 var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 

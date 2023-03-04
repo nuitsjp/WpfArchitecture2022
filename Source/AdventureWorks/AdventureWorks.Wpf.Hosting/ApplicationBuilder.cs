@@ -1,8 +1,5 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Windows;
-using AdventureWorks.Database;
 using AdventureWorks.Extensions;
 using AdventureWorks.Serilog;
 using AdventureWorks.Wpf.ViewModel;
@@ -10,8 +7,6 @@ using Kamishibai;
 using MessagePack;
 using MessagePack.Resolvers;
 using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.MSSqlServer;
 
 namespace AdventureWorks.Wpf.Hosting;
 

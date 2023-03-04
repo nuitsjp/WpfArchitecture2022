@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
-using AdventureWorks.Database;
 using AdventureWorks.Serilog;
-using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
@@ -10,8 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.MSSqlServer;
 
 namespace AdventureWorks.AspNetCore;
 public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
