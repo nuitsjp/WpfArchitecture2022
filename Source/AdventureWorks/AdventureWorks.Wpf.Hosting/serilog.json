@@ -1,0 +1,42 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Debug", "Serilog.Sinks.MSSqlServer" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [
+      { "Name": "Debug" },
+      {
+        "Name": "MSSqlServer",
+        "Args": {
+          "restrictedToMinimumLevel": "Information",
+          "connectionString": "%ConnectionString%",
+          "sinkOptions": {
+            "TableName": "ClientLogEvents",
+            "AutoCreateSqlTable": true,
+            "batchPostingLimit": 1000,
+            "period": "0.00:00:30"
+          },
+          "columnOptionsSection": {
+            "disableTriggers": true,
+            "clusteredColumnstoreIndex": false,
+            "primaryKeyColumnName": "Id",
+            "removeStandardColumns": [ "MessageTemplate", "Properties" ]
+          }
+        }
+      }
+    ],
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 4 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 100 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 10 }
+      }
+    ]
+  }
+}

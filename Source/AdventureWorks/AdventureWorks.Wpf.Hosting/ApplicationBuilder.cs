@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
+using System.Text;
 using System.Windows;
 using AdventureWorks.Database;
 using AdventureWorks.Extensions;
@@ -30,23 +32,33 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     public IConfiguration Configuration => _applicationBuilder.Configuration;
     public IHost Build()
     {
+        var settingString = File
+            .ReadAllText("serilog.json")
+            .Replace("%ConnectionString%", ConnectionStringProvider.Resolve(this));
+        using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
+        var configuration = new ConfigurationBuilder()
+            .AddJsonStream(settings)
+            .Build();
+
         Log.Logger = new LoggerConfiguration()
-#if DEBUG
-            .WriteTo.Debug()
-            .MinimumLevel.Debug()
-#endif
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            .WriteTo.MSSqlServer(
-                restrictedToMinimumLevel: LogEventLevel.Information,
-                connectionString: ConnectionStringProvider.Resolve(this),
-                sinkOptions: new MSSqlServerSinkOptions
-                {
-                    TableName = "LogEvents",
-                    AutoCreateSqlTable = true
-                })
-#if DEBUG
-#endif
+            .ReadFrom.Configuration(configuration)
             .CreateLogger();
+        //#if DEBUG
+        //            .WriteTo.Debug()
+        //            .MinimumLevel.Debug()
+        //#endif
+        //            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+        //            .WriteTo.MSSqlServer(
+        //                restrictedToMinimumLevel: LogEventLevel.Information,
+        //                connectionString: ConnectionStringProvider.Resolve(this),
+        //                sinkOptions: new MSSqlServerSinkOptions
+        //                {
+        //                    TableName = "LogEvents",
+        //                    AutoCreateSqlTable = true
+        //                })
+        //#if DEBUG
+        //#endif
+        //            .CreateLogger();
         LoggingAspect.Logger = new ViewModelLogger();
 
         _resolvers.Insert(0, StandardResolver.Instance);
