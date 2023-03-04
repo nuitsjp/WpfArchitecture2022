@@ -1,5 +1,7 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using AdventureWorks.Database;
+using AdventureWorks.Serilog;
 using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
@@ -45,19 +47,12 @@ public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
         _resolvers.Add(resolver);
     }
 
-    public IHost Build()
+    public IHost Build(string applicationName)
     {
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-            .WriteTo.Console()
-            .WriteTo.MSSqlServer(
-                connectionString: ConnectionStringProvider.Resolve(this),
-                sinkOptions: new MSSqlServerSinkOptions
-                {
-                    TableName = "LogEvents",
-                    AutoCreateSqlTable = true
-                })
-            .CreateLogger();
+        _builder.Configuration
+            .SetBasePath(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule!.FileName)!);
+
+        LoggerInitializer.InitializeForAspNetCore(Configuration, applicationName);
 
         _builder.Host.UseSerilog();
         _builder.Services.AddGrpc();

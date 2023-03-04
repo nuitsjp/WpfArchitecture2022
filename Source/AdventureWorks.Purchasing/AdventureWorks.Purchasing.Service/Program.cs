@@ -10,5 +10,5 @@ AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.Database.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder);
 
-var app = builder.Build();
+var app = builder.Build("AdventureWorks.Purchasing.Service");
 app.Run();

@@ -6,23 +6,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="serilog.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="serilog.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Kamishibai.Hosting" />
 		<PackageReference Include="Kamishibai.View" />
-		<PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
-		<PackageReference Include="Serilog.Sinks.Debug" />
-		<PackageReference Include="Serilog.Sinks.MSSqlServer" />
 		<PackageReference Include="Wpf.Extensions.Hosting" />
 	</ItemGroup>
 
@@ -31,6 +16,7 @@
 		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Serilog\AdventureWorks.Serilog.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
 	</ItemGroup>
 

@@ -13,5 +13,5 @@ AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
-var app = builder.Build();
+var app = builder.Build("AdventureWorks.Purchasing.App");
 await app.RunAsync();

@@ -1,6 +1,19 @@
 use AdventureWorks;
 
 --------------------------------------------------------------------------------------
+-- 
+--------------------------------------------------------------------------------------
+drop table if exists [dbo].[LogSettings]
+GO
+
+CREATE TABLE [dbo].[LogSettings](
+    [ApplicationName] nvarchar(400) NOT NULL,
+	[MinimumLevel] nvarchar(max) NOT NULL,
+	CONSTRAINT [PK_LogSettings_ApplicationName] PRIMARY KEY ([ApplicationName])
+) ON [PRIMARY];
+GO
+
+--------------------------------------------------------------------------------------
 -- 「今日」のdatetimeを取得する。
 -- getdate()から変換した場合、テストが困難になるためスカラー関数を利用する。
 -- 
