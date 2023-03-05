@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows;
-using AdventureWorks.Extensions;
+using AdventureWorks.Hosting;
 using AdventureWorks.Serilog;
 using AdventureWorks.Wpf.ViewModel;
 using Kamishibai;

@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.Hosting;
 
 namespace AdventureWorks.Purchasing.MagicOnion;
 

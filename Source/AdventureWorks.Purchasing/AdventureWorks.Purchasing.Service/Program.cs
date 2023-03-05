@@ -1,4 +1,6 @@
-var builder = AdventureWorks.AspNetCore.ApplicationBuilder.CreateBuilder(args);
+using ApplicationBuilder = AdventureWorks.AspNetCore.Hosting.ApplicationBuilder;
+
+var builder = ApplicationBuilder.CreateBuilder(args);
 
 // 認証サービスの初期化
 AdventureWorks.Authentication.MagicOnion.Server.Initializer.Initialize(builder);

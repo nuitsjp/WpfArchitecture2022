@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.Hosting;
 using AdventureWorks.Purchasing.View.Menu;
 using AdventureWorks.Purchasing.View.RePurchasing;
 using AdventureWorks.Purchasing.ViewModel.Menu;

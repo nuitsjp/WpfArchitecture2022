@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore.Hosting\AdventureWorks.AspNetCore.Hosting.csproj" />
     <ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion.Client\AdventureWorks.Purchasing.MagicOnion.Client.csproj" />
     <ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj" />
   </ItemGroup>

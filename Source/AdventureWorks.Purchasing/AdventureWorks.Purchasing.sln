@@ -39,11 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion", "..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj", "{CC5BAD6C-1E62-4A3C-8515-8AE0D43D48AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Extensions", "AdventureWorks.Extensions\AdventureWorks.Extensions.csproj", "{0A93E868-BA56-46BF-A199-33628BBEF9B9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.MagicOnion", "AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj", "{EA61D00D-4CA6-4F8D-B7D6-7B313A84D495}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore", "..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj", "{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.MagicOnion.Server", "AdventureWorks.Purchasing.MagicOnion.Server\AdventureWorks.Purchasing.MagicOnion.Server.csproj", "{3B43FDA8-96D2-4C79-BAEC-D568C1F894BA}"
 EndProject
@@ -59,7 +55,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.ViewMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.View", "..\AdventureWorks\AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj", "{31DCD9B2-F890-47C8-A6CA-4C644DB74221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Serilog", "..\AdventureWorks\AdventureWorks.Serilog\AdventureWorks.Serilog.csproj", "{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Serilog", "..\AdventureWorks\AdventureWorks.Serilog\AdventureWorks.Serilog.csproj", "{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore.Hosting", "..\AdventureWorks\AdventureWorks.AspNetCore.Hosting\AdventureWorks.AspNetCore.Hosting.csproj", "{0377A8AC-2C45-4716-989B-C320D9E59AED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Hosting", "..\AdventureWorks\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj", "{17F44C38-FC70-4031-AB23-9C1BDB8F16A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,18 +119,10 @@ Global
 		{CC5BAD6C-1E62-4A3C-8515-8AE0D43D48AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC5BAD6C-1E62-4A3C-8515-8AE0D43D48AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC5BAD6C-1E62-4A3C-8515-8AE0D43D48AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A93E868-BA56-46BF-A199-33628BBEF9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A93E868-BA56-46BF-A199-33628BBEF9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A93E868-BA56-46BF-A199-33628BBEF9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A93E868-BA56-46BF-A199-33628BBEF9B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA61D00D-4CA6-4F8D-B7D6-7B313A84D495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA61D00D-4CA6-4F8D-B7D6-7B313A84D495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA61D00D-4CA6-4F8D-B7D6-7B313A84D495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA61D00D-4CA6-4F8D-B7D6-7B313A84D495}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B43FDA8-96D2-4C79-BAEC-D568C1F894BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B43FDA8-96D2-4C79-BAEC-D568C1F894BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B43FDA8-96D2-4C79-BAEC-D568C1F894BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -163,6 +155,14 @@ Global
 		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,13 +174,13 @@ Global
 		{0CB382C2-7441-4597-BCCF-7D3D196DB089} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 		{2B7343C4-BE79-4B90-9925-88390FEA2196} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 		{CC5BAD6C-1E62-4A3C-8515-8AE0D43D48AD} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
-		{0A93E868-BA56-46BF-A199-33628BBEF9B9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
-		{32A8D4CE-C1D2-4C3A-B8D0-4C184231B464} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{6C230923-40EA-4326-AF9E-D16A6F0A0433} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{6E797675-5907-4EC6-BB5C-B04B25EB94C4} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{ACEA5E55-C241-4415-AD53-B63F1D6E1AA9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{31DCD9B2-F890-47C8-A6CA-4C644DB74221} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{0377A8AC-2C45-4716-989B-C320D9E59AED} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

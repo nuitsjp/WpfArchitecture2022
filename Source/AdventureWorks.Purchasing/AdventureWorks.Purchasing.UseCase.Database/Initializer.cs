@@ -1,5 +1,5 @@
 ﻿using AdventureWorks.Database;
-using AdventureWorks.Extensions;
+using AdventureWorks.Hosting;
 using AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using Microsoft.Extensions.DependencyInjection;

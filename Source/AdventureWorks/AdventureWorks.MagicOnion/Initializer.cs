@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

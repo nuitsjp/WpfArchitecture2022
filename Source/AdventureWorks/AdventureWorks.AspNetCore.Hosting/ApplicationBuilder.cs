@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using AdventureWorks.Serilog;
 using MessagePack;
 using MessagePack.Resolvers;
@@ -8,9 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using IApplicationBuilder = AdventureWorks.Hosting.IApplicationBuilder;
 
-namespace AdventureWorks.AspNetCore;
-public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
+namespace AdventureWorks.AspNetCore.Hosting;
+public class ApplicationBuilder : IApplicationBuilder
 {
     private readonly List<IFormatterResolver> _resolvers = new();
 
@@ -45,8 +45,7 @@ public class ApplicationBuilder : AdventureWorks.Extensions.IApplicationBuilder
 
     public IHost Build(string applicationName)
     {
-        _builder.Configuration
-            .SetBasePath(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule!.FileName)!);
+        _builder.Configuration.SetBasePath(Environment.ProcessPath!);
 
         LoggerInitializer.InitializeForAspNetCore(Configuration, applicationName);
 

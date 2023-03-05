@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.Hosting;
 using AdventureWorks.Purchasing.Database.Production;
 using AdventureWorks.Purchasing.Production;
 using Microsoft.Extensions.DependencyInjection;

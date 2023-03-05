@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Database;
@@ -10,6 +10,6 @@ public static class Initializer
         TypeHandlerInitializer.Initialize();
 
         builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-        builder.Services.AddTransient<IDatabase>(_ => new Database(ConnectionStringProvider.Resolve(builder)));
+        builder.Services.AddTransient<IDatabase>(_ => new Database(ConnectionStringProvider.Resolve(builder.Configuration)));
     }
 }

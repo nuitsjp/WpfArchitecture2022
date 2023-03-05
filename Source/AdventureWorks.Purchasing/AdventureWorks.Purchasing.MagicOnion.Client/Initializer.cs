@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Extensions;
+﻿using AdventureWorks.Hosting;
 using AdventureWorks.Purchasing.MagicOnion.Client.Production;
 using AdventureWorks.Purchasing.MagicOnion.Client.UseCase.RePurchasing;
 using AdventureWorks.Purchasing.Production;

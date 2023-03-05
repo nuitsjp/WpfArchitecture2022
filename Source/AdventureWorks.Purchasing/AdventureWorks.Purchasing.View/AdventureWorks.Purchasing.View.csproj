@@ -28,8 +28,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Extensions\AdventureWorks.Extensions.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>
