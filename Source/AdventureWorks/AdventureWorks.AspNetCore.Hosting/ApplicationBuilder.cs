@@ -45,7 +45,7 @@ public class ApplicationBuilder : IApplicationBuilder
 
     public IHost Build(string applicationName)
     {
-        _builder.Configuration.SetBasePath(Environment.ProcessPath!);
+        _builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
         LoggerInitializer.InitializeForAspNetCore(Configuration, applicationName);
 

@@ -1,4 +1,10 @@
-﻿using AdventureWorks.Wpf.Hosting;
+﻿using System.Diagnostics;
+using AdventureWorks.Wpf.Hosting;
+
+AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
+{
+    Debug.WriteLine(eventArgs.Exception);
+};
 
 var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 
