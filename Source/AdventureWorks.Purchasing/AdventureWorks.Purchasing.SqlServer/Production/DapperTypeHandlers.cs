@@ -1,9 +1,9 @@
-﻿using AdventureWorks.Purchasing.Production;
-// ReSharper disable RedundantNameQualifier
+﻿// ReSharper disable RedundantNameQualifier
 using System.Data;
+using AdventureWorks.Purchasing.Production;
 using Dapper;
 
-namespace AdventureWorks.Purchasing.Database.Production;
+namespace AdventureWorks.Purchasing.SqlServer.Production;
 
 public class ProductIdTypeHandler : SqlMapper.TypeHandler<ProductId>
 {

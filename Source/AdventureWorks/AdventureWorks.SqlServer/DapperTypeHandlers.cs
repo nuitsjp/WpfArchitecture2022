@@ -3,7 +3,7 @@
 using System.Data;
 using Dapper;
 
-namespace AdventureWorks.Database;
+namespace AdventureWorks.SqlServer;
 
 public class DateTypeHandler : SqlMapper.TypeHandler<Date>
 {

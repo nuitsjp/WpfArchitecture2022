@@ -1,8 +1,7 @@
-﻿
-using AdventureWorks.Database;
+﻿using AdventureWorks.Database;
 using Dapper;
 
-namespace AdventureWorks.Purchasing.Database;
+namespace AdventureWorks.Purchasing.SqlServer;
 
 public class ShipMethodRepository : IShipMethodRepository
 {

@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.Purchasing.Database";
+	var @namespace = "AdventureWorks.Purchasing.SqlServer";
 	var types = new []
 	{
 		(UnitName: "VendorId", UnitType: typeof(int)),

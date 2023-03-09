@@ -23,6 +23,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.SqlServer\AdventureWorks.Purchasing.UseCase.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>
 

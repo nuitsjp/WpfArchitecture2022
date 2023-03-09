@@ -2,7 +2,7 @@
 using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using Dapper;
 
-namespace AdventureWorks.Purchasing.UseCase.Database.RePurchasing;
+namespace AdventureWorks.Purchasing.UseCase.SqlServer.RePurchasing;
 public class RePurchasingQueryService : IRePurchasingQueryService
 {
     private readonly IDatabase _database;

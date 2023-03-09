@@ -9,8 +9,9 @@ AdventureWorks.Authentication.MagicOnion.Server.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);
 
 // リポジトリーの初期化
-AdventureWorks.Purchasing.Database.Initializer.Initialize(builder);
-AdventureWorks.Purchasing.UseCase.Database.Initializer.Initialize(builder);
+AdventureWorks.SqlServer.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.SqlServer.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.UseCase.SqlServer.Initializer.Initialize(builder);
 
 var app = builder.Build("AdventureWorks.Purchasing.Service");
 app.Run();

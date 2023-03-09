@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -13,10 +13,11 @@
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore.Hosting\AdventureWorks.AspNetCore.Hosting.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Purchasing.Database\AdventureWorks.Purchasing.Database.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion.Server\AdventureWorks.Purchasing.MagicOnion.Server.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.Database\AdventureWorks.Purchasing.UseCase.Database.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.SqlServer\AdventureWorks.Purchasing.SqlServer.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.SqlServer\AdventureWorks.Purchasing.UseCase.SqlServer.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using AdventureWorks.Purchasing.Production;
 using Dapper;
 
-namespace AdventureWorks.Purchasing.Database.Production;
+namespace AdventureWorks.Purchasing.SqlServer.Production;
 
 public class ProductRepository : IProductRepository
 {

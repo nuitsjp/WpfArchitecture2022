@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.Database";
+	var @namespace = "AdventureWorks.SqlServer";
 	var types = new []
 	{
 		(UnitName: "Date", UnitType: typeof(DateTime)),
@@ -25,4 +25,4 @@
 	};
 #>
 
-<#@ include file="DapperTypeHandlers.t4" once="true" #>
+<#@ include file="..\AdventureWorks.Database\DapperTypeHandlers.t4" once="true" #>
