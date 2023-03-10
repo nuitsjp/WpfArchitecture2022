@@ -63,6 +63,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.SqlServer", "..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj", "{62236D4A-9C87-4097-A323-C389B913383E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scenario", "AdventureWorks.Purchasing.View.Test\Scenario\Scenario.csproj", "{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver", "AdventureWorks.Purchasing.View.Test\Driver\Driver.csproj", "{1642B49E-6777-4B27-A939-EEBC26C94273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.InTarget", "AdventureWorks.Purchasing.View.Test\Driver.InTarget\Driver.InTarget.csproj", "{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Purchasing.View.Test", "AdventureWorks.Purchasing.View.Test", "{47101E0D-7FDA-42B0-A7A1-57E1576C51E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.App.Driver", "AdventureWorks.Purchasing.View.Test\AdventureWorks.Purchasing.App.Driver\AdventureWorks.Purchasing.App.Driver.csproj", "{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +179,22 @@ Global
 		{62236D4A-9C87-4097-A323-C389B913383E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62236D4A-9C87-4097-A323-C389B913383E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62236D4A-9C87-4097-A323-C389B913383E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1642B49E-6777-4B27-A939-EEBC26C94273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1642B49E-6777-4B27-A939-EEBC26C94273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1642B49E-6777-4B27-A939-EEBC26C94273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1642B49E-6777-4B27-A939-EEBC26C94273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,6 +214,10 @@ Global
 		{0377A8AC-2C45-4716-989B-C320D9E59AED} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{62236D4A-9C87-4097-A323-C389B913383E} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB} = {47101E0D-7FDA-42B0-A7A1-57E1576C51E9}
+		{1642B49E-6777-4B27-A939-EEBC26C94273} = {47101E0D-7FDA-42B0-A7A1-57E1576C51E9}
+		{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246} = {47101E0D-7FDA-42B0-A7A1-57E1576C51E9}
+		{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0} = {47101E0D-7FDA-42B0-A7A1-57E1576C51E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}
