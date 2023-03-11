@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
-public class VendorRepositoryClient : IVendorRepository
+public class VendorRepository : IVendorRepository
 {
     public static List<Vendor> Vendors { get; } =
         Enumerable.Range(1, 3)

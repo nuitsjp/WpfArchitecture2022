@@ -1,6 +1,6 @@
 ﻿namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
-public class ShipMethodRepositoryClient : IShipMethodRepository
+public class ShipMethodRepository : IShipMethodRepository
 {
     public async Task<IList<ShipMethod>> GetShipMethodsAsync()
     {

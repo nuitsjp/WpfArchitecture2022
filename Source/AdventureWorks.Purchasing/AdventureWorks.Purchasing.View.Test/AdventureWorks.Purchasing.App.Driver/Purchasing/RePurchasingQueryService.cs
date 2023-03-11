@@ -3,12 +3,12 @@ using AdventureWorks.Purchasing.UseCase.RePurchasing;
 
 namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
-public class RePurchasingQueryClient : IRePurchasingQueryService
+public class RePurchasingQueryService : IRePurchasingQueryService
 {
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {
         await Task.CompletedTask;
-        return VendorRepositoryClient
+        return VendorRepository
             .Vendors
             .SelectMany(vendor => 
                 vendor.VendorProducts

@@ -2,12 +2,12 @@
 
 namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
-public class ProductRepositoryClient : IProductRepository
+public class ProductRepository : IProductRepository
 {
     public async Task<Product> GetProductByIdAsync(ProductId productId)
     {
         await Task.CompletedTask;
-        var vendorProduct = VendorRepositoryClient
+        var vendorProduct = VendorRepository
             .Vendors
             .SelectMany(x => x.VendorProducts)
             .Single(x => x.ProductId == productId);

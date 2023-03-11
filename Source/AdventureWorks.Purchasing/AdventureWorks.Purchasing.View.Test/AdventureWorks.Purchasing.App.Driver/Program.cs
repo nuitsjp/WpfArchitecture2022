@@ -12,11 +12,11 @@ var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWo
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 
 // 購買サービスのクライアントを初期化する。
-builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepositoryClient>();
-builder.Services.AddTransient<IVendorRepository, VendorRepositoryClient>();
-builder.Services.AddTransient<IProductRepository, ProductRepositoryClient>();
-builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepositoryClient>();
-builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryClient>();
+builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
+builder.Services.AddTransient<IVendorRepository, VendorRepository>();
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepository>();
+builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
 
 // View & ViewModelを初期化する。
 AdventureWorks.Purchasing.View.Initializer.Initialize(builder);

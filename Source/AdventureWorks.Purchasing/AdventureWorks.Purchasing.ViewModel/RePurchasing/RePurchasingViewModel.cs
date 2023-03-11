@@ -53,6 +53,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
         ShipMethods.Replace(await _shipMethodRepository.GetShipMethodsAsync());
+        SelectedShipMethod = ShipMethods.First();
     }
 
     [RelayCommand]

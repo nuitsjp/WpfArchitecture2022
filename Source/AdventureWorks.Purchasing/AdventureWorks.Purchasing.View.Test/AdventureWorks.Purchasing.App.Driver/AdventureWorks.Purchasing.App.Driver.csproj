@@ -29,7 +29,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Authentication\" />
-	  <Folder Include="Purchasing\" />
 	</ItemGroup>
 
 	</Project>
