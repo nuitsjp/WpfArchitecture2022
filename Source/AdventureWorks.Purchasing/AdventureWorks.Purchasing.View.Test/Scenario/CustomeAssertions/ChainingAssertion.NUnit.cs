@@ -125,6 +125,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
+// ReSharper disable once CheckNamespace
 namespace NUnit.Framework
 {
     #region Extensions

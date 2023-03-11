@@ -23,7 +23,7 @@ namespace Scenario
         public void TestCleanup() => _app.Kill();
 
         [Test]
-        public void 正常に再発注する()
+        public void 再発注する()
         {
             var mainWindow = _app.AttachMainWindow();
             var menuPage = _app.AttachMenuPage();
