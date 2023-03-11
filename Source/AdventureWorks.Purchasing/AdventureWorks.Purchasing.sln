@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 	ProjectSection(SolutionItems) = preProject
 		..\Directory.Build.props = ..\Directory.Build.props
 		..\Directory.Build.targets = ..\Directory.Build.targets
+		..\..\.github\workflows\dotnet-desktop.yml = ..\..\.github\workflows\dotnet-desktop.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.View", "AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj", "{6348F16E-F36D-4D2D-96C0-8A35D01E45D7}"
@@ -63,15 +64,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.SqlServer", "..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj", "{62236D4A-9C87-4097-A323-C389B913383E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scenario", "AdventureWorks.Purchasing.View.Test\Scenario\Scenario.csproj", "{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scenario", "AdventureWorks.Purchasing.View.Test\Scenario\Scenario.csproj", "{01BB62EA-4814-4D6C-B07C-E41BB1A3D5EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver", "AdventureWorks.Purchasing.View.Test\Driver\Driver.csproj", "{1642B49E-6777-4B27-A939-EEBC26C94273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Driver", "AdventureWorks.Purchasing.View.Test\Driver\Driver.csproj", "{1642B49E-6777-4B27-A939-EEBC26C94273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.InTarget", "AdventureWorks.Purchasing.View.Test\Driver.InTarget\Driver.InTarget.csproj", "{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Driver.InTarget", "AdventureWorks.Purchasing.View.Test\Driver.InTarget\Driver.InTarget.csproj", "{2D0FCAD9-7F58-40C2-B188-24DE8DAE7246}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Purchasing.View.Test", "AdventureWorks.Purchasing.View.Test", "{47101E0D-7FDA-42B0-A7A1-57E1576C51E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.App.Driver", "AdventureWorks.Purchasing.View.Test\AdventureWorks.Purchasing.App.Driver\AdventureWorks.Purchasing.App.Driver.csproj", "{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.App.Driver", "AdventureWorks.Purchasing.View.Test\AdventureWorks.Purchasing.App.Driver\AdventureWorks.Purchasing.App.Driver.csproj", "{CF11522C-0CB6-46D2-9502-0B10C0F8FCD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
