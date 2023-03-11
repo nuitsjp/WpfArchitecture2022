@@ -18,6 +18,7 @@
     <PackageReference Include="Codeer.Friendly.Windows.KeyMouse" Version="1.3.18" />
     <PackageReference Include="Codeer.Friendly.Windows.NativeStandardControls" Version="2.16.9" />
     <PackageReference Include="Codeer.TestAssistant.GeneratorToolKit" Version="3.13.0" />
+    <PackageReference Include="FluentAssertions" Version="6.10.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
@@ -25,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj" />
     <ProjectReference Include="..\Driver.InTarget\Driver.InTarget.csproj" />
     <ProjectReference Include="..\Driver\Driver.csproj" />
   </ItemGroup>
