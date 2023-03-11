@@ -14,8 +14,8 @@ jobs:
       matrix:
         configuration: [Debug, Release]
 
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: self-hosted
+
     env:
       Solution_Name: Source\AdventureWorks.Purchasing\AdventureWorks.Purchasing.sln
       Bin_Directory: Source\AdventureWorks.Purchasing\AdventureWorks.Purchasing.App\bin\Release\net6.0-windows
@@ -43,7 +43,7 @@ jobs:
         Configuration: ${{ matrix.configuration }}
 
     # Build the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
+    - name: Build the application
       run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
       env:
         Configuration: ${{ matrix.configuration }}
