@@ -1,5 +1,9 @@
 ﻿using System.Text;
 using AdventureWorks.Database;
+#if !DEBUG
+using Dapper;
+using Microsoft.Data.SqlClient;
+#endif
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
