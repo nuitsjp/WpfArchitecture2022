@@ -1,9 +1,7 @@
 ﻿using AdventureWorks.Hosting;
-using AdventureWorks.Purchasing.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.SqlServer.RePurchasing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Purchasing.UseCase.SqlServer;
+namespace AdventureWorks.Purchasing.RePurchasing.SqlServer;
 
 public static class Initializer
 {

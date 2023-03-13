@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
 
-namespace AdventureWorks.Purchasing.ViewModel.Menu;
+namespace AdventureWorks.Purchasing.Menu.ViewModel;
 
 [Navigate]
 public class MenuViewModel
 {
-    private readonly IPresentationService _presentationService;
+    private readonly RePurchasing.ViewModel.IPresentationService _presentationService;
 
     public MenuViewModel(
-        [Inject] IPresentationService presentationService)
+        [Inject] RePurchasing.ViewModel.IPresentationService presentationService)
     {
         _presentationService = presentationService;
 

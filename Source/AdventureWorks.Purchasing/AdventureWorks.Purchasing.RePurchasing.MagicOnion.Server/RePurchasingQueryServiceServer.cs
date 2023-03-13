@@ -1,9 +1,8 @@
-﻿using AdventureWorks.Purchasing.MagicOnion.Client.UseCase.RePurchasing;
-using AdventureWorks.Purchasing.UseCase.RePurchasing;
+﻿using AdventureWorks.Purchasing.RePurchasing.MagicOnion.Client;
 using MagicOnion;
 using MagicOnion.Server;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Server.UseCase.RePurchasing;
+namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion.Server;
 
 /// <remarks>
 /// アセンブリーを解析してサービス登録するため、参照している箇所が無いように見えるが実際には利用されているため

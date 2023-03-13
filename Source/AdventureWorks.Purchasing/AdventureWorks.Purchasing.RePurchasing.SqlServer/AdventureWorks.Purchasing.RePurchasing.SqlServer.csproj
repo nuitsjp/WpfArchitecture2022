@@ -6,11 +6,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase\AdventureWorks.Purchasing.UseCase.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="RePurchasing\" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing\AdventureWorks.Purchasing.RePurchasing.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Purchasing.ViewModel.Menu;
+﻿using AdventureWorks.Purchasing.Menu.ViewModel;
 
 namespace AdventureWorks.Purchasing.View.Menu
 {

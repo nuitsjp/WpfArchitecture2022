@@ -6,10 +6,10 @@ namespace AdventureWorks.Purchasing.ViewModel;
 public class MainViewModel : INavigatedAsyncAware
 {
     private readonly IAuthenticationService _authenticationService;
-    private readonly IPresentationService _presentationService;
+    private readonly Menu.ViewModel.IPresentationService _presentationService;
 
     public MainViewModel(
-        [Inject] IPresentationService presentationService, 
+        [Inject] Menu.ViewModel.IPresentationService presentationService, 
         [Inject] IAuthenticationService authenticationService)
     {
         _presentationService = presentationService;

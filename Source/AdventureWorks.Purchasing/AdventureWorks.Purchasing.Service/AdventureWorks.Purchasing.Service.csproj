@@ -16,8 +16,9 @@
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion.Server\AdventureWorks.Purchasing.MagicOnion.Server.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.MagicOnion\AdventureWorks.Purchasing.MagicOnion.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.MagicOnion.Server\AdventureWorks.Purchasing.RePurchasing.MagicOnion.Server.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.SqlServer\AdventureWorks.Purchasing.RePurchasing.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Purchasing.SqlServer\AdventureWorks.Purchasing.SqlServer.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Purchasing.UseCase.SqlServer\AdventureWorks.Purchasing.UseCase.SqlServer.csproj" />
 	</ItemGroup>
 
 </Project>

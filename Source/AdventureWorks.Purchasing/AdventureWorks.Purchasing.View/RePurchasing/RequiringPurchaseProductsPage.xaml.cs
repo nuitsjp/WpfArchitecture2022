@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Purchasing.ViewModel.RePurchasing;
+﻿using AdventureWorks.Purchasing.RePurchasing.ViewModel;
 
 namespace AdventureWorks.Purchasing.View.RePurchasing
 {

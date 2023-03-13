@@ -1,8 +1,8 @@
 ﻿using AdventureWorks.Hosting;
+using AdventureWorks.Purchasing.Menu.ViewModel;
+using AdventureWorks.Purchasing.RePurchasing.ViewModel;
 using AdventureWorks.Purchasing.View.Menu;
 using AdventureWorks.Purchasing.View.RePurchasing;
-using AdventureWorks.Purchasing.ViewModel.Menu;
-using AdventureWorks.Purchasing.ViewModel.RePurchasing;
 using AdventureWorks.Purchasing.ViewModel;
 using Kamishibai;
 

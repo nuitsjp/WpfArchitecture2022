@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Purchasing.UseCase.RePurchasing;
+﻿namespace AdventureWorks.Purchasing.RePurchasing;
 
 public interface IRePurchasingQueryService
 {

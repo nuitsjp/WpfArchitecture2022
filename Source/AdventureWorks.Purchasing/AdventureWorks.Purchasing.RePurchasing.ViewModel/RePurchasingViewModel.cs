@@ -1,12 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using AdventureWorks.Authentication;
 using AdventureWorks.Purchasing.Production;
-using AdventureWorks.Purchasing.UseCase.RePurchasing;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
 
-namespace AdventureWorks.Purchasing.ViewModel.RePurchasing;
+namespace AdventureWorks.Purchasing.RePurchasing.ViewModel;
 
 [Navigate]
 [INotifyPropertyChanged]
