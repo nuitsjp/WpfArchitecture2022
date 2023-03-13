@@ -21,7 +21,7 @@
 	<ItemGroup>
 		<PackageReference Include="C1.WPF.Core.Ja" />
 		<PackageReference Include="C1.Xaml.WPF.Theming.Office2016.Ja" />
-		<PackageReference Include="GrapeCity.Wpf.SpreadGrid.ja" Version="4.0.0" />
+		<PackageReference Include="GrapeCity.Wpf.SpreadGrid.ja" />
 		<PackageReference Include="Kamishibai.View" />
 		<PackageReference Include="Kamishibai.Hosting" />
 		<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" />
