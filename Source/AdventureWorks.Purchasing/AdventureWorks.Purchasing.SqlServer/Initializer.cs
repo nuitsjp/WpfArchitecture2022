@@ -9,8 +9,6 @@ public static class Initializer
 {
     public static void Initialize(IApplicationBuilder builder)
     {
-        Database.Initializer.Initialize(builder);
-
         TypeHandlerInitializer.Initialize();
         Production.TypeHandlerInitializer.Initialize();
 

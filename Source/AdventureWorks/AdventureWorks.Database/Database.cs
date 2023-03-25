@@ -5,16 +5,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace AdventureWorks.Database;
 
-public class Database : IDatabase
+public abstract class Database : IDatabase
 {
     private readonly string _connectionString;
 
-    public Database(string connectionString)
-    {
-        _connectionString = connectionString;
-    }
-
-    public Database(IConfiguration configuration, string userId, string password)
+    protected Database(IConfiguration configuration, string userId, string password)
     {
         _connectionString = ConnectionStringProvider.Resolve(configuration, userId, password);
     }
