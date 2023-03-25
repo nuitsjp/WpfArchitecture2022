@@ -16,11 +16,6 @@ namespace AdventureWorks.Serilog
             Initialize(configuration, Properties.Resources.Wpf, applicationName);
         }
 
-        public static void InitializeForAspNetCore(IConfiguration configuration, string applicationName)
-        {
-            Initialize(configuration, Properties.Resources.AspNetCore, applicationName);
-        }
-
         private static void Initialize(IConfiguration configuration, string settingTemplate, string applicationName)
         {
             var connectionString = ConnectionStringProvider.Resolve(configuration);

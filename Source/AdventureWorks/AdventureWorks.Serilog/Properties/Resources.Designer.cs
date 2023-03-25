@@ -64,28 +64,6 @@ namespace AdventureWorks.Serilog.Properties {
         ///   {
         ///  &quot;Serilog&quot;: {
         ///    &quot;Using&quot;: [ &quot;Serilog.Sinks.Debug&quot;, &quot;Serilog.Sinks.MSSqlServer&quot; ],
-        ///    &quot;Enrich&quot;: [ &quot;FromLogContext&quot;, &quot;WithMachineName&quot;, &quot;WithEnvironmentUserName&quot;, &quot;WithProcessId&quot;, &quot;WithThreadId&quot;, &quot;WithCorrelationId&quot; ],
-        ///    &quot;Properties&quot;: {
-        ///      &quot;Application&quot;: &quot;%ApplicationName%&quot;,
-        ///      &quot;ApplicationType&quot;: &quot;ASP.NET Core&quot;
-        ///    },
-        ///    &quot;MinimumLevel&quot;: &quot;%MinimumLevel%&quot;,
-        ///    &quot;WriteTo&quot;: [
-        ///      {
-        ///        &quot;Name&quot;: &quot;MSSqlServer&quot;,
-        ///        &quot;Args&quot;: {
-        ///          &quot;restrictedToMinimumLevel&quot;: &quot;%MinimumLevel%&quot;,        /// [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string AspNetCore {
-            get {
-                return ResourceManager.GetString("AspNetCore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   {
-        ///  &quot;Serilog&quot;: {
-        ///    &quot;Using&quot;: [ &quot;Serilog.Sinks.Debug&quot;, &quot;Serilog.Sinks.MSSqlServer&quot; ],
         ///    &quot;Enrich&quot;: [ &quot;FromLogContext&quot;, &quot;WithMachineName&quot;, &quot;WithEnvironmentUserName&quot;, &quot;WithProcessId&quot;, &quot;WithThreadId&quot; ],
         ///    &quot;Properties&quot;: {
         ///      &quot;Application&quot;: &quot;%ApplicationName%&quot;,

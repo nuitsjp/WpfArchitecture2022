@@ -34,11 +34,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="AspNetCore.json">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </None>
 	  <None Update="Wpf.json">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
