@@ -4,9 +4,9 @@ using Dapper;
 namespace AdventureWorks.Purchasing.RePurchasing.SqlServer;
 public class RePurchasingQueryService : IRePurchasingQueryService
 {
-    private readonly IDatabase _database;
+    private readonly RePurchasingDatabase _database;
 
-    public RePurchasingQueryService(IDatabase database)
+    public RePurchasingQueryService(RePurchasingDatabase database)
     {
         _database = database;
     }
