@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Database;
-using AdventureWorks.Hosting;
+﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.SqlServer;

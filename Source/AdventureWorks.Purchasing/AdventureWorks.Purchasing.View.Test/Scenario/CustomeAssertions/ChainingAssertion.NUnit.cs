@@ -116,14 +116,12 @@
  * 
  * -- more details see project home --*/
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Dynamic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+// ReSharper disable PossibleMultipleEnumeration
 
 // ReSharper disable once CheckNamespace
 namespace NUnit.Framework
@@ -152,21 +150,18 @@ namespace NUnit.Framework
             var condition = predicate.Compile().Invoke(value);
 
             var paramName = predicate.Parameters.First().Name;
-            string msg = "";
+            string msg;
             try
             {
                 var dumper = new ExpressionDumper<T>(value, predicate.Parameters.Single());
                 dumper.Visit(predicate);
                 var dump = string.Join(", ", dumper.Members.Select(kvp => kvp.Key + " = " + kvp.Value));
-                msg = string.Format("\r\n{0} = {1}\r\n{2}\r\n{3}{4}",
-                    paramName, value, dump, predicate,
-                    string.IsNullOrEmpty(message) ? "" : ", " + message);
+                msg =
+                    $"\r\n{paramName} = {value}\r\n{dump}\r\n{predicate}{(string.IsNullOrEmpty(message) ? "" : ", " + message)}";
             }
             catch
             {
-                msg = string.Format("{0} = {1}, {2}{3}",
-                    paramName, value, predicate,
-                    string.IsNullOrEmpty(message) ? "" : ", " + message);
+                msg = $"{paramName} = {value}, {predicate}{(string.IsNullOrEmpty(message) ? "" : ", " + message)}";
             }
 
             Assert.IsTrue(condition, msg);
@@ -284,25 +279,25 @@ namespace NUnit.Framework
         /// <summary>EqualityComparison to IComparer Converter for CollectionAssert</summary>
         private class ComparisonComparer<T> : IComparer
         {
-            readonly Func<T, T, bool> comparison;
+            readonly Func<T, T, bool> _comparison;
 
             public ComparisonComparer(Func<T, T, bool> comparison)
             {
-                this.comparison = comparison;
+                _comparison = comparison;
             }
 
             public int Compare(object x, object y)
             {
-                return (comparison != null)
-                    ? comparison((T)x, (T)y) ? 0 : -1
-                    : object.Equals(x, y) ? 0 : -1;
+                return (_comparison != null)
+                    ? _comparison((T)x, (T)y) ? 0 : -1
+                    : Equals(x, y) ? 0 : -1;
             }
         }
 
         private class ReflectAccessor<T>
         {
-            public Func<object> GetValue { get; private set; }
-            public Action<object> SetValue { get; private set; }
+            public Func<object> GetValue { get; }
+            public Action<object> SetValue { get; }
 
             public ReflectAccessor(T target, string name)
             {
@@ -322,7 +317,7 @@ namespace NUnit.Framework
                     return;
                 }
 
-                throw new ArgumentException(string.Format("\"{0}\" not found : Type <{1}>", name, typeof(T).Name));
+                throw new ArgumentException($"\"{name}\" not found : Type <{typeof(T).Name}>");
             }
         }
 
@@ -332,22 +327,22 @@ namespace NUnit.Framework
         public static void IsStructuralEqual(this object actual, object expected, string message = "")
         {
             message = (string.IsNullOrEmpty(message) ? "" : ", " + message);
-            if (object.ReferenceEquals(actual, expected)) return;
+            if (ReferenceEquals(actual, expected)) return;
 
             if (actual == null) throw new AssertionException("actual is null" + message);
             if (expected == null) throw new AssertionException("actual is not null" + message);
             if (actual.GetType() != expected.GetType())
             {
-                var msg = string.Format("expected type is {0} but actual type is {1}{2}",
-                    expected.GetType().Name, actual.GetType().Name, message);
+                var msg =
+                    $"expected type is {expected.GetType().Name} but actual type is {actual.GetType().Name}{message}";
                 throw new AssertionException(msg);
             }
 
             var r = StructuralEqual(actual, expected, new[] { actual.GetType().Name }); // root type
             if (!r.IsEquals)
             {
-                var msg = string.Format("is not structural equal, failed at {0}, actual = {1} expected = {2}{3}",
-                    string.Join(".", r.Names), r.Left, r.Right, message);
+                var msg =
+                    $"is not structural equal, failed at {string.Join(".", r.Names)}, actual = {r.Left} expected = {r.Right}{message}";
                 throw new AssertionException(msg);
             }
         }
@@ -356,7 +351,7 @@ namespace NUnit.Framework
         public static void IsNotStructuralEqual(this object actual, object expected, string message = "")
         {
             message = (string.IsNullOrEmpty(message) ? "" : ", " + message);
-            if (object.ReferenceEquals(actual, expected)) throw new AssertionException("actual is same reference" + message); ;
+            if (ReferenceEquals(actual, expected)) throw new AssertionException("actual is same reference" + message);
 
             if (actual == null) return;
             if (expected == null) return;
@@ -400,11 +395,11 @@ namespace NUnit.Framework
                             }
                         }
 
-                        if ((lMove == true && rMove == false) || (lMove == false && rMove == true))
+                        if ((lMove && rMove == false) || (lMove == false && rMove))
                         {
                             return new EqualInfo { IsEquals = false, Left = lValue, Right = rValue, Names = names.Concat(new[] { "[" + index + "]" }) };
                         }
-                        if (lMove == false && rMove == false) break;
+                        if (lMove == false) break;
                         index++;
                     }
                 }
@@ -415,7 +410,7 @@ namespace NUnit.Framework
         static EqualInfo StructuralEqual(object left, object right, IEnumerable<string> names)
         {
             // type and basic checks
-            if (object.ReferenceEquals(left, right)) return new EqualInfo { IsEquals = true, Left = left, Right = right, Names = names };
+            if (ReferenceEquals(left, right)) return new EqualInfo { IsEquals = true, Left = left, Right = right, Names = names };
             if (left == null || right == null) return new EqualInfo { IsEquals = false, Left = left, Right = right, Names = names };
             var lType = left.GetType();
             var rType = right.GetType();
@@ -439,7 +434,7 @@ namespace NUnit.Framework
             var equatable = typeof(IEquatable<>).MakeGenericType(type);
             if (equatable.IsAssignableFrom(type))
             {
-                var result = (bool)equatable.GetMethod("Equals").Invoke(left, new[] { right });
+                var result = (bool)equatable.GetMethod("Equals")!.Invoke(left, new[] { right })!;
                 return new EqualInfo { IsEquals = result, Left = left, Right = right, Names = names };
             }
 
@@ -484,44 +479,46 @@ namespace NUnit.Framework
 
         private class DynamicAccessor<T> : DynamicObject
         {
-            private readonly T target;
-            private static readonly BindingFlags TransparentFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            private readonly T _target;
+            private const BindingFlags TransparentFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
             public DynamicAccessor(T target)
             {
-                this.target = target;
+                _target = target;
             }
 
             public override bool TrySetIndex(SetIndexBinder binder, object[] indexes, object value)
             {
                 try
                 {
-                    typeof(T).InvokeMember("Item", TransparentFlags | BindingFlags.SetProperty, null, target, indexes.Concat(new[] { value }).ToArray());
+                    typeof(T).InvokeMember("Item", TransparentFlags | BindingFlags.SetProperty, null, _target, indexes.Concat(new[] { value }).ToArray());
                     return true;
                 }
-                catch (MissingMethodException) { throw new ArgumentException(string.Format("indexer not found : Type <{0}>", typeof(T).Name)); };
+                catch (MissingMethodException) { throw new ArgumentException(
+                    $"indexer not found : Type <{typeof(T).Name}>"); }
             }
 
             public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result)
             {
                 try
                 {
-                    result = typeof(T).InvokeMember("Item", TransparentFlags | BindingFlags.GetProperty, null, target, indexes);
+                    result = typeof(T).InvokeMember("Item", TransparentFlags | BindingFlags.GetProperty, null, _target, indexes);
                     return true;
                 }
-                catch (MissingMethodException) { throw new ArgumentException(string.Format("indexer not found : Type <{0}>", typeof(T).Name)); };
+                catch (MissingMethodException) { throw new ArgumentException(
+                    $"indexer not found : Type <{typeof(T).Name}>"); }
             }
 
             public override bool TrySetMember(SetMemberBinder binder, object value)
             {
-                var accessor = new ReflectAccessor<T>(target, binder.Name);
+                var accessor = new ReflectAccessor<T>(_target, binder.Name);
                 accessor.SetValue(value);
                 return true;
             }
 
             public override bool TryGetMember(GetMemberBinder binder, out object result)
             {
-                var accessor = new ReflectAccessor<T>(target, binder.Name);
+                var accessor = new ReflectAccessor<T>(_target, binder.Name);
                 result = accessor.GetValue();
                 return true;
             }
@@ -531,8 +528,8 @@ namespace NUnit.Framework
                 var csharpBinder = binder.GetType().GetInterface("Microsoft.CSharp.RuntimeBinder.ICSharpInvokeOrInvokeMemberBinder");
                 if (csharpBinder == null) throw new ArgumentException("is not csharp code");
 
-                var typeArgs = (csharpBinder.GetProperty("TypeArguments").GetValue(binder, null) as IList<Type>).ToArray();
-                var parameterTypes = (binder.GetType().GetField("Cache", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(binder) as Dictionary<Type, object>)
+                var typeArgs = (csharpBinder.GetProperty("TypeArguments")!.GetValue(binder, null) as IList<Type>)!.ToArray();
+                var parameterTypes = (binder.GetType().GetField("Cache", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(binder) as Dictionary<Type, object>)!
                     .First()
                     .Key
                     .GetGenericArguments()
@@ -541,7 +538,7 @@ namespace NUnit.Framework
                     .ToArray();
 
                 var method = MatchMethod(binder.Name, args, typeArgs, parameterTypes);
-                result = method.Invoke(target, args);
+                result = method.Invoke(_target, args);
 
                 return true;
             }
@@ -560,7 +557,8 @@ namespace NUnit.Framework
                 var nameMatched = typeof(T).GetMethods(TransparentFlags)
                     .Where(mi => mi.Name == methodName)
                     .ToArray();
-                if (!nameMatched.Any()) throw new ArgumentException(string.Format("\"{0}\" not found : Type <{1}>", methodName, typeof(T).Name));
+                if (!nameMatched.Any()) throw new ArgumentException(
+                    $"\"{methodName}\" not found : Type <{typeof(T).Name}>");
 
                 // type inference
                 var typedMethods = nameMatched
@@ -587,7 +585,7 @@ namespace NUnit.Framework
                                 .Where(a => a.Type != null);
 
                             var typeParams = genericArguments
-                                .GroupJoin(parameterGenericTypes, x => x, x => x.Key, (_, Args) => Args)
+                                .GroupJoin(parameterGenericTypes, x => x, x => x.Key, (_, __) => __)
                                 .ToArray();
                             if (!typeParams.All(xs => xs.Any())) return null; // types short
 
@@ -619,13 +617,14 @@ namespace NUnit.Framework
                         .SequenceEqual(parameterTypes, new EqualsComparer<Type>((x, y) =>
                             (x.IsGenericParameter)
                                 ? a.TypeParameters[x].IsAssignableFrom(y)
-                                : x.Equals(y)))
+                                : x == y))
                     )
                     .ToArray();
 
-                if (!typedMethods.Any()) throw new ArgumentException(string.Format("\"{0}\" not match arguments : Type <{1}>", methodName, typeof(T).Name));
+                if (!typedMethods.Any()) throw new ArgumentException(
+                    $"\"{methodName}\" not match arguments : Type <{typeof(T).Name}>");
 
-                // nongeneric
+                // non generic
                 var nongeneric = typedMethods.Where(a => a.TypeParameters == null).ToArray();
                 if (nongeneric.Length == 1) return nongeneric[0].MethodInfo;
 
@@ -642,21 +641,21 @@ namespace NUnit.Framework
                 if (generic != null) return generic.MethodInfo.MakeGenericMethod(generic.TypeParameters.Select(kvp => kvp.Value).ToArray());
 
                 // ambiguous
-                throw new ArgumentException(string.Format("\"{0}\" ambiguous arguments : Type <{1}>", methodName, typeof(T).Name));
+                throw new ArgumentException($"\"{methodName}\" ambiguous arguments : Type <{typeof(T).Name}>");
             }
 
             private class EqualsComparer<TX> : IEqualityComparer<TX>
             {
-                private readonly Func<TX, TX, bool> equals;
+                private readonly Func<TX, TX, bool> _equals;
 
                 public EqualsComparer(Func<TX, TX, bool> equals)
                 {
-                    this.equals = equals;
+                    _equals = equals;
                 }
 
                 public bool Equals(TX x, TX y)
                 {
-                    return equals(x, y);
+                    return _equals(x, y);
                 }
 
                 public int GetHashCode(TX obj)
@@ -672,23 +671,23 @@ namespace NUnit.Framework
 
         private class ExpressionDumper<T> : ExpressionVisitor
         {
-            ParameterExpression param;
-            T target;
+            readonly ParameterExpression _param;
+            readonly T _target;
 
-            public Dictionary<string, object> Members { get; private set; }
+            public Dictionary<string, object> Members { get; }
 
             public ExpressionDumper(T target, ParameterExpression param)
             {
-                this.target = target;
-                this.param = param;
-                this.Members = new Dictionary<string, object>();
+                _target = target;
+                _param = param;
+                Members = new Dictionary<string, object>();
             }
 
-            protected override System.Linq.Expressions.Expression VisitMember(MemberExpression node)
+            protected override Expression VisitMember(MemberExpression node)
             {
-                if (node.Expression == param && !Members.ContainsKey(node.Member.Name))
+                if (node.Expression == _param && !Members.ContainsKey(node.Member.Name))
                 {
-                    var accessor = new ReflectAccessor<T>(target, node.Member.Name);
+                    var accessor = new ReflectAccessor<T>(_target, node.Member.Name);
                     Members.Add(node.Member.Name, accessor.GetValue());
                 }
 

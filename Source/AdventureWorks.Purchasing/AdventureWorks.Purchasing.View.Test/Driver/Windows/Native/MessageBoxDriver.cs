@@ -2,8 +2,8 @@
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls;
 using Codeer.TestAssistant.GeneratorToolKit;
-using System;
 using System.Runtime.InteropServices;
+// ReSharper disable InconsistentNaming
 
 namespace Driver.Windows.Native
 {
@@ -37,7 +37,7 @@ namespace Driver.Windows.Native
 
             //The message box must consist of buttons and static.
             int childCount = 0;
-            EnumWindowsDelegate emumFunc = (hWnd, param) => { childCount++; return true; };
+            EnumWindowsDelegate emumFunc = (_, _) => { childCount++; return true; };
             EnumChildWindows(window.Handle, emumFunc, IntPtr.Zero);
             GC.KeepAlive(emumFunc);
             if (buttons.Length + staticCount != childCount) return false;

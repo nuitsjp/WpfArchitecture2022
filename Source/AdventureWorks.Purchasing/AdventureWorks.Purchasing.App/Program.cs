@@ -2,7 +2,7 @@
 using AdventureWorks.Purchasing.RePurchasing.MagicOnion.Client;
 using AdventureWorks.Wpf.Hosting;
 
-AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
+AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
 {
     Debug.WriteLine(eventArgs.Exception);
 };

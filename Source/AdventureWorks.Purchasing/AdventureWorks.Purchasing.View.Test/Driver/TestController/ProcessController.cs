@@ -9,9 +9,8 @@ namespace Driver.TestController
         public static WindowsAppFriend Start()
         {
             //target path
-            var path = Directory.GetCurrentDirectory();
             var targetPath = @"..\..\..\..\\AdventureWorks.Purchasing.App.Driver\bin\Debug\net6.0-windows\AdventureWorks.Purchasing.App.Driver.exe";
-            var info = new ProcessStartInfo(targetPath) { WorkingDirectory = Path.GetDirectoryName(targetPath) };
+            var info = new ProcessStartInfo(targetPath) { WorkingDirectory = Path.GetDirectoryName(targetPath)! };
             var app = new WindowsAppFriend(Process.Start(info));
             app.ResetTimeout();
             return app;
@@ -26,7 +25,10 @@ namespace Driver.TestController
             {
                 Process.GetProcessById(app.ProcessId).Kill();
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
         }
     }
 }

@@ -3,20 +3,19 @@ using Codeer.Friendly.Windows;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls;
 using Codeer.TestAssistant.GeneratorToolKit;
-using System;
-using System.Linq;
 using System.Runtime.InteropServices;
+// ReSharper disable InconsistentNaming
 
 namespace Driver.Windows.Native
 {
     public class SaveFileDialogDriver
     {
-        public WindowControl Core { get; private set; }
+        public WindowControl Core { get; }
 
         public NativeButton Button_Save { get; set; }
         public NativeButton Button_Cancel { get; set; }
-        public NativeComboBox ComboBox_FileName { get; private set; }
-        public NativeComboBox ComboBox_FileType { get; private set; }
+        public NativeComboBox ComboBox_FileName { get; }
+        public NativeComboBox ComboBox_FileType { get; }
 
         public SaveFileDialogDriver(WindowControl core)
         {
@@ -39,8 +38,7 @@ namespace Driver.Windows.Native
 
         static RECT GetWindowRect(IntPtr hwnd)
         {
-            RECT lpRect;
-            GetWindowRect(hwnd, out lpRect);
+            GetWindowRect(hwnd, out var lpRect);
             return lpRect;
         }
     }

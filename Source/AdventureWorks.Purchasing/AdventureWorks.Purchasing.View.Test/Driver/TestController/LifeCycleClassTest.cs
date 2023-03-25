@@ -5,10 +5,12 @@ using System.Diagnostics;
 
 namespace Driver.TestController
 {
+    // ReSharper disable once UnusedMember.Global
     public static class LifeCycleClassTest
     {
         static WindowsAppFriend _app;
 
+        // ReSharper disable once UnusedMember.Global
         public static WindowsAppFriend Start()
         {
             if (_app != null)
@@ -16,9 +18,13 @@ namespace Driver.TestController
                 bool exist = false;
                 try
                 {
+                    // ReSharper disable once ConditionIsAlwaysTrueOrFalse
                     exist = Process.GetProcessById(_app.ProcessId) != null;
                 }
-                catch { }
+                catch
+                {
+                    // ignored
+                }
 
                 if (!exist) _app = null;
             }
@@ -29,6 +35,7 @@ namespace Driver.TestController
             return _app;
         }
 
+        // ReSharper disable once UnusedMember.Global
         public static void Clear()
         {
             if (_app == null) return;

@@ -1,13 +1,11 @@
 ﻿using Codeer.Friendly.Windows;
 using Driver.TestController;
 using NUnit.Framework;
-using System.Diagnostics;
 using Driver.Windows;
 using AdventureWorks.Purchasing.View.RePurchasing;
 using FluentAssertions;
 using Codeer.Friendly;
 using Driver.Windows.Native;
-using AdventureWorks.Purchasing.View;
 
 namespace Scenario
 {

@@ -9,7 +9,7 @@ public static class Initializer
 {
     public static void Initialize(IApplicationBuilder builder)
     {
-        AdventureWorks.Database.Initializer.Initialize(builder);
+        Database.Initializer.Initialize(builder);
 
         TypeHandlerInitializer.Initialize();
         Production.TypeHandlerInitializer.Initialize();

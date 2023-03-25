@@ -17,7 +17,6 @@
 		<PackageReference Update="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Update="PostSharp" Version="2023.0.3" />
 		<PackageReference Update="UnitGenerator" Version="1.4.10"/>
-		<PackageReference Update="UnitGeneratorTemplate" Version="1.0.0" />
 		<PackageReference Update="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
 		<PackageReference Update="Serilog.Enrichers.Environment" Version="2.2.0" />
 		<PackageReference Update="Serilog.Enrichers.Process" Version="2.0.2" />
