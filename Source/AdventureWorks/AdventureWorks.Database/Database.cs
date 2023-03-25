@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Transactions;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace AdventureWorks.Database;
 
@@ -11,6 +12,11 @@ public class Database : IDatabase
     public Database(string connectionString)
     {
         _connectionString = connectionString;
+    }
+
+    public Database(IConfiguration configuration, string userId, string password)
+    {
+        _connectionString = ConnectionStringProvider.Resolve(configuration, userId, password);
     }
 
     public ITransaction BeginTransaction()

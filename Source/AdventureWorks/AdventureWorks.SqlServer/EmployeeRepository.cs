@@ -5,9 +5,9 @@ namespace AdventureWorks.SqlServer;
 
 public class EmployeeRepository : IEmployeeRepository
 {
-    private readonly IDatabase _database;
+    private readonly AdventureWorksDatabase _database;
 
-    public EmployeeRepository(IDatabase database)
+    public EmployeeRepository(AdventureWorksDatabase database)
     {
         _database = database;
     }

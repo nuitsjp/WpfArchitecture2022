@@ -8,6 +8,6 @@ public static class Initializer
 {
     public static void Initialize(IApplicationBuilder builder)
     {
-        builder.Services.AddTransient<IDatabase>(_ => new Database(ConnectionStringProvider.Resolve(builder.Configuration, "sa", "P@ssw0rd!")));
+        builder.Services.AddTransient<IDatabase>(_ => new Database(builder.Configuration, "sa", "P@ssw0rd!"));
     }
 }
