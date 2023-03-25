@@ -13,7 +13,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Serilog\AdventureWorks.Serilog.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

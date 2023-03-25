@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using AdventureWorks.Database;
 using System.Text;
-using AdventureWorks.Serilog;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
@@ -49,7 +48,7 @@ public class ApplicationBuilder : IApplicationBuilder
     {
         _builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
-        InitializeLogger(Configuration, applicationName);
+        InitializeSerilog(Configuration, applicationName);
 
         _builder.Host.UseSerilog();
         _builder.Services.AddGrpc();
@@ -70,7 +69,7 @@ public class ApplicationBuilder : IApplicationBuilder
 
     public static ApplicationBuilder CreateBuilder(string[] args) => new (WebApplication.CreateBuilder(args));
 
-    public static void InitializeLogger(IConfiguration configuration, string applicationName)
+    public static void InitializeSerilog(IConfiguration configuration, string applicationName)
     {
         var connectionString = ConnectionStringProvider.Resolve(configuration);
         var minimumLevel = GetMinimumLevel(connectionString, applicationName);

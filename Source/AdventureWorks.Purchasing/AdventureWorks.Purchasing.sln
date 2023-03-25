@@ -50,8 +50,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.ViewMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.View", "..\AdventureWorks\AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj", "{31DCD9B2-F890-47C8-A6CA-4C644DB74221}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Serilog", "..\AdventureWorks\AdventureWorks.Serilog\AdventureWorks.Serilog.csproj", "{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore.Hosting", "..\AdventureWorks\AdventureWorks.AspNetCore.Hosting\AdventureWorks.AspNetCore.Hosting.csproj", "{0377A8AC-2C45-4716-989B-C320D9E59AED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Hosting", "..\AdventureWorks\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj", "{17F44C38-FC70-4031-AB23-9C1BDB8F16A3}"
@@ -80,9 +78,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.RePurchasing.SqlServer", "AdventureWorks.Purchasing.RePurchasing.SqlServer\AdventureWorks.Purchasing.RePurchasing.SqlServer.csproj", "{AB8A2077-34D9-462F-894F-DD59742A4DEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.RePurchasing.ViewModel", "AdventureWorks.Purchasing.RePurchasing.ViewModel\AdventureWorks.Purchasing.RePurchasing.ViewModel.csproj", "{5CD8A1AC-3303-4B6A-895C-E0944B49DBC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.RePurchasing.ViewModel", "AdventureWorks.Purchasing.RePurchasing.ViewModel\AdventureWorks.Purchasing.RePurchasing.ViewModel.csproj", "{5CD8A1AC-3303-4B6A-895C-E0944B49DBC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Purchasing.Menu.ViewModel", "AdventureWorks.Purchasing.Menu.ViewModel\AdventureWorks.Purchasing.Menu.ViewModel.csproj", "{6AA73790-0476-4E2A-89AC-296997ACC0AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.Menu.ViewModel", "AdventureWorks.Purchasing.Menu.ViewModel\AdventureWorks.Purchasing.Menu.ViewModel.csproj", "{6AA73790-0476-4E2A-89AC-296997ACC0AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Purchasing", "AdventureWorks.Purchasing", "{3A6CD4B1-C552-4B66-A6B4-516946CE40D8}"
 EndProject
@@ -166,10 +164,6 @@ Global
 		{31DCD9B2-F890-47C8-A6CA-4C644DB74221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31DCD9B2-F890-47C8-A6CA-4C644DB74221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31DCD9B2-F890-47C8-A6CA-4C644DB74221}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0377A8AC-2C45-4716-989B-C320D9E59AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -249,7 +243,6 @@ Global
 		{6E797675-5907-4EC6-BB5C-B04B25EB94C4} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{ACEA5E55-C241-4415-AD53-B63F1D6E1AA9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{31DCD9B2-F890-47C8-A6CA-4C644DB74221} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
-		{DC862A2F-E3FB-4990-9457-5C0CA84D4F06} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{0377A8AC-2C45-4716-989B-C320D9E59AED} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{17F44C38-FC70-4031-AB23-9C1BDB8F16A3} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{6C23C813-355E-4A33-87F2-28E6F923974C} = {3A6CD4B1-C552-4B66-A6B4-516946CE40D8}
