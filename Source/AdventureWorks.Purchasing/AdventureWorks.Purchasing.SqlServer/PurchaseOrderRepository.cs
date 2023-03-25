@@ -5,9 +5,9 @@ namespace AdventureWorks.Purchasing.SqlServer;
 
 public class PurchaseOrderRepository : IPurchaseOrderRepository
 {
-	private readonly IDatabase _database;
+	private readonly PurchasingDatabase _database;
 
-    public PurchaseOrderRepository(IDatabase database)
+    public PurchaseOrderRepository(PurchasingDatabase database)
     {
         _database = database;
     }

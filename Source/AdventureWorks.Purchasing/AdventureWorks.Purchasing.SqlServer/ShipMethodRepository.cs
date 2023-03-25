@@ -5,9 +5,9 @@ namespace AdventureWorks.Purchasing.SqlServer;
 
 public class ShipMethodRepository : IShipMethodRepository
 {
-    private readonly IDatabase _database;
+    private readonly PurchasingDatabase _database;
 
-    public ShipMethodRepository(IDatabase database)
+    public ShipMethodRepository(PurchasingDatabase database)
     {
         _database = database;
     }

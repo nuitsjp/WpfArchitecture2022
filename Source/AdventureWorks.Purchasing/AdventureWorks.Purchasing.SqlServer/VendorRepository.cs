@@ -5,9 +5,9 @@ namespace AdventureWorks.Purchasing.SqlServer;
 
 public class VendorRepository : IVendorRepository
 {
-    private readonly IDatabase _database;
+    private readonly PurchasingDatabase _database;
 
-    public VendorRepository(IDatabase database)
+    public VendorRepository(PurchasingDatabase database)
     {
         _database = database;
     }

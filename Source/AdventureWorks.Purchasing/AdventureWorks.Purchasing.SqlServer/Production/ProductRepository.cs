@@ -6,9 +6,9 @@ namespace AdventureWorks.Purchasing.SqlServer.Production;
 
 public class ProductRepository : IProductRepository
 {
-    private readonly IDatabase _database;
+    private readonly PurchasingDatabase _database;
 
-    public ProductRepository(IDatabase database)
+    public ProductRepository(PurchasingDatabase database)
     {
         _database = database;
     }
