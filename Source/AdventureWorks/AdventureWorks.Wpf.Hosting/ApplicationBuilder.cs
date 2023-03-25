@@ -97,10 +97,10 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
 
     public static void InitializeSerilog(IConfiguration configuration, string applicationName)
     {
-        var connectionString = ConnectionStringProvider.Resolve(configuration);
+        var connectionString = ConnectionStringProvider.Resolve(configuration, "sa", "P@ssw0rd!");
         var minimumLevel = GetMinimumLevel(connectionString, applicationName);
         var settingString = Properties.Resources.Wpf
-            .Replace("%ConnectionString%", ConnectionStringProvider.Resolve(configuration))
+            .Replace("%ConnectionString%", connectionString)
             .Replace("%MinimumLevel%", minimumLevel)
             .Replace("%ApplicationName%", applicationName);
         using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
