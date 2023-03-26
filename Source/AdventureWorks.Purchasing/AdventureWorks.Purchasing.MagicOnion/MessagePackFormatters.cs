@@ -66,6 +66,54 @@ public class ShipMethodIdFormatter : IMessagePackFormatter<ShipMethodId>
         return new ShipMethodId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
     }
 }
+public class ProductIdFormatter : IMessagePackFormatter<ProductId>
+{
+    public void Serialize(ref MessagePackWriter writer, ProductId value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.Int32>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public ProductId Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new ProductId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
+    }
+}
+public class ProductCategoryIdFormatter : IMessagePackFormatter<ProductCategoryId>
+{
+    public void Serialize(ref MessagePackWriter writer, ProductCategoryId value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.Int32>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public ProductCategoryId Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new ProductCategoryId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
+    }
+}
+public class ProductSubcategoryIdFormatter : IMessagePackFormatter<ProductSubcategoryId>
+{
+    public void Serialize(ref MessagePackWriter writer, ProductSubcategoryId value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.Int32>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public ProductSubcategoryId Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new ProductSubcategoryId(options.Resolver.GetFormatterWithVerify<System.Int32>().Deserialize(ref reader, options));
+    }
+}
+public class UnitMeasureCodeFormatter : IMessagePackFormatter<UnitMeasureCode>
+{
+    public void Serialize(ref MessagePackWriter writer, UnitMeasureCode value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.String>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public UnitMeasureCode Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new UnitMeasureCode(options.Resolver.GetFormatterWithVerify<System.String>().Deserialize(ref reader, options));
+    }
+}
 
 public class CustomResolver : IFormatterResolver
 {
@@ -104,6 +152,10 @@ internal static class CustomResolverGetFormatterHelper
         {typeof(PurchaseOrderId), new PurchaseOrderIdFormatter()},
         {typeof(PurchaseOrderDetailId), new PurchaseOrderDetailIdFormatter()},
         {typeof(ShipMethodId), new ShipMethodIdFormatter()},
+        {typeof(ProductId), new ProductIdFormatter()},
+        {typeof(ProductCategoryId), new ProductCategoryIdFormatter()},
+        {typeof(ProductSubcategoryId), new ProductSubcategoryIdFormatter()},
+        {typeof(UnitMeasureCode), new UnitMeasureCodeFormatter()},
     };
 
     internal static object GetFormatter(Type t)

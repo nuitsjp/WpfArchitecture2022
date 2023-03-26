@@ -19,10 +19,6 @@
 	    <LastGenOutput>MessagePackFormatters.cs</LastGenOutput>
 	    <Generator>TextTemplatingFileGenerator</Generator>
 	  </None>
-	  <None Update="Production\MessagePackFormatters.tt">
-	    <LastGenOutput>MessagePackFormatters.cs</LastGenOutput>
-	    <Generator>TextTemplatingFileGenerator</Generator>
-	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -31,11 +27,6 @@
 
 	<ItemGroup>
 	  <Compile Update="MessagePackFormatters.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>MessagePackFormatters.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="Production\MessagePackFormatters.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>MessagePackFormatters.tt</DependentUpon>
