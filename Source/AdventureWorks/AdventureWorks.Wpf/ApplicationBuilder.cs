@@ -13,7 +13,7 @@ using MessageBoxButton = System.Windows.MessageBoxButton;
 using MessageBoxImage = System.Windows.MessageBoxImage;
 using MessageBoxResult = System.Windows.MessageBoxResult;
 
-namespace AdventureWorks.Wpf.Hosting;
+namespace AdventureWorks.Wpf;
 
 public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     where TApplication : Application

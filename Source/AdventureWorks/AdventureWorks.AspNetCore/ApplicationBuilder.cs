@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using AdventureWorks.Database;
 using System.Text;
+using AdventureWorks.Database;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using IApplicationBuilder = AdventureWorks.Hosting.IApplicationBuilder;
 
-namespace AdventureWorks.AspNetCore.Hosting;
+namespace AdventureWorks.AspNetCore;
 public class ApplicationBuilder : IApplicationBuilder
 {
     private readonly List<IFormatterResolver> _resolvers = new();

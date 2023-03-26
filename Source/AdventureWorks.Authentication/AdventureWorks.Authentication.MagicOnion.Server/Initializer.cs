@@ -1,5 +1,5 @@
 ﻿
-using AdventureWorks.AspNetCore.Hosting;
+using AdventureWorks.AspNetCore;
 
 namespace AdventureWorks.Authentication.MagicOnion.Server;
 

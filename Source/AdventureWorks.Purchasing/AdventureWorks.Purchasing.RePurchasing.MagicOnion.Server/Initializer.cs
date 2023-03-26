@@ -1,4 +1,4 @@
-﻿using AdventureWorks.AspNetCore.Hosting;
+﻿using AdventureWorks.AspNetCore;
 
 namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion.Server;
 

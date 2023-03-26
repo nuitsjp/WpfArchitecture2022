@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using AdventureWorks.Purchasing.RePurchasing.MagicOnion.Client;
-using AdventureWorks.Wpf.Hosting;
+using AdventureWorks.Wpf;
 
 AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
 {

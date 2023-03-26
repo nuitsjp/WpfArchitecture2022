@@ -1,4 +1,4 @@
-using ApplicationBuilder = AdventureWorks.AspNetCore.Hosting.ApplicationBuilder;
+using ApplicationBuilder = AdventureWorks.AspNetCore.ApplicationBuilder;
 
 var builder = ApplicationBuilder.CreateBuilder(args);
 
