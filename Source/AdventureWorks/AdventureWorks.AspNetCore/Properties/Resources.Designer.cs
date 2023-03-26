@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdventureWorks.AspNetCore.Hosting.Properties {
+namespace AdventureWorks.AspNetCore.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AdventureWorks.AspNetCore.Hosting.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.AspNetCore.Hosting.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.AspNetCore.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

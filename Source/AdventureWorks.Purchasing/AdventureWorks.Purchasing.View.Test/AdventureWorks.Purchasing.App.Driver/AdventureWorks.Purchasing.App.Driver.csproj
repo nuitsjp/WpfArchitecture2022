@@ -8,12 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Include="..\..\AdventureWorks.Purchasing.App\appsettings.json" Link="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 	  <ProjectReference Include="..\..\..\AdventureWorks\AdventureWorks.Wpf.Hosting\AdventureWorks.Wpf.Hosting.csproj" />
 	  <ProjectReference Include="..\..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
@@ -29,6 +23,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Authentication\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 	</Project>

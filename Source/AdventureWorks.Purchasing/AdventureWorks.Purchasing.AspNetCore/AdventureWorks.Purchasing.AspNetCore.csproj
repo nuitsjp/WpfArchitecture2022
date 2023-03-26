@@ -10,7 +10,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore.Hosting\AdventureWorks.AspNetCore.Hosting.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj" />
