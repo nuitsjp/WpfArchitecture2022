@@ -15,7 +15,7 @@ public class PurchaseOrderRepositoryClient : IPurchaseOrderRepository
 
     public async Task RegisterAsync(PurchaseOrder purchaseOrder)
     {
-        var server = MagicOnionClient.Create<IPurchaseOrderRepositoryServer>(GrpcChannel.ForAddress(_config.Address));
+        var server = MagicOnionClient.Create<IPurchaseOrderRepositoryService>(GrpcChannel.ForAddress(_config.Address));
         await server.RegisterAsync(purchaseOrder);
     }
 }

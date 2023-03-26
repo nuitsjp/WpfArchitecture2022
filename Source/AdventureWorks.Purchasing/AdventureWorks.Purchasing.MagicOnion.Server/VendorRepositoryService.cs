@@ -12,17 +12,17 @@ namespace AdventureWorks.Purchasing.MagicOnion.Server;
 /// 警告を抑制する。
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-public class ShipMethodRepositoryServer : ServiceBase<IShipMethodRepositoryServer>, IShipMethodRepositoryServer
+public class VendorRepositoryService : ServiceBase<IVendorRepositoryService>, IVendorRepositoryService
 {
-    private readonly IShipMethodRepository _repository;
+    private readonly IVendorRepository _repository;
 
-    public ShipMethodRepositoryServer(IShipMethodRepository repository)
+    public VendorRepositoryService(IVendorRepository repository)
     {
         _repository = repository;
     }
 
-    public async UnaryResult<IList<ShipMethod>> GetShipMethodsAsync()
+    public async UnaryResult<Vendor> GetVendorByIdAsync(VendorId vendorId)
     {
-        return await _repository.GetShipMethodsAsync();
+        return await _repository.GetVendorByIdAsync(vendorId);
     }
 }

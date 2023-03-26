@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Purchasing.MagicOnion.Client;
 
-public interface IPurchaseOrderRepositoryServer : IService<IPurchaseOrderRepositoryServer>
+public interface IPurchaseOrderRepositoryService : IService<IPurchaseOrderRepositoryService>
 {
     UnaryResult RegisterAsync(PurchaseOrder purchaseOrder);
 }

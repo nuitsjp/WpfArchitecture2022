@@ -15,7 +15,7 @@ public class VendorRepositoryClient : IVendorRepository
 
     public async Task<Vendor> GetVendorByIdAsync(VendorId vendorId)
     {
-        var server = MagicOnionClient.Create<IVendorRepositoryServer>(GrpcChannel.ForAddress(_config.Address));
+        var server = MagicOnionClient.Create<IVendorRepositoryService>(GrpcChannel.ForAddress(_config.Address));
         return await server.GetVendorByIdAsync(vendorId);
     }
 }

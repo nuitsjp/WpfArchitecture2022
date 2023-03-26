@@ -9,11 +9,11 @@ namespace AdventureWorks.Purchasing.MagicOnion.Server;
 /// 警告を抑制する。
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-public class PurchaseOrderRepositoryServer : ServiceBase<IPurchaseOrderRepositoryServer> , IPurchaseOrderRepositoryServer
+public class PurchaseOrderRepositoryService : ServiceBase<IPurchaseOrderRepositoryService> , IPurchaseOrderRepositoryService
 {
     private readonly IPurchaseOrderRepository _repository;
 
-    public PurchaseOrderRepositoryServer(IPurchaseOrderRepository repository)
+    public PurchaseOrderRepositoryService(IPurchaseOrderRepository repository)
     {
         _repository = repository;
     }

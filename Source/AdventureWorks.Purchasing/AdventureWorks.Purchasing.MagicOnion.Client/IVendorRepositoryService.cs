@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Purchasing.MagicOnion.Client;
 
-public interface IVendorRepositoryServer : IService<IVendorRepositoryServer>
+public interface IVendorRepositoryService : IService<IVendorRepositoryService>
 {
     UnaryResult<Vendor> GetVendorByIdAsync(VendorId vendorId);
 }

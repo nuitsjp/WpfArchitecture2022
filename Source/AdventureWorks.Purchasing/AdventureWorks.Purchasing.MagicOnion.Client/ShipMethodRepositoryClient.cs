@@ -15,7 +15,7 @@ public class ShipMethodRepositoryClient : IShipMethodRepository
 
     public async Task<IList<ShipMethod>> GetShipMethodsAsync()
     {
-        var server = MagicOnionClient.Create<IShipMethodRepositoryServer>(GrpcChannel.ForAddress(_config.Address));
+        var server = MagicOnionClient.Create<IShipMethodRepositoryService>(GrpcChannel.ForAddress(_config.Address));
         return await server.GetShipMethodsAsync();
     }
 }
