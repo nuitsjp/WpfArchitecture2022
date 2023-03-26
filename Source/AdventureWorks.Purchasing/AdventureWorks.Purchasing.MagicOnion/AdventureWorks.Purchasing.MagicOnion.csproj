@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MessagePack" />
+		<PackageReference Include="MagicOnion.Client" />
 	</ItemGroup>
 
 	<ItemGroup>

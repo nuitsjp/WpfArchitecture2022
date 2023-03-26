@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Purchasing.MagicOnion.Client;
-using MagicOnion;
+﻿using MagicOnion;
 using MagicOnion.Server;
 
 namespace AdventureWorks.Purchasing.MagicOnion.Server;

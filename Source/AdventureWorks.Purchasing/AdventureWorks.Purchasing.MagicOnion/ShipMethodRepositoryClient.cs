@@ -2,7 +2,7 @@
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Client;
+namespace AdventureWorks.Purchasing.MagicOnion;
 
 public class ShipMethodRepositoryClient : IShipMethodRepository
 {

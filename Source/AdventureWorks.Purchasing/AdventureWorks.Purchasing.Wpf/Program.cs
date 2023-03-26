@@ -13,7 +13,7 @@ var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWo
 Initializer.Initialize(builder);
 
 // 購買サービスのクライアントを初期化する。
-AdventureWorks.Purchasing.MagicOnion.Client.Initializer.Initialize(builder);
+AdventureWorks.Purchasing.MagicOnion.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.RePurchasing.MagicOnion.Initializer.Initialize(builder);
 
 // View & ViewModelを初期化する。
