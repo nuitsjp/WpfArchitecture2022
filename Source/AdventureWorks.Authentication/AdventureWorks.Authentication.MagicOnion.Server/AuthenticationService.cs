@@ -1,4 +1,3 @@
-using AdventureWorks.Authentication.MagicOnion.Client;
 using MagicOnion;
 using MagicOnion.Server;
 

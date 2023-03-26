@@ -2,7 +2,7 @@
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion.Client;
+namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion;
 
 public class RePurchasingQueryClient : IRePurchasingQuery
 {

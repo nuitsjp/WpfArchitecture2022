@@ -2,7 +2,7 @@
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Authentication.MagicOnion.Client;
+namespace AdventureWorks.Authentication.MagicOnion;
 
 public class AuthenticationContext : IAuthenticationContext
 {

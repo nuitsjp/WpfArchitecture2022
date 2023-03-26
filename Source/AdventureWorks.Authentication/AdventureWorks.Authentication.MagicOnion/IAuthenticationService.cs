@@ -1,6 +1,6 @@
 ﻿using MagicOnion;
 
-namespace AdventureWorks.Authentication.MagicOnion.Client;
+namespace AdventureWorks.Authentication.MagicOnion;
 
 public interface IAuthenticationService : IService<IAuthenticationService>
 {

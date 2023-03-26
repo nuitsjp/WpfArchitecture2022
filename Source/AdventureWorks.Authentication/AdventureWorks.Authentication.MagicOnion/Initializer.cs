@@ -1,7 +1,7 @@
 ﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Authentication.MagicOnion.Client;
+namespace AdventureWorks.Authentication.MagicOnion;
 
 public static class Initializer
 {

@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Authentication.MagicOnion.Client\AdventureWorks.Authentication.MagicOnion.Client.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Authentication.MagicOnion\AdventureWorks.Authentication.MagicOnion.csproj" />
 	</ItemGroup>
 
 </Project>
