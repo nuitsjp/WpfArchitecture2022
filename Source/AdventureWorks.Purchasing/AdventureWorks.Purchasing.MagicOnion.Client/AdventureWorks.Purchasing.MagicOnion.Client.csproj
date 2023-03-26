@@ -15,8 +15,4 @@
 		<ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Production\" />
-	</ItemGroup>
-
 </Project>

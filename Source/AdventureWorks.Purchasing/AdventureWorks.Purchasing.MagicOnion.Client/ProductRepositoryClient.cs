@@ -2,7 +2,7 @@
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Client.Production;
+namespace AdventureWorks.Purchasing.MagicOnion.Client;
 
 public class ProductRepositoryClient : IProductRepository
 {

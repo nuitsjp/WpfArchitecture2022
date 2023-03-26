@@ -1,6 +1,6 @@
 ﻿using MagicOnion;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Client.Production;
+namespace AdventureWorks.Purchasing.MagicOnion.Client;
 
 public interface IProductRepositoryServer : IService<IProductRepositoryServer>
 {
