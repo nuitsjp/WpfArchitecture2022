@@ -16,7 +16,7 @@ builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepository>();
-builder.Services.AddTransient<IRePurchasingQueryService, RePurchasingQueryService>();
+builder.Services.AddTransient<IRePurchasingQuery, RePurchasingQuery>();
 
 // View & ViewModelを初期化する。
 AdventureWorks.Purchasing.View.Initializer.Initialize(builder);

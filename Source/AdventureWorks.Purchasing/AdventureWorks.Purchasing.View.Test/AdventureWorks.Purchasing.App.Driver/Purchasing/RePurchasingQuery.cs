@@ -3,7 +3,7 @@ using AdventureWorks.Purchasing.RePurchasing;
 
 namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
-public class RePurchasingQueryService : IRePurchasingQueryService
+public class RePurchasingQuery : IRePurchasingQuery
 {
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {

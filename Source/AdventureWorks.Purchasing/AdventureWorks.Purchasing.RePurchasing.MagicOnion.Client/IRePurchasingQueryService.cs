@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion.Client;
 
-public interface IRePurchasingQueryServiceServer : IService<IRePurchasingQueryServiceServer>
+public interface IRePurchasingQueryService : IService<IRePurchasingQueryService>
 {
     UnaryResult<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync();
 }

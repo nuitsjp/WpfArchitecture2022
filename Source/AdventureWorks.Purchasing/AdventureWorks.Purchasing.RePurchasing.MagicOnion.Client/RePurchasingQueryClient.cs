@@ -4,7 +4,7 @@ using MagicOnion.Client;
 
 namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion.Client;
 
-public class RePurchasingQueryClient : IRePurchasingQueryService
+public class RePurchasingQueryClient : IRePurchasingQuery
 {
     private readonly MagicOnionConfig _config;
 
@@ -16,7 +16,7 @@ public class RePurchasingQueryClient : IRePurchasingQueryService
 
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {
-        var client = MagicOnionClient.Create<IRePurchasingQueryServiceServer>(GrpcChannel.ForAddress(_config.Address));
+        var client = MagicOnionClient.Create<IRePurchasingQueryService>(GrpcChannel.ForAddress(_config.Address));
         return await client.GetRequiringPurchaseProductsAsync();
     }
 }
