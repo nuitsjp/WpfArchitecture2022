@@ -5,20 +5,20 @@ namespace AdventureWorks.Purchasing.ViewModel;
 
 public class MainViewModel : INavigatedAsyncAware
 {
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationContext _authenticationContext;
     private readonly Menu.ViewModel.IPresentationService _presentationService;
 
     public MainViewModel(
         [Inject] Menu.ViewModel.IPresentationService presentationService, 
-        [Inject] IAuthenticationService authenticationService)
+        [Inject] IAuthenticationContext authenticationContext)
     {
         _presentationService = presentationService;
-        _authenticationService = authenticationService;
+        _authenticationContext = authenticationContext;
     }
 
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        if (await _authenticationService.TryAuthenticateAsync())
+        if (await _authenticationContext.TryAuthenticateAsync())
         {
             await _presentationService.NavigateToMenuAsync();
         }

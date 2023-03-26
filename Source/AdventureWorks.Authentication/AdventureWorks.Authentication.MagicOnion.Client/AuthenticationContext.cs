@@ -4,13 +4,13 @@ using MagicOnion.Client;
 
 namespace AdventureWorks.Authentication.MagicOnion.Client;
 
-public class AuthenticationService : IAuthenticationService
+public class AuthenticationContext : IAuthenticationContext
 {
     private readonly MagicOnionConfig _config;
     private Employee? _currentEmployee;
 
 
-    public AuthenticationService(MagicOnionConfig config)
+    public AuthenticationContext(MagicOnionConfig config)
     {
         _config = config;
     }
@@ -41,7 +41,7 @@ public class AuthenticationService : IAuthenticationService
         // https://learn.microsoft.com/ja-jp/aspnet/core/grpc/authn-and-authz?view=aspnetcore-7.0
         var userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 #pragma warning restore CA1416
-        var client = MagicOnionClient.Create<IAuthenticationServiceServer>(GrpcChannel.ForAddress(_config.Address));
+        var client = MagicOnionClient.Create<IAuthenticationService>(GrpcChannel.ForAddress(_config.Address));
         _currentEmployee = await client.GetEmployeeAsync(new LoginId(userName));
 
         return _currentEmployee is not null;

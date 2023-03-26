@@ -12,7 +12,7 @@ namespace AdventureWorks.Purchasing.RePurchasing.ViewModel;
 public partial class RePurchasingViewModel : INavigatedAsyncAware
 {
     private readonly IPresentationService _presentationService;
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationContext _authenticationContext;
     private readonly IShipMethodRepository _shipMethodRepository;
     private readonly IProductRepository _productRepository;
     private readonly IPurchaseOrderRepository _purchaseOrderRepository;
@@ -25,7 +25,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         Vendor vendor,
         IEnumerable<RequiringPurchaseProduct> requiringPurchaseProducts,
         [Inject] IPresentationService presentationService,
-        [Inject] IAuthenticationService authenticationService,
+        [Inject] IAuthenticationContext authenticationContext,
         [Inject] IShipMethodRepository shipMethodRepository, 
         [Inject] IProductRepository productRepository, 
         [Inject] IPurchaseOrderRepository purchaseOrderRepository)
@@ -33,7 +33,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         Vendor = vendor;
         RequiringPurchaseProducts = requiringPurchaseProducts.ToList();
         _presentationService = presentationService;
-        _authenticationService = authenticationService;
+        _authenticationContext = authenticationContext;
         _shipMethodRepository = shipMethodRepository;
         _productRepository = productRepository;
         _purchaseOrderRepository = purchaseOrderRepository;
@@ -63,7 +63,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     {
         PurchaseOrderBuilder builder =
             new(
-                _authenticationService.CurrentEmployee.Id,
+                _authenticationContext.CurrentEmployee.Id,
                 Vendor,
                 _selectedShipMethod!, // 未選択の場合コマンドが実行されないため、nullではない。
                 Date.Today);

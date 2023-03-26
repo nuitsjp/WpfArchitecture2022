@@ -12,11 +12,11 @@ namespace AdventureWorks.Authentication.MagicOnion.Server;
 /// åxçêÇó}êßÇ∑ÇÈÅB
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-public class AuthenticationServiceServer : ServiceBase<IAuthenticationServiceServer>, IAuthenticationServiceServer
+public class AuthenticationService : ServiceBase<IAuthenticationService>, IAuthenticationService
 {
     private readonly IEmployeeRepository _employeeRepository;
 
-    public AuthenticationServiceServer(IEmployeeRepository employeeRepository)
+    public AuthenticationService(IEmployeeRepository employeeRepository)
     {
         _employeeRepository = employeeRepository;
     }

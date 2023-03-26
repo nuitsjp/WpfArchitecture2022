@@ -9,7 +9,7 @@ using AdventureWorks.Purchasing.RePurchasing;
 var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 
 // 認証サービスを初期化する。
-builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+builder.Services.AddTransient<IAuthenticationContext, AuthenticationContext>();
 
 // 購買サービスのクライアントを初期化する。
 builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();

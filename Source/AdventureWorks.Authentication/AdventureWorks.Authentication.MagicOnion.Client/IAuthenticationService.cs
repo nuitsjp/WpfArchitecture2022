@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Authentication.MagicOnion.Client;
 
-public interface IAuthenticationServiceServer : IService<IAuthenticationServiceServer>
+public interface IAuthenticationService : IService<IAuthenticationService>
 {
     UnaryResult<Employee?> GetEmployeeAsync(LoginId loginId);
 }

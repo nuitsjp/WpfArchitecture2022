@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Purchasing.App.Driver.Authentication;
 
-public class AuthenticationService : IAuthenticationService
+public class AuthenticationContext : IAuthenticationContext
 {
     public Employee CurrentEmployee { get; } =
         new(
