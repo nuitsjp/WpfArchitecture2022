@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Purchasing.Production;
-
-namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
+﻿namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
 public class ProductRepository : IProductRepository
 {

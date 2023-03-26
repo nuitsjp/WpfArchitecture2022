@@ -3,7 +3,6 @@ using AdventureWorks.Purchasing;
 using AdventureWorks.Purchasing.App.Driver;
 using AdventureWorks.Purchasing.App.Driver.Authentication;
 using AdventureWorks.Purchasing.App.Driver.Purchasing;
-using AdventureWorks.Purchasing.Production;
 using AdventureWorks.Purchasing.RePurchasing;
 
 var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();

@@ -1,6 +1,5 @@
 ﻿using AdventureWorks.Hosting;
 using AdventureWorks.Purchasing.MagicOnion.Client.Production;
-using AdventureWorks.Purchasing.Production;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Purchasing.MagicOnion.Client;

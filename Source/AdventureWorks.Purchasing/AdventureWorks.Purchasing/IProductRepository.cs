@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Purchasing.Production;
+﻿namespace AdventureWorks.Purchasing;
 
 public interface IProductRepository
 {

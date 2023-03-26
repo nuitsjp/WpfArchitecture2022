@@ -12,6 +12,10 @@
 	{
 		(UnitName: "VendorId", UnitType: typeof(int)),
 		(UnitName: "ShipMethodId", UnitType: typeof(int)),
+		(UnitName: "ProductId", UnitType: typeof(int)),
+		(UnitName: "ProductCategoryId", UnitType: typeof(int)),
+		(UnitName: "ProductSubcategoryId", UnitType: typeof(int)),
+		(UnitName: "UnitMeasureCode", UnitType: typeof(string)),
 	};
 #>
 <#@ include file="..\..\AdventureWorks\AdventureWorks.Database\DapperTypeHandlers.t4" once="true" #>

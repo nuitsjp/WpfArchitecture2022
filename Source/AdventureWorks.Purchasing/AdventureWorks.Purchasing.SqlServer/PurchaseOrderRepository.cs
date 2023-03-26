@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Database;
-using Dapper;
+﻿using Dapper;
 
 namespace AdventureWorks.Purchasing.SqlServer;
 

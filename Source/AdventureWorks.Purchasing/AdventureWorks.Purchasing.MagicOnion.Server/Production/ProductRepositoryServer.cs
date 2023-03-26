@@ -1,5 +1,4 @@
 ﻿using AdventureWorks.Purchasing.MagicOnion.Client.Production;
-using AdventureWorks.Purchasing.Production;
 using MagicOnion;
 using MagicOnion.Server;
 

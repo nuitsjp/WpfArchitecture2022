@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using AdventureWorks.Authentication;
-using AdventureWorks.Purchasing.Production;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kamishibai;

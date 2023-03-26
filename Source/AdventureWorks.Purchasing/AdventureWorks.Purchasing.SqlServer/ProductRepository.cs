@@ -1,8 +1,6 @@
-﻿using AdventureWorks.Database;
-using AdventureWorks.Purchasing.Production;
-using Dapper;
+﻿using Dapper;
 
-namespace AdventureWorks.Purchasing.SqlServer.Production;
+namespace AdventureWorks.Purchasing.SqlServer;
 
 public class ProductRepository : IProductRepository
 {
@@ -31,7 +29,7 @@ from
 	Production.Product
 where
     ProductID = @ProductId",
-            new {ProductId = productId});
+            new { ProductId = productId });
 
     }
 }

@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Purchasing.Production;
-
-namespace AdventureWorks.Purchasing;
+﻿namespace AdventureWorks.Purchasing;
 
 public record PurchaseOrderDetail
 {

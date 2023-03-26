@@ -1,5 +1,4 @@
 ﻿using AdventureWorks.MagicOnion;
-using AdventureWorks.Purchasing.Production;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 

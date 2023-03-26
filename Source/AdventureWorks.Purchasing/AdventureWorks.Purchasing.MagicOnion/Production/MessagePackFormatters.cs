@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Purchasing.Production;
-
-// ReSharper disable RedundantNameQualifier
+﻿// ReSharper disable RedundantNameQualifier
 // ReSharper disable ArrangeTrailingCommaInMultilineLists
 // ReSharper disable BuiltInTypeReferenceStyle
 using MessagePack;

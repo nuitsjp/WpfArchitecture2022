@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Purchasing.Production;
-using AdventureWorks.Purchasing.RePurchasing;
+﻿using AdventureWorks.Purchasing.RePurchasing;
 
 namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 

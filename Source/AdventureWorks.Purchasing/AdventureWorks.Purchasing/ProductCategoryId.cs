@@ -1,6 +1,6 @@
 using UnitGenerator;
 
-namespace AdventureWorks.Purchasing.Production;
+namespace AdventureWorks.Purchasing;
 
 /// <summary>
 /// ID of ProductCategory

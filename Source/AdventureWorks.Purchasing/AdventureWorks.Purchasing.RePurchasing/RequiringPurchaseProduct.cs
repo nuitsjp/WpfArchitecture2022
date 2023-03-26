@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Purchasing.Production;
-
-namespace AdventureWorks.Purchasing.RePurchasing;
+﻿namespace AdventureWorks.Purchasing.RePurchasing;
 
 public record RequiringPurchaseProduct
 {
