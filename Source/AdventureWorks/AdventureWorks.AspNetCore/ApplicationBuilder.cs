@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 
 namespace AdventureWorks.AspNetCore;
-public abstract class ApplicationBuilder
+public abstract class ApplicationBuilder : Hosting.IApplicationBuilder
 {
     protected readonly WebApplicationBuilder Builder;
 

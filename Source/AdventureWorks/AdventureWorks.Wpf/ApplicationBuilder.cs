@@ -15,7 +15,7 @@ using MessageBoxResult = System.Windows.MessageBoxResult;
 
 namespace AdventureWorks.Wpf;
 
-public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
+public class ApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicationBuilder
     where TApplication : Application
     where TWindow : Window
 
@@ -30,6 +30,7 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
 
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
+
     public IHost Build(string applicationName)
     {
         InitializeSerilog(Configuration, applicationName);
@@ -81,7 +82,7 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
         };
     }
 
-    public void Add(IFormatterResolver resolver)
+    public void AddFormatterResolver(IFormatterResolver resolver)
     {
         if (_resolvers.Contains(resolver))
         {

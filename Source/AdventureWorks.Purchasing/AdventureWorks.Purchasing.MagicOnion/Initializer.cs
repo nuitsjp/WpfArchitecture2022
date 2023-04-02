@@ -5,9 +5,9 @@ namespace AdventureWorks.Purchasing.MagicOnion;
 
 public static class Initializer
 {
-    public static void Initialize(IApplicationBuilder builder)
+    public static void Initialize(IMagicOnionApplicationBuilder builder)
     {
-        builder.Add(CustomResolver.Instance);
+        builder.AddFormatterResolver(CustomResolver.Instance);
 
         AdventureWorks.MagicOnion.Initializer.Initialize(builder);
 

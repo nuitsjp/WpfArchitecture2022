@@ -33,4 +33,28 @@ where
 
         return Task.FromResult(employee is not null);
     }
+
+    public Task<bool> TryGetEmployeeIdByIdAsync(LoginId loginId, out EmployeeId employeeId)
+    {
+        using var connection = _database.Open();
+
+        var task = connection.QuerySingleOrDefaultAsync(@"
+select
+	BusinessEntityID as Id
+from
+	HumanResources.Employee
+where
+	LoginID = @LoginId
+",
+            new
+            {
+                LoginId = loginId
+            });
+        task.Wait();
+        employeeId = task.Result is null
+            ? employeeId = default!
+            : employeeId = new EmployeeId(task.Result.Id);
+
+        return Task.FromResult(task.Result is not null);
+    }
 }

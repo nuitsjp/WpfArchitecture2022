@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace AdventureWorks.AspNetCore.MagicOnion
 {
-    public class MagicOnionApplicationBuilder : ApplicationBuilder, Hosting.Server.IApplicationBuilder
+    public class MagicOnionApplicationBuilder : ApplicationBuilder, Hosting.IMagicOnionServerApplicationBuilder
     {
         private readonly List<IFormatterResolver> _resolvers = new();
 
@@ -21,7 +21,7 @@ namespace AdventureWorks.AspNetCore.MagicOnion
 
         public static MagicOnionApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
-        public void Add(IFormatterResolver resolver)
+        public void AddFormatterResolver(IFormatterResolver resolver)
         {
             if (_resolvers.Contains(resolver))
             {
@@ -30,7 +30,7 @@ namespace AdventureWorks.AspNetCore.MagicOnion
             _resolvers.Add(resolver);
         }
 
-        public void Add(Assembly serviceAssembly)
+        public void AddServiceAssembly(Assembly serviceAssembly)
         {
             if (_serviceAssemblies.Contains(serviceAssembly))
             {

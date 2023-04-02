@@ -6,9 +6,9 @@ namespace AdventureWorks.MagicOnion;
 
 public static class Initializer
 {
-    public static void Initialize(IApplicationBuilder builder)
+    public static void Initialize(IMagicOnionApplicationBuilder builder)
     {
         builder.Services.AddSingleton(_ => builder.Configuration.GetRequiredSection("MagicOnion").Get<MagicOnionConfig>()!);
-        builder.Add(CustomResolver.Instance);
+        builder.AddFormatterResolver(CustomResolver.Instance);
     }
 }
