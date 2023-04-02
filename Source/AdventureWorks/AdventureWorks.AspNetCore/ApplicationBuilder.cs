@@ -19,7 +19,7 @@ public abstract class ApplicationBuilder
     public IServiceCollection Services => Builder.Services;
     public IConfiguration Configuration => Builder.Configuration;
 
-    public virtual IHost Build(string applicationName)
+    public virtual WebApplication Build(string applicationName)
     {
         Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
@@ -30,6 +30,7 @@ public abstract class ApplicationBuilder
         var app = Builder.Build();
         app.UseHttpsRedirection();
         app.UseSerilogRequestLogging();
+
         return app;
     }
 

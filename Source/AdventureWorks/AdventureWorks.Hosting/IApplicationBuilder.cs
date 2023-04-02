@@ -8,6 +8,5 @@ public interface IApplicationBuilder
 {
     IServiceCollection Services { get; }
     IConfiguration Configuration { get; }
-    IHost Build(string applicationName);
     void Add(IFormatterResolver resolver);
 }

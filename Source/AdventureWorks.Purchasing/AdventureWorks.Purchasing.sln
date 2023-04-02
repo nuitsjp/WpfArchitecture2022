@@ -92,6 +92,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Hosting.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.AspNetCore.MagicOnion", "AdventureWorks.AspNetCore.MagicOnion\AdventureWorks.AspNetCore.MagicOnion.csproj", "{8C30F405-9B46-4456-998C-0D0F4191B8BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.AspNetCore.WebApi", "AdventureWorks.AspNetCore.WebApi\AdventureWorks.AspNetCore.WebApi.csproj", "{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -238,6 +240,10 @@ Global
 		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -279,6 +285,7 @@ Global
 		{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{8C30F405-9B46-4456-998C-0D0F4191B8BC} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

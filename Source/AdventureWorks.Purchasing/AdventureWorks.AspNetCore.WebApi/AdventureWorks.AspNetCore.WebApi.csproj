@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="6.0.15" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
+	</ItemGroup>
+
+</Project>
