@@ -12,6 +12,7 @@
 		<PackageReference Update="MagicOnion.Server" Version="5.1.2" />
 		<PackageReference Update="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
 		<PackageReference Update="MessagePack" Version="2.4.59" />
+		<PackageReference Update="Microsoft.AspNetCore.Authentication.Negotiate" Version="6.0.15" />
 		<PackageReference Update="Microsoft.Data.SqlClient" Version="5.0.1" />
 		<PackageReference Update="Microsoft.Extensions.Hosting" Version="7.0.1" />
 		<PackageReference Update="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
@@ -25,6 +26,7 @@
 		<PackageReference Update="Serilog.AspNetCore" Version="6.1.0" />
 		<PackageReference Update="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Update="Serilog.Sinks.MSSqlServer" Version="6.2.0" />
+		<PackageReference Update="Swashbuckle.AspNetCore" Version="6.2.3" />
 		<PackageReference Update="Wpf.Extensions.Hosting" Version="1.1.2" />
 	</ItemGroup>
 </Project>
