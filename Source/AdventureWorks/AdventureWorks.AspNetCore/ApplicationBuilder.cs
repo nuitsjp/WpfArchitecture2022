@@ -1,10 +1,5 @@
-﻿using System.Reflection;
-using System.Text;
-using AdventureWorks.Authentication.MagicOnion.Server;
+﻿using System.Text;
 using AdventureWorks.Database;
-using MagicOnion.Server;
-using MessagePack;
-using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,13 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 
 namespace AdventureWorks.AspNetCore;
-public class ApplicationBuilder : Hosting.Server.IApplicationBuilder
+public abstract class ApplicationBuilder
 {
-    private readonly List<IFormatterResolver> _resolvers = new();
-
     protected readonly WebApplicationBuilder Builder;
-
-    private readonly List<Assembly> _serviceAssemblies = new();
 
     protected ApplicationBuilder(WebApplicationBuilder builder)
     {
@@ -27,23 +18,6 @@ public class ApplicationBuilder : Hosting.Server.IApplicationBuilder
 
     public IServiceCollection Services => Builder.Services;
     public IConfiguration Configuration => Builder.Configuration;
-    public void Add(Assembly serviceAssembly)
-    {
-        if (_serviceAssemblies.Contains(serviceAssembly))
-        {
-            return;
-        }
-        _serviceAssemblies.Add(serviceAssembly);
-    }
-
-    public void Add(IFormatterResolver resolver)
-    {
-        if (_resolvers.Contains(resolver))
-        {
-            return;
-        }
-        _resolvers.Add(resolver);
-    }
 
     public virtual IHost Build(string applicationName)
     {
@@ -52,28 +26,12 @@ public class ApplicationBuilder : Hosting.Server.IApplicationBuilder
         InitializeSerilog(Configuration, applicationName);
 
         Builder.Host.UseSerilog();
-        Builder.Services.AddGrpc();
-        Builder.Services.AddMagicOnion(
-            _serviceAssemblies.ToArray(),
-            options =>
-            {
-                options.GlobalFilters.Add<AuthenticationAttribute>();
-            });
-
-        _resolvers.Insert(0, StandardResolver.Instance);
-        _resolvers.Add(ContractlessStandardResolver.Instance);
-        StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
-        MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
-            .WithResolver(StaticCompositeResolver.Instance);
 
         var app = Builder.Build();
         app.UseHttpsRedirection();
-        app.MapMagicOnionService();
         app.UseSerilogRequestLogging();
         return app;
     }
-
-    public static ApplicationBuilder CreateBuilder(string[] args) => new (WebApplication.CreateBuilder(args));
 
     public static void InitializeSerilog(IConfiguration configuration, string applicationName)
     {

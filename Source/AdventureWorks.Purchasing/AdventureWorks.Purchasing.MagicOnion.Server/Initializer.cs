@@ -1,10 +1,11 @@
 ﻿using AdventureWorks.AspNetCore;
+using AdventureWorks.AspNetCore.MagicOnion;
 
 namespace AdventureWorks.Purchasing.MagicOnion.Server;
 
 public static class Initializer
 {
-    public static void Initialize(ApplicationBuilder builder)
+    public static void Initialize(MagicOnionServerBuilder builder)
     {
         MagicOnion.Initializer.Initialize(builder);
         builder.Add(typeof(Initializer).Assembly);

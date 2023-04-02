@@ -5,17 +5,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MagicOnion.Server" />
 		<PackageReference Include="Serilog.AspNetCore" />
 		<PackageReference Include="Serilog.Sinks.MSSqlServer" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Authentication.AspNetCore\AdventureWorks.Authentication.AspNetCore.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Hosting.Server\AdventureWorks.Hosting.Server.csproj" />
-		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 	</ItemGroup>
 

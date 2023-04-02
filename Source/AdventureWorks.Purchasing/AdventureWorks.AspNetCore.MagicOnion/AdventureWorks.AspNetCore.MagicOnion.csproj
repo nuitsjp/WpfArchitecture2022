@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Authentication.AspNetCore\AdventureWorks.Authentication.AspNetCore.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
 	</ItemGroup>
 
