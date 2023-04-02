@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
+using AdventureWorks.Authentication.MagicOnion.Server;
 using AdventureWorks.Database;
+using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
@@ -8,24 +10,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using IApplicationBuilder = AdventureWorks.Hosting.IApplicationBuilder;
 
 namespace AdventureWorks.AspNetCore;
-public class ApplicationBuilder : IApplicationBuilder
+public class ApplicationBuilder : Hosting.Server.IApplicationBuilder
 {
     private readonly List<IFormatterResolver> _resolvers = new();
 
-    private readonly WebApplicationBuilder _builder;
+    protected readonly WebApplicationBuilder Builder;
 
     private readonly List<Assembly> _serviceAssemblies = new();
 
-    public ApplicationBuilder(WebApplicationBuilder builder)
+    protected ApplicationBuilder(WebApplicationBuilder builder)
     {
-        _builder = builder;
+        Builder = builder;
     }
 
-    public IServiceCollection Services => _builder.Services;
-    public IConfiguration Configuration => _builder.Configuration;
+    public IServiceCollection Services => Builder.Services;
+    public IConfiguration Configuration => Builder.Configuration;
     public void Add(Assembly serviceAssembly)
     {
         if (_serviceAssemblies.Contains(serviceAssembly))
@@ -44,15 +45,20 @@ public class ApplicationBuilder : IApplicationBuilder
         _resolvers.Add(resolver);
     }
 
-    public IHost Build(string applicationName)
+    public virtual IHost Build(string applicationName)
     {
-        _builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
+        Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
         InitializeSerilog(Configuration, applicationName);
 
-        _builder.Host.UseSerilog();
-        _builder.Services.AddGrpc();
-        _builder.Services.AddMagicOnion(_serviceAssemblies.ToArray());
+        Builder.Host.UseSerilog();
+        Builder.Services.AddGrpc();
+        Builder.Services.AddMagicOnion(
+            _serviceAssemblies.ToArray(),
+            options =>
+            {
+                options.GlobalFilters.Add<AuthenticationAttribute>();
+            });
 
         _resolvers.Insert(0, StandardResolver.Instance);
         _resolvers.Add(ContractlessStandardResolver.Instance);
@@ -60,7 +66,7 @@ public class ApplicationBuilder : IApplicationBuilder
         MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
             .WithResolver(StaticCompositeResolver.Instance);
 
-        var app = _builder.Build();
+        var app = Builder.Build();
         app.UseHttpsRedirection();
         app.MapMagicOnionService();
         app.UseSerilogRequestLogging();
@@ -120,5 +126,4 @@ where
             }
 #endif
     }
-
 }

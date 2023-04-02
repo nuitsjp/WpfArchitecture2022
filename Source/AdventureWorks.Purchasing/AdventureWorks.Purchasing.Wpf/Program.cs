@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using AdventureWorks.Authentication.MagicOnion;
 using AdventureWorks.Wpf;
 
 AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
@@ -10,7 +9,7 @@ AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
 var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 
 // 認証サービスを初期化する。
-Initializer.Initialize(builder);
+AdventureWorks.Authentication.MagicOnion.Initializer.Initialize(builder);
 
 // 購買サービスのクライアントを初期化する。
 AdventureWorks.Purchasing.MagicOnion.Initializer.Initialize(builder);

@@ -1,13 +1,11 @@
-﻿
-using AdventureWorks.AspNetCore;
+﻿using AdventureWorks.Hosting.Server;
 
 namespace AdventureWorks.Authentication.MagicOnion.Server;
 
 public static class Initializer
 {
-    public static void Initialize(ApplicationBuilder builder)
+    public static void Initialize(IApplicationBuilder builder)
     {
-        AdventureWorks.MagicOnion.Initializer.Initialize(builder);
         builder.Add(typeof(Initializer).Assembly);
     }
 }

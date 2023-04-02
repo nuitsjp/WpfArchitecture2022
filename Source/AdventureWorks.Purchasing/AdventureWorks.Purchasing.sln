@@ -84,6 +84,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.MagicOnion", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.MagicOnion\AdventureWorks.Authentication.MagicOnion.csproj", "{DC2FF811-46C7-4DDC-922D-D33A0F9F70D2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.AspNetCore", "AdventureWorks.Authentication.AspNetCore\AdventureWorks.Authentication.AspNetCore.csproj", "{C14F1D44-7D24-4489-9287-5F0D892D74B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.MagicOnion.Server", "AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj", "{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Hosting.Server", "AdventureWorks.Hosting.Server\AdventureWorks.Hosting.Server.csproj", "{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.AspNetCore.MagicOnion", "AdventureWorks.AspNetCore.MagicOnion\AdventureWorks.AspNetCore.MagicOnion.csproj", "{8C30F405-9B46-4456-998C-0D0F4191B8BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -214,6 +222,22 @@ Global
 		{DC2FF811-46C7-4DDC-922D-D33A0F9F70D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2FF811-46C7-4DDC-922D-D33A0F9F70D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2FF811-46C7-4DDC-922D-D33A0F9F70D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C14F1D44-7D24-4489-9287-5F0D892D74B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C14F1D44-7D24-4489-9287-5F0D892D74B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C14F1D44-7D24-4489-9287-5F0D892D74B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C14F1D44-7D24-4489-9287-5F0D892D74B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C30F405-9B46-4456-998C-0D0F4191B8BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -251,6 +275,10 @@ Global
 		{2D222B68-FBB8-4AE5-8ECD-FE3FC826ADB9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{498CEA4F-08AD-4E52-B74E-B34A293FE08C} = {8BD915C2-188B-4698-A8A3-B3BD38C4D514}
 		{DC2FF811-46C7-4DDC-922D-D33A0F9F70D2} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
+		{C14F1D44-7D24-4489-9287-5F0D892D74B0} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
+		{FEB606C0-00B6-41CB-8C29-E6E7DF70F0B9} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{0B4ABA05-36D5-4FFA-AB7A-B53AEB1CB282} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{8C30F405-9B46-4456-998C-0D0F4191B8BC} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

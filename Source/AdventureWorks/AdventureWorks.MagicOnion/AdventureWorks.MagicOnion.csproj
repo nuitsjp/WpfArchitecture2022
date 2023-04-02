@@ -5,11 +5,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="MagicOnion.Client" />
 		<PackageReference Include="MessagePack" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
 		<ProjectReference Include="..\AdventureWorks\AdventureWorks.csproj" />
 	</ItemGroup>
