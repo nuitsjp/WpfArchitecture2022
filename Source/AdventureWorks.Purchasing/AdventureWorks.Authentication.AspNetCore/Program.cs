@@ -1,6 +1,6 @@
 using AdventureWorks.AspNetCore.WebApi;
 
-WebApiServerBuilder
+WebApiApplicationBuilder
     .CreateBuilder(args)
     .Build("AdventureWorks.Authentication.AspNetCore")
     .Run();

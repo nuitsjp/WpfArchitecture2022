@@ -9,17 +9,17 @@ using System.Reflection;
 
 namespace AdventureWorks.AspNetCore.MagicOnion
 {
-    public class MagicOnionServerBuilder : ApplicationBuilder, Hosting.Server.IApplicationBuilder
+    public class MagicOnionApplicationBuilder : ApplicationBuilder, Hosting.Server.IApplicationBuilder
     {
         private readonly List<IFormatterResolver> _resolvers = new();
 
         private readonly List<Assembly> _serviceAssemblies = new();
 
-        public MagicOnionServerBuilder(WebApplicationBuilder builder) : base(builder)
+        public MagicOnionApplicationBuilder(WebApplicationBuilder builder) : base(builder)
         {
         }
 
-        public static MagicOnionServerBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
+        public static MagicOnionApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
         public void Add(IFormatterResolver resolver)
         {

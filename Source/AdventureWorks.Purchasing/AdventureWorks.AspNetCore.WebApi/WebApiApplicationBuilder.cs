@@ -5,13 +5,13 @@ using Microsoft.Extensions.Hosting;
 
 namespace AdventureWorks.AspNetCore.WebApi
 {
-    public class WebApiServerBuilder : ApplicationBuilder
+    public class WebApiApplicationBuilder : ApplicationBuilder
     {
-        public WebApiServerBuilder(WebApplicationBuilder builder) : base(builder)
+        public WebApiApplicationBuilder(WebApplicationBuilder builder) : base(builder)
         {
         }
 
-        public static WebApiServerBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
+        public static WebApiApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
         public override WebApplication Build(string applicationName)
         {
