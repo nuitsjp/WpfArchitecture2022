@@ -1,16 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
-	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

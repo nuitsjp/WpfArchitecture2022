@@ -1,7 +1,7 @@
 ﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Authentication.Jwt;
+namespace AdventureWorks.Authentication.Jwt.Rest;
 
 public static class Initializer
 {

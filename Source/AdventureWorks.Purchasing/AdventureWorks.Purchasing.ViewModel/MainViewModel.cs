@@ -18,7 +18,7 @@ public class MainViewModel : INavigatedAsyncAware
 
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        if (await _authenticationContext.TryAuthenticateAsync())
+        if (await _authenticationContext.TryAuthenticateAsync("AdventureWorks.Purchasing"))
         {
             await _presentationService.NavigateToMenuAsync();
         }

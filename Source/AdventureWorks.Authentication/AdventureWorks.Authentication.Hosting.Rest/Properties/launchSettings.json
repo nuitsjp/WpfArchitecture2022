@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "AdventureWorks.Authentication.Hosting.WebApi": {
+    "AdventureWorks.Authentication.Hosting.Rest": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

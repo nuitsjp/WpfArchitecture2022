@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdventureWorks.Authentication.WebApi.Properties {
+namespace AdventureWorks.Authentication.Jwt.Rest.Server.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AdventureWorks.Authentication.WebApi.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.Authentication.WebApi.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.Authentication.Jwt.Rest.Server.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

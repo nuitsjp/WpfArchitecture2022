@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="6.0.15" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.AspNetCore.WebApi\AdventureWorks.AspNetCore.WebApi.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt.Rest.Server\AdventureWorks.Authentication.Jwt.Rest.Server.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -11,7 +11,7 @@ public class AuthenticationContext : IAuthenticationContext
             new EmployeeId(1),
             new LoginId("LoginId"));
 
-    public async Task<bool> TryAuthenticateAsync()
+    public async Task<bool> TryAuthenticateAsync(string audience)
     {
         await Task.CompletedTask;
         return true;

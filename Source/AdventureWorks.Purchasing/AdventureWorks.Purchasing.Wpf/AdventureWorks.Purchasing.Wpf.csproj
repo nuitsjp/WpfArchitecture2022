@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Wpf\AdventureWorks.Wpf.csproj" />
