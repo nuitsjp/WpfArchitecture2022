@@ -1,8 +1,10 @@
 using System.Security.Authentication;
+using AdventureWorks.Authentication.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace AdventureWorks.Authentication.Jwt.AspNetCore.Controllers;
+namespace AdventureWorks.Authentication.WebApi;
 
 [Authorize]
 [ApiController]

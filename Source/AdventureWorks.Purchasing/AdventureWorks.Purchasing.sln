@@ -86,9 +86,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore.WebApi", "AdventureWorks.AspNetCore.WebApi\AdventureWorks.AspNetCore.WebApi.csproj", "{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Authentication.Jwt", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj", "{D302F172-52CC-4642-84BC-54CEB7DAB9FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj", "{D302F172-52CC-4642-84BC-54CEB7DAB9FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Authentication.Jwt.AspNetCore", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.AspNetCore\AdventureWorks.Authentication.Jwt.AspNetCore.csproj", "{AE1A3AD9-01CF-4418-8AB1-4AF9159A3647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.WebApi", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.WebApi\AdventureWorks.Authentication.WebApi.csproj", "{DE5D5086-D34B-4D1C-A666-E0AD3B4F9A84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Hosting.WebApi", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Hosting.WebApi\AdventureWorks.Authentication.Hosting.WebApi.csproj", "{18983FEE-ADAE-4716-AA97-5ADAC4791890}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -228,10 +230,14 @@ Global
 		{D302F172-52CC-4642-84BC-54CEB7DAB9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D302F172-52CC-4642-84BC-54CEB7DAB9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D302F172-52CC-4642-84BC-54CEB7DAB9FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE1A3AD9-01CF-4418-8AB1-4AF9159A3647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE1A3AD9-01CF-4418-8AB1-4AF9159A3647}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE1A3AD9-01CF-4418-8AB1-4AF9159A3647}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE1A3AD9-01CF-4418-8AB1-4AF9159A3647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5D5086-D34B-4D1C-A666-E0AD3B4F9A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5D5086-D34B-4D1C-A666-E0AD3B4F9A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5D5086-D34B-4D1C-A666-E0AD3B4F9A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5D5086-D34B-4D1C-A666-E0AD3B4F9A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18983FEE-ADAE-4716-AA97-5ADAC4791890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18983FEE-ADAE-4716-AA97-5ADAC4791890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18983FEE-ADAE-4716-AA97-5ADAC4791890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18983FEE-ADAE-4716-AA97-5ADAC4791890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -271,7 +277,8 @@ Global
 		{8C30F405-9B46-4456-998C-0D0F4191B8BC} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{A900DDB5-6958-48D1-8DFB-EFEE50CACEA8} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 		{D302F172-52CC-4642-84BC-54CEB7DAB9FD} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
-		{AE1A3AD9-01CF-4418-8AB1-4AF9159A3647} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
+		{DE5D5086-D34B-4D1C-A666-E0AD3B4F9A84} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
+		{18983FEE-ADAE-4716-AA97-5ADAC4791890} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}
