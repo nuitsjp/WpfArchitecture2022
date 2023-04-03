@@ -7,4 +7,4 @@ public interface IAuthenticationContext
     Task<bool> TryAuthenticateAsync();
 }
 
-public record AuthenticationInfo(string Token, string EmployeeId);
+public record User(EmployeeId EmployeeId, string Name);
