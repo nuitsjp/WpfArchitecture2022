@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Authentication.MagicOnion.Server;
-using MagicOnion.Server;
+﻿using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;

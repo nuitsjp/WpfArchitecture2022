@@ -3,7 +3,7 @@ using MagicOnion.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AdventureWorks.Authentication.MagicOnion.Server;
+namespace AdventureWorks.AspNetCore.MagicOnion;
 
 public class AuthenticationAttribute : MagicOnionFilterAttribute
 {
