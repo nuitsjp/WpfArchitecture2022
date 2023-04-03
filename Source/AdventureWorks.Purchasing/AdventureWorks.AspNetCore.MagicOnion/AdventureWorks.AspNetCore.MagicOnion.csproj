@@ -1,11 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Authentication.AspNetCore\AdventureWorks.Authentication.AspNetCore.csproj" />
+  <ItemGroup>
+    <PackageReference Include="MagicOnion.Server" />
+  </ItemGroup>
+	
+  <ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
 	</ItemGroup>
 

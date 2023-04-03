@@ -21,7 +21,7 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
         {
             var entry = context.CallContext.RequestHeaders.Get("authorization");
             var value = entry.Value;
-            user = CryptoService.Decrypt(value);
+            //user = CryptoService.Decrypt(value);
         }
         catch (Exception e)
         {

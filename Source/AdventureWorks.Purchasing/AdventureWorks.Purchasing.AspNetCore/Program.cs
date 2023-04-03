@@ -1,8 +1,5 @@
 var builder = AdventureWorks.AspNetCore.MagicOnion.MagicOnionApplicationBuilder.CreateBuilder(args);
 
-// 認証サービスの初期化
-AdventureWorks.Authentication.MagicOnion.Server.Initializer.Initialize(builder);
-
 // 購買サービスの初期化
 AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);
 AdventureWorks.Purchasing.RePurchasing.MagicOnion.Server.Initializer.Initialize(builder);
