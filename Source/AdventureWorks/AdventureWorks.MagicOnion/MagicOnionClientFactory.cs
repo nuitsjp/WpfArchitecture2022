@@ -37,7 +37,7 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
         public async ValueTask<ResponseContext> SendAsync(RequestContext context, Func<RequestContext, ValueTask<ResponseContext>> next)
         {
             var header = context.CallOptions.Headers;
-            header.Add("authorization", _authenticationContext.CurrentToken);
+            header.Add("authorization", _authenticationContext.CurrentTokenString);
 
             return await next(context);
         }

@@ -2,7 +2,7 @@
 
 public interface IAuthenticationContext
 {
-    string CurrentToken { get; }
+    string CurrentTokenString { get; }
     Employee CurrentEmployee { get; }
     Task<bool> TryAuthenticateAsync();
 }

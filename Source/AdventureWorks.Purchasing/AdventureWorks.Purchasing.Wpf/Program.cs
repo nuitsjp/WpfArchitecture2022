@@ -9,7 +9,7 @@ AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
 var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 
 // 認証サービスを初期化する。
-AdventureWorks.Authentication.MagicOnion.Initializer.Initialize(builder);
+AdventureWorks.Authentication.Jwt.Initializer.Initialize(builder);
 
 // 購買サービスのクライアントを初期化する。
 AdventureWorks.Purchasing.MagicOnion.Initializer.Initialize(builder);

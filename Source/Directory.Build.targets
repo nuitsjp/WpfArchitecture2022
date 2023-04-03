@@ -27,6 +27,7 @@
 		<PackageReference Update="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Update="Serilog.Sinks.MSSqlServer" Version="6.2.0" />
 		<PackageReference Update="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="6.28.0" />
 		<PackageReference Update="Wpf.Extensions.Hosting" Version="1.1.2" />
 	</ItemGroup>
 </Project>
