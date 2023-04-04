@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="Microsoft.Data.SqlClient" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureWorks.System\AdventureWorks.System.csproj" />
+    <ProjectReference Include="..\AdventureWorks\AdventureWorks.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
+  </ItemGroup>
+
+</Project>
