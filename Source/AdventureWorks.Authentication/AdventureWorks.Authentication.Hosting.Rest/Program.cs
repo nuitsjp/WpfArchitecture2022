@@ -1,7 +1,7 @@
-using AdventureWorks.AspNetCore.WebApi;
 using AdventureWorks.Authentication.Jwt.Rest.Server;
+using AdventureWorks.Hosting.Rest;
 
-var builder = WebApiApplicationBuilder.CreateBuilder(args);
+var builder = RestApplicationBuilder.CreateBuilder(args);
 AdventureWorks.SqlServer.Initializer.Initialize(builder);
 
 builder

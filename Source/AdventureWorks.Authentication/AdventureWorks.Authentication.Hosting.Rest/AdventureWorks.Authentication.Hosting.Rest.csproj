@@ -10,7 +10,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.AspNetCore.WebApi\AdventureWorks.AspNetCore.WebApi.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Hosting.Rest\AdventureWorks.Hosting.Rest.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt.Rest.Server\AdventureWorks.Authentication.Jwt.Rest.Server.csproj" />
 	</ItemGroup>
