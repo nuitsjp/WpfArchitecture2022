@@ -1,12 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MagicOnion.Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.MagicOnion.Server\AdventureWorks.Authentication.Jwt.MagicOnion.Server.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Hosting.AspNetCore\AdventureWorks.Hosting.AspNetCore.csproj" />
     <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
   </ItemGroup>
 

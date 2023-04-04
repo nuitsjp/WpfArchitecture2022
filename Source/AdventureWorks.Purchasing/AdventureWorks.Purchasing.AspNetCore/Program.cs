@@ -1,4 +1,4 @@
-var builder = AdventureWorks.AspNetCore.MagicOnion.MagicOnionApplicationBuilder.CreateBuilder(args);
+var builder = AdventureWorks.Hosting.MagicOnion.Server.MagicOnionServerApplicationBuilder.CreateBuilder(args);
 
 // 購買サービスの初期化
 AdventureWorks.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);

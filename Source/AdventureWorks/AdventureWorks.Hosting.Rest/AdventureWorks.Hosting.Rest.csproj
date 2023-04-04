@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Hosting.AspNetCore\AdventureWorks.Hosting.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>
