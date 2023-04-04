@@ -88,11 +88,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.AspNetCore.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj", "{D302F172-52CC-4642-84BC-54CEB7DAB9FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Authentication.Hosting.Rest", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Hosting.Rest\AdventureWorks.Authentication.Hosting.Rest.csproj", "{53FB43DD-6174-490B-B190-00E1DCC92906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Hosting.Rest", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Hosting.Rest\AdventureWorks.Authentication.Hosting.Rest.csproj", "{53FB43DD-6174-490B-B190-00E1DCC92906}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Authentication.Jwt.Rest", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj", "{5E9495DE-B65A-458C-A3A3-10F1BCD791A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.Rest", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj", "{5E9495DE-B65A-458C-A3A3-10F1BCD791A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.Rest.Server", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.Rest.Server\AdventureWorks.Authentication.Jwt.Rest.Server.csproj", "{C1CB2C51-8D56-4424-9D1A-CD9D081266D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.MagicOnion.Server", "..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.MagicOnion.Server\AdventureWorks.Authentication.Jwt.MagicOnion.Server.csproj", "{E438FDC5-6058-480A-9799-27FFE2FFBF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Hosting.MagicOnion", "AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj", "{F33633E5-0918-4194-84C9-20D6E4F0A155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Hosting.MagicOnion.Server", "AdventureWorks.Hosting.MagicOnion.Server\AdventureWorks.Hosting.MagicOnion.Server.csproj", "{871E122E-48A9-49CA-B959-B100B7FE4FFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -244,6 +250,18 @@ Global
 		{C1CB2C51-8D56-4424-9D1A-CD9D081266D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1CB2C51-8D56-4424-9D1A-CD9D081266D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1CB2C51-8D56-4424-9D1A-CD9D081266D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E438FDC5-6058-480A-9799-27FFE2FFBF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E438FDC5-6058-480A-9799-27FFE2FFBF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E438FDC5-6058-480A-9799-27FFE2FFBF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E438FDC5-6058-480A-9799-27FFE2FFBF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F33633E5-0918-4194-84C9-20D6E4F0A155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33633E5-0918-4194-84C9-20D6E4F0A155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33633E5-0918-4194-84C9-20D6E4F0A155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33633E5-0918-4194-84C9-20D6E4F0A155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{871E122E-48A9-49CA-B959-B100B7FE4FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{871E122E-48A9-49CA-B959-B100B7FE4FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{871E122E-48A9-49CA-B959-B100B7FE4FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{871E122E-48A9-49CA-B959-B100B7FE4FFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -286,6 +304,9 @@ Global
 		{53FB43DD-6174-490B-B190-00E1DCC92906} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 		{5E9495DE-B65A-458C-A3A3-10F1BCD791A6} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
 		{C1CB2C51-8D56-4424-9D1A-CD9D081266D9} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
+		{E438FDC5-6058-480A-9799-27FFE2FFBF32} = {71082F78-D494-41D9-8165-30FA1A4A51A6}
+		{F33633E5-0918-4194-84C9-20D6E4F0A155} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
+		{871E122E-48A9-49CA-B959-B100B7FE4FFB} = {A1E6E7B0-852E-4B89-94D9-14DAAD1DB6A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9188CAC4-53FB-42CB-A711-84085C5590C0}

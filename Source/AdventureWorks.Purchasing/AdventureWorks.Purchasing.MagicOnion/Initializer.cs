@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Hosting;
+using AdventureWorks.Hosting.MagicOnion;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Purchasing.MagicOnion;

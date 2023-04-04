@@ -1,6 +1,6 @@
 ﻿using MessagePack;
 
-namespace AdventureWorks.Hosting;
+namespace AdventureWorks.Hosting.MagicOnion;
 
 public interface IMagicOnionApplicationBuilder : IApplicationBuilder
 {

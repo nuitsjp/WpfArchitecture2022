@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using AdventureWorks.Database;
-using AdventureWorks.Hosting;
+using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Wpf.ViewModel;
 using Kamishibai;
 using MessagePack;

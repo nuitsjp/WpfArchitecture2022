@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
+using AdventureWorks.Authentication.Jwt.MagicOnion.Server;
+using AdventureWorks.Hosting.MagicOnion.Server;
 
 namespace AdventureWorks.AspNetCore.MagicOnion
 {
-    public class MagicOnionApplicationBuilder : ApplicationBuilder, Hosting.IMagicOnionServerApplicationBuilder
+    public class MagicOnionApplicationBuilder : ApplicationBuilder, IMagicOnionServerApplicationBuilder
     {
         private readonly List<IFormatterResolver> _resolvers = new();
 

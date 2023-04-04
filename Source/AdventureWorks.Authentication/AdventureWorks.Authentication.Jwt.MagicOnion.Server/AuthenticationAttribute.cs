@@ -3,7 +3,7 @@ using MagicOnion.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AdventureWorks.AspNetCore.MagicOnion;
+namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 
 public class AuthenticationAttribute : MagicOnionFilterAttribute
 {
@@ -21,6 +21,7 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
         {
             var entry = context.CallContext.RequestHeaders.Get("authorization");
             var value = entry.Value;
+            var employee = EmployeeSerializer.Deserialize(value!, "AdventureWorks.Authentication");
             //user = CryptoService.Decrypt(value);
         }
         catch (Exception e)
@@ -32,9 +33,4 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
 
         await next(context); // next
     }
-}
-
-public interface IServerAuthenticationContext
-{
-
 }

@@ -35,7 +35,7 @@ public class AuthenticationContext : IAuthenticationContext
 
     public async Task<bool> TryAuthenticateAsync(string audience)
     {
-        var response = await HttpClient.GetAsync("https://localhost:4001/Authentication");
+        var response = await HttpClient.GetAsync($"https://localhost:4001/Authentication");
         response.EnsureSuccessStatusCode();
 
         _tokenString = await response.Content.ReadAsStringAsync();
