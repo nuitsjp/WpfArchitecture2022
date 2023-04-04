@@ -3,7 +3,6 @@ using MessagePack;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 using AdventureWorks.Hosting.MagicOnion.Server;

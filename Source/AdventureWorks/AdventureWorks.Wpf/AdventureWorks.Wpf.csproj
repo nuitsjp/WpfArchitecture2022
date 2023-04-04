@@ -15,7 +15,6 @@
 
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks\AdventureWorks.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />

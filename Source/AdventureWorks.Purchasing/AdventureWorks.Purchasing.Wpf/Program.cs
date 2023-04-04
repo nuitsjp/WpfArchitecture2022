@@ -1,12 +1,11 @@
 ﻿using System.Diagnostics;
-using AdventureWorks.Wpf;
 
 AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
 {
     Debug.WriteLine(eventArgs.Exception);
 };
 
-var builder = ApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
+var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<AdventureWorks.Purchasing.View.App, AdventureWorks.Purchasing.View.MainWindow>.CreateBuilder();
 
 // 認証サービスを初期化する。
 AdventureWorks.Authentication.Jwt.Rest.Initializer.Initialize(builder);

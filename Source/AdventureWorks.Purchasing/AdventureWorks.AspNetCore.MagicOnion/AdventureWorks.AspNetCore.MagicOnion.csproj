@@ -11,7 +11,7 @@
   <ItemGroup>
 		<ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.Jwt.MagicOnion.Server\AdventureWorks.Authentication.Jwt.MagicOnion.Server.csproj" />
 		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.AspNetCore\AdventureWorks.AspNetCore.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion.Server\AdventureWorks.Hosting.MagicOnion.Server.csproj" />
+		<ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Hosting.MagicOnion.Server\AdventureWorks.Hosting.MagicOnion.Server.csproj" />
 	</ItemGroup>
 
 </Project>
