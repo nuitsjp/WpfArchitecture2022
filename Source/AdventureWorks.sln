@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks", "AdventureWorks\AdventureWorks.csproj", "{B8BC2E9E-F104-4AFE-87F0-BE27DF01D98B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business", "AdventureWorks\AdventureWorks.Business.csproj", "{B8BC2E9E-F104-4AFE-87F0-BE27DF01D98B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication", "AdventureWorks.Authentication\AdventureWorks.Authentication.csproj", "{66ACCF69-1DAD-48BD-AD95-42537EE4B5E8}"
 EndProject
@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Hosting.Rest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Hosting.Wpf", "AdventureWorks.Hosting.Wpf\AdventureWorks.Hosting.Wpf.csproj", "{28DE27B8-6DF8-4124-BF9B-E8D67EB6F805}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion", "AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj", "{BF6E118A-5A81-4BF5-9071-F855FCDEA9FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.MagicOnion", "AdventureWorks.MagicOnion\AdventureWorks.Business.MagicOnion.csproj", "{BF6E118A-5A81-4BF5-9071-F855FCDEA9FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion.Client", "AdventureWorks.MagicOnion.Client\AdventureWorks.MagicOnion.Client.csproj", "{577D375A-601D-42F1-A060-CC9BBCF37FED}"
 EndProject
@@ -75,15 +75,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.Wpf", "AdventureWorks.Purchasing.Wpf\AdventureWorks.Purchasing.Wpf.csproj", "{7C65D2A8-8342-4EF7-9A65-B7E43A82B1B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.SqlServer", "AdventureWorks.SqlServer\AdventureWorks.SqlServer.csproj", "{EF2DFB80-ADAD-44F2-B532-BCFE35D2AF59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.SqlServer", "AdventureWorks.SqlServer\AdventureWorks.Business.SqlServer.csproj", "{EF2DFB80-ADAD-44F2-B532-BCFE35D2AF59}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.System", "AdventureWorks.System\AdventureWorks.System.csproj", "{560314B1-EF21-4040-BF2E-F07F77482B39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.System", "AdventureWorks.System\AdventureWorks.Business.System.csproj", "{560314B1-EF21-4040-BF2E-F07F77482B39}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.View", "AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj", "{F5AA017E-ECF5-4067-BB9B-DFBF9E2131A5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.ViewModel", "AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj", "{1D9CB984-2290-4F44-86A8-D08FADC2D275}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks", "AdventureWorks", "{597482D1-0F57-4E6B-BA00-DC9AAA34C08C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business", "AdventureWorks.Business", "{597482D1-0F57-4E6B-BA00-DC9AAA34C08C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Authentication", "AdventureWorks.Authentication", "{6EE8D39D-C116-4CEB-8044-E4D2C029F896}"
 EndProject

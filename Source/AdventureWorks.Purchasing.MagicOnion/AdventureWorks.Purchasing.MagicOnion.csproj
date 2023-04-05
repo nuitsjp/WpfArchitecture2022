@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.MagicOnion\AdventureWorks.MagicOnion.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.MagicOnion\AdventureWorks.Business.MagicOnion.csproj" />
 	  <ProjectReference Include="..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
 	</ItemGroup>
 

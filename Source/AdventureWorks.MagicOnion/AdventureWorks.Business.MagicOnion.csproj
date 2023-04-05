@@ -14,7 +14,7 @@
 		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
-		<ProjectReference Include="..\AdventureWorks\AdventureWorks.csproj" />
+		<ProjectReference Include="..\AdventureWorks\AdventureWorks.Business.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

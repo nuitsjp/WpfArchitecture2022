@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
-	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.csproj" />
+	  <ProjectReference Include="..\..\AdventureWorks\AdventureWorks.Business.csproj" />
 	  <ProjectReference Include="..\..\AdventureWorks.Purchasing.ViewModel\AdventureWorks.Purchasing.ViewModel.csproj" />
 	  <ProjectReference Include="..\..\AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj" />
 	  <ProjectReference Include="..\..\AdventureWorks.Purchasing\AdventureWorks.Purchasing.csproj" />
