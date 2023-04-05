@@ -11,7 +11,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
-		<ProjectReference Include="..\AdventureWorks\AdventureWorks.Business.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Business\AdventureWorks.Business.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

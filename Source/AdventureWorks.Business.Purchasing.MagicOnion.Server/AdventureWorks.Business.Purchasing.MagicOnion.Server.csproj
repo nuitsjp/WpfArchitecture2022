@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MagicOnion.Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion.Server\AdventureWorks.Hosting.MagicOnion.Server.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion\AdventureWorks.Business.Purchasing.MagicOnion.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Production\" />
+  </ItemGroup>
+
+</Project>

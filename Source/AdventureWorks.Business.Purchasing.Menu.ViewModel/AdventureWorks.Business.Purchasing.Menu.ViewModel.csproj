@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		<PackageReference Include="Kamishibai" />
+		<PackageReference Include="PostSharp" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.csproj" />
+	</ItemGroup>
+</Project>
