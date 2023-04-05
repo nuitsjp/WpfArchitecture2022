@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.Purchasing.SqlServer";
+	var @namespace = "AdventureWorks.Business.Purchasing.SqlServer";
 	var types = new []
 	{
 		(UnitName: "VendorId", UnitType: typeof(int)),
@@ -18,4 +18,4 @@
 		(UnitName: "UnitMeasureCode", UnitType: typeof(string)),
 	};
 #>
-<#@ include file="..\..\AdventureWorks\AdventureWorks.Database\DapperTypeHandlers.t4" once="true" #>
+<#@ include file="..\AdventureWorks.Database\DapperTypeHandlers.t4" once="true" #>

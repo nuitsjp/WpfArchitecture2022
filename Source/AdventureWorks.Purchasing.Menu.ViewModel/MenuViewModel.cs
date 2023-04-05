@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
 
-namespace AdventureWorks.Purchasing.Menu.ViewModel;
+namespace AdventureWorks.Business.Purchasing.Menu.ViewModel;
 
 [Navigate]
 public class MenuViewModel

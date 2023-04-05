@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion.Server\AdventureWorks.Hosting.MagicOnion.Server.csproj" />
-    <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.MagicOnion\AdventureWorks.Purchasing.RePurchasing.MagicOnion.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.MagicOnion\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.csproj" />
   </ItemGroup>
 
 </Project>

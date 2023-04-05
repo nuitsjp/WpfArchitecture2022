@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using AdventureWorks.Business;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AdventureWorks.Authentication.Jwt;

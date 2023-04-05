@@ -1,6 +1,6 @@
 using UnitGenerator;
 
-namespace AdventureWorks.Purchasing
+namespace AdventureWorks.Business.Purchasing
 {
     /// <summary>
     /// Code of UnitMeasure

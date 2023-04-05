@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdventureWorks.Purchasing.View\AdventureWorks.Purchasing.View.csproj" />
+    <ProjectReference Include="..\..\AdventureWorks.Purchasing.View\AdventureWorks.Business.Purchasing.View.csproj" />
     <ProjectReference Include="..\Driver.InTarget\Driver.InTarget.csproj" />
     <ProjectReference Include="..\Driver\Driver.csproj" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace AdventureWorks.Purchasing.SqlServer;
+namespace AdventureWorks.Business.Purchasing.SqlServer;
 
 public class PurchasingDatabase : Database.Database
 {

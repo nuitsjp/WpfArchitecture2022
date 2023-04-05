@@ -1,6 +1,6 @@
 ﻿using MagicOnion;
 
-namespace AdventureWorks.Purchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public interface IShipMethodRepositoryService : IService<IShipMethodRepositoryService>
 {

@@ -1,8 +1,8 @@
-﻿using AdventureWorks.MagicOnion;
+﻿using AdventureWorks.Business.MagicOnion;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Purchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public class ShipMethodRepositoryClient : IShipMethodRepository
 {

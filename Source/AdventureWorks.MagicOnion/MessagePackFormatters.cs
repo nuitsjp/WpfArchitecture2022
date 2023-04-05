@@ -2,10 +2,11 @@
 // ReSharper disable RedundantNameQualifier
 // ReSharper disable ArrangeTrailingCommaInMultilineLists
 // ReSharper disable BuiltInTypeReferenceStyle
+
 using MessagePack;
 using MessagePack.Formatters;
 
-namespace AdventureWorks.MagicOnion;
+namespace AdventureWorks.Business.MagicOnion;
 
 public class DateFormatter : IMessagePackFormatter<Date>
 {

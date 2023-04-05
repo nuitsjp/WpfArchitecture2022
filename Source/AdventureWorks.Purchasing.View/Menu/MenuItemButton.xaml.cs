@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using MahApps.Metro.IconPacks;
 
-namespace AdventureWorks.Purchasing.View.Menu
+namespace AdventureWorks.Business.Purchasing.View.Menu
 {
     /// <summary>
     /// MenuItemButton.xaml の相互作用ロジック

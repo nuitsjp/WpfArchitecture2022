@@ -13,9 +13,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 	  <ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Purchasing.Menu.ViewModel\AdventureWorks.Purchasing.Menu.ViewModel.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.ViewModel\AdventureWorks.Purchasing.RePurchasing.ViewModel.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing\AdventureWorks.Purchasing.RePurchasing.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Purchasing.Menu.ViewModel\AdventureWorks.Business.Purchasing.Menu.ViewModel.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.ViewModel\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing\AdventureWorks.Business.Purchasing.RePurchasing.csproj" />
 	</ItemGroup>
 
 </Project>

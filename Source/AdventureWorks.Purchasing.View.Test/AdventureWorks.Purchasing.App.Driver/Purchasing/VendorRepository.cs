@@ -1,4 +1,7 @@
-﻿namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
+﻿using AdventureWorks.Business;
+using AdventureWorks.Business.Purchasing;
+
+namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
 public class VendorRepository : IVendorRepository
 {

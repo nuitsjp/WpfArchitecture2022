@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdventureWorks.Purchasing.RePurchasing.ViewModel.Properties {
+namespace AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AdventureWorks.Purchasing.RePurchasing.ViewModel.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.Purchasing.RePurchasing.ViewModel.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

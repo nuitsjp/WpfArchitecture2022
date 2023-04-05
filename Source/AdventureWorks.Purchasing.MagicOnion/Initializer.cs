@@ -1,8 +1,7 @@
-﻿using AdventureWorks.Hosting;
-using AdventureWorks.Hosting.MagicOnion;
+﻿using AdventureWorks.Hosting.MagicOnion;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Purchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public static class Initializer
 {
@@ -10,7 +9,7 @@ public static class Initializer
     {
         builder.AddFormatterResolver(CustomResolver.Instance);
 
-        AdventureWorks.MagicOnion.Initializer.Initialize(builder);
+        Business.MagicOnion.Initializer.Initialize(builder);
 
         builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepositoryClient>();
         builder.Services.AddTransient<IVendorRepository, VendorRepositoryClient>();

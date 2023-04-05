@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Purchasing.View
+﻿namespace AdventureWorks.Business.Purchasing.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

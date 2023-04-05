@@ -1,6 +1,6 @@
 ﻿using AdventureWorks.Hosting.MagicOnion.Server;
 
-namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion.Server;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Server;
 
 public static class Initializer
 {

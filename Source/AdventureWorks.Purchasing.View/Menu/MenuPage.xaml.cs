@@ -1,6 +1,6 @@
-﻿using AdventureWorks.Purchasing.Menu.ViewModel;
+﻿using AdventureWorks.Business.Purchasing.Menu.ViewModel;
 
-namespace AdventureWorks.Purchasing.View.Menu
+namespace AdventureWorks.Business.Purchasing.View.Menu
 {
     /// <summary>
     /// MenuPage.xaml の相互作用ロジック

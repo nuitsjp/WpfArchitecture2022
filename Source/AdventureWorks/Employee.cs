@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks;
+﻿namespace AdventureWorks.Business;
 
 public class Employee
 {

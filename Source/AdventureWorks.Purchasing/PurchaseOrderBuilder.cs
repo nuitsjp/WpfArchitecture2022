@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Purchasing;
+﻿namespace AdventureWorks.Business.Purchasing;
 
 public class PurchaseOrderBuilder
 {

@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.Purchasing.MagicOnion";
+	var @namespace = "AdventureWorks.Business.Purchasing.MagicOnion";
 	var types = new []
 	{
 		(UnitName: "AccountNumber", UnitType: typeof(string)),
@@ -21,4 +21,4 @@
 		(UnitName: "UnitMeasureCode", UnitType: typeof(string)),
 	};
 #>
-<#@ include file="..\..\AdventureWorks\AdventureWorks.MagicOnion\MessagePackFormatters.t4" once="true" #>
+<#@ include file="..\AdventureWorks.MagicOnion\MessagePackFormatters.t4" once="true" #>

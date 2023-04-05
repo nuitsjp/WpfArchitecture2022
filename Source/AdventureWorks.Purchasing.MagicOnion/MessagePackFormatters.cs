@@ -4,7 +4,7 @@
 using MessagePack;
 using MessagePack.Formatters;
 
-namespace AdventureWorks.Purchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public class AccountNumberFormatter : IMessagePackFormatter<AccountNumber>
 {

@@ -1,9 +1,10 @@
 ﻿
 // ReSharper disable RedundantNameQualifier
+
 using System.Data;
 using Dapper;
 
-namespace AdventureWorks.SqlServer;
+namespace AdventureWorks.Business.SqlServer;
 
 public class DateTypeHandler : SqlMapper.TypeHandler<Date>
 {

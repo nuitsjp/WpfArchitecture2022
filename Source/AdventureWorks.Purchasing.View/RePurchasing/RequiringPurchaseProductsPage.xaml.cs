@@ -1,6 +1,6 @@
-﻿using AdventureWorks.Purchasing.RePurchasing.ViewModel;
+﻿using AdventureWorks.Business.Purchasing.RePurchasing.ViewModel;
 
-namespace AdventureWorks.Purchasing.View.RePurchasing
+namespace AdventureWorks.Business.Purchasing.View.RePurchasing
 {
     /// <summary>
     /// RequiringPurchaseProductsPage.xaml の相互作用ロジック

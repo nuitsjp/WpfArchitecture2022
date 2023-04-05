@@ -1,7 +1,7 @@
 ﻿using AdventureWorks.Authentication;
 using Kamishibai;
 
-namespace AdventureWorks.Purchasing.ViewModel;
+namespace AdventureWorks.Business.Purchasing.ViewModel;
 
 public class MainViewModel : INavigatedAsyncAware
 {

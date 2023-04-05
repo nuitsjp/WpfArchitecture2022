@@ -1,7 +1,7 @@
 ﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion;
 
 public static class Initializer
 {

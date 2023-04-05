@@ -1,7 +1,7 @@
 ﻿using MagicOnion;
 using MagicOnion.Server;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Server.Production;
+namespace AdventureWorks.Business.Purchasing.MagicOnion.Server.Production;
 
 /// <remarks>
 /// アセンブリーを解析してサービス登録するため、参照している箇所が無いように見えるが実際には利用されているため

@@ -1,6 +1,6 @@
 ﻿using Dapper;
 
-namespace AdventureWorks.Purchasing.SqlServer;
+namespace AdventureWorks.Business.Purchasing.SqlServer;
 
 public class VendorRepository : IVendorRepository
 {

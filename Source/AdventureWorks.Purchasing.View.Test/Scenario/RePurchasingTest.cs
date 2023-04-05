@@ -1,8 +1,8 @@
-﻿using Codeer.Friendly.Windows;
+﻿using AdventureWorks.Business.Purchasing.View.RePurchasing;
+using Codeer.Friendly.Windows;
 using Driver.TestController;
 using NUnit.Framework;
 using Driver.Windows;
-using AdventureWorks.Purchasing.View.RePurchasing;
 using FluentAssertions;
 using Codeer.Friendly;
 using Driver.Windows.Native;

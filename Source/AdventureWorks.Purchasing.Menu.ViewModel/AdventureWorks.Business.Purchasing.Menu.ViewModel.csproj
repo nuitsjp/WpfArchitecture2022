@@ -11,6 +11,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.ViewModel\AdventureWorks.Purchasing.RePurchasing.ViewModel.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Purchasing.RePurchasing.ViewModel\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Dapper;
 
-namespace AdventureWorks.SqlServer;
+namespace AdventureWorks.Business.SqlServer;
 
 public class EmployeeRepository : IEmployeeRepository
 {

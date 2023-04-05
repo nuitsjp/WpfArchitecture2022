@@ -1,4 +1,6 @@
-﻿namespace AdventureWorks.Authentication.Jwt.Rest;
+﻿using AdventureWorks.Business;
+
+namespace AdventureWorks.Authentication.Jwt.Rest;
 
 public class AuthenticationContext : IAuthenticationContext
 {

@@ -1,7 +1,7 @@
 ﻿using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.SqlServer;
+namespace AdventureWorks.Business.SqlServer;
 
 public static class Initializer
 {

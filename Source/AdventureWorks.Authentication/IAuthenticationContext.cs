@@ -1,4 +1,6 @@
-﻿namespace AdventureWorks.Authentication;
+﻿using AdventureWorks.Business;
+
+namespace AdventureWorks.Authentication;
 
 public interface IAuthenticationContext
 {

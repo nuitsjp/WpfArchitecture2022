@@ -1,6 +1,6 @@
 ﻿using UnitGenerator;
 
-namespace AdventureWorks;
+namespace AdventureWorks.Business;
 
 /// <summary>
 /// 

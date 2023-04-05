@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
+using AdventureWorks.Business;
 
 namespace AdventureWorks.Wpf.View.Converter;
 

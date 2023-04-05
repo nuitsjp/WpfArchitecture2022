@@ -1,6 +1,6 @@
 ﻿using MagicOnion;
 
-namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion;
 
 public interface IRePurchasingQueryService : IService<IRePurchasingQueryService>
 {

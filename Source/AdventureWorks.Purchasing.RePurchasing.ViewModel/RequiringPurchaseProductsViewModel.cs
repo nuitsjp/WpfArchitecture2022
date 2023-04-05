@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
 
-namespace AdventureWorks.Purchasing.RePurchasing.ViewModel;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.ViewModel;
 
 [Navigate]
 [INotifyPropertyChanged]

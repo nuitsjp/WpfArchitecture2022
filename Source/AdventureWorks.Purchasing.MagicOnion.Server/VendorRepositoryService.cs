@@ -1,7 +1,7 @@
 ﻿using MagicOnion;
 using MagicOnion.Server;
 
-namespace AdventureWorks.Purchasing.MagicOnion.Server;
+namespace AdventureWorks.Business.Purchasing.MagicOnion.Server;
 
 /// <summary>
 /// 

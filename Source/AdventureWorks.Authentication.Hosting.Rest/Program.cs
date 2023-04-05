@@ -1,8 +1,9 @@
 using AdventureWorks.Authentication.Jwt.Rest.Server;
+using AdventureWorks.Business.SqlServer;
 using AdventureWorks.Hosting.Rest;
 
 var builder = RestApplicationBuilder.CreateBuilder(args);
-AdventureWorks.SqlServer.Initializer.Initialize(builder);
+Initializer.Initialize(builder);
 
 builder
     .Services

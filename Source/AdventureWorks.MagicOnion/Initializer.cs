@@ -1,9 +1,8 @@
-﻿using AdventureWorks.Hosting;
-using AdventureWorks.Hosting.MagicOnion;
+﻿using AdventureWorks.Hosting.MagicOnion;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.MagicOnion;
+namespace AdventureWorks.Business.MagicOnion;
 
 public static class Initializer
 {

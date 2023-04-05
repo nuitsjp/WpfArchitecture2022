@@ -1,8 +1,7 @@
 ﻿using AdventureWorks.Authentication;
-using Grpc.Core;
 using MagicOnion;
 
-namespace AdventureWorks.MagicOnion;
+namespace AdventureWorks.Business.MagicOnion;
 
 public interface IMagicOnionClientFactory
 {

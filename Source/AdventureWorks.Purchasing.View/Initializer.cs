@@ -1,12 +1,12 @@
-﻿using AdventureWorks.Hosting;
-using AdventureWorks.Purchasing.Menu.ViewModel;
-using AdventureWorks.Purchasing.RePurchasing.ViewModel;
-using AdventureWorks.Purchasing.View.Menu;
-using AdventureWorks.Purchasing.View.RePurchasing;
-using AdventureWorks.Purchasing.ViewModel;
+﻿using AdventureWorks.Business.Purchasing.Menu.ViewModel;
+using AdventureWorks.Business.Purchasing.RePurchasing.ViewModel;
+using AdventureWorks.Business.Purchasing.View.Menu;
+using AdventureWorks.Business.Purchasing.View.RePurchasing;
+using AdventureWorks.Business.Purchasing.ViewModel;
+using AdventureWorks.Hosting;
 using Kamishibai;
 
-namespace AdventureWorks.Purchasing.View;
+namespace AdventureWorks.Business.Purchasing.View;
 
 public static class Initializer
 {

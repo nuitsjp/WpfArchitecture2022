@@ -1,5 +1,5 @@
 ﻿// ReSharper disable UnusedMember.Global
-namespace AdventureWorks.Purchasing;
+namespace AdventureWorks.Business.Purchasing;
 
 public enum CreditRating
 {

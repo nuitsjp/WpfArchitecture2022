@@ -1,6 +1,6 @@
 ﻿using Dapper;
 
-namespace AdventureWorks.Purchasing.RePurchasing.SqlServer;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.SqlServer;
 public class RePurchasingQuery : IRePurchasingQuery
 {
     private readonly RePurchasingDatabase _database;

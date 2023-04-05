@@ -1,8 +1,8 @@
-﻿using AdventureWorks.MagicOnion;
+﻿using AdventureWorks.Business.MagicOnion;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
-namespace AdventureWorks.Purchasing.RePurchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion;
 
 public class RePurchasingQueryClient : IRePurchasingQuery
 {
