@@ -77,21 +77,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion.Server", "AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj", "{8083CF04-640F-412A-808F-E43BBD74C358}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.System", "AdventureWorks.System\AdventureWorks.Business.System.csproj", "{1C712946-7B81-43CD-9C0C-5DB390CCAF1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks", "AdventureWorks.System\AdventureWorks.csproj", "{1C712946-7B81-43CD-9C0C-5DB390CCAF1C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.View", "AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj", "{2CEE9228-7BEA-44C2-93C3-6657D72834D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.ViewModel", "AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj", "{AC8EF802-F744-47C3-865F-968D754B40B5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Authentication_", "AdventureWorks.Authentication_", "{268E5C1B-D928-471D-BBA2-D55161D5CAAF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Authentication", "AdventureWorks.Authentication", "{268E5C1B-D928-471D-BBA2-D55161D5CAAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business_", "AdventureWorks.Business_", "{91037FC2-63A8-4491-B9D0-0038D1344289}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business", "AdventureWorks.Business", "{91037FC2-63A8-4491-B9D0-0038D1344289}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business.Purchasing_", "AdventureWorks.Business.Purchasing_", "{534C7D2C-47D8-4E76-94F0-5BBA3520850D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business.Purchasing", "AdventureWorks.Business.Purchasing", "{534C7D2C-47D8-4E76-94F0-5BBA3520850D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Database_", "AdventureWorks.Database_", "{702A40B9-02F6-4FF9-9AFD-FEC129CE6487}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Database", "AdventureWorks.Database", "{702A40B9-02F6-4FF9-9AFD-FEC129CE6487}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Hosting_", "AdventureWorks.Hosting_", "{3EA129AB-2B92-462E-BF05-AF3928EC0340}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Hosting", "AdventureWorks.Hosting", "{3EA129AB-2B92-462E-BF05-AF3928EC0340}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.MagicOnion", "AdventureWorks.MagicOnion", "{F9C3EA19-3B36-434D-B9E4-014CD7910B1B}"
 EndProject
@@ -300,7 +300,6 @@ Global
 		{9F3DBD54-B91E-468E-9C81-7A6E2C677CE3} = {3EA129AB-2B92-462E-BF05-AF3928EC0340}
 		{C4743A3C-609D-484E-B376-2703EC43B080} = {F9C3EA19-3B36-434D-B9E4-014CD7910B1B}
 		{8083CF04-640F-412A-808F-E43BBD74C358} = {F9C3EA19-3B36-434D-B9E4-014CD7910B1B}
-		{1C712946-7B81-43CD-9C0C-5DB390CCAF1C} = {91037FC2-63A8-4491-B9D0-0038D1344289}
 		{2CEE9228-7BEA-44C2-93C3-6657D72834D4} = {49BDDDAA-0E43-46EF-BC02-2AB69468A7F0}
 		{AC8EF802-F744-47C3-865F-968D754B40B5} = {49BDDDAA-0E43-46EF-BC02-2AB69468A7F0}
 	EndGlobalSection
