@@ -83,19 +83,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.View", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Wpf.ViewModel", "AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj", "{1D9CB984-2290-4F44-86A8-D08FADC2D275}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{597482D1-0F57-4E6B-BA00-DC9AAA34C08C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business", "AdventureWorks.Business", "{597482D1-0F57-4E6B-BA00-DC9AAA34C08C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{6EE8D39D-C116-4CEB-8044-E4D2C029F896}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Authentication", "AdventureWorks.Authentication", "{6EE8D39D-C116-4CEB-8044-E4D2C029F896}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{3D34E3E8-473F-4A0D-8262-AA1F6A5EDD33}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Hosting", "AdventureWorks.Hosting", "{3D34E3E8-473F-4A0D-8262-AA1F6A5EDD33}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MagicOnion", "MagicOnion", "{C4A18DF2-B6E6-4E39-BE62-5828FD6F41A3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.MagicOnion", "AdventureWorks.MagicOnion", "{C4A18DF2-B6E6-4E39-BE62-5828FD6F41A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business.Purchasing", "Business.Purchasing", "{55B54CC7-990A-4BCC-ABE9-59036DFC87C7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business.Purchasing", "AdventureWorks.Business.Purchasing", "{55B54CC7-990A-4BCC-ABE9-59036DFC87C7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{85719334-2764-4F42-B559-135D408E858C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Wpf", "AdventureWorks.Wpf", "{85719334-2764-4F42-B559-135D408E858C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{3EE56036-B9E6-40AE-80B4-F9B696EE669E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Database", "AdventureWorks.Database", "{3EE56036-B9E6-40AE-80B4-F9B696EE669E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{99C36631-51E7-4C05-9744-04C8CD0C1EFA}"
 EndProject
