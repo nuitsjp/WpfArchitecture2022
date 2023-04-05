@@ -49,6 +49,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
                     options.GlobalFilters.Add<AuthenticationAttribute>();
                 });
 
+            // MagicOnionの初期化
             _resolvers.Insert(0, StandardResolver.Instance);
             _resolvers.Add(ContractlessStandardResolver.Instance);
             StaticCompositeResolver.Instance.Register(_resolvers.ToArray());

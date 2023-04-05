@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Business.MagicOnion;
+using AdventureWorks.MagicOnion.Client;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
@@ -6,16 +7,16 @@ namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public class VendorRepositoryClient : IVendorRepository
 {
-    private readonly MagicOnionConfig _config;
+    private readonly IMagicOnionClientFactory _clientFactory;
 
-    public VendorRepositoryClient(MagicOnionConfig config)
+    public VendorRepositoryClient(IMagicOnionClientFactory clientFactory)
     {
-        _config = config;
+        _clientFactory = clientFactory;
     }
 
     public async Task<Vendor> GetVendorByIdAsync(VendorId vendorId)
     {
-        var server = MagicOnionClient.Create<IVendorRepositoryService>(GrpcChannel.ForAddress(_config.Address));
+        var server = _clientFactory.Create<IVendorRepositoryService>();
         return await server.GetVendorByIdAsync(vendorId);
     }
 }

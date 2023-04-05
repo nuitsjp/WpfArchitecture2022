@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Business.MagicOnion;
+using AdventureWorks.MagicOnion.Client;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
@@ -6,16 +7,16 @@ namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public class PurchaseOrderRepositoryClient : IPurchaseOrderRepository
 {
-    private readonly MagicOnionConfig _config;
+    private readonly IMagicOnionClientFactory _clientFactory;
 
-    public PurchaseOrderRepositoryClient(MagicOnionConfig config)
+    public PurchaseOrderRepositoryClient(IMagicOnionClientFactory clientFactory)
     {
-        _config = config;
+        _clientFactory = clientFactory;
     }
 
     public async Task RegisterAsync(PurchaseOrder purchaseOrder)
     {
-        var server = MagicOnionClient.Create<IPurchaseOrderRepositoryService>(GrpcChannel.ForAddress(_config.Address));
+        var server = _clientFactory.Create<IPurchaseOrderRepositoryService>();
         await server.RegisterAsync(purchaseOrder);
     }
 }

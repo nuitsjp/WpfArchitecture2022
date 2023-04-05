@@ -1,21 +1,20 @@
-﻿using AdventureWorks.Business.MagicOnion;
-using Grpc.Net.Client;
-using MagicOnion.Client;
+﻿using AdventureWorks.MagicOnion.Client;
 
 namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public class ProductRepositoryClient : IProductRepository
 {
-    private readonly MagicOnionConfig _config;
+    private readonly IMagicOnionClientFactory _clientFactory;
 
-    public ProductRepositoryClient(MagicOnionConfig config)
+
+    public ProductRepositoryClient(IMagicOnionClientFactory clientFactory)
     {
-        _config = config;
+        _clientFactory = clientFactory;
     }
 
     public async Task<Product> GetProductByIdAsync(ProductId productId)
     {
-        var server = MagicOnionClient.Create<IProductRepositoryServer>(GrpcChannel.ForAddress(_config.Address));
+        var server = _clientFactory.Create<IProductRepositoryServer>();
         return await server.GetProductByIdAsync(productId);
     }
 }

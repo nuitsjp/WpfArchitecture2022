@@ -33,15 +33,19 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
     public IHost Build(string applicationName)
     {
+        // Serilogの初期化
         InitializeSerilog(Configuration, applicationName);
         LoggingAspect.Logger = new ViewModelLogger();
 
+        // MagicOnionの初期化
+        AdventureWorks.MagicOnion.Client.Initializer.Initialize(this);
         _resolvers.Insert(0, StandardResolver.Instance);
         _resolvers.Add(ContractlessStandardResolver.Instance);
         StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
         MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
             .WithResolver(StaticCompositeResolver.Instance);
 
+        // アプリケーションのビルド
         var app = _applicationBuilder.Build();
 
         // 未処理の例外処理をセットアップする。

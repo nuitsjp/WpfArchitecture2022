@@ -11,6 +11,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AdventureWorks.Business.MagicOnion\AdventureWorks.Business.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing\AdventureWorks.Business.Purchasing.RePurchasing.csproj" />
+		<ProjectReference Include="..\AdventureWorks.MagicOnion.Client\AdventureWorks.MagicOnion.Client.csproj" />
 	</ItemGroup>
 
 </Project>

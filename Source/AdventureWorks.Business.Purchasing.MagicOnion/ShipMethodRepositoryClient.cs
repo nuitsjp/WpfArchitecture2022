@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Business.MagicOnion;
+using AdventureWorks.MagicOnion.Client;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 
@@ -6,16 +7,16 @@ namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public class ShipMethodRepositoryClient : IShipMethodRepository
 {
-    private readonly MagicOnionConfig _config;
+    private readonly IMagicOnionClientFactory _clientFactory;
 
-    public ShipMethodRepositoryClient(MagicOnionConfig config)
+    public ShipMethodRepositoryClient(IMagicOnionClientFactory clientFactory)
     {
-        _config = config;
+        _clientFactory = clientFactory;
     }
 
     public async Task<IList<ShipMethod>> GetShipMethodsAsync()
     {
-        var server = MagicOnionClient.Create<IShipMethodRepositoryService>(GrpcChannel.ForAddress(_config.Address));
+        var server = _clientFactory.Create<IShipMethodRepositoryService>();
         return await server.GetShipMethodsAsync();
     }
 }
