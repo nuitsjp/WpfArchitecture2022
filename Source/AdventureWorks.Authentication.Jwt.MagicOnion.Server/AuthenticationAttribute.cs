@@ -21,7 +21,7 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
         {
             var entry = context.CallContext.RequestHeaders.Get("authorization");
             var value = entry.Value;
-            var employee = EmployeeSerializer.Deserialize(value!, "AdventureWorks.Authentication");
+            var employee = UserSerializer.Deserialize(value!, "AdventureWorks.Authentication");
             //user = CryptoService.Decrypt(value);
         }
         catch (Exception e)

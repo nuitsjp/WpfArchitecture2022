@@ -5,7 +5,7 @@ namespace AdventureWorks.Authentication.Jwt.Rest;
 public class AuthenticationContext : IAuthenticationContext
 {
     private string? _tokenString;
-    private Employee? _currentEmployee;
+    private User? _currentEmployee;
 
     private static readonly HttpClient HttpClient = new(new HttpClientHandler {UseDefaultCredentials = true});
 
@@ -22,7 +22,7 @@ public class AuthenticationContext : IAuthenticationContext
         }
     }
 
-    public Employee CurrentEmployee
+    public User CurrentEmployee
     {
         get
         {
@@ -41,7 +41,7 @@ public class AuthenticationContext : IAuthenticationContext
         response.EnsureSuccessStatusCode();
 
         _tokenString = await response.Content.ReadAsStringAsync();
-        _currentEmployee = EmployeeSerializer.Deserialize(_tokenString, "AdventureWorks.Authentication");
+        _currentEmployee = UserSerializer.Deserialize(_tokenString, "AdventureWorks.Authentication");
 
 
         return true;

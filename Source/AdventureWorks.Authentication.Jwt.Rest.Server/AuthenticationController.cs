@@ -12,22 +12,22 @@ namespace AdventureWorks.Authentication.Jwt.Rest.Server;
 public class AuthenticationController : ControllerBase, IAuthenticationService
 {
     private readonly ILogger<AuthenticationController> _logger;
-    private readonly IEmployeeRepository _employeeRepository;
+    private readonly IUserRepository _userRepository;
 
     public AuthenticationController(
         ILogger<AuthenticationController> logger,
-        IEmployeeRepository employeeRepository)
+        IUserRepository userRepository)
     {
         _logger = logger;
-        _employeeRepository = employeeRepository;
+        _userRepository = userRepository;
     }
 
     [HttpGet(Name = IAuthenticationService.ServiceName)]
     public async Task<string> AuthenticateAsync()
     {
-        if (await _employeeRepository.TryGetEmployeeByIdAsync(new LoginId(User.Identity!.Name!), out var employee))
+        if (await _userRepository.TryGetUserByIdAsync(new LoginId(User.Identity!.Name!), out var employee))
         {
-            return EmployeeSerializer.Serialize(employee, Properties.Resources.PrivateKey, "AdventureWorks.Authentication");
+            return UserSerializer.Serialize(employee, Properties.Resources.PrivateKey, "AdventureWorks.Authentication");
         }
 
         throw new AuthenticationException();

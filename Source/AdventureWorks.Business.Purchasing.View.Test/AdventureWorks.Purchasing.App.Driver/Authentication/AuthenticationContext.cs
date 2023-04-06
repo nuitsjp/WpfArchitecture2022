@@ -7,10 +7,10 @@ public class AuthenticationContext : IAuthenticationContext
 {
     public string CurrentTokenString { get; } = string.Empty;
 
-    public Employee CurrentEmployee { get; } =
+    public User CurrentEmployee { get; } =
         new(
             new EmployeeId(1),
-            new LoginId("LoginId"));
+            "Adventure Works");
 
     public async Task<bool> TryAuthenticateAsync(string audience)
     {

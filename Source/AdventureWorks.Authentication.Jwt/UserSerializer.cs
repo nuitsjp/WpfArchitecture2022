@@ -6,9 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AdventureWorks.Authentication.Jwt;
 
-public static class EmployeeSerializer
+public static class UserSerializer
 {
-    public static string Serialize(Employee employee, string privateKey, string audience)
+    public static string Serialize(User user, string privateKey, string audience)
     {
         // 署名資格を作成する
         var rsa = new RSACryptoServiceProvider();
@@ -18,8 +18,8 @@ public static class EmployeeSerializer
 
         // クレームを作成する。
         ClaimsIdentity claimsIdentity = new();
-        claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.NameId, employee.Id.AsPrimitive().ToString()));
-        claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.Name, "John Doe"));
+        claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.NameId, user.EmployeeId.AsPrimitive().ToString()));
+        claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.Name, user.Name));
 
 
         // トークンの属性オブジェクトを作成する。
@@ -39,7 +39,7 @@ public static class EmployeeSerializer
         return handler.WriteToken(token);
     }
 
-    public static Employee Deserialize(string tokenString, string audience)
+    public static User Deserialize(string tokenString, string audience)
     {
         // 署名検証用の鍵を作成する。
         var rsa = new RSACryptoServiceProvider();
@@ -65,8 +65,8 @@ public static class EmployeeSerializer
         var nameIdentity = jwtSecurityToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.NameId).Value;
         var name = jwtSecurityToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Name).Value;
 
-        return new Employee(
+        return new User(
             new EmployeeId(int.Parse(nameIdentity)),
-            default!);
+            name);
     }
 }
