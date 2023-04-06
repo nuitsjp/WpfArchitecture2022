@@ -1,17 +1,90 @@
 use AdventureWorks;
 
 --------------------------------------------------------------------------------------
--- 
+-- Cleanup table and view
 --------------------------------------------------------------------------------------
-drop table if exists [dbo].[LogSettings]
-GO
+declare @drop_statements nvarchar(max) = '';
 
-CREATE TABLE [dbo].[LogSettings](
-    [ApplicationName] nvarchar(400) NOT NULL,
-	[MinimumLevel] nvarchar(max) NOT NULL,
-	CONSTRAINT [PK_LogSettings_ApplicationName] PRIMARY KEY ([ApplicationName])
-) ON [PRIMARY];
-GO
+select 
+	@drop_statements += 'drop ' + 
+	case
+        when type = 'U' then 'table '
+        when type = 'V' then 'view '
+	end + quotename(schema_name(schema_id)) + '.' + quotename(name) + ';' + char(13)
+from 
+	sys.objects
+where 
+	type in ('U', 'V') 
+	and schema_name(schema_id) = 'Serilog';
+
+execute sp_executesql @drop_statements;
+
+--------------------------------------------------------------------------------------
+-- Serilog
+--------------------------------------------------------------------------------------
+
+-- Login
+if exists
+    (select name from master.sys.server_principals where name = 'Serilog')
+begin
+	drop login Serilog
+end
+
+create login Serilog with password = 'RG3CbVP!2U4hT5';
+go
+
+-- User
+drop user if exists Serilog
+go
+create user Serilog for login Serilog;
+go
+
+-- Schema
+drop schema if exists Serilog
+go
+
+create schema Serilog
+go
+
+-- Table
+create table [Serilog].[LogSettings](
+    [ApplicationName] nvarchar(400) not null,
+	[MinimumLevel] nvarchar(max) not null,
+	constraint [PK_LogSettings] primary key ([ApplicationName])
+)	on [PRIMARY];
+go
+
+create table [Serilog].[Logs](
+	[Id] [int] identity(1,1) not null,
+	[Message] [nvarchar](max) null,
+	[Level] [nvarchar](max) null,
+	[TimeStamp] [datetime] null,
+	[Exception] [nvarchar](max) null,
+	[ApplicationType] [nvarchar](max) null,
+	[Application] [nvarchar](max) null,
+	[MachineName] [nvarchar](max) null,
+	[UserName] [nvarchar](max) null,
+	[ProcessId] [int] null,
+	[ThreadId] [int] null,
+	[CorrelationId] [int] null,
+	constraint [PK_Logs] primary key clustered ([Id] asc) 
+		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
+)	on [PRIMARY] textimage_on [PRIMARY]
+go
+
+-- View
+create view 
+	[serilog].[vLogSettings] 
+as
+select 
+	[ApplicationName], 
+	[MinimumLevel]
+from 
+	[Serilog].[LogSettings];
+go
+
+-- Grant
+grant select on [Serilog].[vLogSettings] to Serilog;
 
 --------------------------------------------------------------------------------------
 -- 「今日」のdatetimeを取得する。
@@ -292,23 +365,23 @@ where
 	and ProductShipmentResponseDays.ShipmentResponseDays < StandardProductVendor.AverageLeadTime
 go
 
-select * from Purchasing.ProductRequiringPurchase
-go
+--select * from Purchasing.ProductRequiringPurchase
+--go
 
 --------------------------------------------------------------------------------------
 -- データベースを終了し、構築した内容をファイルへ書き出す
 --------------------------------------------------------------------------------------
-ALTER DATABASE AdventureWorks SET OFFLINE
-GO
+--ALTER DATABASE AdventureWorks SET OFFLINE
+--GO
 
-EXEC sp_detach_db AdventureWorks
-GO
+--EXEC sp_detach_db AdventureWorks
+--GO
 
-USE [master];
-GO
+--USE [master];
+--GO
 
-PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
-GO
+--PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
+--GO
 
 
-SET NOEXEC OFF
+--SET NOEXEC OFF

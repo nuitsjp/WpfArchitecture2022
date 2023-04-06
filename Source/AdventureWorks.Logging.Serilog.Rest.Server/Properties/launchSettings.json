@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "AdventureWorks.Logging.Serilog.Rest.Server": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:57932;http://localhost:57933"
+    }
+  }
+}
