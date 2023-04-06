@@ -9,12 +9,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion.Server\AdventureWorks.Hosting.MagicOnion.Server.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.MagicOnion\AdventureWorks.Business.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.SqlServer\AdventureWorks.Business.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion.Server\AdventureWorks.Business.Purchasing.MagicOnion.Server.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion\AdventureWorks.Business.Purchasing.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Server\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Server.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.SqlServer\AdventureWorks.Business.Purchasing.RePurchasing.SqlServer.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.SqlServer\AdventureWorks.Business.Purchasing.SqlServer.csproj" />

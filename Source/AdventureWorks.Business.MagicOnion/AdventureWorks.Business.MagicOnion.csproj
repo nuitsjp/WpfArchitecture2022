@@ -5,9 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business\AdventureWorks.Business.csproj" />
 	</ItemGroup>
 

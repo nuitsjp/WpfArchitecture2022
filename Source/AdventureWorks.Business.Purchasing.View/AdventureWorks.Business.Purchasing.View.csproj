@@ -29,10 +29,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.ViewModel\AdventureWorks.Business.Purchasing.ViewModel.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.ViewModel\AdventureWorks.Business.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing\AdventureWorks.Business.Purchasing.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Wpf.View\AdventureWorks.Wpf.View.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

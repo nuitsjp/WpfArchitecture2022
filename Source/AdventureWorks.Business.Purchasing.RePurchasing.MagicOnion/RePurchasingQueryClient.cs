@@ -1,7 +1,4 @@
-﻿using AdventureWorks.Business.MagicOnion;
-using AdventureWorks.MagicOnion.Client;
-using Grpc.Net.Client;
-using MagicOnion.Client;
+﻿using AdventureWorks.MagicOnion.Client;
 
 namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion;
 

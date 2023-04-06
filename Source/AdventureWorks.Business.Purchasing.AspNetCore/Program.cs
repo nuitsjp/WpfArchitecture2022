@@ -1,9 +1,9 @@
-using AdventureWorks.Business.Purchasing.MagicOnion.Server;
+using AdventureWorks.Hosting.MagicOnion.Server;
 
-var builder = AdventureWorks.Hosting.MagicOnion.Server.MagicOnionServerApplicationBuilder.CreateBuilder(args);
+var builder = MagicOnionServerApplicationBuilder.CreateBuilder(args);
 
 // 購買サービスの初期化
-Initializer.Initialize(builder);
+AdventureWorks.Business.Purchasing.MagicOnion.Server.Initializer.Initialize(builder);
 AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Server.Initializer.Initialize(builder);
 
 // リポジトリーの初期化

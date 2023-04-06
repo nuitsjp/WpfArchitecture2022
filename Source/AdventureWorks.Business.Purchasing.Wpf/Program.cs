@@ -1,15 +1,14 @@
 ﻿using System.Diagnostics;
-using AdventureWorks.Business.Purchasing.View;
 
 AppDomain.CurrentDomain.FirstChanceException += (_, eventArgs) =>
 {
     Debug.WriteLine(eventArgs.Exception);
 };
 
-var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<App, MainWindow>.CreateBuilder();
+var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
+    AdventureWorks.Business.Purchasing.View.App,
+    AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
-// 認証サービスを初期化する。
-AdventureWorks.Authentication.Jwt.Rest.Initializer.Initialize(builder);
 
 // 購買サービスのクライアントを初期化する。
 AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Initialize(builder);    

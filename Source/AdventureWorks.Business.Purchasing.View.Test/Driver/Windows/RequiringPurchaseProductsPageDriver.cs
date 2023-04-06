@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Driver.Windows
 {
-    [WindowDriver(TypeFullName = "AdventureWorks.Purchasing.View.MainWindow")]
+    [WindowDriver(TypeFullName = "AdventureWorks.Business.Purchasing.View.MainWindow")]
     public class RequiringPurchaseProductsPageDriver
     {
         public WindowControl Core { get; }
@@ -30,8 +30,8 @@ namespace Driver.Windows
 
     public static class RequiringPurchaseProductsPageDriverExtensions
     {
-        [WindowDriverIdentify(TypeFullName = "AdventureWorks.Purchasing.View.MainWindow")]
+        [WindowDriverIdentify(TypeFullName = "AdventureWorks.Business.Purchasing.View.MainWindow")]
         public static RequiringPurchaseProductsPageDriver AttachRequiringPurchaseProductsPage(this WindowsAppFriend app)
-            => app.WaitForIdentifyFromTypeFullName("AdventureWorks.Purchasing.View.MainWindow").Dynamic();
+            => app.WaitForIdentifyFromTypeFullName("AdventureWorks.Business.Purchasing.View.MainWindow").Dynamic();
     }
 }

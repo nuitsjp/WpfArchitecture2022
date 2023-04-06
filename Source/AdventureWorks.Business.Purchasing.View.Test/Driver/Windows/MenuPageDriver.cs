@@ -7,11 +7,11 @@ using RM.Friendly.WPFStandardControls;
 
 namespace Driver.Windows
 {
-    [WindowDriver(TypeFullName = "AdventureWorks.Purchasing.View.MainWindow")]
+    [WindowDriver(TypeFullName = "AdventureWorks.Business.Purchasing.View.MainWindow")]
     public class MenuPageDriver
     {
         public WindowControl Core { get; }
-        public WPFButtonBase NavigateRePurchasing => Core.LogicalTree().ByType("AdventureWorks.Purchasing.View.Menu.MenuPage").Single().LogicalTree().ByBinding("NavigateRePurchasingCommand").Single().Dynamic().Content; 
+        public WPFButtonBase NavigateRePurchasing => Core.LogicalTree().ByType("AdventureWorks.Business.Purchasing.View.Menu.MenuPage").Single().LogicalTree().ByBinding("NavigateRePurchasingCommand").Single().Dynamic().Content; 
 
         public MenuPageDriver(WindowControl core)
         {
@@ -26,8 +26,8 @@ namespace Driver.Windows
 
     public static class MenuPageDriverExtensions
     {
-        [WindowDriverIdentify(TypeFullName = "AdventureWorks.Purchasing.View.MainWindow")]
+        [WindowDriverIdentify(TypeFullName = "AdventureWorks.Business.Purchasing.View.MainWindow")]
         public static MenuPageDriver AttachMenuPage(this WindowsAppFriend app)
-            => app.WaitForIdentifyFromTypeFullName("AdventureWorks.Purchasing.View.MainWindow").Dynamic();
+            => app.WaitForIdentifyFromTypeFullName("AdventureWorks.Business.Purchasing.View.MainWindow").Dynamic();
     }
 }

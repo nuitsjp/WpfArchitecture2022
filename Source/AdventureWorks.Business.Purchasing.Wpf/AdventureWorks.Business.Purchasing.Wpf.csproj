@@ -27,16 +27,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting.Wpf\AdventureWorks.Hosting.Wpf.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.MagicOnion\AdventureWorks.Business.MagicOnion.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business\AdventureWorks.Business.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion\AdventureWorks.Business.Purchasing.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.ViewModel\AdventureWorks.Business.Purchasing.ViewModel.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.View\AdventureWorks.Business.Purchasing.View.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.Purchasing\AdventureWorks.Business.Purchasing.csproj" />
 	</ItemGroup>
 
 </Project>

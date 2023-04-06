@@ -45,6 +45,9 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
             .WithResolver(StaticCompositeResolver.Instance);
 
+        // 認証サービスを初期化する。
+        AdventureWorks.Authentication.Jwt.Rest.Initializer.Initialize(this);
+
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();
 

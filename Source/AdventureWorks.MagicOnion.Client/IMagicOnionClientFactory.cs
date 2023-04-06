@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Authentication;
-using MagicOnion;
+﻿using MagicOnion;
 
 namespace AdventureWorks.MagicOnion.Client;
 

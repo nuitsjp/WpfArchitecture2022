@@ -2,7 +2,6 @@
 using AdventureWorks.Business.Purchasing;
 using AdventureWorks.Business.Purchasing.RePurchasing;
 using AdventureWorks.Business.Purchasing.View;
-using AdventureWorks.Purchasing;
 using AdventureWorks.Purchasing.App.Driver;
 using AdventureWorks.Purchasing.App.Driver.Authentication;
 using AdventureWorks.Purchasing.App.Driver.Purchasing;
