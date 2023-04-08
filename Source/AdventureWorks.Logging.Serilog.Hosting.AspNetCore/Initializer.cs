@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using AdventureWorks.Logging.Serilog.SqlServer;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 namespace AdventureWorks.Logging.Serilog.Hosting.AspNetCore;
