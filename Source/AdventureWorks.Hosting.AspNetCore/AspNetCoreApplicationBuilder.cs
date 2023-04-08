@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 using System.Text;
 using AdventureWorks.Database;
+using AdventureWorks.Logging.Serilog;
+using AdventureWorks.Logging.Serilog.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +27,7 @@ public abstract class AspNetCoreApplicationBuilder : IApplicationBuilder
         Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
         var connectionString = ConnectionStringProvider.Resolve("sa", "P@ssw0rd!");
-        await Logging.Serilog.Initializer.InitializeServerAsync(connectionString, applicationName);
+        await Logging.Serilog.Hosting.AspNetCore.Initializer.InitializeServerAsync(connectionString, applicationName);
 
         Builder.Host.UseSerilog();
 
