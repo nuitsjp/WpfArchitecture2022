@@ -33,7 +33,13 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         var authenticationContext = Authentication.Jwt.Rest.Initializer.Initialize(this);
         if (authenticationContext.TryAuthenticate(applicationName) is false)
         {
-            throw new NotImplementedException("認証失敗時の処理は現時点で未実装です。");
+            MessageBox.Show(
+                "ユーザー認証に失敗しました。",
+                "認証エラー",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+            Environment.Exit(1);
         }
 
         // MagicOnionの初期化

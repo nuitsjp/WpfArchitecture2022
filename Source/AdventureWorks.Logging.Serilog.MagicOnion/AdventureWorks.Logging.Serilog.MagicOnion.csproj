@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Serilog" />
 		<PackageReference Include="MagicOnion.Client" />
 	</ItemGroup>
 

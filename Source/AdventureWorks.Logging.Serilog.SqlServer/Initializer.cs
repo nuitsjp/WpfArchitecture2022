@@ -9,5 +9,6 @@ public static class Initializer
     {
         builder.Services.AddTransient<SerilogDatabase>();
         builder.Services.AddTransient<ISerilogConfigRepository, SerilogConfigRepository>();
+        builder.Services.AddTransient<ILogRecordRepository, LogRecordRepository>();
     }
 }
