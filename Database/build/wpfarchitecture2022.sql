@@ -21,6 +21,7 @@ execute sp_executesql @drop_statements;
 
 --------------------------------------------------------------------------------------
 -- Serilog
+-- ログの出力先と、出力設定に関するオブジェクト
 --------------------------------------------------------------------------------------
 
 -- Login
@@ -42,7 +43,6 @@ go
 -- Schema
 drop schema if exists Serilog
 go
-
 create schema Serilog
 go
 
@@ -74,7 +74,7 @@ go
 
 -- View
 create view 
-	[serilog].[vLogSettings] 
+	[Serilog].[vLogSettings] 
 as
 select 
 	[ApplicationName], 
@@ -147,10 +147,10 @@ go
 -- 製品別標準購入先ベンダー
 -- 不定期不定量発注方式に利用するリードタイムと在庫日数を持つ
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.StandardProductVendor
+drop view if exists Purchasing.vStandardProductVendor
 go
 
-create view Purchasing.StandardProductVendor 
+create view Purchasing.vStandardProductVendor 
 as
 select
 	RankedProductVendor.ProductID,
@@ -195,16 +195,16 @@ where
 	Rank = 1
 go
 
---select * from Purchasing.StandardProductVendor
+--select * from Purchasing.vStandardProductVendor
 
 
 --------------------------------------------------------------------------------------
 -- すべての製品の製品別在庫
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.ProductInventory
+drop view if exists Purchasing.vProductInventory
 go
 
-create view Purchasing.ProductInventory as
+create view Purchasing.vProductInventory as
 select
 	Product.ProductID,
 	isnull(sum(ProductInventory.Quantity), 0) as Quantity
@@ -216,17 +216,17 @@ group by
 	Product.ProductID
 go
 
---select * from Purchasing.ProductInventory
+--select * from Purchasing.vProductInventory
 go
 
 --------------------------------------------------------------------------------------
 -- すべての製品の製品別未受領数
 -- 発注しているがまだ未受領の数量
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.ProductUnclaimedPurchase
+drop view if exists Purchasing.vProductUnclaimedPurchase
 go
 
-create view Purchasing.ProductUnclaimedPurchase as
+create view Purchasing.vProductUnclaimedPurchase as
 select
 	Product.ProductID,
 	isnull(convert(int, sum(OrderQty)), 0) as Quantity
@@ -244,17 +244,17 @@ group by
 	Product.ProductID
 go
 
---select * from Purchasing.ProductUnclaimedPurchase
+--select * from Purchasing.vProductUnclaimedPurchase
 go
 
 --------------------------------------------------------------------------------------
 -- 販売実績のある製品の、製品別の１日当たり平均出荷量（不定期不定量発注方式の用語）
 -- 実際には販売量を利用する
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.ProductAverageDailyShipment
+drop view if exists Purchasing.vProductAverageDailyShipment
 go
 
-create view Purchasing.ProductAverageDailyShipment as
+create view Purchasing.vProductAverageDailyShipment as
 select
 	SpecialOfferProduct.ProductID,
 	convert(float, sum(SalesOrderDetail.OrderQty)) / Purchasing.GetAverageDailyShipmentsPeriodDays() as Quantity
@@ -271,49 +271,49 @@ group by
 	SpecialOfferProduct.ProductID
 go
 
---select * from Purchasing.ProductAverageDailyShipment
+--select * from Purchasing.vProductAverageDailyShipment
 go
 
 --------------------------------------------------------------------------------------
 -- 販売実績のある製品の、製品別の出荷対応日数（不定期不定量発注方式の用語）
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.ProductShipmentResponseDays
+drop view if exists Purchasing.vProductShipmentResponseDays
 go
 
-create view Purchasing.ProductShipmentResponseDays
+create view Purchasing.vProductShipmentResponseDays
 as
 select
 	-- 製品ID
-	ProductAverageDailyShipment.ProductID,
+	vProductAverageDailyShipment.ProductID,
 	-- 出荷対応日数
-	convert(int, FLOOR((ProductInventory.Quantity + ProductUnclaimedPurchase.Quantity) / ProductAverageDailyShipment.Quantity)) as ShipmentResponseDays,
+	convert(int, FLOOR((vProductInventory.Quantity + vProductUnclaimedPurchase.Quantity) / vProductAverageDailyShipment.Quantity)) as ShipmentResponseDays,
 	-- 在庫数
-	ProductInventory.Quantity as InventoryQuantity,
+	vProductInventory.Quantity as InventoryQuantity,
 	-- 未受領数
-	ProductUnclaimedPurchase.Quantity as UnclaimedPurchaseQuantity,
+	vProductUnclaimedPurchase.Quantity as UnclaimedPurchaseQuantity,
 	-- １日当たり平均出荷量
-	ProductAverageDailyShipment.Quantity as AverageDailyShipmentQuantity
+	vProductAverageDailyShipment.Quantity as AverageDailyShipmentQuantity
 from
-	Purchasing.ProductAverageDailyShipment
-	inner join Purchasing.ProductInventory
-		on	ProductAverageDailyShipment.ProductID = ProductInventory.ProductID
-	inner join Purchasing.ProductUnclaimedPurchase
-		on	ProductAverageDailyShipment.ProductID = ProductUnclaimedPurchase.ProductID
+	Purchasing.vProductAverageDailyShipment
+	inner join Purchasing.vProductInventory
+		on	vProductAverageDailyShipment.ProductID = vProductInventory.ProductID
+	inner join Purchasing.vProductUnclaimedPurchase
+		on	vProductAverageDailyShipment.ProductID = vProductUnclaimedPurchase.ProductID
 go
 
---select * from Purchasing.ProductShipmentResponseDays order by ShipmentResponseDays
+--select * from Purchasing.vProductShipmentResponseDays order by ShipmentResponseDays
 go
 
 --------------------------------------------------------------------------------------
 -- 要購入製品
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.ProductRequiringPurchase
+drop view if exists Purchasing.vProductRequiringPurchase
 go
 
-create view Purchasing.ProductRequiringPurchase as
+create view Purchasing.vProductRequiringPurchase as
 select
 	-- 発注先ベンダーID
-	StandardProductVendor.BusinessEntityID as VendorID,
+	vStandardProductVendor.BusinessEntityID as VendorID,
 	-- 発注先ベンダー名
 	Vendor.Name as VendorName,
 	-- プロダクトカテゴリーID
@@ -329,28 +329,28 @@ select
 	-- プロダクト名
 	Product.Name as ProductName,
 	-- 発注数
-	convert(int, ceiling(StandardProductVendor.InventoryDays * ProductShipmentResponseDays.AverageDailyShipmentQuantity)) as PurchasingQuantity,
+	convert(int, ceiling(vStandardProductVendor.InventoryDays * vProductShipmentResponseDays.AverageDailyShipmentQuantity)) as PurchasingQuantity,
 	-- 標準単価
-	StandardProductVendor.StandardPrice as UnitPrice,
+	vStandardProductVendor.StandardPrice as UnitPrice,
 	-- 出荷対応日数
-	ProductShipmentResponseDays.ShipmentResponseDays,
+	vProductShipmentResponseDays.ShipmentResponseDays,
 	-- 平均リードタイム[日]
-	StandardProductVendor.AverageLeadTime,
+	vStandardProductVendor.AverageLeadTime,
 	-- 在庫数
-	ProductShipmentResponseDays.InventoryQuantity,
+	vProductShipmentResponseDays.InventoryQuantity,
 	-- 未受領数
-	ProductShipmentResponseDays.UnclaimedPurchaseQuantity,
+	vProductShipmentResponseDays.UnclaimedPurchaseQuantity,
 	-- １日当たり平均出荷量
-	ProductShipmentResponseDays.AverageDailyShipmentQuantity
+	vProductShipmentResponseDays.AverageDailyShipmentQuantity
 from
 	-- 製品
 	Production.Product
 	-- 製品別標準購入先ベンダー
-	inner join Purchasing.StandardProductVendor
-		on	Product.ProductID = StandardProductVendor.ProductID
+	inner join Purchasing.vStandardProductVendor
+		on	Product.ProductID = vStandardProductVendor.ProductID
 	-- 製品別の出荷対応日数
-	inner join Purchasing.ProductShipmentResponseDays
-		on	Product.ProductID = ProductShipmentResponseDays.ProductID
+	inner join Purchasing.vProductShipmentResponseDays
+		on	Product.ProductID = vProductShipmentResponseDays.ProductID
 	-- 製品サブカテゴリー
 	inner join Production.ProductSubcategory
 		on	Product.ProductSubcategoryID = ProductSubcategory.ProductSubcategoryID
@@ -359,13 +359,13 @@ from
 		on	ProductSubcategory.ProductCategoryID = ProductCategory.ProductCategoryID
 	-- 製品ベンダー
 	inner join Purchasing.Vendor
-		on	StandardProductVendor.BusinessEntityID = Vendor.BusinessEntityID
+		on	vStandardProductVendor.BusinessEntityID = Vendor.BusinessEntityID
 where
 	Product.MakeFlag = 0
-	and ProductShipmentResponseDays.ShipmentResponseDays < StandardProductVendor.AverageLeadTime
+	and vProductShipmentResponseDays.ShipmentResponseDays < vStandardProductVendor.AverageLeadTime
 go
 
---select * from Purchasing.ProductRequiringPurchase
+--select * from Purchasing.vProductRequiringPurchase
 --go
 
 --------------------------------------------------------------------------------------

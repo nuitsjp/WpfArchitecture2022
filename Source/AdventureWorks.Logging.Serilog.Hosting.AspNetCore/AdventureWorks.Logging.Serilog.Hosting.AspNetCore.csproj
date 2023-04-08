@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AdventureWorks.Logging.Serilog\AdventureWorks.Logging.Serilog.csproj" />
-  </ItemGroup>
-
 </Project>

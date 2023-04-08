@@ -109,15 +109,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.Pur
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Logging", "AdventureWorks.Logging", "{7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging", "AdventureWorks.Logging\AdventureWorks.Logging.csproj", "{6F106665-A516-4B30-835F-DCC40F8D9293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging", "AdventureWorks.Logging\AdventureWorks.Logging.csproj", "{6F106665-A516-4B30-835F-DCC40F8D9293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog", "AdventureWorks.Logging.Serilog\AdventureWorks.Logging.Serilog.csproj", "{0EBA5693-D377-4166-A9E2-812EDE4C6EE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog", "AdventureWorks.Logging.Serilog\AdventureWorks.Logging.Serilog.csproj", "{0EBA5693-D377-4166-A9E2-812EDE4C6EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.Rest", "AdventureWorks.Logging.Serilog.Rest\AdventureWorks.Logging.Serilog.Rest.csproj", "{C0AE72C6-0481-4D5B-9AD0-DE5FD4BDEACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.Rest", "AdventureWorks.Logging.Serilog.Rest\AdventureWorks.Logging.Serilog.Rest.csproj", "{C0AE72C6-0481-4D5B-9AD0-DE5FD4BDEACD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.Rest.Server", "AdventureWorks.Logging.Serilog.Rest.Server\AdventureWorks.Logging.Serilog.Rest.Server.csproj", "{2EB85917-883C-49C7-A6C5-6322735C7187}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.Rest.Server", "AdventureWorks.Logging.Serilog.Rest.Server\AdventureWorks.Logging.Serilog.Rest.Server.csproj", "{2EB85917-883C-49C7-A6C5-6322735C7187}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Hosting.Rest", "AdventureWorks.Logging.Hosting.Rest\AdventureWorks.Logging.Hosting.Rest.csproj", "{B215C31A-BC7C-43A8-B965-A017BDA3076C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Hosting.Rest", "AdventureWorks.Logging.Hosting.Rest\AdventureWorks.Logging.Hosting.Rest.csproj", "{B215C31A-BC7C-43A8-B965-A017BDA3076C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.Hosting.AspNetCore", "AdventureWorks.Logging.Serilog.Hosting.AspNetCore\AdventureWorks.Logging.Serilog.Hosting.AspNetCore.csproj", "{A8C768A4-7CFD-4972-B39E-708A99A31667}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -301,6 +303,10 @@ Global
 		{B215C31A-BC7C-43A8-B965-A017BDA3076C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B215C31A-BC7C-43A8-B965-A017BDA3076C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B215C31A-BC7C-43A8-B965-A017BDA3076C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -352,6 +358,7 @@ Global
 		{C0AE72C6-0481-4D5B-9AD0-DE5FD4BDEACD} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{2EB85917-883C-49C7-A6C5-6322735C7187} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{B215C31A-BC7C-43A8-B965-A017BDA3076C} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
+		{A8C768A4-7CFD-4972-B39E-708A99A31667} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D94D4FE-7107-4204-8F73-4784BB3C648F}

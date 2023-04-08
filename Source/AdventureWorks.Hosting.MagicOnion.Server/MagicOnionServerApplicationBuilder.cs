@@ -39,7 +39,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
             _serviceAssemblies.Add(serviceAssembly);
         }
 
-        public override WebApplication Build(string applicationName)
+        public override async Task<WebApplication> BuildAsync(string applicationName)
         {
             Builder.Services.AddGrpc();
             Builder.Services.AddMagicOnion(
@@ -57,7 +57,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
                 .WithResolver(StaticCompositeResolver.Instance);
 
 
-            var app = base.Build(applicationName);
+            var app = await base.BuildAsync(applicationName);
             app.MapMagicOnionService();
             return app;
         }

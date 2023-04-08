@@ -14,7 +14,7 @@ public class RestApplicationBuilder : AspNetCoreApplicationBuilder
 
     public static RestApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
-    public override WebApplication Build(string applicationName)
+    public override async Task<WebApplication> BuildAsync(string applicationName)
     {
         Builder.Services.AddControllers();
         Builder.Services.AddEndpointsApiExplorer();
@@ -27,7 +27,7 @@ public class RestApplicationBuilder : AspNetCoreApplicationBuilder
         Builder.Services.AddAuthorization(options => { options.FallbackPolicy = options.DefaultPolicy; });
 
 
-        var app = base.Build(applicationName);
+        var app = await base.BuildAsync(applicationName);
 
         if (app.Environment.IsDevelopment())
         {
