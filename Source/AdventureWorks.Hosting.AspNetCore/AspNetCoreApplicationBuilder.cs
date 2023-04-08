@@ -1,9 +1,4 @@
-﻿using System.Configuration;
-using System.Text;
-using AdventureWorks.Database;
-using AdventureWorks.Logging.Serilog;
-using AdventureWorks.Logging.Serilog.SqlServer;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;

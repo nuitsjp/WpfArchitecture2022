@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace AdventureWorks.Business.SqlServer;
+﻿namespace AdventureWorks.Business.SqlServer;
 
 public class AdventureWorksDatabase : Database.Database
 {

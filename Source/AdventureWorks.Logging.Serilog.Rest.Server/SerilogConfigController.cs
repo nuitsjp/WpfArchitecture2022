@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Serilog.Events;
 
 namespace AdventureWorks.Logging.Serilog.Rest.Server;
 

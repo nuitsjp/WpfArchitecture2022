@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Transactions;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
 
 namespace AdventureWorks.Database;
 

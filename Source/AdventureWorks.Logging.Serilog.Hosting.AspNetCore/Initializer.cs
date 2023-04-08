@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using AdventureWorks.Logging.Serilog.SqlServer;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 
@@ -12,7 +11,7 @@ public static class Initializer
     public static async Task InitializeAsync(string applicationName)
     {
         var database = new SerilogDatabase();
-        var repository = new SerilogConfigRepository(database);
+        var repository = (ISerilogConfigRepository)new SerilogConfigRepository(database);
         var config = await repository.GetServerSerilogConfigAsync(applicationName);
 
 #if DEBUG
@@ -25,12 +24,12 @@ public static class Initializer
             .Replace("%MinimumLevel%", minimumLevel.ToString())
             .Replace("%ApplicationName%", applicationName);
         using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
-        var cc = new ConfigurationBuilder()
+        var configurationRoot = new ConfigurationBuilder()
             .AddJsonStream(settings)
             .Build();
 
         Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(cc)
+            .ReadFrom.Configuration(configurationRoot)
 #if DEBUG
             .WriteTo.Debug()
 #endif

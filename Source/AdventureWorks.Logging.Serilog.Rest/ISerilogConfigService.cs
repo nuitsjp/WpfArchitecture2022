@@ -2,5 +2,6 @@
 
 public interface ISerilogConfigService
 {
+    // ReSharper disable once UnusedMember.Global
     Task<SerilogConfig> GetSerilogConfigAsync(string applicationName);
 }

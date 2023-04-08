@@ -1,8 +1,5 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Windows;
-using AdventureWorks.Database;
 using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Wpf.ViewModel;
 using Kamishibai;
