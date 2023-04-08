@@ -29,6 +29,13 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
     public IHost Build(string applicationName)
     {
+        // 認証サービスを初期化する。
+        var authenticationContext = Authentication.Jwt.Rest.Initializer.Initialize(this);
+        if (authenticationContext.TryAuthenticate(applicationName) is false)
+        {
+            throw new NotImplementedException("認証失敗時の処理は現時点で未実装です。");
+        }
+
         // Serilogの初期化
         Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName).Wait();
         LoggingAspect.Logger = new ViewModelLogger();
@@ -40,9 +47,6 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
         MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
             .WithResolver(StaticCompositeResolver.Instance);
-
-        // 認証サービスを初期化する。
-        AdventureWorks.Authentication.Jwt.Rest.Initializer.Initialize(this);
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();

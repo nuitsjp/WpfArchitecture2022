@@ -6,6 +6,6 @@ public interface IAuthenticationContext
 {
     string CurrentTokenString { get; }
     User CurrentEmployee { get; }
-    Task<bool> TryAuthenticateAsync(string audience);
+    bool TryAuthenticate(string audience);
 }
 

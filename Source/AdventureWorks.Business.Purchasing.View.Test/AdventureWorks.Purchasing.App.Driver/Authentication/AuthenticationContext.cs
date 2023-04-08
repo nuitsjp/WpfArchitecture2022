@@ -12,9 +12,8 @@ public class AuthenticationContext : IAuthenticationContext
             new EmployeeId(1),
             "Adventure Works");
 
-    public async Task<bool> TryAuthenticateAsync(string audience)
+    public bool TryAuthenticate(string audience)
     {
-        await Task.CompletedTask;
         return true;
     }
 }

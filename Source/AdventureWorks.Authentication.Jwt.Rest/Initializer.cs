@@ -5,8 +5,10 @@ namespace AdventureWorks.Authentication.Jwt.Rest;
 
 public static class Initializer
 {
-    public static void Initialize(IApplicationBuilder builder)
+    public static IAuthenticationContext Initialize(IApplicationBuilder builder)
     {
-        builder.Services.AddSingleton<IAuthenticationContext, AuthenticationContext>();
+        AuthenticationContext context = new();
+        builder.Services.AddSingleton<IAuthenticationContext>(context);
+        return context;
     }
 }

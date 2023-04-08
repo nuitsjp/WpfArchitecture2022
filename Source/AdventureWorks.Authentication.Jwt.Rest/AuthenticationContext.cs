@@ -35,15 +35,14 @@ public class AuthenticationContext : IAuthenticationContext
         }
     }
 
-    public async Task<bool> TryAuthenticateAsync(string audience)
+    public bool TryAuthenticate(string audience)
     {
         var endpoint = Environments.GetEnvironmentVariable(
             "AdventureWorks.Authentication.Jwt.Rest.Endpoint",
             "https://localhost:4001");
-        var response = await HttpClient.GetAsync($"{endpoint}/Authentication");
-        response.EnsureSuccessStatusCode();
-
-        _tokenString = await response.Content.ReadAsStringAsync();
+        var task = HttpClient.GetStringAsync($"{endpoint}/Authentication");
+        task.Wait();
+        _tokenString = task.Result;
         _currentEmployee = UserSerializer.Deserialize(_tokenString, "AdventureWorks.Authentication");
 
 
