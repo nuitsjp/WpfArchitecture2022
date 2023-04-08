@@ -7,11 +7,11 @@ namespace AdventureWorks.Database;
 
 public abstract class Database : IDatabase
 {
-    private readonly string _connectionString;
+    public string ConnectionString { get; }
 
     protected Database(string userId, string password)
     {
-        _connectionString = ConnectionStringProvider.Resolve(userId, password);
+        ConnectionString = ConnectionStringProvider.Resolve(userId, password);
     }
 
     public ITransaction BeginTransaction()
@@ -19,7 +19,7 @@ public abstract class Database : IDatabase
         var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         try
         {
-            var connection = new SqlConnection(_connectionString);
+            var connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             return new Transaction(scope, connection);
@@ -34,7 +34,7 @@ public abstract class Database : IDatabase
 
     public IDbConnection Open()
     {
-        IDbConnection connection = new SqlConnection(_connectionString);
+        IDbConnection connection = new SqlConnection(ConnectionString);
         try
         {
             connection.Open();

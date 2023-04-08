@@ -329,48 +329,49 @@ create schema Serilog
 go
 
 -- Table
-create table [Serilog].[LogSettings](
-    [ApplicationName] nvarchar(400) not null,
-	[MinimumLevel] int not null,
-	[Settings] nvarchar(max) not null
-	constraint [PK_LogSettings] primary key ([ApplicationName])
+create table Serilog.LogSettings(
+    ApplicationName nvarchar(400) not null,
+	MinimumLevel int not null,
+	Settings nvarchar(max) not null
+	constraint PK_LogSettings primary key (ApplicationName)
 )	on [PRIMARY];
 go
 
 
 
-create table [Serilog].[Logs](
-	[Id] [int] identity(1,1) not null,
-	[Message] [nvarchar](max) null,
-	[Level] [nvarchar](max) null,
-	[TimeStamp] [datetime] null,
-	[Exception] [nvarchar](max) null,
-	[ApplicationType] [nvarchar](max) null,
-	[Application] [nvarchar](max) null,
-	[MachineName] [nvarchar](max) null,
-	[UserName] [nvarchar](max) null,
-	[ProcessId] [int] null,
-	[ThreadId] [int] null,
-	[CorrelationId] [int] null,
-	constraint [PK_Logs] primary key clustered ([Id] asc) 
+create table Serilog.Logs(
+	Id int identity(1,1) not null,
+	Message nvarchar(max) null,
+	Level nvarchar(max) null,
+	TimeStamp datetime null,
+	Exception nvarchar(max) null,
+	ApplicationType nvarchar(max) null,
+	Application nvarchar(max) null,
+	MachineName nvarchar(max) null,
+	UserName nvarchar(max) null,
+	ProcessId int null,
+	ThreadId int null,
+	CorrelationId int null,
+	constraint PK_Logs primary key clustered (Id asc) 
 		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
 )	on [PRIMARY] textimage_on [PRIMARY]
 go
 
 -- View
 create view 
-	[Serilog].[vLogSettings] 
+	Serilog.vLogSettings 
 as
 select 
-	[ApplicationName], 
-	[MinimumLevel],
-	[Settings]
+	ApplicationName, 
+	MinimumLevel,
+	Settings
 from 
-	[Serilog].[LogSettings];
+	Serilog.LogSettings;
 go
 
 -- Grant
-grant select on [Serilog].[vLogSettings] to Serilog;
+grant select on Serilog.vLogSettings to Serilog;
+grant insert, select on Serilog.Logs to Serilog;
 
 -- デフォルト設定の登録
 insert into 
@@ -392,8 +393,9 @@ values (
         "Name": "MSSqlServer",
         "Args": {
           "restrictedToMinimumLevel": "%MinimumLevel%",
-          "connectionString": "Data Source=%DataSource%;Initial Catalog=AdventureWorks;User ID=%UserId%;Password=%Password%;Trust Server Certificate=True",
+          "connectionString": "%ConnectionString%",
           "sinkOptions": {
+            "SchemaName": "Serilog",
             "TableName": "Logs",
             "AutoCreateSqlTable": true,
             "batchPostingLimit": 1000,
