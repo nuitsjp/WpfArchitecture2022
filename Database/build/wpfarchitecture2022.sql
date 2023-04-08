@@ -331,7 +331,7 @@ go
 -- Table
 create table Serilog.LogSettings(
     ApplicationName nvarchar(400) not null,
-	MinimumLevel int not null,
+	MinimumLevel nvarchar(max) not null,
 	Settings nvarchar(max) not null
 	constraint PK_LogSettings primary key (ApplicationName)
 )	on [PRIMARY];
@@ -378,7 +378,7 @@ insert into
 	Serilog.LogSettings
 values (
 	'Server Default',
-	2,
+	'Information',
 	'{
   "Serilog": {
     "Using": [ "Serilog.Sinks.Debug", "Serilog.Sinks.MSSqlServer" ],
@@ -469,7 +469,7 @@ values (
 	Serilog.LogSettings
 values (
 	'Client Default',
-	2,
+	'Information',
 	'{
   "Serilog": {
     "Using": [ "Serilog.Sinks.Debug" ],

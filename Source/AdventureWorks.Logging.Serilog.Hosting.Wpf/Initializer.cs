@@ -1,5 +1,7 @@
 ﻿using System.Text;
-using AdventureWorks.Logging.Serilog.Rest;
+using AdventureWorks.Authentication;
+using AdventureWorks.Logging.Serilog.MagicOnion;
+using AdventureWorks.MagicOnion.Client;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
@@ -9,9 +11,13 @@ namespace AdventureWorks.Logging.Serilog.Hosting.Wpf;
 
 public static class Initializer
 {
-    public static async Task InitializeAsync(string applicationName)
+    public static async Task InitializeAsync(string applicationName, IAuthenticationContext authenticationContext)
     {
-        var repository = new SerilogConfigRepository();
+        var endpoint = Environments.GetEnvironmentVariable(
+            "AdventureWorks.Logging.Serilog.MagicOnion.Endpoint",
+            "https://localhost:3001");
+
+        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, endpoint));
         var config = await repository.GetClientSerilogConfigAsync(applicationName);
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;

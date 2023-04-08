@@ -36,10 +36,6 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
             throw new NotImplementedException("認証失敗時の処理は現時点で未実装です。");
         }
 
-        // Serilogの初期化
-        Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName).Wait();
-        LoggingAspect.Logger = new ViewModelLogger();
-
         // MagicOnionの初期化
         AdventureWorks.MagicOnion.Client.Initializer.Initialize(this);
         _resolvers.Insert(0, StandardResolver.Instance);
@@ -47,6 +43,10 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
         MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
             .WithResolver(StaticCompositeResolver.Instance);
+
+        // Serilogの初期化
+        Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName, authenticationContext).Wait();
+        LoggingAspect.Logger = new ViewModelLogger();
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();

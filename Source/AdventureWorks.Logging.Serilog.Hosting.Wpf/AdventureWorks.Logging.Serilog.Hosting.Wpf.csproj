@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\AdventureWorks.Logging.Serilog.Rest\AdventureWorks.Logging.Serilog.Rest.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Logging.Serilog.MagicOnion\AdventureWorks.Logging.Serilog.MagicOnion.csproj" />
 	</ItemGroup>
 
 </Project>

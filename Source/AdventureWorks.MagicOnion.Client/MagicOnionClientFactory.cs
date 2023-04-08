@@ -8,19 +8,20 @@ namespace AdventureWorks.MagicOnion.Client;
 public class MagicOnionClientFactory : IMagicOnionClientFactory
 {
     private readonly IAuthenticationContext _authenticationContext;
+    private readonly string _endpoint;
 
-    public MagicOnionClientFactory(IAuthenticationContext authenticationContext)
+    public MagicOnionClientFactory(
+        IAuthenticationContext authenticationContext, 
+        string endpoint)
     {
         _authenticationContext = authenticationContext;
+        _endpoint = endpoint;
     }
 
     public T Create<T>() where T : IService<T>
     {
-        var endpoint = Environments.GetEnvironmentVariable(
-            "AdventureWorks.MagicOnion.Client.Endpoint",
-            "https://localhost:5001");
         return MagicOnionClient.Create<T>(
-            GrpcChannel.ForAddress(endpoint),
+            GrpcChannel.ForAddress(_endpoint),
             new IClientFilter[]
             {
                 new AuthenticationFilter(_authenticationContext)
