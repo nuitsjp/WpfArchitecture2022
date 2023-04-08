@@ -11,5 +11,5 @@ builder
     .AddApplicationPart(typeof(AuthenticationController).Assembly);
 
 
-var app = await builder.BuildAsync("AdventureWorks.Authentication.Hosting.WebApi");
+var app = await builder.BuildAsync("AdventureWorks.Authentication.Hosting.Rest");
 await app.RunAsync();

@@ -6,7 +6,7 @@ namespace AdventureWorks.Logging.Serilog.Rest.Server;
 
 [ApiController]
 [Route("[controller]")]
-public class SerilogConfigController : ControllerBase, ISerilogConfigRepository
+public class SerilogConfigController : ControllerBase, ISerilogConfigService
 {
     private readonly ISerilogConfigRepository _repository;
 
@@ -15,9 +15,9 @@ public class SerilogConfigController : ControllerBase, ISerilogConfigRepository
         _repository = repository;
     }
 
-    [HttpGet(Name = "SerilogConfig")]
-    public Task<SerilogConfig> GetServerSerilogConfigAsync(string applicationName)
+    [HttpGet("{applicationName}")]
+    public Task<SerilogConfig> GetSerilogConfigAsync(string applicationName)
     {
-        return _repository.GetServerSerilogConfigAsync(applicationName);
+        return _repository.GetClientSerilogConfigAsync(applicationName);
     }
 }

@@ -1,0 +1,26 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Debug" ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithProcessId", "WithThreadId" ],
+    "Properties": {
+      "Application": "%ApplicationName%",
+      "ApplicationType": "WPF",
+      "CorrelationId": 0
+    },
+    "MinimumLevel": "%MinimumLevel%",
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 4 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 100 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 10 }
+      }
+    ]
+  }
+}

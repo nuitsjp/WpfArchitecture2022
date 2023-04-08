@@ -34,6 +34,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public IHost Build(string applicationName)
     {
         // Serilogの初期化
+        Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName).Wait();
         InitializeSerilog(Configuration, applicationName);
         LoggingAspect.Logger = new ViewModelLogger();
 

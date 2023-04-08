@@ -13,6 +13,16 @@ public class SerilogConfigRepository : ISerilogConfigRepository
 
     public async Task<SerilogConfig> GetServerSerilogConfigAsync(string applicationName)
     {
+        return await GetSerilogConfigAsync(applicationName, "Server Default");
+    }
+
+    public async Task<SerilogConfig> GetClientSerilogConfigAsync(string applicationName)
+    {
+        return await GetSerilogConfigAsync(applicationName, "Client Default");
+    }
+
+    private async Task<SerilogConfig> GetSerilogConfigAsync(string applicationName, string defaultName)
+    {
         using var connection = _database.Open();
 
         const string query = @"
@@ -40,7 +50,7 @@ where
             query,
             new
             {
-                ApplicationName = "Server Default",
+                ApplicationName = defaultName,
             });
     }
 }

@@ -18,6 +18,7 @@
     <ProjectReference Include="..\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj" />
     <ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
     <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Logging.Serilog.Hosting.Wpf\AdventureWorks.Logging.Serilog.Hosting.Wpf.csproj" />
     <ProjectReference Include="..\AdventureWorks.MagicOnion.Client\AdventureWorks.MagicOnion.Client.csproj" />
     <ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
   </ItemGroup>
