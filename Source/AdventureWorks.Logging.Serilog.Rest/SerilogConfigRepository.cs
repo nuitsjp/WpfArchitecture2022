@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using Microsoft.Extensions.Hosting;
+using System.Net.Http.Json;
 
 namespace AdventureWorks.Logging.Serilog.Rest;
 
@@ -13,7 +14,10 @@ public class SerilogConfigRepository : ISerilogConfigRepository
 
     public async Task<SerilogConfig> GetClientSerilogConfigAsync(string applicationName)
     {
-        var apiUrl = $"https://localhost:3001/SerilogConfig/{applicationName}";
+        var endpoint =  Environments.GetEnvironmentVariable(
+            "AdventureWorks.Logging.Serilog.Rest.Endpoint", 
+            "https://localhost:3001");
+        var apiUrl = $"{endpoint}/SerilogConfig/{applicationName}";
         var response = await HttpClient.GetAsync(apiUrl);
 
         response.EnsureSuccessStatusCode();

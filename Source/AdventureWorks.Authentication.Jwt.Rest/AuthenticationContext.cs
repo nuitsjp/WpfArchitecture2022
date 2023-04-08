@@ -37,7 +37,10 @@ public class AuthenticationContext : IAuthenticationContext
 
     public async Task<bool> TryAuthenticateAsync(string audience)
     {
-        var response = await HttpClient.GetAsync($"https://localhost:4001/Authentication");
+        var endpoint = Environments.GetEnvironmentVariable(
+            "AdventureWorks.Authentication.Jwt.Rest.Endpoint",
+            "https://localhost:4001");
+        var response = await HttpClient.GetAsync($"{endpoint}/Authentication");
         response.EnsureSuccessStatusCode();
 
         _tokenString = await response.Content.ReadAsStringAsync();
