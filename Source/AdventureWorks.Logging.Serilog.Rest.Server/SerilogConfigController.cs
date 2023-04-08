@@ -16,8 +16,8 @@ public class SerilogConfigController : ControllerBase, ISerilogConfigRepository
     }
 
     [HttpGet(Name = "SerilogConfig")]
-    public Task<SerilogConfig> GetByApplicationNameAsync(string applicationName)
+    public Task<SerilogConfig> GetServerSerilogConfigAsync(string applicationName)
     {
-        return _repository.GetByApplicationNameAsync(applicationName);
+        return _repository.GetServerSerilogConfigAsync(applicationName);
     }
 }

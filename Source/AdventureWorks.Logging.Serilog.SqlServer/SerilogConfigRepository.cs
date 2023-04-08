@@ -11,7 +11,7 @@ public class SerilogConfigRepository : ISerilogConfigRepository
         _database = database;
     }
 
-    public async Task<SerilogConfig> GetByApplicationNameAsync(string applicationName)
+    public async Task<SerilogConfig> GetServerSerilogConfigAsync(string applicationName)
     {
         using var connection = _database.Open();
 

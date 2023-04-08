@@ -3,21 +3,26 @@ using AdventureWorks.Logging.Serilog.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using Serilog.Events;
 
 namespace AdventureWorks.Logging.Serilog.Hosting.AspNetCore;
 
 public static class Initializer
 {
-    public static async Task InitializeServerAsync(string connectionString, string applicationName)
+    public static async Task InitializeAsync(string applicationName)
     {
         var database = new SerilogDatabase();
         var repository = new SerilogConfigRepository(database);
-        var config = await repository.GetByApplicationNameAsync(applicationName);
+        var config = await repository.GetServerSerilogConfigAsync(applicationName);
 
-        var minimumLevel = GetMinimumLevel(connectionString, applicationName);
+#if DEBUG
+        var minimumLevel = LogEventLevel.Debug;
+#else
+        var var maximumLevel = config.MinimumLevel;
+#endif
         var settingString = config.Settings
             .Replace("%ConnectionString%", database.ConnectionString)
-            .Replace("%MinimumLevel%", minimumLevel)
+            .Replace("%MinimumLevel%", minimumLevel.ToString())
             .Replace("%ApplicationName%", applicationName);
         using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
         var cc = new ConfigurationBuilder()
