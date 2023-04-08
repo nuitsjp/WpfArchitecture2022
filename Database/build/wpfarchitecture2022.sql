@@ -20,73 +20,6 @@ where
 execute sp_executesql @drop_statements;
 
 --------------------------------------------------------------------------------------
--- Serilog
--- ログの出力先と、出力設定に関するオブジェクト
---------------------------------------------------------------------------------------
-
--- Login
-if exists
-    (select name from master.sys.server_principals where name = 'Serilog')
-begin
-	drop login Serilog
-end
-
-create login Serilog with password = 'RG3CbVP!2U4hT5';
-go
-
--- User
-drop user if exists Serilog
-go
-create user Serilog for login Serilog;
-go
-
--- Schema
-drop schema if exists Serilog
-go
-create schema Serilog
-go
-
--- Table
-create table [Serilog].[LogSettings](
-    [ApplicationName] nvarchar(400) not null,
-	[MinimumLevel] nvarchar(max) not null,
-	constraint [PK_LogSettings] primary key ([ApplicationName])
-)	on [PRIMARY];
-go
-
-create table [Serilog].[Logs](
-	[Id] [int] identity(1,1) not null,
-	[Message] [nvarchar](max) null,
-	[Level] [nvarchar](max) null,
-	[TimeStamp] [datetime] null,
-	[Exception] [nvarchar](max) null,
-	[ApplicationType] [nvarchar](max) null,
-	[Application] [nvarchar](max) null,
-	[MachineName] [nvarchar](max) null,
-	[UserName] [nvarchar](max) null,
-	[ProcessId] [int] null,
-	[ThreadId] [int] null,
-	[CorrelationId] [int] null,
-	constraint [PK_Logs] primary key clustered ([Id] asc) 
-		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
-)	on [PRIMARY] textimage_on [PRIMARY]
-go
-
--- View
-create view 
-	[Serilog].[vLogSettings] 
-as
-select 
-	[ApplicationName], 
-	[MinimumLevel]
-from 
-	[Serilog].[LogSettings];
-go
-
--- Grant
-grant select on [Serilog].[vLogSettings] to Serilog;
-
---------------------------------------------------------------------------------------
 -- 「今日」のdatetimeを取得する。
 -- getdate()から変換した場合、テストが困難になるためスカラー関数を利用する。
 -- 
@@ -367,6 +300,170 @@ go
 
 --select * from Purchasing.vProductRequiringPurchase
 --go
+
+--------------------------------------------------------------------------------------
+-- Serilog
+-- ログの出力先と、出力設定に関するオブジェクト
+--------------------------------------------------------------------------------------
+
+-- Login
+if exists
+    (select name from master.sys.server_principals where name = 'Serilog')
+begin
+	drop login Serilog
+end
+
+create login Serilog with password = 'RG3CbVP!2U4hT5';
+go
+
+-- User
+drop user if exists Serilog
+go
+create user Serilog for login Serilog;
+go
+
+-- Schema
+drop schema if exists Serilog
+go
+create schema Serilog
+go
+
+-- Table
+create table [Serilog].[LogSettings](
+    [ApplicationName] nvarchar(400) not null,
+	[MinimumLevel] int not null,
+	[Settings] nvarchar(max) not null
+	constraint [PK_LogSettings] primary key ([ApplicationName])
+)	on [PRIMARY];
+go
+
+
+
+create table [Serilog].[Logs](
+	[Id] [int] identity(1,1) not null,
+	[Message] [nvarchar](max) null,
+	[Level] [nvarchar](max) null,
+	[TimeStamp] [datetime] null,
+	[Exception] [nvarchar](max) null,
+	[ApplicationType] [nvarchar](max) null,
+	[Application] [nvarchar](max) null,
+	[MachineName] [nvarchar](max) null,
+	[UserName] [nvarchar](max) null,
+	[ProcessId] [int] null,
+	[ThreadId] [int] null,
+	[CorrelationId] [int] null,
+	constraint [PK_Logs] primary key clustered ([Id] asc) 
+		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
+)	on [PRIMARY] textimage_on [PRIMARY]
+go
+
+-- View
+create view 
+	[Serilog].[vLogSettings] 
+as
+select 
+	[ApplicationName], 
+	[MinimumLevel],
+	[Settings]
+from 
+	[Serilog].[LogSettings];
+go
+
+-- Grant
+grant select on [Serilog].[vLogSettings] to Serilog;
+
+-- デフォルト設定の登録
+insert into 
+	Serilog.LogSettings
+values (
+	'Server Default',
+	2,
+	'{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Debug", "Serilog.Sinks.MSSqlServer" ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithProcessId", "WithThreadId", "WithCorrelationId" ],
+    "Properties": {
+      "Application": "%ApplicationName%",
+      "ApplicationType": "ASP.NET Core"
+    },
+    "MinimumLevel": "%MinimumLevel%",
+    "WriteTo": [
+      {
+        "Name": "MSSqlServer",
+        "Args": {
+          "restrictedToMinimumLevel": "%MinimumLevel%",
+          "connectionString": "Data Source=%DataSource%;Initial Catalog=AdventureWorks;User ID=%UserId%;Password=%Password%;Trust Server Certificate=True",
+          "sinkOptions": {
+            "TableName": "Logs",
+            "AutoCreateSqlTable": true,
+            "batchPostingLimit": 1000,
+            "period": "0.00:00:30"
+          },
+          "columnOptionsSection": {
+            "disableTriggers": true,
+            "clusteredColumnstoreIndex": false,
+            "primaryKeyColumnName": "Id",
+            "removeStandardColumns": [ "MessageTemplate", "Properties" ],
+            "additionalColumns": [
+              {
+                "ColumnName": "ApplicationType",
+                "PropertyName": "ApplicationType",
+                "DataType": "nvarchar"
+              },
+              {
+                "ColumnName": "Application",
+                "PropertyName": "Application",
+                "DataType": "nvarchar"
+              },
+              {
+                "ColumnName": "MachineName",
+                "PropertyName": "MachineName",
+                "DataType": "nvarchar"
+              },
+              {
+                "ColumnName": "UserName",
+                "PropertyName": "EnvironmentUserName",
+                "DataType": "nvarchar"
+              },
+              {
+                "ColumnName": "ProcessId",
+                "PropertyName": "ProcessId",
+                "DataType": "int"
+              },
+              {
+                "ColumnName": "ThreadId",
+                "PropertyName": "ThreadId",
+                "DataType": "int"
+              },
+              {
+                "ColumnName": "CorrelationId",
+                "PropertyName": "CorrelationId",
+                "DataType": "int"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 4 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 100 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 10 }
+      }
+    ]
+  }
+}'
+)
+
+
 
 --------------------------------------------------------------------------------------
 -- データベースを終了し、構築した内容をファイルへ書き出す

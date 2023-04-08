@@ -2,4 +2,7 @@
 
 namespace AdventureWorks.Logging.Serilog;
 
-public record SerilogConfig(LogEventLevel LogEventLevel);
+public record SerilogConfig(
+    string ApplicationName,
+    LogEventLevel MinimumLevel,
+    string Settings);

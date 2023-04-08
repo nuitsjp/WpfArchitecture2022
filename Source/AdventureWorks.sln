@@ -121,6 +121,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Host
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.Hosting.AspNetCore", "AdventureWorks.Logging.Serilog.Hosting.AspNetCore\AdventureWorks.Logging.Serilog.Hosting.AspNetCore.csproj", "{A8C768A4-7CFD-4972-B39E-708A99A31667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.SqlServer", "AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj", "{8DCFF743-C360-44EE-9B58-DC02A4CB0176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -307,6 +309,10 @@ Global
 		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C768A4-7CFD-4972-B39E-708A99A31667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCFF743-C360-44EE-9B58-DC02A4CB0176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCFF743-C360-44EE-9B58-DC02A4CB0176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCFF743-C360-44EE-9B58-DC02A4CB0176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCFF743-C360-44EE-9B58-DC02A4CB0176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -359,6 +365,7 @@ Global
 		{2EB85917-883C-49C7-A6C5-6322735C7187} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{B215C31A-BC7C-43A8-B965-A017BDA3076C} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{A8C768A4-7CFD-4972-B39E-708A99A31667} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
+		{8DCFF743-C360-44EE-9B58-DC02A4CB0176} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D94D4FE-7107-4204-8F73-4784BB3C648F}
