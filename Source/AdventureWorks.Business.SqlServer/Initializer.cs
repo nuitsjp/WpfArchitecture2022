@@ -9,7 +9,7 @@ public static class Initializer
     {
         TypeHandlerInitializer.Initialize();
 
-        builder.Services.AddTransient(_ => new AdventureWorksDatabase(builder.Configuration, "sa", "P@ssw0rd!"));
+        builder.Services.AddTransient(_ => new AdventureWorksDatabase("sa", "P@ssw0rd!"));
         builder.Services.AddTransient<IUserRepository, UserRepository>();
     }
 }

@@ -9,7 +9,7 @@ public static class Initializer
     {
         TypeHandlerInitializer.Initialize();
 
-        builder.Services.AddTransient(_ => new PurchasingDatabase(builder.Configuration, "sa", "P@ssw0rd!"));
+        builder.Services.AddTransient(_ => new PurchasingDatabase("sa", "P@ssw0rd!"));
         builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
         builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepository>();
         builder.Services.AddTransient<IVendorRepository, VendorRepository>();

@@ -4,8 +4,7 @@ namespace AdventureWorks.Business.Purchasing.SqlServer;
 
 public class PurchasingDatabase : Database.Database
 {
-    public PurchasingDatabase(IConfiguration configuration, string userId, string password)
-        : base(configuration, userId, password)
+    public PurchasingDatabase(string userId, string password) : base(userId, password)
     {
     }
 }

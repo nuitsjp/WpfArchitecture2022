@@ -105,7 +105,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
     public static void InitializeSerilog(IConfiguration configuration, string applicationName)
     {
-        var connectionString = ConnectionStringProvider.Resolve(configuration, "sa", "P@ssw0rd!");
+        var connectionString = ConnectionStringProvider.Resolve("sa", "P@ssw0rd!");
         var minimumLevel = GetMinimumLevel(connectionString, applicationName);
         var settingString = Properties.Resources.Wpf
             .Replace("%ConnectionString%", connectionString)

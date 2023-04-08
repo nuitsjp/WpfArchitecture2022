@@ -9,9 +9,9 @@ public abstract class Database : IDatabase
 {
     private readonly string _connectionString;
 
-    protected Database(IConfiguration configuration, string userId, string password)
+    protected Database(string userId, string password)
     {
-        _connectionString = ConnectionStringProvider.Resolve(configuration, userId, password);
+        _connectionString = ConnectionStringProvider.Resolve(userId, password);
     }
 
     public ITransaction BeginTransaction()

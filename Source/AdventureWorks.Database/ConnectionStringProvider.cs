@@ -5,29 +5,26 @@ namespace AdventureWorks.Database;
 
 public static class ConnectionStringProvider
 {
-    public static string Resolve(IConfiguration configuration, string userId, string password)
+    public static string Resolve(string userId, string password)
     {
-        const string dataSourceName = "Database:DataSource";
-        var dataSource = configuration[dataSourceName];
-
-        const string initialCatalogName = "Database:InitialCatalog";
-        var initialCatalog = configuration[initialCatalogName];
-        if (dataSource is null)
-        {
-            throw new InvalidOperationException($"appsettings.jsonに{dataSourceName}が未設定です。");
-        }
-        if (initialCatalog is null)
-        {
-            throw new InvalidOperationException($"appsettings.jsonに{initialCatalogName}が未設定です。");
-        }
-
         return new SqlConnectionStringBuilder
         {
-            DataSource = dataSource,
-            InitialCatalog = initialCatalog,
+            DataSource = GetDataSource(),
+            InitialCatalog = "AdventureWorks",
             UserID = userId,
             Password = password,
             TrustServerCertificate = true
         }.ToString();
+    }
+
+    static string GetDataSource()
+    {
+        const string name = "AdventureWorks.Database.DataSource";
+
+        return Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process)
+               ?? Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.User)
+               ?? Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Machine)
+               // 開発環境などでローカルに共存している場合は環境変数を設定せずに利用できる。
+               ?? "localhost";
     }
 }

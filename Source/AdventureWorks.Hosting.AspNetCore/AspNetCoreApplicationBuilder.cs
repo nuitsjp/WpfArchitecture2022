@@ -24,7 +24,7 @@ public abstract class AspNetCoreApplicationBuilder : IApplicationBuilder
     {
         Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
-        var connectionString = ConnectionStringProvider.Resolve(Configuration, "sa", "P@ssw0rd!");
+        var connectionString = ConnectionStringProvider.Resolve("sa", "P@ssw0rd!");
         await Logging.Serilog.Initializer.InitializeServerAsync(connectionString, applicationName);
 
         Builder.Host.UseSerilog();
