@@ -13,6 +13,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing\AdventureWorks.Business.Purchasing.RePurchasing.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

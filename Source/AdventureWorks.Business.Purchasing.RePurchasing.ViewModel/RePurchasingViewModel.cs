@@ -25,6 +25,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         IEnumerable<RequiringPurchaseProduct> requiringPurchaseProducts,
         [Inject] IPresentationService presentationService,
         [Inject] IAuthenticationContext authenticationContext,
+
         [Inject] IShipMethodRepository shipMethodRepository, 
         [Inject] IProductRepository productRepository, 
         [Inject] IPurchaseOrderRepository purchaseOrderRepository)

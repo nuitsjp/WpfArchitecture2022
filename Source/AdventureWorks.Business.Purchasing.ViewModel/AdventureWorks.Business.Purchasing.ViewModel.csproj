@@ -16,4 +16,8 @@
 	  <ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+
 </Project>

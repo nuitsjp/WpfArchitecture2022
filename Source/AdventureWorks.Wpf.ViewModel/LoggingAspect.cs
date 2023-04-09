@@ -2,6 +2,7 @@
 using PostSharp.Aspects;
 using PostSharp.Serialization;
 using System.Reflection;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AdventureWorks.Wpf.ViewModel;
 
@@ -12,12 +13,18 @@ public class LoggingAspect : OnMethodBoundaryAspect
 
     public override void OnEntry(MethodExecutionArgs args)
     {
-        Logger.LogEntry(args.Method, args.Arguments.ToArray());
+        if (IsMethodMatching(args.Method))
+        {
+            Logger.LogEntry(args.Method, args.Arguments.ToArray());
+        }
     }
 
     public override void OnSuccess(MethodExecutionArgs args)
     {
-        Logger.LogSuccess(args.Method, args.Arguments.ToArray());
+        if (IsMethodMatching(args.Method))
+        {
+            Logger.LogSuccess(args.Method, args.Arguments.ToArray());
+        }
     }
 
     public override void OnExit(MethodExecutionArgs args)
@@ -27,7 +34,10 @@ public class LoggingAspect : OnMethodBoundaryAspect
 
     public override void OnException(MethodExecutionArgs args)
     {
-        Logger.LogException(args.Method, args.Exception, args.Arguments.ToArray());
+        if (IsMethodMatching(args.Method))
+        {
+            Logger.LogException(args.Method, args.Exception, args.Arguments.ToArray());
+        }
     }
 
     private class NullLogger : IViewModelLogger
@@ -47,6 +57,12 @@ public class LoggingAspect : OnMethodBoundaryAspect
             Debug.WriteLine($"{method.ReflectedType!.FullName}.{method.Name} Exception");
             Debug.WriteLine(exception.StackTrace);
         }
+    }
+
+    private static bool IsMethodMatching(MethodBase method)
+    {
+        return method.Name.StartsWith("On") 
+               || method.GetCustomAttributes(true).Any(a => a is RelayCommandAttribute);
     }
 }
 

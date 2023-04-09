@@ -14,7 +14,6 @@ public class MainViewModel : INavigatedAsyncAware
         _presentationService = presentationService;
     }
 
-    [LoggingAspect]
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
         await _presentationService.NavigateToMenuAsync();
