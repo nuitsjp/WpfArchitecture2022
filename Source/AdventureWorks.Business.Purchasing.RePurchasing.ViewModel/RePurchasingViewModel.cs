@@ -63,7 +63,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     {
         PurchaseOrderBuilder builder =
             new(
-                _authenticationContext.CurrentEmployee.EmployeeId,
+                _authenticationContext.CurrentUser.EmployeeId,
                 Vendor,
                 _selectedShipMethod!, // 未選択の場合コマンドが実行されないため、nullではない。
                 Date.Today);

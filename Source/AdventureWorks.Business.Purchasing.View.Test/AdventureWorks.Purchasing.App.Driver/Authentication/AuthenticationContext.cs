@@ -7,7 +7,7 @@ public class AuthenticationContext : IAuthenticationContext
 {
     public string CurrentTokenString { get; } = string.Empty;
 
-    public User CurrentEmployee { get; } =
+    public User CurrentUser { get; } =
         new(
             new EmployeeId(1),
             "Adventure Works");

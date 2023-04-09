@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Authentication;
-using AdventureWorks.Wpf.ViewModel;
-using Kamishibai;
+﻿using Kamishibai;
 
 namespace AdventureWorks.Business.Purchasing.ViewModel;
 

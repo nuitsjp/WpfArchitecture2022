@@ -1,6 +1,5 @@
 ﻿using AdventureWorks.Authentication;
 using AdventureWorks.Hosting.MagicOnion;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.MagicOnion.Client;

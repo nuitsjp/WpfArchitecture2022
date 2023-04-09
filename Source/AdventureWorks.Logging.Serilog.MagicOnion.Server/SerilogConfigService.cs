@@ -1,6 +1,5 @@
 ﻿using MagicOnion;
 using MagicOnion.Server;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion.Server;
 

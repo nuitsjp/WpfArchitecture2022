@@ -1,6 +1,4 @@
-﻿using Serilog.Events;
-
-namespace AdventureWorks.Logging.Serilog;
+﻿namespace AdventureWorks.Logging.Serilog;
 
 public class SerilogConfig
 {

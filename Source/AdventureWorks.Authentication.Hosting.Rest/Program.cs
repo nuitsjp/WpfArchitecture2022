@@ -1,9 +1,8 @@
 using AdventureWorks.Authentication.Jwt.Rest.Server;
-using AdventureWorks.Business.SqlServer;
 using AdventureWorks.Hosting.Rest;
 
 var builder = RestApplicationBuilder.CreateBuilder(args);
-Initializer.Initialize(builder);
+AdventureWorks.Business.SqlServer.Initializer.Initialize(builder);
 
 builder
     .Services
@@ -11,5 +10,5 @@ builder
     .AddApplicationPart(typeof(AuthenticationController).Assembly);
 
 
-var app = await builder.BuildAsync("AdventureWorks.Authentication.Hosting.Rest");
+var app = await builder.BuildAsync("AdventureWorks.Authentication");
 await app.RunAsync();

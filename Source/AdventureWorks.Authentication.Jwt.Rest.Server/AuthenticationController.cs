@@ -2,31 +2,44 @@ using System.Security.Authentication;
 using AdventureWorks.Business;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace AdventureWorks.Authentication.Jwt.Rest.Server;
 
+/// <summary>
+/// Windows認証を利用したJWT認証処理RESTサービス
+/// </summary>
 [Authorize]
 [ApiController]
 [Route("[controller]")]
 public class AuthenticationController : ControllerBase, IAuthenticationService
 {
-    private readonly ILogger<AuthenticationController> _logger;
+    /// <summary>
+    /// ユーザーリポジトリー
+    /// </summary>
     private readonly IUserRepository _userRepository;
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="userRepository"></param>
     public AuthenticationController(
-        ILogger<AuthenticationController> logger,
         IUserRepository userRepository)
     {
-        _logger = logger;
         _userRepository = userRepository;
     }
 
+    /// <summary>
+    /// 認証処理を行う。
+    /// </summary>
+    /// <param name="audience">トークンの署名に利用するオーディエンス</param>
+    /// <returns></returns>
+    /// <exception cref="AuthenticationException"></exception>
     [HttpGet("{audience}")]
     public async Task<string> AuthenticateAsync(string audience)
     {
         if (await _userRepository.TryGetUserByIdAsync(new LoginId(User.Identity!.Name!), out var employee))
         {
+            // 認証が成功した場合、ユーザーからJWTトークンを生成する。
             return UserSerializer.Serialize(employee, Properties.Resources.PrivateKey, audience);
         }
 

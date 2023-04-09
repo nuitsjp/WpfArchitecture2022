@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Business;
-using AdventureWorks.Hosting;
+﻿using AdventureWorks.Hosting;
 using Dapper;
 using Microsoft.Extensions.DependencyInjection;
 

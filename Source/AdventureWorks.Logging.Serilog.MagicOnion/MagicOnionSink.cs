@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using AdventureWorks.Authentication;
+﻿using AdventureWorks.Authentication;
 using AdventureWorks.MagicOnion.Client;
 using Serilog.Core;
 using Serilog.Events;
@@ -15,7 +14,7 @@ public class MagicOnionSink : ILogEventSink
     public MagicOnionSink(IMagicOnionClientFactory clientFactory, IAuthenticationContext authenticationContext)
     {
         _clientFactory = clientFactory;
-        _user = authenticationContext.CurrentEmployee.Name;
+        _user = authenticationContext.CurrentUser.Name;
     }
 
     public async void Emit(LogEvent logEvent)

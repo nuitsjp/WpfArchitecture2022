@@ -1,6 +1,4 @@
 ﻿using AdventureWorks.MagicOnion.Client;
-using Microsoft.Extensions.Configuration;
-using Serilog.Formatting;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
