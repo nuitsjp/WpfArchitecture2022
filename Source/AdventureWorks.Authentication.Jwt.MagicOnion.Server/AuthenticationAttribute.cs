@@ -16,13 +16,12 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
 
     public override async ValueTask Invoke(ServiceContext context, Func<ServiceContext, ValueTask> next)
     {
-        string user;
         try
         {
             var entry = context.CallContext.RequestHeaders.Get("authorization");
             var value = entry.Value;
-            var employee = UserSerializer.Deserialize(value!, "AdventureWorks.Authentication");
-            //user = CryptoService.Decrypt(value);
+            var user = UserSerializer.Deserialize(value!, "AdventureWorks.Authentication");
+            _logger.LogInformation($"{context.CallContext.Method} Peer:{context.CallContext.Peer} EmployeeId:{user.EmployeeId} Name:{user.Name}");
         }
         catch (Exception e)
         {

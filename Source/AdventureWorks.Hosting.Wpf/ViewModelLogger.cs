@@ -18,6 +18,6 @@ public class ViewModelLogger : IViewModelLogger
 
     public void LogException(MethodBase method, Exception exception, object[] args)
     {
-        Log.Error(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
+        Log.Warning(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
     }
 }

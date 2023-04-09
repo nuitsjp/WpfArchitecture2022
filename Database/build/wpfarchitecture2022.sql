@@ -387,7 +387,12 @@ values (
       "Application": "%ApplicationName%",
       "ApplicationType": "ASP.NET Core"
     },
-    "MinimumLevel": "%MinimumLevel%",
+	"MinimumLevel": {
+      "Default": "%MinimumLevel%",
+      "Override": {
+        "Microsoft": "Warning"
+      }
+    },
     "WriteTo": [
       {
         "Name": "MSSqlServer",
@@ -479,7 +484,12 @@ values (
       "ApplicationType": "WPF",
       "CorrelationId": 0
     },
-    "MinimumLevel": "%MinimumLevel%",
+	"MinimumLevel": {
+      "Default": "%MinimumLevel%",
+      "Override": {
+        "Microsoft": "Warning"
+      }
+    },
     "Destructure": [
       {
         "Name": "ToMaximumDepth",
