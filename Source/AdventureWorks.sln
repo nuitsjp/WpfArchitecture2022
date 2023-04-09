@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.Pur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.Purchasing.View", "AdventureWorks.Business.Purchasing.View\AdventureWorks.Business.Purchasing.View.csproj", "{08BE92DC-01C0-4756-9485-9FDF5D38E2A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Business.Purchasing.View.Test", "AdventureWorks.Business.Purchasing.View.Test", "{AC6FA261-3D3C-4F2C-962D-2DA8DF04C843}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "View.Test", "View.Test", "{AC6FA261-3D3C-4F2C-962D-2DA8DF04C843}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Purchasing.App.Driver", "AdventureWorks.Business.Purchasing.View.Test\AdventureWorks.Purchasing.App.Driver\AdventureWorks.Purchasing.App.Driver.csproj", "{3A0D7426-44F8-4F79-A586-75C536DA81C9}"
 EndProject
@@ -109,17 +109,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdventureWorks.Logging", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog", "AdventureWorks.Logging.Serilog\AdventureWorks.Logging.Serilog.csproj", "{0EBA5693-D377-4166-A9E2-812EDE4C6EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.Hosting.AspNetCore", "AdventureWorks.Logging.Serilog.Hosting.AspNetCore\AdventureWorks.Logging.Serilog.Hosting.AspNetCore.csproj", "{A8C768A4-7CFD-4972-B39E-708A99A31667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.Hosting.AspNetCore", "AdventureWorks.Logging.Serilog.Hosting.AspNetCore\AdventureWorks.Logging.Serilog.Hosting.AspNetCore.csproj", "{A8C768A4-7CFD-4972-B39E-708A99A31667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.SqlServer", "AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj", "{8DCFF743-C360-44EE-9B58-DC02A4CB0176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.SqlServer", "AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj", "{8DCFF743-C360-44EE-9B58-DC02A4CB0176}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.Hosting.Wpf", "AdventureWorks.Logging.Serilog.Hosting.Wpf\AdventureWorks.Logging.Serilog.Hosting.Wpf.csproj", "{EE6CB888-6817-4045-A361-CA905F6A3346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.Hosting.Wpf", "AdventureWorks.Logging.Serilog.Hosting.Wpf\AdventureWorks.Logging.Serilog.Hosting.Wpf.csproj", "{EE6CB888-6817-4045-A361-CA905F6A3346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Hosting.MagicOnion", "AdventureWorks.Logging.Hosting.MagicOnion\AdventureWorks.Logging.Hosting.MagicOnion.csproj", "{72213624-F6D3-429D-8473-570ABC11FECF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Hosting.MagicOnion", "AdventureWorks.Logging.Hosting.MagicOnion\AdventureWorks.Logging.Hosting.MagicOnion.csproj", "{72213624-F6D3-429D-8473-570ABC11FECF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.MagicOnion", "AdventureWorks.Logging.Serilog.MagicOnion\AdventureWorks.Logging.Serilog.MagicOnion.csproj", "{3F23383C-A105-40DE-A7D2-DFD685A5FB3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.MagicOnion", "AdventureWorks.Logging.Serilog.MagicOnion\AdventureWorks.Logging.Serilog.MagicOnion.csproj", "{3F23383C-A105-40DE-A7D2-DFD685A5FB3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging.Serilog.MagicOnion.Server", "AdventureWorks.Logging.Serilog.MagicOnion.Server\AdventureWorks.Logging.Serilog.MagicOnion.Server.csproj", "{E599ECFC-087B-4F6E-9764-EDCEB5833CF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.MagicOnion.Server", "AdventureWorks.Logging.Serilog.MagicOnion.Server\AdventureWorks.Logging.Serilog.MagicOnion.Server.csproj", "{E599ECFC-087B-4F6E-9764-EDCEB5833CF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -331,6 +331,7 @@ Global
 		{D2E9BA8E-951A-45ED-80F8-FCF5AB351FF5} = {4494AA86-CAAD-475B-AA9C-7CB0971879EF}
 		{8157D06E-B903-4411-B1CF-D3C336D8E81A} = {534C7D2C-47D8-4E76-94F0-5BBA3520850D}
 		{08BE92DC-01C0-4756-9485-9FDF5D38E2A3} = {534C7D2C-47D8-4E76-94F0-5BBA3520850D}
+		{AC6FA261-3D3C-4F2C-962D-2DA8DF04C843} = {534C7D2C-47D8-4E76-94F0-5BBA3520850D}
 		{3A0D7426-44F8-4F79-A586-75C536DA81C9} = {AC6FA261-3D3C-4F2C-962D-2DA8DF04C843}
 		{E6EAB706-5F36-41D7-A417-EE375222B235} = {AC6FA261-3D3C-4F2C-962D-2DA8DF04C843}
 		{AC02E5A8-3A33-4472-9128-06550D18F0D5} = {AC6FA261-3D3C-4F2C-962D-2DA8DF04C843}
