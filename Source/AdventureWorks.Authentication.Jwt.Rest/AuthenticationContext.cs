@@ -40,10 +40,10 @@ public class AuthenticationContext : IAuthenticationContext
         var endpoint = Environments.GetEnvironmentVariable(
             "AdventureWorks.Authentication.Jwt.Rest.Endpoint",
             "https://localhost:4001");
-        var task = HttpClient.GetStringAsync($"{endpoint}/Authentication");
+        var task = HttpClient.GetStringAsync($"{endpoint}/Authentication/{audience}");
         task.Wait();
         _tokenString = task.Result;
-        _currentEmployee = UserSerializer.Deserialize(_tokenString, "AdventureWorks.Authentication");
+        _currentEmployee = UserSerializer.Deserialize(_tokenString, audience);
 
 
         return true;

@@ -18,9 +18,18 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
     {
         try
         {
+            const string bearer = "Bearer ";
             var entry = context.CallContext.RequestHeaders.Get("authorization");
             var value = entry.Value;
-            var user = UserSerializer.Deserialize(value!, "AdventureWorks.Authentication");
+            if (value.StartsWith(bearer) is false)
+            {
+                context.CallContext.GetHttpContext().Response.StatusCode = StatusCodes.Status401Unauthorized;
+                return;
+            }
+
+            var token = value.Substring(bearer.Length);
+            var audience = context.CallContext.RequestHeaders.Get("audience").Value;
+            var user = UserSerializer.Deserialize(token, audience);
             _logger.LogInformation($"{context.CallContext.Method} Peer:{context.CallContext.Peer} EmployeeId:{user.EmployeeId} Name:{user.Name}");
         }
         catch (Exception e)

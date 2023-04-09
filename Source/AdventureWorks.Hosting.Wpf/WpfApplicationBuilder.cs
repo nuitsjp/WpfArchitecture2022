@@ -43,7 +43,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         }
 
         // MagicOnionの初期化
-        AdventureWorks.MagicOnion.Client.Initializer.Initialize(this);
+        AdventureWorks.MagicOnion.Client.Initializer.Initialize(this, applicationName);
         _resolvers.Insert(0, StandardResolver.Instance);
         _resolvers.Add(ContractlessStandardResolver.Instance);
         StaticCompositeResolver.Instance.Register(_resolvers.ToArray());

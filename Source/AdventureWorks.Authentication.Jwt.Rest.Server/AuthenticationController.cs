@@ -22,12 +22,12 @@ public class AuthenticationController : ControllerBase, IAuthenticationService
         _userRepository = userRepository;
     }
 
-    [HttpGet(Name = IAuthenticationService.ServiceName)]
-    public async Task<string> AuthenticateAsync()
+    [HttpGet("{audience}")]
+    public async Task<string> AuthenticateAsync(string audience)
     {
         if (await _userRepository.TryGetUserByIdAsync(new LoginId(User.Identity!.Name!), out var employee))
         {
-            return UserSerializer.Serialize(employee, Properties.Resources.PrivateKey, "AdventureWorks.Authentication");
+            return UserSerializer.Serialize(employee, Properties.Resources.PrivateKey, audience);
         }
 
         throw new AuthenticationException();

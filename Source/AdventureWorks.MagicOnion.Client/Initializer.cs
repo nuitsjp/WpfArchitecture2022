@@ -7,7 +7,7 @@ namespace AdventureWorks.MagicOnion.Client;
 
 public static class Initializer
 {
-    public static void Initialize(IMagicOnionApplicationBuilder builder)
+    public static void Initialize(IMagicOnionApplicationBuilder builder, string audience)
     {
         builder.Services.AddTransient<IMagicOnionClientFactory>(
             provider =>
@@ -18,7 +18,8 @@ public static class Initializer
 
                 return new MagicOnionClientFactory(
                     provider.GetRequiredService<IAuthenticationContext>(),
-                    endpoint);
+                    endpoint,
+                    audience);
             });
     }
 }

@@ -2,7 +2,5 @@
 
 public interface IAuthenticationService
 {
-    public const string ServiceName = "Authenticate";
-
-    Task<string> AuthenticateAsync();
+    Task<string> AuthenticateAsync(string audience);
 }
