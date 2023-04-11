@@ -19,7 +19,6 @@ public static class UserSerializer
         // クレームを作成する。
         ClaimsIdentity claimsIdentity = new();
         claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.NameId, user.EmployeeId.AsPrimitive().ToString()));
-        claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.Name, user.Name));
 
 
         // トークンの属性オブジェクトを作成する。
@@ -65,8 +64,6 @@ public static class UserSerializer
         var nameIdentity = jwtSecurityToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.NameId).Value;
         var name = jwtSecurityToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Name).Value;
 
-        return new User(
-            new EmployeeId(int.Parse(nameIdentity)),
-            name);
+        return new User(new EmployeeId(int.Parse(nameIdentity)));
     }
 }

@@ -37,6 +37,7 @@ public class AuthenticationController : ControllerBase, IAuthenticationService
     [HttpGet("{audience}")]
     public async Task<string> AuthenticateAsync(string audience)
     {
+        var account = User.Identity!.Name!;
         if (await _userRepository.TryGetUserByIdAsync(new LoginId(User.Identity!.Name!), out var employee))
         {
             // 認証が成功した場合、ユーザーからJWTトークンを生成する。

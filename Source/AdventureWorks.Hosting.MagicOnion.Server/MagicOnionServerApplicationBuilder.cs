@@ -47,7 +47,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
                 _serviceAssemblies.ToArray(),
                 options =>
                 {
-                    options.GlobalFilters.Add<AuthenticationAttribute>();
+                    options.GlobalFilters.Add<AuthenticationFilterAttribute>();
                 });
 
             // MagicOnionの初期化
@@ -57,7 +57,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
             MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
                 .WithResolver(StaticCompositeResolver.Instance);
 
-            Services.AddSingleton<IAuthenticationContext, AuthenticationContext>();
+            Services.AddSingleton<IAuthenticationContext, ServerAuthenticationContext>();
 
             var app = await base.BuildAsync(applicationName);
             app.MapMagicOnionService();

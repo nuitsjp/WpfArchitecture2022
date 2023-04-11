@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 
-public class AuthenticationContext : IAuthenticationContext
+public class ServerAuthenticationContext : IAuthenticationContext
 {
     /// <summary>
     /// 認証済トークン

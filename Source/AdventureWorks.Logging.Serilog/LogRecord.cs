@@ -9,7 +9,6 @@ public record LogRecord(
     string ApplicationType,
     string Application,
     string MachineName,
-    string UserName,
     int ProcessId,
     int ThreadId,
     int CorrelationId);

@@ -8,7 +8,7 @@ namespace AdventureWorks.MagicOnion.Client;
 
 public class MagicOnionClientFactory : IMagicOnionClientFactory
 {
-    private readonly IMagicOnionClientAuthenticationContext _authenticationContext;
+    private readonly IClientAuthenticationContext _authenticationContext;
     private readonly string _endpoint;
     private readonly string _audience;
 
@@ -17,7 +17,7 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
         string endpoint, 
         string audience)
     {
-        _authenticationContext = (IMagicOnionClientAuthenticationContext)authenticationContext;
+        _authenticationContext = (IClientAuthenticationContext)authenticationContext;
         _endpoint = endpoint;
         _audience = audience;
     }

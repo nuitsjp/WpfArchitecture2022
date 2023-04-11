@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.Rest;
 using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Wpf.ViewModel;
@@ -31,9 +32,8 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public IHost Build(string applicationName)
     {
         // 認証サービスを初期化する。
-        var authenticationContext = Authentication.Jwt.Rest.Initializer.Initialize(this);
         var authenticationServiceClient = new AuthenticationServiceClient();
-        if (authenticationServiceClient.TryAuthenticate(authenticationContext, applicationName) is false)
+        if (authenticationServiceClient.TryAuthenticate(applicationName, out var authenticationContext) is false)
         {
             MessageBox.Show(
                 "ユーザー認証に失敗しました。",
@@ -43,6 +43,8 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
             Environment.Exit(1);
         }
+
+        Services.AddSingleton<IAuthenticationContext>(authenticationContext);
 
         // MagicOnionの初期化
         AdventureWorks.MagicOnion.Client.Initializer.Initialize(this, applicationName);

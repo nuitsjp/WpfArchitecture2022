@@ -4,11 +4,11 @@ namespace AdventureWorks.Authentication.Jwt.MagicOnion.Client;
 
 public class AuthenticationFilter : IClientFilter
 {
-    private readonly IMagicOnionClientAuthenticationContext _authenticationContext;
+    private readonly IClientAuthenticationContext _authenticationContext;
     private readonly string _audience;
 
     public AuthenticationFilter(
-        IMagicOnionClientAuthenticationContext authenticationContext,
+        IClientAuthenticationContext authenticationContext,
         string audience)
     {
         _authenticationContext = authenticationContext;

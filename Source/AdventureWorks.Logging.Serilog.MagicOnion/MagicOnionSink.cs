@@ -9,12 +9,10 @@ public class MagicOnionSink : ILogEventSink
 {
     private readonly IMagicOnionClientFactory _clientFactory;
     private readonly string _hostName = System.Net.Dns.GetHostName();
-    private readonly string _user;
 
     public MagicOnionSink(IMagicOnionClientFactory clientFactory, IAuthenticationContext authenticationContext)
     {
         _clientFactory = clientFactory;
-        _user = authenticationContext.CurrentUser.Name;
     }
 
     public async void Emit(LogEvent logEvent)
@@ -31,7 +29,6 @@ public class MagicOnionSink : ILogEventSink
                     logEvent.Properties["ApplicationType"].ToString().Replace("\"", ""),
                     logEvent.Properties["Application"].ToString().Replace("\"", ""),
                     _hostName,
-                    _user,
                     Environment.ProcessId,
                     Environment.CurrentManagedThreadId,
                     0));

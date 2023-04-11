@@ -5,18 +5,18 @@ using Microsoft.Extensions.Logging;
 
 namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 
-public class AuthenticationAttribute : MagicOnionFilterAttribute
+public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
 {
-    private readonly ILogger<AuthenticationAttribute> _logger;
+    private readonly ILogger<AuthenticationFilterAttribute> _logger;
 
-    private readonly AuthenticationContext _authenticationContext;
+    private readonly ServerAuthenticationContext _serverAuthenticationContext;
 
-    public AuthenticationAttribute(
-        ILogger<AuthenticationAttribute> logger, 
+    public AuthenticationFilterAttribute(
+        ILogger<AuthenticationFilterAttribute> logger, 
         IAuthenticationContext authenticationContext)
     {
         _logger = logger;
-        _authenticationContext = (AuthenticationContext)authenticationContext;
+        _serverAuthenticationContext = (ServerAuthenticationContext)authenticationContext;
     }
 
     public override async ValueTask Invoke(ServiceContext context, Func<ServiceContext, ValueTask> next)
@@ -35,10 +35,10 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
             var token = value.Substring(bearer.Length);
             var audience = context.CallContext.RequestHeaders.Get("audience").Value;
             var user = UserSerializer.Deserialize(token, audience);
-            _authenticationContext.CurrentTokenString = token;
-            _authenticationContext.CurrentUser = user;
+            _serverAuthenticationContext.CurrentTokenString = token;
+            _serverAuthenticationContext.CurrentUser = user;
 
-            _logger.LogInformation($"{context.CallContext.Method} Peer:{context.CallContext.Peer} EmployeeId:{user.EmployeeId} Name:{user.Name}");
+            _logger.LogInformation($"{context.CallContext.Method} Peer:{context.CallContext.Peer} EmployeeId:{user.EmployeeId}");
         }
         catch (Exception e)
         {
