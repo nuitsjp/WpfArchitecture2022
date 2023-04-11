@@ -33,7 +33,7 @@ select
     UnclaimedPurchaseQuantity,
     AverageDailyShipmentQuantity
 from
-    Purchasing.ProductRequiringPurchase"))
+    Purchasing.vProductRequiringPurchase"))
             .ToList();
     }
 }
