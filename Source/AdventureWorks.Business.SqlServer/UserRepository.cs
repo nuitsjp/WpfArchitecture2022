@@ -17,8 +17,7 @@ public class UserRepository : IUserRepository
 
         var task = connection.QuerySingleOrDefaultAsync<User>(@"
 select
-	BusinessEntityID as EmployeeId,
-	'Adventure Works' as Name
+	BusinessEntityID as EmployeeId
 from
 	HumanResources.Employee
 where

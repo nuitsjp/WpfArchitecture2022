@@ -62,7 +62,6 @@ public static class UserSerializer
         var jwtSecurityToken = (JwtSecurityToken)token;
 
         var nameIdentity = jwtSecurityToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.NameId).Value;
-        var name = jwtSecurityToken.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Name).Value;
 
         return new User(new EmployeeId(int.Parse(nameIdentity)));
     }

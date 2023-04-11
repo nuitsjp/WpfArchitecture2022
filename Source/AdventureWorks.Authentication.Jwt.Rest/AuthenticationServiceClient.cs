@@ -8,10 +8,6 @@ namespace AdventureWorks.Authentication.Jwt.Rest;
 /// </summary>
 public class AuthenticationServiceClient
 {
-    /// <summary>
-    /// Windows認証を有効化したHTTPクライアント
-    /// </summary>
-    private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
     public bool TryAuthenticate(string audience, out IClientAuthenticationContext context)
     {
@@ -20,9 +16,7 @@ public class AuthenticationServiceClient
             var endpoint = Environments.GetEnvironmentVariable(
                 "AdventureWorks.Authentication.Jwt.Rest.Endpoint",
                 "https://localhost:4001");
-            var token = HttpClient.GetStringAsync($"{endpoint}/Authentication/{audience}").Result;
-
-            context = new ClientAuthenticationContext(token, UserSerializer.Deserialize(token, audience));
+            context = Authenticate(endpoint, audience).Result;
 
             return true;
         }
@@ -31,6 +25,17 @@ public class AuthenticationServiceClient
             context = default!;
             return false;
         }
+    }
+
+    /// <summary>
+    /// Windows認証を有効化したHTTPクライアント
+    /// </summary>
+    private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
+
+    private async Task<ClientAuthenticationContext> Authenticate(string endpoint, string audience)
+    {
+        var token = await HttpClient.GetStringAsync($"{endpoint}/Authentication/{audience}");
+        return new ClientAuthenticationContext(token, UserSerializer.Deserialize(token, audience));
     }
 
     /// <summary>

@@ -38,10 +38,10 @@ public class AuthenticationController : ControllerBase, IAuthenticationService
     public async Task<string> AuthenticateAsync(string audience)
     {
         var account = User.Identity!.Name!;
-        if (await _userRepository.TryGetUserByIdAsync(new LoginId(User.Identity!.Name!), out var employee))
+        if (await _userRepository.TryGetUserByIdAsync(new LoginId(account), out var user))
         {
             // 認証が成功した場合、ユーザーからJWTトークンを生成する。
-            return UserSerializer.Serialize(employee, Properties.Resources.PrivateKey, audience);
+            return UserSerializer.Serialize(user, Properties.Resources.PrivateKey, audience);
         }
 
         throw new AuthenticationException();
