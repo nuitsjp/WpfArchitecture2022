@@ -7,11 +7,11 @@ public class AuthenticationContext : IAuthenticationContext
     /// <summary>
     /// 認証済トークン
     /// </summary>
-    private string? _tokenString;
+    private readonly AsyncLocal<string> _tokenStringAsyncLocal = new();
     /// <summary>
     /// 認証済ユーザー
     /// </summary>
-    private User? _currentEmployee;
+    private readonly AsyncLocal<User> _currentUserAsyncLocal = new();
 
     /// <summary>
     /// 認証済みトークンを取得する。
@@ -20,15 +20,15 @@ public class AuthenticationContext : IAuthenticationContext
     {
         get
         {
-            if (_tokenString is null)
+            if (_tokenStringAsyncLocal.Value is null)
             {
                 throw new InvalidOperationException("TryAuthenticateAsyncを正常終了後のみ利用可能です。");
             }
 
-            return _tokenString;
+            return _tokenStringAsyncLocal.Value;
         }
 
-        internal set => _tokenString = value;
+        internal set => _tokenStringAsyncLocal.Value = value;
     }
 
     /// <summary>
@@ -38,14 +38,14 @@ public class AuthenticationContext : IAuthenticationContext
     {
         get
         {
-            if (_currentEmployee is null)
+            if (_currentUserAsyncLocal.Value is null)
             {
                 throw new InvalidOperationException("TryAuthenticateAsyncを正常終了後のみ利用可能です。");
             }
 
-            return _currentEmployee;
+            return _currentUserAsyncLocal.Value;
         }
 
-        internal set => _currentEmployee = value;
+        internal set => _currentUserAsyncLocal.Value = value;
     }
 }

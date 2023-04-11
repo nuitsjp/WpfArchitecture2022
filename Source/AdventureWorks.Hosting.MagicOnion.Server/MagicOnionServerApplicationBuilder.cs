@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 using AdventureWorks.Hosting.AspNetCore;
 using MagicOnion.Server;
@@ -56,6 +57,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
             MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
                 .WithResolver(StaticCompositeResolver.Instance);
 
+            Services.AddSingleton<IAuthenticationContext, AuthenticationContext>();
 
             var app = await base.BuildAsync(applicationName);
             app.MapMagicOnionService();

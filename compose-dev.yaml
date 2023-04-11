@@ -1,7 +1,7 @@
 version: '3'
 services:
     mssql:
-      build: Source\Database
+      build: Database
       container_name: SQL-Server
       ports:
         - 1433:1433

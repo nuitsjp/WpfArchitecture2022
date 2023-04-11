@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Business;
-using Grpc.Core;
+﻿using Grpc.Core;
 using MagicOnion.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -14,10 +13,10 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
 
     public AuthenticationAttribute(
         ILogger<AuthenticationAttribute> logger, 
-        AuthenticationContext authenticationContext)
+        IAuthenticationContext authenticationContext)
     {
         _logger = logger;
-        _authenticationContext = authenticationContext;
+        _authenticationContext = (AuthenticationContext)authenticationContext;
     }
 
     public override async ValueTask Invoke(ServiceContext context, Func<ServiceContext, ValueTask> next)
@@ -49,16 +48,5 @@ public class AuthenticationAttribute : MagicOnionFilterAttribute
         }
 
         await next(context); // next
-    }
-}
-
-public class AuthenticationContext : IAuthenticationContext
-{
-    public string CurrentTokenString { get; internal set; }
-
-    public User CurrentUser { get; internal set; }
-    public bool TryAuthenticate(string audience)
-    {
-        throw new NotImplementedException();
     }
 }
