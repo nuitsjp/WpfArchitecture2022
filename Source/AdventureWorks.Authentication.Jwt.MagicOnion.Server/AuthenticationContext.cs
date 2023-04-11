@@ -1,12 +1,8 @@
-﻿using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
-using AdventureWorks.Business;
+﻿using AdventureWorks.Business;
 
-namespace AdventureWorks.Authentication.Jwt.Rest;
+namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 
-/// <summary>
-/// IAuthenticationContextのJWTによる実装。
-/// </summary>
-public class AuthenticationContext : IMagicOnionClientAuthenticationContext
+public class AuthenticationContext : IAuthenticationContext
 {
     /// <summary>
     /// 認証済トークン

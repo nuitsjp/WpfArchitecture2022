@@ -13,7 +13,7 @@ public static class Initializer
     /// </summary>
     /// <param name="builder"></param>
     /// <returns></returns>
-    public static IAuthenticationContext Initialize(IApplicationBuilder builder)
+    public static AuthenticationContext Initialize(IApplicationBuilder builder)
     {
         // 認証コンテキストはシングルトンとして扱う。
         // 認証情報を保持しておく必要があるため。

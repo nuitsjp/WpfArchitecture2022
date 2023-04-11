@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Authentication;
+using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
 using Grpc.Net.Client;
 using MagicOnion;
 using MagicOnion.Client;
@@ -7,7 +8,7 @@ namespace AdventureWorks.MagicOnion.Client;
 
 public class MagicOnionClientFactory : IMagicOnionClientFactory
 {
-    private readonly IAuthenticationContext _authenticationContext;
+    private readonly IMagicOnionClientAuthenticationContext _authenticationContext;
     private readonly string _endpoint;
     private readonly string _audience;
 
@@ -16,7 +17,7 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
         string endpoint, 
         string audience)
     {
-        _authenticationContext = authenticationContext;
+        _authenticationContext = (IMagicOnionClientAuthenticationContext)authenticationContext;
         _endpoint = endpoint;
         _audience = audience;
     }
@@ -33,11 +34,11 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
 
     public class AuthenticationFilter : IClientFilter
     {
-        private readonly IAuthenticationContext _authenticationContext;
+        private readonly IMagicOnionClientAuthenticationContext _authenticationContext;
         private readonly string _audience;
 
         public AuthenticationFilter(
-            IAuthenticationContext authenticationContext, 
+            IMagicOnionClientAuthenticationContext authenticationContext, 
             string audience)
         {
             _authenticationContext = authenticationContext;
