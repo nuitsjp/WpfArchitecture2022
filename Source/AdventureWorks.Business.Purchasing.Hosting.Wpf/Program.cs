@@ -11,5 +11,5 @@ AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Initializer.Initializ
 AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
-var app = builder.Build("AdventureWorks.Purchasing");
+var app = await builder.BuildAsync("AdventureWorks.Purchasing");
 await app.RunAsync();

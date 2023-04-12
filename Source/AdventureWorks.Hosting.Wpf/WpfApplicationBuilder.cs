@@ -29,7 +29,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
 
-    public IHost Build(string applicationName)
+    public async Task<IHost> BuildAsync(string applicationName)
     {
         // 認証サービスを初期化する。
         var authenticationServiceClient = new AuthenticationServiceClient();
@@ -55,7 +55,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
             .WithResolver(StaticCompositeResolver.Instance);
 
         // Serilogの初期化
-        Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName, authenticationContext).Wait();
+        await Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName, authenticationContext);
         LoggingAspect.Logger = new ViewModelLogger();
 
         // アプリケーションのビルド
