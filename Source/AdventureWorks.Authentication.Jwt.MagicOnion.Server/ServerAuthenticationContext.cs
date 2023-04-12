@@ -18,7 +18,7 @@ public class ServerAuthenticationContext : IAuthenticationContext
         {
             if (_currentUserAsyncLocal.Value is null)
             {
-                throw new InvalidOperationException("TryAuthenticateAsyncを正常終了後のみ利用可能です。");
+                throw new InvalidOperationException("認証処理の完了時に利用してください。");
             }
 
             return _currentUserAsyncLocal.Value;
