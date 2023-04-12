@@ -34,7 +34,6 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
 
             var token = value.Substring(bearer.Length);
             var user = UserSerializer.Deserialize(token);
-            _serverAuthenticationContext.CurrentTokenString = token;
             _serverAuthenticationContext.CurrentUser = user;
 
             _logger.LogInformation($"{context.CallContext.Method} Peer:{context.CallContext.Peer} EmployeeId:{user.EmployeeId}");

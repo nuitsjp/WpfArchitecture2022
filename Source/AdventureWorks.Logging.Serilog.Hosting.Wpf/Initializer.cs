@@ -12,11 +12,11 @@ public static class Initializer
 {
     public static async Task InitializeAsync(string applicationName, IAuthenticationContext authenticationContext)
     {
-        var endpoint = Environments.GetEnvironmentVariable(
-            "AdventureWorks.Logging.Serilog.MagicOnion.Endpoint",
+        var baseAddress = Environments.GetEnvironmentVariable(
+            "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
             "https://localhost:3001");
 
-        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, endpoint));
+        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, baseAddress));
         var config = await repository.GetClientSerilogConfigAsync(applicationName);
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;
@@ -37,7 +37,7 @@ public static class Initializer
 #if DEBUG
             .WriteTo.Debug()
 #endif
-            .WriteTo.MagicOnion(authenticationContext, endpoint)
+            .WriteTo.MagicOnion(authenticationContext, baseAddress)
             .CreateLogger();
     }
 }

@@ -11,13 +11,13 @@ public static class Initializer
         builder.Services.AddTransient<IMagicOnionClientFactory>(
             provider =>
             {
-                var endpoint = Environments.GetEnvironmentVariable(
-                    "AdventureWorks.Business.Purchasing.MagicOnion.Endpoint",
+                var baseAddress = Environments.GetEnvironmentVariable(
+                    "AdventureWorks.Business.Purchasing.MagicOnion.BaseAddress",
                     "https://localhost:5001");
 
                 return new MagicOnionClientFactory(
                     provider.GetRequiredService<IAuthenticationContext>(),
-                    endpoint);
+                    baseAddress);
             });
     }
 }

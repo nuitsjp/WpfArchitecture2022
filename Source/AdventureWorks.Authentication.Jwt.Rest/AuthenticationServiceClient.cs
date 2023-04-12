@@ -13,10 +13,10 @@ public class AuthenticationServiceClient
     {
         try
         {
-            var endpoint = Environments.GetEnvironmentVariable(
-                "AdventureWorks.Authentication.Jwt.Rest.Endpoint",
+            var baseAddress = Environments.GetEnvironmentVariable(
+                "AdventureWorks.Authentication.Jwt.Rest.BaseAddress",
                 "https://localhost:4001");
-            context = Authenticate(endpoint).Result;
+            context = AuthenticateAsync(baseAddress).Result;
 
             return true;
         }
@@ -32,9 +32,9 @@ public class AuthenticationServiceClient
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
-    private async Task<ClientAuthenticationContext> Authenticate(string endpoint)
+    private async Task<ClientAuthenticationContext> AuthenticateAsync(string baseAddress)
     {
-        var token = await HttpClient.GetStringAsync($"{endpoint}/Authentication");
+        var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
         return new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
     }
 
