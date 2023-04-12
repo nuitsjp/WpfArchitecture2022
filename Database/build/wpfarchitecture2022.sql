@@ -348,7 +348,7 @@ create table Serilog.Logs(
 	ApplicationType nvarchar(max) null,
 	Application nvarchar(max) null,
 	MachineName nvarchar(max) null,
-	UserName nvarchar(max) null,
+	EmployeeId int null,
 	ProcessId int null,
 	ThreadId int null,
 	CorrelationId int null,
@@ -382,7 +382,7 @@ values (
 	'{
   "Serilog": {
     "Using": [ "Serilog.Sinks.Debug", "Serilog.Sinks.MSSqlServer" ],
-    "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithProcessId", "WithThreadId", "WithCorrelationId" ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithProcessId", "WithThreadId", "WithCorrelationId" ],
     "Properties": {
       "Application": "%ApplicationName%",
       "ApplicationType": "ASP.NET Core"
@@ -425,11 +425,6 @@ values (
               {
                 "ColumnName": "MachineName",
                 "PropertyName": "MachineName",
-                "DataType": "nvarchar"
-              },
-              {
-                "ColumnName": "UserName",
-                "PropertyName": "EnvironmentUserName",
                 "DataType": "nvarchar"
               },
               {

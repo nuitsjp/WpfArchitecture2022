@@ -9,11 +9,7 @@ public record LogRecord(
     string ApplicationType,
     string Application,
     string MachineName,
+    int EmployeeId,
     int ProcessId,
     int ThreadId,
     int CorrelationId);
-
-public interface ILogRecordRepository
-{
-    Task RegisterAsync(LogRecord logRecord);
-}

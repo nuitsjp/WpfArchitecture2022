@@ -25,7 +25,7 @@ insert into
     ApplicationType,
     Application,
     MachineName,
-    UserName,
+    EmployeeId,
     ProcessId,
     ThreadId,
     CorrelationId
@@ -37,7 +37,7 @@ insert into
     @ApplicationType,
     @Application,
     @MachineName,
-    @UserName,
+    @EmployeeId,
     @ProcessId,
     @ThreadId,
     @CorrelationId
