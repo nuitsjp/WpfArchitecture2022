@@ -31,17 +31,16 @@ public class AuthenticationController : ControllerBase, IAuthenticationService
     /// <summary>
     /// 認証処理を行う。
     /// </summary>
-    /// <param name="audience">トークンの署名に利用するオーディエンス</param>
     /// <returns></returns>
     /// <exception cref="AuthenticationException"></exception>
-    [HttpGet("{audience}")]
-    public async Task<string> AuthenticateAsync(string audience)
+    [HttpGet()]
+    public async Task<string> AuthenticateAsync()
     {
         var account = User.Identity!.Name!;
         if (await _userRepository.TryGetUserByIdAsync(new LoginId(account), out var user))
         {
             // 認証が成功した場合、ユーザーからJWTトークンを生成する。
-            return UserSerializer.Serialize(user, Properties.Resources.PrivateKey, audience);
+            return UserSerializer.Serialize(user, Properties.Resources.PrivateKey);
         }
 
         throw new AuthenticationException();

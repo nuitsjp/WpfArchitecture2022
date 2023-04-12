@@ -33,8 +33,7 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
             }
 
             var token = value.Substring(bearer.Length);
-            var audience = context.CallContext.RequestHeaders.Get("audience").Value;
-            var user = UserSerializer.Deserialize(token, audience);
+            var user = UserSerializer.Deserialize(token);
             _serverAuthenticationContext.CurrentTokenString = token;
             _serverAuthenticationContext.CurrentUser = user;
 

@@ -17,8 +17,7 @@ public static class Initializer
 
                 return new MagicOnionClientFactory(
                     provider.GetRequiredService<IAuthenticationContext>(),
-                    endpoint,
-                    audience);
+                    endpoint);
             });
     }
 }

@@ -33,7 +33,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     {
         // 認証サービスを初期化する。
         var authenticationServiceClient = new AuthenticationServiceClient();
-        if (authenticationServiceClient.TryAuthenticate(applicationName, out var authenticationContext) is false)
+        if (authenticationServiceClient.TryAuthenticate(out var authenticationContext) is false)
         {
             MessageBox.Show(
                 "ユーザー認証に失敗しました。",

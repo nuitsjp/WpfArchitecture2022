@@ -10,16 +10,13 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
 {
     private readonly IClientAuthenticationContext _authenticationContext;
     private readonly string _endpoint;
-    private readonly string _audience;
 
     public MagicOnionClientFactory(
         IAuthenticationContext authenticationContext, 
-        string endpoint, 
-        string audience)
+        string endpoint)
     {
         _authenticationContext = (IClientAuthenticationContext)authenticationContext;
         _endpoint = endpoint;
-        _audience = audience;
     }
 
     public T Create<T>() where T : IService<T>
@@ -28,7 +25,7 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
             GrpcChannel.ForAddress(_endpoint),
             new IClientFilter[]
             {
-                new AuthenticationFilter(_authenticationContext, _audience)
+                new AuthenticationFilter(_authenticationContext)
             });
     }
 

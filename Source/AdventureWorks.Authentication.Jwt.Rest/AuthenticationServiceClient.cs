@@ -9,14 +9,14 @@ namespace AdventureWorks.Authentication.Jwt.Rest;
 public class AuthenticationServiceClient
 {
 
-    public bool TryAuthenticate(string audience, out IClientAuthenticationContext context)
+    public bool TryAuthenticate(out IClientAuthenticationContext context)
     {
         try
         {
             var endpoint = Environments.GetEnvironmentVariable(
                 "AdventureWorks.Authentication.Jwt.Rest.Endpoint",
                 "https://localhost:4001");
-            context = Authenticate(endpoint, audience).Result;
+            context = Authenticate(endpoint).Result;
 
             return true;
         }
@@ -32,10 +32,10 @@ public class AuthenticationServiceClient
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
-    private async Task<ClientAuthenticationContext> Authenticate(string endpoint, string audience)
+    private async Task<ClientAuthenticationContext> Authenticate(string endpoint)
     {
-        var token = await HttpClient.GetStringAsync($"{endpoint}/Authentication/{audience}");
-        return new ClientAuthenticationContext(token, UserSerializer.Deserialize(token, audience));
+        var token = await HttpClient.GetStringAsync($"{endpoint}/Authentication");
+        return new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
     }
 
     /// <summary>

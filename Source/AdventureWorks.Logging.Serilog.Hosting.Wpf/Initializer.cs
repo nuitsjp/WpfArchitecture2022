@@ -16,7 +16,7 @@ public static class Initializer
             "AdventureWorks.Logging.Serilog.MagicOnion.Endpoint",
             "https://localhost:3001");
 
-        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, endpoint, applicationName));
+        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, endpoint));
         var config = await repository.GetClientSerilogConfigAsync(applicationName);
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;
@@ -37,7 +37,7 @@ public static class Initializer
 #if DEBUG
             .WriteTo.Debug()
 #endif
-            .WriteTo.MagicOnion(authenticationContext, endpoint, applicationName)
+            .WriteTo.MagicOnion(authenticationContext, endpoint)
             .CreateLogger();
     }
 }
