@@ -121,7 +121,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Seri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.MagicOnion.Server", "AdventureWorks.Logging.Serilog.MagicOnion.Server\AdventureWorks.Logging.Serilog.MagicOnion.Server.csproj", "{E599ECFC-087B-4F6E-9764-EDCEB5833CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Authentication.Jwt.MagicOnion.Client", "AdventureWorks.Authentication.Jwt.MagicOnion.Client\AdventureWorks.Authentication.Jwt.MagicOnion.Client.csproj", "{152F7CA1-44D2-452C-B519-2AAE5815E181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.MagicOnion.Client", "AdventureWorks.Authentication.Jwt.MagicOnion.Client\AdventureWorks.Authentication.Jwt.MagicOnion.Client.csproj", "{152F7CA1-44D2-452C-B519-2AAE5815E181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.MagicOnion.Server", "AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj", "{47002F2A-7BEA-4648-A2B9-FA23D86A5896}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -313,6 +315,10 @@ Global
 		{152F7CA1-44D2-452C-B519-2AAE5815E181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{152F7CA1-44D2-452C-B519-2AAE5815E181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{152F7CA1-44D2-452C-B519-2AAE5815E181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47002F2A-7BEA-4648-A2B9-FA23D86A5896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47002F2A-7BEA-4648-A2B9-FA23D86A5896}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47002F2A-7BEA-4648-A2B9-FA23D86A5896}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47002F2A-7BEA-4648-A2B9-FA23D86A5896}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -367,6 +373,7 @@ Global
 		{3F23383C-A105-40DE-A7D2-DFD685A5FB3E} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{E599ECFC-087B-4F6E-9764-EDCEB5833CF0} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{152F7CA1-44D2-452C-B519-2AAE5815E181} = {268E5C1B-D928-471D-BBA2-D55161D5CAAF}
+		{47002F2A-7BEA-4648-A2B9-FA23D86A5896} = {F9C3EA19-3B36-434D-B9E4-014CD7910B1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D94D4FE-7107-4204-8F73-4784BB3C648F}

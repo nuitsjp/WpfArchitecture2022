@@ -30,6 +30,7 @@ public static class Initializer
 
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configurationRoot)
+            .Enrich.With<EmployeeIdEnricher>()
 #if DEBUG
             .WriteTo.Debug()
 #endif

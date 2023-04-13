@@ -39,8 +39,7 @@ public class MagicOnionSink : ILogEventSink
                     _hostName,
                     _authenticationContext.CurrentUser.EmployeeId.AsPrimitive(),
                     Environment.ProcessId,
-                    Environment.CurrentManagedThreadId,
-                    0));
+                    Environment.CurrentManagedThreadId));
         }
         catch (Exception e)
         {

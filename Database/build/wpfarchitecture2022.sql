@@ -348,10 +348,11 @@ create table Serilog.Logs(
 	ApplicationType nvarchar(max) null,
 	Application nvarchar(max) null,
 	MachineName nvarchar(max) null,
+	Peer nvarchar(max) null,
 	EmployeeId int null,
 	ProcessId int null,
 	ThreadId int null,
-	CorrelationId int null,
+	Properties nvarchar(max) null,
 	constraint PK_Logs primary key clustered (Id asc) 
 		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
 )	on [PRIMARY] textimage_on [PRIMARY]
@@ -382,7 +383,7 @@ values (
 	'{
   "Serilog": {
     "Using": [ "Serilog.Sinks.Debug", "Serilog.Sinks.MSSqlServer" ],
-    "Enrich": [ "FromLogContext", "WithMachineName", "WithProcessId", "WithThreadId", "WithCorrelationId" ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithProcessId", "WithThreadId" ],
     "Properties": {
       "Application": "%ApplicationName%",
       "ApplicationType": "ASP.NET Core"
@@ -390,7 +391,8 @@ values (
 	"MinimumLevel": {
       "Default": "%MinimumLevel%",
       "Override": {
-        "Microsoft": "Warning"
+        "Microsoft": "Warning",
+        "Grpc": "Warning"
       }
     },
     "WriteTo": [
@@ -410,7 +412,7 @@ values (
             "disableTriggers": true,
             "clusteredColumnstoreIndex": false,
             "primaryKeyColumnName": "Id",
-            "removeStandardColumns": [ "MessageTemplate", "Properties" ],
+            "removeStandardColumns": [ "MessageTemplate" ],
             "additionalColumns": [
               {
                 "ColumnName": "ApplicationType",
@@ -428,6 +430,16 @@ values (
                 "DataType": "nvarchar"
               },
               {
+                "ColumnName": "Peer",
+                "PropertyName": "Peer",
+                "DataType": "nvarchar"
+              },
+              {
+                "ColumnName": "EmployeeId",
+                "PropertyName": "EmployeeId",
+                "DataType": "int"
+              },
+              {
                 "ColumnName": "ProcessId",
                 "PropertyName": "ProcessId",
                 "DataType": "int"
@@ -435,11 +447,6 @@ values (
               {
                 "ColumnName": "ThreadId",
                 "PropertyName": "ThreadId",
-                "DataType": "int"
-              },
-              {
-                "ColumnName": "CorrelationId",
-                "PropertyName": "CorrelationId",
                 "DataType": "int"
               }
             ]
@@ -507,17 +514,17 @@ values (
 --------------------------------------------------------------------------------------
 -- データベースを終了し、構築した内容をファイルへ書き出す
 --------------------------------------------------------------------------------------
-ALTER DATABASE AdventureWorks SET OFFLINE
-GO
+--ALTER DATABASE AdventureWorks SET OFFLINE
+--GO
 
-EXEC sp_detach_db AdventureWorks
-GO
+--EXEC sp_detach_db AdventureWorks
+--GO
 
-USE [master];
-GO
+--USE [master];
+--GO
 
-PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
-GO
+--PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
+--GO
 
 
-SET NOEXEC OFF
+--SET NOEXEC OFF

@@ -4,10 +4,15 @@ namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 
 public class ServerAuthenticationContext : IAuthenticationContext
 {
+    public static readonly ServerAuthenticationContext Instance = new();
     /// <summary>
     /// 認証済ユーザー
     /// </summary>
-    private readonly AsyncLocal<User> _currentUserAsyncLocal = new();
+    private readonly AsyncLocal<User?> _currentUserAsyncLocal = new();
+
+    private ServerAuthenticationContext()
+    {
+    }
 
     /// <summary>
     /// 認証済ユーザーを取得する。
@@ -26,4 +31,14 @@ public class ServerAuthenticationContext : IAuthenticationContext
 
         internal set => _currentUserAsyncLocal.Value = value;
     }
+
+    /// <summary>
+    /// 認証済ユーザーをクリアする。
+    /// </summary>
+    internal void ClearCurrentUser() => _currentUserAsyncLocal.Value = null;
+
+    /// <summary>
+    /// 認証済ユーザーかどうかを取得する。
+    /// </summary>
+    public bool IsAuthenticated => _currentUserAsyncLocal.Value is not null;
 }

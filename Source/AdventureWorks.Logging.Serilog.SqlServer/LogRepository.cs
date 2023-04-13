@@ -27,8 +27,7 @@ insert into
     MachineName,
     EmployeeId,
     ProcessId,
-    ThreadId,
-    CorrelationId
+    ThreadId
 ) values (
     @Message,
     @Level,
@@ -39,8 +38,7 @@ insert into
     @MachineName,
     @EmployeeId,
     @ProcessId,
-    @ThreadId,
-    @CorrelationId
+    @ThreadId
 )
 ",
             logRecord);

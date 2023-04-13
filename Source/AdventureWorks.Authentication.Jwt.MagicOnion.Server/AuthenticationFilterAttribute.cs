@@ -35,8 +35,6 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
             var token = value.Substring(bearer.Length);
             var user = UserSerializer.Deserialize(token);
             _serverAuthenticationContext.CurrentUser = user;
-
-            _logger.LogInformation($"{context.CallContext.Method} Peer:{context.CallContext.Peer} EmployeeId:{user.EmployeeId}");
         }
         catch (Exception e)
         {
@@ -45,6 +43,13 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
             return;
         }
 
-        await next(context); // next
+        try
+        {
+            await next(context); // next
+        }
+        finally
+        {
+            _serverAuthenticationContext.ClearCurrentUser();
+        }
     }
 }
