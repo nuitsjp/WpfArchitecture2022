@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="UnitGenerator">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AdventureWorks.Business\AdventureWorks.Business.csproj" />
   </ItemGroup>
 
