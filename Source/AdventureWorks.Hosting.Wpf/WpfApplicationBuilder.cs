@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.Rest;
 using AdventureWorks.Hosting.MagicOnion;

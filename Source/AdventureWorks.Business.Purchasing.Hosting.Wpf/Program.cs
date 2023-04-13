@@ -1,4 +1,6 @@
-﻿var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
+﻿using PostSharp.Aspects.Advices;
+
+var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.App,
     AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
@@ -11,5 +13,5 @@ AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Initializer.Initializ
 AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
-var app = await builder.BuildAsync("AdventureWorks.Purchasing");
+var app = await builder.BuildAsync(typeof(Program).Assembly.GetName().Name!);
 await app.RunAsync();

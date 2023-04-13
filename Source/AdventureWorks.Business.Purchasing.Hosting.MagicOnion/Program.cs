@@ -15,5 +15,5 @@ AdventureWorks.Business.SqlServer.Initializer.Initialize(builder);
 AdventureWorks.Business.Purchasing.SqlServer.Initializer.Initialize(builder);
 AdventureWorks.Business.Purchasing.RePurchasing.SqlServer.Initializer.Initialize(builder);
 
-var app = await builder.BuildAsync("AdventureWorks.Purchasing");
+var app = await builder.BuildAsync(typeof(Program).Assembly.GetName().Name!);
 app.Run();

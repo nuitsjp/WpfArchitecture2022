@@ -10,5 +10,5 @@ builder
     .AddApplicationPart(typeof(AuthenticationController).Assembly);
 
 
-var app = await builder.BuildAsync("AdventureWorks.Authentication");
+var app = await builder.BuildAsync(typeof(Program).Assembly.GetName().Name!);
 await app.RunAsync();
