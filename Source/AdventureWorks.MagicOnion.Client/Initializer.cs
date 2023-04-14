@@ -1,12 +1,14 @@
 ﻿using AdventureWorks.Authentication;
 using AdventureWorks.Hosting.MagicOnion;
+using MessagePack;
+using MessagePack.Resolvers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.MagicOnion.Client;
 
 public static class Initializer
 {
-    public static void Initialize(IMagicOnionApplicationBuilder builder, string audience)
+    public static void Initialize(IMagicOnionApplicationBuilder builder, List<IFormatterResolver> resolvers)
     {
         builder.Services.AddTransient<IMagicOnionClientFactory>(
             provider =>
@@ -19,5 +21,10 @@ public static class Initializer
                     provider.GetRequiredService<IAuthenticationContext>(),
                     baseAddress);
             });
+        resolvers.Insert(0, StandardResolver.Instance);
+        resolvers.Add(ContractlessStandardResolver.Instance);
+        StaticCompositeResolver.Instance.Register(resolvers.ToArray());
+        MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
+            .WithResolver(StaticCompositeResolver.Instance);
     }
 }

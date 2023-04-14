@@ -48,12 +48,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         Services.AddSingleton<IAuthenticationContext>(authenticationContext);
 
         // MagicOnionの初期化
-        AdventureWorks.MagicOnion.Client.Initializer.Initialize(this, applicationName);
-        _resolvers.Insert(0, StandardResolver.Instance);
-        _resolvers.Add(ContractlessStandardResolver.Instance);
-        StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
-        MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
-            .WithResolver(StaticCompositeResolver.Instance);
+        AdventureWorks.MagicOnion.Client.Initializer.Initialize(this, _resolvers);
 
         // Serilogの初期化
         await Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName, authenticationContext);
