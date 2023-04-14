@@ -10,7 +10,7 @@ public static class Initializer
 {
     public static void Initialize(IMagicOnionApplicationBuilder builder, List<IFormatterResolver> resolvers)
     {
-        builder.Services.AddTransient<IMagicOnionClientFactory>(
+        builder.Services.AddSingleton<IMagicOnionClientFactory>(
             provider =>
             {
                 var baseAddress = Environments.GetEnvironmentVariable(
@@ -21,6 +21,7 @@ public static class Initializer
                     provider.GetRequiredService<IAuthenticationContext>(),
                     baseAddress);
             });
+
         resolvers.Insert(0, StandardResolver.Instance);
         resolvers.Add(ContractlessStandardResolver.Instance);
         StaticCompositeResolver.Instance.Register(resolvers.ToArray());
