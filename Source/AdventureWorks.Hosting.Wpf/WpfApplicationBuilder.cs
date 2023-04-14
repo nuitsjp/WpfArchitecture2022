@@ -2,6 +2,7 @@
 using System.Windows;
 using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.Rest;
+using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Wpf.ViewModel;
 using Kamishibai;

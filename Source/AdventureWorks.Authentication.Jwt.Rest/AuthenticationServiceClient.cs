@@ -3,10 +3,9 @@ using System.Windows;
 using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
 using AdventureWorks.Business;
 using AdventureWorks.Hosting;
-using MagicOnion;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Authentication.Jwt.Rest;
+namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 
 /// <summary>
 /// 認証処理RESTサービスを呼び出すためのクライアント

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authenticati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.MagicOnion.Server", "AdventureWorks.Authentication.Jwt.MagicOnion.Server\AdventureWorks.Authentication.Jwt.MagicOnion.Server.csproj", "{A65A44A7-43A3-4AF6-9603-7381FF7CD505}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.Rest", "AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.csproj", "{38892125-6CB3-4E36-A531-E5DD7874078E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.Rest.Client", "AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.Client.csproj", "{38892125-6CB3-4E36-A531-E5DD7874078E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.Rest.Server", "AdventureWorks.Authentication.Jwt.Rest.Server\AdventureWorks.Authentication.Jwt.Rest.Server.csproj", "{3798CF6C-0DDF-47D3-9070-827F11BD6AAF}"
 EndProject
