@@ -22,15 +22,23 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
         {
             try
             {
-                _logger.LogInformation("Method:{Method} Peer:{Peer} EmployeeId:{EmployeeId}", context.CallContext.Method, context.CallContext.Peer, _authenticationContext.CurrentUser.EmployeeId);
+                _logger.LogInformation(
+                    "Method:{Method} Peer:{Peer} EmployeeId:{EmployeeId}", 
+                    context.CallContext.Method, 
+                    context.CallContext.Peer, 
+                    _authenticationContext.CurrentUser.EmployeeId);
 
                 return next(context);
             }
             catch (Exception e)
             {
-                _logger.LogInformation("Method:{Method} Peer:{Peer}", context.CallContext.Method, context.CallContext.Peer);
+                _logger.LogError(
+                    e,
+                    "Method:{Method} Peer:{Peer} EmployeeId:{EmployeeId}",
+                    context.CallContext.Method,
+                    context.CallContext.Peer,
+                    _authenticationContext.CurrentUser.EmployeeId);
 
-                _logger.LogError(e.Message, e);
                 throw;
             }
         }

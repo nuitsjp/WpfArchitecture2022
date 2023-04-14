@@ -341,9 +341,9 @@ go
 
 create table Serilog.Logs(
 	Id int identity(1,1) not null,
-	Message nvarchar(max) null,
-	Level nvarchar(max) null,
 	TimeStamp datetime null,
+	Level nvarchar(max) null,
+	Message nvarchar(max) null,
 	Exception nvarchar(max) null,
 	ApplicationType nvarchar(max) null,
 	Application nvarchar(max) null,
@@ -352,7 +352,7 @@ create table Serilog.Logs(
 	EmployeeId int null,
 	ProcessId int null,
 	ThreadId int null,
-	Properties nvarchar(max) null,
+	LogEvent nvarchar(max) null,
 	constraint PK_Logs primary key clustered (Id asc) 
 		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
 )	on [PRIMARY] textimage_on [PRIMARY]
@@ -408,12 +408,13 @@ values (
             "batchPostingLimit": 1000,
             "period": "0.00:00:30"
           },
-          "columnOptionsSection": {
+		  "columnOptionsSection": {
             "disableTriggers": true,
             "clusteredColumnstoreIndex": false,
             "primaryKeyColumnName": "Id",
-            "removeStandardColumns": [ "MessageTemplate" ],
-            "additionalColumns": [
+			"addStandardColumns": [ "LogEvent" ],
+			"removeStandardColumns": [ "MessageTemplate", "Properties" ],            
+			"additionalColumns": [
               {
                 "ColumnName": "ApplicationType",
                 "PropertyName": "ApplicationType",
@@ -450,7 +451,11 @@ values (
                 "DataType": "int"
               }
             ]
-          }
+          },
+		  "logEvent": {
+			"excludeAdditionalProperties": true,
+			"excludeStandardColumns": true
+		  },
         }
       }
     ],
@@ -479,31 +484,24 @@ values (
 	'Information',
 	'{
   "Serilog": {
-    "Using": [ "Serilog.Sinks.Debug" ],
+    "Using": [ "Serilog.Sinks.File" ],
     "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithProcessId", "WithThreadId" ],
-    "Properties": {
-      "Application": "%ApplicationName%",
-      "ApplicationType": "WPF",
-      "CorrelationId": 0
-    },
-	"MinimumLevel": {
+    "MinimumLevel": {
       "Default": "%MinimumLevel%",
       "Override": {
         "Microsoft": "Warning"
       }
     },
-    "Destructure": [
+    "WriteTo": [
       {
-        "Name": "ToMaximumDepth",
-        "Args": { "maximumDestructuringDepth": 4 }
-      },
-      {
-        "Name": "ToMaximumStringLength",
-        "Args": { "maximumStringLength": 100 }
-      },
-      {
-        "Name": "ToMaximumCollectionCount",
-        "Args": { "maximumCollectionCount": 10 }
+        "Name": "File",
+        "Args": {
+          "path": "Logs/Log.txt",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7,
+		  "restrictedToMinimumLevel": "Information",
+          "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [PID:{ProcessId}] [TID:{ThreadId}] {Message:lj}{NewLine}{Exception}"
+        }
       }
     ]
   }
@@ -514,17 +512,17 @@ values (
 --------------------------------------------------------------------------------------
 -- データベースを終了し、構築した内容をファイルへ書き出す
 --------------------------------------------------------------------------------------
---ALTER DATABASE AdventureWorks SET OFFLINE
---GO
+ALTER DATABASE AdventureWorks SET OFFLINE
+GO
 
---EXEC sp_detach_db AdventureWorks
---GO
+EXEC sp_detach_db AdventureWorks
+GO
 
---USE [master];
---GO
+USE [master];
+GO
 
---PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
---GO
+PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
+GO
 
 
---SET NOEXEC OFF
+SET NOEXEC OFF

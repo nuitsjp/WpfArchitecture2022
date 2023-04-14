@@ -3,6 +3,7 @@ using AdventureWorks.Logging.Serilog.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
 
 namespace AdventureWorks.Logging.Serilog.Hosting.AspNetCore;
 
