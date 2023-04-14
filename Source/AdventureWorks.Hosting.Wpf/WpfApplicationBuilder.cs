@@ -15,14 +15,30 @@ using MessageBoxResult = System.Windows.MessageBoxResult;
 
 namespace AdventureWorks.Hosting.Wpf;
 
+/// <summary>
+/// AdventureWorksのWPFクライアント共通のアプリケーションビルダー
+/// </summary>
+/// <typeparam name="TApplication"></typeparam>
+/// <typeparam name="TWindow"></typeparam>
 public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicationBuilder
     where TApplication : Application
     where TWindow : Window
 
 {
+    /// <summary>
+    /// MagicOnionで利用するすべてのIFormatterResolver
+    /// </summary>
     private readonly List<IFormatterResolver> _resolvers = new();
+
+    /// <summary>
+    /// WPFをGenericHostで動作させるためのに利用している、Wpf.Extensions.HostingのWPFアプリケーションのビルダー
+    /// </summary>
     private readonly IWpfApplicationBuilder<TApplication, TWindow> _applicationBuilder;
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="applicationBuilder"></param>
     public WpfApplicationBuilder(IWpfApplicationBuilder<TApplication, TWindow> applicationBuilder)
     {
         _applicationBuilder = applicationBuilder;
@@ -51,6 +67,12 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         return app;
     }
 
+    /// <summary>
+    /// システム例外時の方針設計は、下記のブログを参照。
+    /// https://zenn.dev/nuits_jp/articles/2023-03-08-wpf-unhandled-exception
+    /// </summary>
+    /// <param name="_"></param>
+    /// <param name="__"></param>
     private void SetupExceptionHandler(object? _, ApplicationStartupEventArgs<TApplication, TWindow> __)
     {
         Application.Current.DispatcherUnhandledException += (sender, args) =>
@@ -93,6 +115,10 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         };
     }
 
+    /// <summary>
+    /// MagicOnionのIFormatterResolverを追加する。
+    /// </summary>
+    /// <param name="resolver"></param>
     public void AddFormatterResolver(IFormatterResolver resolver)
     {
         if (_resolvers.Contains(resolver))
