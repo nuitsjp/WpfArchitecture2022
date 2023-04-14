@@ -90,6 +90,15 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
         {
             Log.Warning(args.ExceptionObject as Exception, "AppDomain.UnhandledException sender:{Sender}", sender);
+            
+            // システム終了通知
+            MessageBox.Show(
+                "システムエラーが発生しました。作業を継続しますか？",
+                "システムエラー",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error,
+                MessageBoxResult.OK);
+
             Environment.Exit(1);
         };
 
