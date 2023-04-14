@@ -1,29 +1,45 @@
-﻿using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
+﻿using System.Net.Http;
+using System.Windows;
+using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
 using AdventureWorks.Business;
+using AdventureWorks.Hosting;
+using MagicOnion;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Authentication.Jwt.Rest;
 
 /// <summary>
 /// 認証処理RESTサービスを呼び出すためのクライアント
 /// </summary>
-public class AuthenticationServiceClient
+public static class AuthenticationServiceClient
 {
 
-    public bool TryAuthenticate(out IClientAuthenticationContext context)
+    public static IAuthenticationContext Authenticate(IApplicationBuilder builder)
     {
         try
         {
             var baseAddress = Environments.GetEnvironmentVariable(
                 "AdventureWorks.Authentication.Jwt.Rest.BaseAddress",
                 "https://localhost:4001");
-            context = AuthenticateAsync(baseAddress).Result;
+            var context = AuthenticateAsync(baseAddress).Result;
 
-            return true;
+            builder.Services.AddSingleton<IAuthenticationContext>(context);
+
+            return context;
         }
         catch
         {
-            context = default!;
-            return false;
+            MessageBox.Show(
+                "ユーザー認証に失敗しました。",
+                "認証エラー",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+            // アプリケーションを終了する。
+            Environment.Exit(1);
+
+            // ここには到達しない。
+            return default!;
         }
     }
 
@@ -32,7 +48,7 @@ public class AuthenticationServiceClient
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
-    private async Task<ClientAuthenticationContext> AuthenticateAsync(string baseAddress)
+    private static async Task<ClientAuthenticationContext> AuthenticateAsync(string baseAddress)
     {
         var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
         return new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));

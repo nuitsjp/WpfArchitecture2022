@@ -11,7 +11,7 @@ namespace AdventureWorks.Authentication.Jwt.Rest.Server;
 [Authorize]
 [ApiController]
 [Route("[controller]")]
-public class AuthenticationController : ControllerBase, IAuthenticationService
+public class AuthenticationController : ControllerBase
 {
     /// <summary>
     /// ユーザーリポジトリー
