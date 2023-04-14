@@ -14,7 +14,7 @@ namespace AdventureWorks.Authentication.Jwt.Rest;
 public static class AuthenticationServiceClient
 {
 
-    public static async Task<IAuthenticationContext> Authenticate(IApplicationBuilder builder)
+    public static async Task<IAuthenticationContext> AuthenticateAsync(IApplicationBuilder builder)
     {
         try
         {
