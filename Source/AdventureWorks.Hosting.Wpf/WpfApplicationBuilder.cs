@@ -33,7 +33,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public async Task<IHost> BuildAsync(string applicationName)
     {
         // 認証サービスを初期化する。
-        var authenticationContext = AuthenticationServiceClient.Authenticate(this);
+        var authenticationContext = await AuthenticationServiceClient.AuthenticateAsync(this);
 
         // MagicOnionの初期化
         AdventureWorks.MagicOnion.Client.Initializer.Initialize(this, _resolvers);

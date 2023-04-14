@@ -14,14 +14,16 @@ namespace AdventureWorks.Authentication.Jwt.Rest;
 public static class AuthenticationServiceClient
 {
 
-    public static IAuthenticationContext Authenticate(IApplicationBuilder builder)
+    public static async Task<IAuthenticationContext> Authenticate(IApplicationBuilder builder)
     {
         try
         {
             var baseAddress = Environments.GetEnvironmentVariable(
                 "AdventureWorks.Authentication.Jwt.Rest.BaseAddress",
                 "https://localhost:4001");
-            var context = AuthenticateAsync(baseAddress).Result;
+
+            var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
+            var context = new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
 
             builder.Services.AddSingleton<IAuthenticationContext>(context);
 
@@ -47,12 +49,6 @@ public static class AuthenticationServiceClient
     /// Windows認証を有効化したHTTPクライアント
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
-
-    private static async Task<ClientAuthenticationContext> AuthenticateAsync(string baseAddress)
-    {
-        var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
-        return new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
-    }
 
     /// <summary>
     /// IAuthenticationContextのJWTによる実装。
