@@ -10,8 +10,6 @@ namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public class MagicOnionSink : ILogEventSink
 {
-    public static IAuthenticationContext AuthenticationContext { get; set; } = default!;
-
     private readonly string _hostName = System.Net.Dns.GetHostName();
     private readonly CompactJsonFormatter _formatter = new();
     private readonly LogEventLevel _restrictedToMinimumLevel;
@@ -54,7 +52,6 @@ public class MagicOnionSink : ILogEventSink
             Debug.WriteLine(e);
         }
     }
-
 }
 
 public static class MagicOnionExtensions

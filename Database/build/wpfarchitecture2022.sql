@@ -339,7 +339,7 @@ go
 
 
 
-create table Serilog.Logs(
+create table Serilog.Log(
 	Id int identity(1,1) not null,
 	TimeStamp datetime null,
 	Level nvarchar(max) null,
@@ -353,7 +353,7 @@ create table Serilog.Logs(
 	ProcessId int null,
 	ThreadId int null,
 	LogEvent nvarchar(max) null,
-	constraint PK_Logs primary key clustered (Id asc) 
+	constraint PK_Log primary key clustered (Id asc) 
 		with (pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on, optimize_for_sequential_key = off) on [PRIMARY]
 )	on [PRIMARY] textimage_on [PRIMARY]
 go
@@ -372,7 +372,7 @@ go
 
 -- Grant
 grant select on Serilog.vLogSettings to Serilog;
-grant insert, select on Serilog.Logs to Serilog;
+grant insert, select on Serilog.Log to Serilog;
 
 -- デフォルト設定の登録
 insert into 
@@ -401,9 +401,10 @@ values (
         "Args": {
           "restrictedToMinimumLevel": "%MinimumLevel%",
           "connectionString": "%ConnectionString%",
+          "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact",
           "sinkOptions": {
             "SchemaName": "Serilog",
-            "TableName": "Logs",
+            "TableName": "Log",
             "AutoCreateSqlTable": true,
             "batchPostingLimit": 1000,
             "period": "0.00:00:30"
@@ -500,7 +501,7 @@ values (
       {
         "Name": "File",
         "Args": {
-          "path": "Logs/Log.txt",
+          "path": "Log/Log.txt",
           "rollingInterval": "Day",
           "retainedFileCountLimit": 7,
 		  "restrictedToMinimumLevel": "Information",

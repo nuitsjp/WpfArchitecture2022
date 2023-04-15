@@ -4,11 +4,12 @@ namespace AdventureWorks.Logging.Serilog;
 
 public record Log(
     string Message,
-    LogEventLevel Level,
+    string Level,
     string? Exception,
     string ApplicationType,
     string Application,
     string MachineName,
+    string Peer,
     int EmployeeId,
     int ProcessId,
     int ThreadId,

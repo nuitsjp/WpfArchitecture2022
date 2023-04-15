@@ -16,7 +16,7 @@ public class LogRepository : ILogRepository
         using var connection = _database.Open();
         await connection.ExecuteAsync(@"
 insert into
-    Serilog.Logs
+    Serilog.Log
 (
     Message,
     Level,
@@ -25,6 +25,7 @@ insert into
     ApplicationType,
     Application,
     MachineName,
+    Peer,
     EmployeeId,
     ProcessId,
     ThreadId,
@@ -37,6 +38,7 @@ insert into
     @ApplicationType,
     @Application,
     @MachineName,
+    @Peer,
     @EmployeeId,
     @ProcessId,
     @ThreadId,
