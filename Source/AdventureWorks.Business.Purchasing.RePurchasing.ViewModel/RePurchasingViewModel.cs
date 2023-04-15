@@ -3,6 +3,7 @@ using AdventureWorks.Authentication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kamishibai;
+using Microsoft.Extensions.Logging;
 
 namespace AdventureWorks.Business.Purchasing.RePurchasing.ViewModel;
 
@@ -15,6 +16,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
     private readonly IShipMethodRepository _shipMethodRepository;
     private readonly IProductRepository _productRepository;
     private readonly IPurchaseOrderRepository _purchaseOrderRepository;
+    private readonly ILogger<RePurchasingViewModel> _logger;
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(PurchaseCommand))]
@@ -25,10 +27,10 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         IEnumerable<RequiringPurchaseProduct> requiringPurchaseProducts,
         [Inject] IPresentationService presentationService,
         [Inject] IAuthenticationContext authenticationContext,
-
         [Inject] IShipMethodRepository shipMethodRepository, 
         [Inject] IProductRepository productRepository, 
-        [Inject] IPurchaseOrderRepository purchaseOrderRepository)
+        [Inject] IPurchaseOrderRepository purchaseOrderRepository, 
+        [Inject] ILogger<RePurchasingViewModel> logger)
     {
         Vendor = vendor;
         RequiringPurchaseProducts = requiringPurchaseProducts.ToList();
@@ -37,6 +39,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         _shipMethodRepository = shipMethodRepository;
         _productRepository = productRepository;
         _purchaseOrderRepository = purchaseOrderRepository;
+        _logger = logger;
         TotalPrice =
             RequiringPurchaseProducts.Sum(x => x.LineTotal)
             * Vendor.TaxRate;
@@ -78,6 +81,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
         var purchaseOrder = builder.Build();
         await _purchaseOrderRepository.RegisterAsync(purchaseOrder);
 
+        _logger.LogInformation("Ordered to {VendorId}.", purchaseOrder.VendorId);
 
         _presentationService.ShowMessage(Properties.Resources.RegistrationCompleted);
         await _presentationService.GoBackAsync();

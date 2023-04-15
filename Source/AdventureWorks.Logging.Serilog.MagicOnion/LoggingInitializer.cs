@@ -5,6 +5,7 @@ using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 
@@ -15,10 +16,14 @@ public class LoggingInitializer : ILoggingInitializer
     public static readonly Audience Audience = new("AdventureWorks.Logging");
 
     private readonly ApplicationName _applicationName;
+    private readonly ILoggerFactory _loggerFactory;
 
-    public LoggingInitializer(ApplicationName applicationName)
+    public LoggingInitializer(
+        ApplicationName applicationName, 
+        ILoggerFactory loggerFactory)
     {
         _applicationName = applicationName;
+        _loggerFactory = loggerFactory;
     }
 
     public async Task<bool> TryInitializeAsync()
@@ -58,25 +63,33 @@ public class LoggingInitializer : ILoggingInitializer
 #endif
             .CreateLogger();
 
-        LoggingAspect.Logger = new ViewModelLogger();
+        LoggingAspect.Logger = new ViewModelLogger(_loggerFactory.CreateLogger<ViewModelLogger>());
+
         return true;
     }
 
-    public class ViewModelLogger : IViewModelLogger
+    private class ViewModelLogger : IViewModelLogger
     {
+        private readonly ILogger<ViewModelLogger> _logger;
+
+        public ViewModelLogger(ILogger<ViewModelLogger> logger)
+        {
+            _logger = logger;
+        }
+
         public void LogEntry(MethodBase method, object[] args)
         {
-            global::Serilog.Log.Debug("{Type}.{Method}({Args}) Entry", method.ReflectedType!.FullName, method.Name, args);
+            _logger.LogDebug("{Type}.{Method}({Args}) Entry", method.ReflectedType!.FullName, method.Name, args);
         }
 
         public void LogSuccess(MethodBase method, object[] args)
         {
-            global::Serilog.Log.Debug("{Type}.{Method}({Args}) Success", method.ReflectedType!.FullName, method.Name, args);
+            _logger.LogDebug("{Type}.{Method}({Args}) Success", method.ReflectedType!.FullName, method.Name, args);
         }
 
         public void LogException(MethodBase method, Exception exception, object[] args)
         {
-            global::Serilog.Log.Warning(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
+            _logger.LogDebug(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
         }
     }
 }

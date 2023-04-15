@@ -22,6 +22,7 @@ public class RePurchasingDesignViewModel : RePurchasingViewModel
             default!,
             default!,
             default!, 
+            default!,
             default!)
     {
     }
