@@ -72,6 +72,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
         // ロギングサービスの初期化。
         Services.AddTransient<ILoggingInitializer>(_ => new LoggingInitializer(applicationName));
+        _applicationBuilder.Host.UseSerilog();
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();
