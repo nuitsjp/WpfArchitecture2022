@@ -1,16 +1,9 @@
 ﻿using AdventureWorks.Authentication;
-using AdventureWorks.MagicOnion.Client;
-using Grpc.Net.Client;
-using MagicOnion.Client;
-using MagicOnion;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Configuration;
 using Serilog;
 using System.Diagnostics;
-using AdventureWorks.Authentication.Jwt.Rest.Client;
-using Grpc.Core;
-using Microsoft.Extensions.Configuration;
 using Serilog.Formatting.Compact;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion;
@@ -71,34 +64,5 @@ public static class MagicOnionExtensions
         LogEventLevel restrictedToMinimumLevel)
     {
         return loggerSinkConfiguration.Sink(new MagicOnionSink(restrictedToMinimumLevel));
-    }
-}
-
-public class LoggingServiceClient : ILoggingService
-{
-    public static IMagicOnionClientFactory MagicOnionClientFactory { get; set; } = new NullMagicOnionClientFactory();
-
-    private class NullMagicOnionClientFactory : IMagicOnionClientFactory
-    {
-        public T Create<T>() where T : IService<T>
-        {
-            return default!;
-        }
-    }
-
-    public ILoggingService WithOptions(CallOptions option) => this;
-
-    public ILoggingService WithHeaders(Metadata headers) => this;
-
-    public ILoggingService WithDeadline(DateTime deadline) => this;
-
-    public ILoggingService WithCancellationToken(CancellationToken cancellationToken) => this;
-
-    public ILoggingService WithHost(string host) => this;
-
-    public async UnaryResult RegisterAsync(LogDto logRecord)
-    {
-        var service = MagicOnionClientFactory.Create<ILoggingService>();
-        await service.RegisterAsync(logRecord);
     }
 }

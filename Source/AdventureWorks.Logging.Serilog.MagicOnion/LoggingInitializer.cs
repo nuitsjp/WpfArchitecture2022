@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Text;
-using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
