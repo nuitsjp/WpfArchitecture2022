@@ -14,6 +14,6 @@ public class SerilogConfigService : ServiceBase<ISerilogConfigService>, ISerilog
 
     public async UnaryResult<SerilogConfig> GetServerSerilogConfigAsync(string applicationName)
     {
-        return await _repository.GetClientSerilogConfigAsync(applicationName);
+        return await _repository.GetClientSerilogConfigAsync(new ApplicationName(applicationName));
     }
 }

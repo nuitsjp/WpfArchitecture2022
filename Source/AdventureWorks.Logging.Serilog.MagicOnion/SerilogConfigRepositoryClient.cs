@@ -12,14 +12,14 @@ public class SerilogConfigRepositoryClient : ISerilogConfigRepository
         _clientFactory = clientFactory;
     }
 
-    public Task<SerilogConfig> GetServerSerilogConfigAsync(string applicationName)
+    public Task<SerilogConfig> GetServerSerilogConfigAsync(ApplicationName applicationName)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<SerilogConfig> GetClientSerilogConfigAsync(string applicationName)
+    public async Task<SerilogConfig> GetClientSerilogConfigAsync(ApplicationName applicationName)
     {
         var service = _clientFactory.Create<ISerilogConfigService>();
-        return await service.GetServerSerilogConfigAsync(applicationName);
+        return await service.GetServerSerilogConfigAsync(applicationName.Value);
     }
 }

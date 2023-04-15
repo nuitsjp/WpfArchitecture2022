@@ -21,7 +21,7 @@ public abstract class AspNetCoreApplicationBuilder : IApplicationBuilder
     public IServiceCollection Services => Builder.Services;
     public IConfiguration Configuration => Builder.Configuration;
 
-    public virtual async Task<WebApplication> BuildAsync(string applicationName)
+    public virtual async Task<WebApplication> BuildAsync(ApplicationName applicationName)
     {
         Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
 
@@ -35,7 +35,7 @@ public abstract class AspNetCoreApplicationBuilder : IApplicationBuilder
         return app;
     }
 
-    private async Task InitializeSerilogAsync(string applicationName)
+    private async Task InitializeSerilogAsync(ApplicationName applicationName)
     {
         var database = new SerilogDatabase();
         var repository = (ISerilogConfigRepository)new SerilogConfigRepository(database);
@@ -49,7 +49,7 @@ public abstract class AspNetCoreApplicationBuilder : IApplicationBuilder
         var settingString = config.Settings
             .Replace("%ConnectionString%", database.ConnectionString)
             .Replace("%MinimumLevel%", minimumLevel.ToString())
-            .Replace("%ApplicationName%", applicationName);
+            .Replace("%ApplicationName%", applicationName.Value);
 
         using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
         var configurationRoot = new ConfigurationBuilder()

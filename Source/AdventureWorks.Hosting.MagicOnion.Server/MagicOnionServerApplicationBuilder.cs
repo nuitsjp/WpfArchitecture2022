@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using AdventureWorks.Authentication;
 using AdventureWorks.Hosting.AspNetCore;
+using AdventureWorks.Logging.Serilog;
 using MagicOnion.Server;
 using MessagePack;
 using MessagePack.Resolvers;
@@ -35,7 +36,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
             _serviceAssemblies.Add(serviceAssembly);
         }
 
-        public override async Task<WebApplication> BuildAsync(string applicationName)
+        public override async Task<WebApplication> BuildAsync(ApplicationName applicationName)
         {
             // MagicOnionの初期化
             _resolvers.InitializeResolver();

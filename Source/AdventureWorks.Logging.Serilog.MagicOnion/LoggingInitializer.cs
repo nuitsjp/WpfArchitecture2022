@@ -14,9 +14,9 @@ public class LoggingInitializer : ILoggingInitializer
 {
     public static readonly Audience Audience = new("AdventureWorks.Logging");
 
-    private readonly string _applicationName;
+    private readonly ApplicationName _applicationName;
 
-    public LoggingInitializer(string applicationName)
+    public LoggingInitializer(ApplicationName applicationName)
     {
         _applicationName = applicationName;
     }
@@ -44,7 +44,7 @@ public class LoggingInitializer : ILoggingInitializer
 #endif
         var settingString = config.Settings
             .Replace("%MinimumLevel%", minimumLevel.ToString())
-            .Replace("%ApplicationName%", _applicationName);
+            .Replace("%ApplicationName%", _applicationName.Value);
 
         using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
         var configurationRoot = new ConfigurationBuilder()

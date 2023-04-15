@@ -2,6 +2,6 @@
 
 public interface ISerilogConfigRepository
 {
-    Task<SerilogConfig> GetServerSerilogConfigAsync(string applicationName);
-    Task<SerilogConfig> GetClientSerilogConfigAsync(string applicationName);
+    Task<SerilogConfig> GetServerSerilogConfigAsync(ApplicationName applicationName);
+    Task<SerilogConfig> GetClientSerilogConfigAsync(ApplicationName applicationName);
 }

@@ -8,6 +8,7 @@ using AdventureWorks.Authentication.Jwt.Rest;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Logging;
+using AdventureWorks.Logging.Serilog;
 using AdventureWorks.Logging.Serilog.MagicOnion;
 using AdventureWorks.MagicOnion;
 using AdventureWorks.MagicOnion.Client;
@@ -55,8 +56,9 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
+    private ConfigureHostBuilder Host => _applicationBuilder.Host;
 
-    public IHost Build(string applicationName, Audience audience)
+    public IHost Build(ApplicationName applicationName, Audience audience)
     {
         // MagicOnionの初期化
         _resolvers.InitializeResolver();
@@ -72,7 +74,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
         // ロギングサービスの初期化。
         Services.AddTransient<ILoggingInitializer>(_ => new LoggingInitializer(applicationName));
-        _applicationBuilder.Host.UseSerilog();
+        Host.UseSerilog();
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();

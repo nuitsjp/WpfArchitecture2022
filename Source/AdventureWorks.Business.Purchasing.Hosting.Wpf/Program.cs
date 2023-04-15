@@ -1,4 +1,6 @@
-﻿var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
+﻿using AdventureWorks.Logging.Serilog;
+
+var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.App,
     AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
@@ -12,6 +14,6 @@ AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 // アプリケーションをビルドし実行する。
 var applicationName = typeof(Program).Assembly.GetName().Name!;
 var app = builder.Build(
-    applicationName,
+    new ApplicationName(applicationName),
     AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Audience);
 await app.RunAsync();

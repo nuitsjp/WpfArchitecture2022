@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Hosting.AspNetCore;
+using AdventureWorks.Logging.Serilog;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,7 @@ public class RestApplicationBuilder : AspNetCoreApplicationBuilder
 
     public static RestApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
-    public override async Task<WebApplication> BuildAsync(string applicationName)
+    public override async Task<WebApplication> BuildAsync(ApplicationName applicationName)
     {
         Builder.Services.AddControllers();
         Builder.Services.AddEndpointsApiExplorer();
