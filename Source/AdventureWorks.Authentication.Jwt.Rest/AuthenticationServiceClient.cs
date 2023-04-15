@@ -1,9 +1,5 @@
-﻿using System.Net.Http;
-using System.Windows;
-using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
+﻿using AdventureWorks.Authentication.Jwt.MagicOnion.Client;
 using AdventureWorks.Business;
-using AdventureWorks.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 
@@ -12,36 +8,14 @@ namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 /// </summary>
 public static class AuthenticationServiceClient
 {
-
-    public static async Task<IAuthenticationContext> AuthenticateAsync(IApplicationBuilder builder)
+    public static async Task<IClientAuthenticationContext> AuthenticateAsync()
     {
-        try
-        {
-            var baseAddress = Environments.GetEnvironmentVariable(
-                "AdventureWorks.Authentication.Jwt.Rest.BaseAddress",
-                "https://localhost:4001");
-
-            var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
-            var context = new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
-
-            builder.Services.AddSingleton<IAuthenticationContext>(context);
-
-            return context;
-        }
-        catch
-        {
-            MessageBox.Show(
-                "ユーザー認証に失敗しました。",
-                "認証エラー",
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
-
-            // アプリケーションを終了する。
-            Environment.Exit(1);
-
-            // ここには到達しない。
-            return default!;
-        }
+        var baseAddress = Environments.GetEnvironmentVariable(
+            "AdventureWorks.Authentication.Jwt.Rest.BaseAddress",
+            "https://localhost:4001");
+        var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
+        var context = new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
+        return context;
     }
 
     /// <summary>

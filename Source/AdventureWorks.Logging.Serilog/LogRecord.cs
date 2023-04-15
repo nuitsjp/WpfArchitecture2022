@@ -11,4 +11,5 @@ public record LogRecord(
     string MachineName,
     int EmployeeId,
     int ProcessId,
-    int ThreadId);
+    int ThreadId,
+    string LogEvent);

@@ -484,8 +484,12 @@ values (
 	'Information',
 	'{
   "Serilog": {
-    "Using": [ "Serilog.Sinks.File" ],
+    "Using": [ "Serilog.Sinks.File", "AdventureWorks.Logging.Serilog.MagicOnion" ],
     "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithProcessId", "WithThreadId" ],
+    "Properties": {
+      "Application": "%ApplicationName%",
+      "ApplicationType": "WPF"
+    },
     "MinimumLevel": {
       "Default": "%MinimumLevel%",
       "Override": {
@@ -502,6 +506,14 @@ values (
 		  "restrictedToMinimumLevel": "Information",
           "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [PID:{ProcessId}] [TID:{ThreadId}] {Message:lj}{NewLine}{Exception}"
         }
+      },
+	  {
+        "Name": "MagicOnion",
+        "Args": {
+		  "restrictedToMinimumLevel": "Error",
+          "environmentVariableName": "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
+          "defaultAddress": "https://localhost:3001"
+		}
       }
     ]
   }
