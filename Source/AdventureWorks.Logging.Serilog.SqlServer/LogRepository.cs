@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AdventureWorks.Logging.Serilog.MagicOnion;
+using Dapper;
 
 namespace AdventureWorks.Logging.Serilog.SqlServer;
 

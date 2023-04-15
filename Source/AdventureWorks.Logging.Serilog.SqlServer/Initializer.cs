@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Hosting;
+using AdventureWorks.Logging.Serilog.MagicOnion;
 using Dapper;
 using Microsoft.Extensions.DependencyInjection;
 

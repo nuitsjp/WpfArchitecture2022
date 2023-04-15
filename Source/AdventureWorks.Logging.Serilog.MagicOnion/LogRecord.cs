@@ -1,6 +1,6 @@
 ﻿using Serilog.Events;
 
-namespace AdventureWorks.Logging.Serilog;
+namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public record LogRecord(
     string Message,

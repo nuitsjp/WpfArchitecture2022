@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Logging.Serilog;
+﻿namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public interface ILogRecordRepository
 {

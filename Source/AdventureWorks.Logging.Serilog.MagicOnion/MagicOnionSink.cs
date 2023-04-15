@@ -51,14 +51,13 @@ public class MagicOnionSink : ILogEventSink
 
             var loggingService = MagicOnionClientFactory.Create<ILoggingService>();
             await loggingService.RegisterAsync(
-                new LogRecord(
+                new LogRecordDto(
                     message,
                     logEvent.Level,
                     logEvent.Exception?.StackTrace,
                     logEvent.Properties["ApplicationType"].ToString().Replace("\"", ""),
                     logEvent.Properties["Application"].ToString().Replace("\"", ""),
                     _hostName,
-                    AuthenticationContext.CurrentUser.EmployeeId.AsPrimitive(),
                     Environment.ProcessId,
                     Environment.CurrentManagedThreadId,
                     json));
