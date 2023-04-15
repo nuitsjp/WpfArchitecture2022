@@ -510,9 +510,7 @@ values (
 	  {
         "Name": "MagicOnion",
         "Args": {
-		  "restrictedToMinimumLevel": "Error",
-          "environmentVariableName": "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
-          "defaultAddress": "https://localhost:3001"
+		  "restrictedToMinimumLevel": "Debug"
 		}
       }
     ]
@@ -524,17 +522,17 @@ values (
 --------------------------------------------------------------------------------------
 -- データベースを終了し、構築した内容をファイルへ書き出す
 --------------------------------------------------------------------------------------
-ALTER DATABASE AdventureWorks SET OFFLINE
-GO
+--ALTER DATABASE AdventureWorks SET OFFLINE
+--GO
 
-EXEC sp_detach_db AdventureWorks
-GO
+--EXEC sp_detach_db AdventureWorks
+--GO
 
-USE [master];
-GO
+--USE [master];
+--GO
 
-PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
-GO
+--PRINT 'Finished - ' + CONVERT(varchar, GETDATE(), 121);
+--GO
 
 
-SET NOEXEC OFF
+--SET NOEXEC OFF

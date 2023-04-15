@@ -1,6 +1,12 @@
 ﻿using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
+using AdventureWorks.Logging;
+using AdventureWorks.Logging.Serilog;
+using AdventureWorks.Logging.Serilog.MagicOnion;
+using Microsoft.Extensions.DependencyInjection;
 using PostSharp.Aspects.Advices;
+
+string applicationName = typeof(Program).Assembly.GetName().Name!;
 
 var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.App,
@@ -11,6 +17,9 @@ var authenticationService = new AuthenticationService();
 builder.Services.AddSingleton<IAuthenticationService>(authenticationService);
 builder.Services.AddSingleton(authenticationService.Context);
 
+// ロギングサービスの初期化。
+builder.Services.AddTransient<ILoggingInitializer>(_ => new LoggingInitializer(applicationName));
+
 // 購買サービスのクライアントを初期化する。
 AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Initialize(builder);    
 AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Initializer.Initialize(builder);
@@ -19,5 +28,5 @@ AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Initializer.Initializ
 AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
-var app = await builder.BuildAsync(typeof(Program).Assembly.GetName().Name!);
+var app = await builder.BuildAsync(applicationName);
 await app.RunAsync();

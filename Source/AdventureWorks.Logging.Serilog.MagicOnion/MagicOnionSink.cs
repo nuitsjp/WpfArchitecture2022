@@ -9,6 +9,7 @@ using Serilog.Configuration;
 using Serilog;
 using System.Diagnostics;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
+using Grpc.Core;
 using Microsoft.Extensions.Configuration;
 using Serilog.Formatting.Compact;
 
@@ -16,23 +17,16 @@ namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public class MagicOnionSink : ILogEventSink
 {
-    private readonly IMagicOnionClientFactory _clientFactory;
+    public static IMagicOnionClientFactory MagicOnionClientFactory { get; set; } = new NullMagicOnionClientFactory();
+    public static IAuthenticationContext AuthenticationContext { get; set; } = default!;
+
     private readonly string _hostName = System.Net.Dns.GetHostName();
-    private readonly IAuthenticationContext _authenticationContext;
     private readonly CompactJsonFormatter _formatter = new();
     private readonly LogEventLevel _restrictedToMinimumLevel;
 
-    public MagicOnionSink(
-        LogEventLevel restrictedToMinimumLevel,
-        string environmentVariableName,
-        string defaultAddress)
+    public MagicOnionSink(LogEventLevel restrictedToMinimumLevel)
     {
         _restrictedToMinimumLevel = restrictedToMinimumLevel;
-        var context = AuthenticationServiceClient.AuthenticateAsync().Result;
-        var endpoint = Environments.GetEnvironmentVariable(environmentVariableName, defaultAddress);
-
-        _clientFactory = new MagicOnionClientFactory(context, new Endpoint(new Uri(endpoint)));
-        _authenticationContext = context;
     }
 
     public async void Emit(LogEvent logEvent)
@@ -49,7 +43,13 @@ public class MagicOnionSink : ILogEventSink
             var json = writer.ToString();
 
             var message = logEvent.MessageTemplate.Render(logEvent.Properties).Replace("\"", "");
-            var loggingService = _clientFactory.Create<ILoggingService>();
+            if (MagicOnionClientFactory is NullMagicOnionClientFactory)
+            {
+                Debug.WriteLine(message);
+                return;
+            }
+
+            var loggingService = MagicOnionClientFactory.Create<ILoggingService>();
             await loggingService.RegisterAsync(
                 new LogRecord(
                     message,
@@ -58,7 +58,7 @@ public class MagicOnionSink : ILogEventSink
                     logEvent.Properties["ApplicationType"].ToString().Replace("\"", ""),
                     logEvent.Properties["Application"].ToString().Replace("\"", ""),
                     _hostName,
-                    _authenticationContext.CurrentUser.EmployeeId.AsPrimitive(),
+                    AuthenticationContext.CurrentUser.EmployeeId.AsPrimitive(),
                     Environment.ProcessId,
                     Environment.CurrentManagedThreadId,
                     json));
@@ -68,16 +68,22 @@ public class MagicOnionSink : ILogEventSink
             Debug.WriteLine(e);
         }
     }
+
+    private class NullMagicOnionClientFactory : IMagicOnionClientFactory
+    {
+        public T Create<T>() where T : IService<T>
+        {
+            return default!;
+        }
+    }
 }
 
 public static class MagicOnionExtensions
 {
     public static LoggerConfiguration MagicOnion(
         this LoggerSinkConfiguration loggerSinkConfiguration,
-        LogEventLevel restrictedToMinimumLevel,
-        string environmentVariableName,
-        string defaultAddress)
+        LogEventLevel restrictedToMinimumLevel)
     {
-        return loggerSinkConfiguration.Sink(new MagicOnionSink(restrictedToMinimumLevel, environmentVariableName, defaultAddress));
+        return loggerSinkConfiguration.Sink(new MagicOnionSink(restrictedToMinimumLevel));
     }
 }

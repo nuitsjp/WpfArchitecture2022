@@ -23,6 +23,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="Kamishibai.Hosting" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.Debug" />
+    <PackageReference Include="Serilog.Sinks.File" />
 		<PackageReference Include="Wpf.Extensions.Hosting" />
 	</ItemGroup>
 
@@ -31,6 +34,8 @@
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion\AdventureWorks.Business.Purchasing.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.View\AdventureWorks.Business.Purchasing.View.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Logging.Serilog.MagicOnion\AdventureWorks.Logging.Serilog.MagicOnion.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Logging\AdventureWorks.Logging.csproj" />
 	</ItemGroup>
 
 </Project>

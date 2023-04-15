@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Authentication;
+using AdventureWorks.Logging;
 using Kamishibai;
 
 namespace AdventureWorks.Business.Purchasing.ViewModel;
@@ -6,19 +7,23 @@ namespace AdventureWorks.Business.Purchasing.ViewModel;
 public class MainViewModel : INavigatedAsyncAware
 {
     private readonly IAuthenticationService _authenticationService;
+    private readonly ILoggingInitializer _loggingInitializer;
     private readonly Menu.ViewModel.IPresentationService _presentationService;
 
     public MainViewModel(
         [Inject] IAuthenticationService authenticationService,
+        [Inject] ILoggingInitializer loggingInitializer,
         [Inject] Menu.ViewModel.IPresentationService presentationService)
     {
         _authenticationService = authenticationService;
+        _loggingInitializer = loggingInitializer;
         _presentationService = presentationService;
     }
 
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        if (await _authenticationService.TryAuthenticateAsync())
+        if (await _authenticationService.TryAuthenticateAsync()
+            && await _loggingInitializer.TryInitializeAsync())
         {
             await _presentationService.NavigateToMenuAsync();
         }
