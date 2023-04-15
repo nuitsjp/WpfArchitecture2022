@@ -12,8 +12,6 @@ public static class LoggerSinkConfigurationExtensions
         IAuthenticationContext authenticationContext,
         string endpoint)
     {
-        var sink = new MagicOnionSink(new MagicOnionClientFactory(authenticationContext, endpoint), authenticationContext);
-
-        return sinkConfiguration.Sink(sink);
+        return sinkConfiguration.Sink(new MagicOnionSink(authenticationContext, endpoint));
     }
 }

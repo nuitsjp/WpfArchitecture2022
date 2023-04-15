@@ -16,10 +16,10 @@ public class MagicOnionSink : ILogEventSink
     private readonly IAuthenticationContext _authenticationContext;
 
     public MagicOnionSink(
-        IMagicOnionClientFactory clientFactory, 
-        IAuthenticationContext authenticationContext)
+        IAuthenticationContext authenticationContext,
+        string endpoint)
     {
-        _clientFactory = clientFactory;
+        _clientFactory = new MagicOnionClientFactory(authenticationContext, endpoint);
         _authenticationContext = authenticationContext;
     }
 

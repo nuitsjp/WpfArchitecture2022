@@ -4,6 +4,8 @@ using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt.Rest;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.Hosting.MagicOnion;
+using AdventureWorks.MagicOnion;
+using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
 using Kamishibai;
 using MessagePack;
@@ -28,7 +30,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     /// <summary>
     /// MagicOnionで利用するすべてのIFormatterResolver
     /// </summary>
-    private readonly List<IFormatterResolver> _resolvers = new();
+    private readonly FormatterResolverCollection _resolvers = new();
 
     /// <summary>
     /// WPFをGenericHostで動作させるためのに利用している、Wpf.Extensions.HostingのWPFアプリケーションのビルダー
@@ -53,7 +55,11 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         var authenticationContext = await AuthenticationServiceClient.AuthenticateAsync(this);
 
         // MagicOnionの初期化
-        AdventureWorks.MagicOnion.Client.Initializer.Initialize(this, _resolvers);
+        _resolvers.InitializeResolver();
+
+        // MagicOnionのクライアントファクトリーをDIコンテナに登録する。
+        Services.AddSingleton<IMagicOnionClientFactory>(
+            new MagicOnionClientFactory(authenticationContext, GetServiceEndpoint()));
 
         // Serilogの初期化
         await Logging.Serilog.Hosting.Wpf.Initializer.InitializeAsync(applicationName, authenticationContext);
@@ -66,6 +72,11 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         app.Startup += SetupExceptionHandler;
         return app;
     }
+
+    private static string GetServiceEndpoint() =>
+        Environments.GetEnvironmentVariable(
+            "AdventureWorks.Business.Purchasing.MagicOnion.BaseAddress",
+            "https://localhost:5001");
 
     /// <summary>
     /// システム例外時の方針設計は、下記のブログを参照。
@@ -121,10 +132,6 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     /// <param name="resolver"></param>
     public void AddFormatterResolver(IFormatterResolver resolver)
     {
-        if (_resolvers.Contains(resolver))
-        {
-            return;
-        }
         _resolvers.Add(resolver);
     }
 

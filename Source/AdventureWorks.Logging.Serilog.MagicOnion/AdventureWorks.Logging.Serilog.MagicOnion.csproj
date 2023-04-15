@@ -7,6 +7,7 @@
 	<ItemGroup>
 		<PackageReference Include="Serilog" />
 		<PackageReference Include="MagicOnion.Client" />
+		<PackageReference Include="Serilog.Expressions" Version="3.4.1" />
 	</ItemGroup>
 
 	<ItemGroup>

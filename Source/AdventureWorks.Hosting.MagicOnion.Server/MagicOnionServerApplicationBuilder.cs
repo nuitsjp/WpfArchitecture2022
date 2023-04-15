@@ -12,7 +12,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
 {
     public class MagicOnionServerApplicationBuilder : AspNetCoreApplicationBuilder, IMagicOnionServerApplicationBuilder
     {
-        private readonly List<IFormatterResolver> _resolvers = new();
+        private readonly FormatterResolverCollection _resolvers = new();
 
         private readonly List<Assembly> _serviceAssemblies = new();
 
@@ -24,10 +24,6 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
 
         public void AddFormatterResolver(IFormatterResolver resolver)
         {
-            if (_resolvers.Contains(resolver))
-            {
-                return;
-            }
             _resolvers.Add(resolver);
         }
 
@@ -42,6 +38,9 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
 
         public override async Task<WebApplication> BuildAsync(string applicationName)
         {
+            // MagicOnionの初期化
+            _resolvers.InitializeResolver();
+
             Builder.Services.AddGrpc();
             Builder.Services.AddMagicOnion(
                 _serviceAssemblies.ToArray(),
@@ -51,13 +50,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
                     options.GlobalFilters.Add<LoggingFilterAttribute>();
                 });
 
-            // MagicOnionの初期化
-            _resolvers.Insert(0, StandardResolver.Instance);
-            _resolvers.Add(ContractlessStandardResolver.Instance);
-            StaticCompositeResolver.Instance.Register(_resolvers.ToArray());
-            MessagePackSerializer.DefaultOptions = ContractlessStandardResolver.Options
-                .WithResolver(StaticCompositeResolver.Instance);
-
+            // サーバー用認証コンテキストをDIコンテナーに登録
             Services.AddSingleton<IAuthenticationContext>(ServerAuthenticationContext.Instance);
 
             var app = await base.BuildAsync(applicationName);
