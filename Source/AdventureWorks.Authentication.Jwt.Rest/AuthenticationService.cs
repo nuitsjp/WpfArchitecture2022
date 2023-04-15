@@ -10,7 +10,19 @@ public class AuthenticationService : IAuthenticationService
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
+    private readonly Audience _audience;
+
     private readonly AuthenticationContext _context = new ();
+
+    public AuthenticationService(Audience audience)
+    {
+        _audience = audience;
+    }
+
+    public AuthenticationService() : this(new Audience("AdventureWorks"))
+    {
+    }
+
     public async Task<bool> TryAuthenticateAsync()
     {
         try
@@ -18,9 +30,9 @@ public class AuthenticationService : IAuthenticationService
             var baseAddress = Environments.GetEnvironmentVariable(
                 "AdventureWorks.Authentication.Jwt.Rest.BaseAddress",
                 "https://localhost:4001");
-            var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication");
+            var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication/{_audience.Value}");
             _context.CurrentTokenString = token;
-            _context.CurrentUser = UserSerializer.Deserialize(token);
+            _context.CurrentUser = UserSerializer.Deserialize(token, _audience);
             return true;
         }
         catch

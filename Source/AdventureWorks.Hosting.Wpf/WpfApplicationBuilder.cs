@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using AdventureWorks.Authentication;
+using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.Hosting.MagicOnion;
@@ -55,7 +56,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
 
-    public IHost BuildAsync(string applicationName)
+    public IHost Build(string applicationName)
     {
         // MagicOnionの初期化
         _resolvers.InitializeResolver();

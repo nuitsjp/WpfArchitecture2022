@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Text;
+using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
@@ -11,6 +12,8 @@ namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public class LoggingInitializer : ILoggingInitializer
 {
+    public static readonly Audience Audience = new("AdventureWorks.Logging");
+
     private readonly string _applicationName;
 
     public LoggingInitializer(string applicationName)
@@ -20,7 +23,7 @@ public class LoggingInitializer : ILoggingInitializer
 
     public async Task<bool> TryInitializeAsync()
     {
-        AuthenticationService authenticationService = new();
+        AuthenticationService authenticationService = new(Audience);
         await authenticationService.TryAuthenticateAsync();
 
         var baseAddress =

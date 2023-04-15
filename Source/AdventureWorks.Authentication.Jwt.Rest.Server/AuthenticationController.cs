@@ -33,14 +33,14 @@ public class AuthenticationController : ControllerBase
     /// </summary>
     /// <returns></returns>
     /// <exception cref="AuthenticationException"></exception>
-    [HttpGet()]
-    public async Task<string> AuthenticateAsync()
+    [HttpGet("{audience}")]
+    public async Task<string> AuthenticateAsync(string audience)
     {
         var account = User.Identity!.Name!;
         if (await _userRepository.TryGetUserByIdAsync(new LoginId(account), out var user))
         {
             // 認証が成功した場合、ユーザーからJWTトークンを生成する。
-            return UserSerializer.Serialize(user, Properties.Resources.PrivateKey);
+            return UserSerializer.Serialize(user, Properties.Resources.PrivateKey, new Audience(audience));
         }
 
         throw new AuthenticationException();

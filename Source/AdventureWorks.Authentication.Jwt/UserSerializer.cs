@@ -8,14 +8,7 @@ namespace AdventureWorks.Authentication.Jwt;
 
 public static class UserSerializer
 {
-    /// <summary>
-    /// aud属性は本来はサブシステムごとに個別に定義した方が好ましいが、ロギングAPIなどもを含めて制御するにはやや複雑になりすぎる。
-    /// 今回はaud属性は固定で扱い、非固定で扱いたい場合は、そもそもWindows認証だけではなく、なんらかの認証プロバイダーの利用を検討
-    /// をあわせて行うことにする。
-    /// </summary>
-    private const string Audience = "AdventureWorks";
-
-    public static string Serialize(User user, string privateKey)
+    public static string Serialize(User user, string privateKey, Audience audience)
     {
         // 署名資格を作成する
         var rsa = new RSACryptoServiceProvider();
@@ -33,7 +26,7 @@ public static class UserSerializer
         {
             Subject = claimsIdentity,
             Issuer = typeof(IAuthenticationContext).Namespace,
-            Audience = Audience,
+            Audience = audience.Value,
             Expires = DateTime.UtcNow.AddDays(1),
             SigningCredentials = credentials,
         };
@@ -45,7 +38,7 @@ public static class UserSerializer
         return handler.WriteToken(token);
     }
 
-    public static User Deserialize(string tokenString)
+    public static User Deserialize(string tokenString, Audience audience)
     {
         // 署名検証用の鍵を作成する。
         var rsa = new RSACryptoServiceProvider();
@@ -57,7 +50,7 @@ public static class UserSerializer
         var validationParams = new TokenValidationParameters
         {
             ValidIssuer = typeof(IAuthenticationContext).Namespace,
-            ValidAudience = Audience,
+            ValidAudience = audience.Value,
             ValidateLifetime = true,
             IssuerSigningKey = key,
         };

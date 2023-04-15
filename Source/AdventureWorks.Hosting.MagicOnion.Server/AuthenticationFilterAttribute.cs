@@ -13,12 +13,15 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
     private readonly ILogger<AuthenticationFilterAttribute> _logger;
 
     private readonly ServerAuthenticationContext _serverAuthenticationContext;
+    private readonly Audience _audience;
 
     public AuthenticationFilterAttribute(
         ILogger<AuthenticationFilterAttribute> logger, 
-        IAuthenticationContext authenticationContext)
+        IAuthenticationContext authenticationContext, 
+        Audience audience)
     {
         _logger = logger;
+        _audience = audience;
         _serverAuthenticationContext = (ServerAuthenticationContext)authenticationContext;
     }
 
@@ -36,7 +39,7 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
             }
 
             var token = value.Substring(bearer.Length);
-            var user = UserSerializer.Deserialize(token);
+            var user = UserSerializer.Deserialize(token, _audience);
             _serverAuthenticationContext.CurrentUser = user;
         }
         catch (Exception e)
