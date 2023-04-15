@@ -2,5 +2,7 @@
 
 public interface IAuthenticationService
 {
-    Task<bool> TryAuthenticateAsync();
+    Task<AuthenticateResult> TryAuthenticateAsync();
 }
+
+public record AuthenticateResult(bool IsAuthenticated, IAuthenticationContext Context);

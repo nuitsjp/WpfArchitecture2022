@@ -19,7 +19,7 @@ public class AuthenticationService : IAuthenticationService
         _audience = audience;
     }
 
-    public async Task<bool> TryAuthenticateAsync()
+    public async Task<AuthenticateResult> TryAuthenticateAsync()
     {
         try
         {
@@ -29,11 +29,11 @@ public class AuthenticationService : IAuthenticationService
             var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication/{_audience.Value}");
             _context.CurrentTokenString = token;
             _context.CurrentUser = UserSerializer.Deserialize(token, _audience);
-            return true;
+            return new(true, Context);
         }
         catch
         {
-            return false;
+            return new(false, Context);
         }
     }
 

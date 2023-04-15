@@ -22,7 +22,7 @@ public class MainViewModel : INavigatedAsyncAware
 
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        if (await _authenticationService.TryAuthenticateAsync()
+        if ((await _authenticationService.TryAuthenticateAsync()).IsAuthenticated
             && await _loggingInitializer.TryInitializeAsync())
         {
             await _presentationService.NavigateToMenuAsync();

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Security.Authentication;
 using System.Text;
 using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
@@ -29,7 +30,11 @@ public class LoggingInitializer : ILoggingInitializer
     public async Task<bool> TryInitializeAsync()
     {
         AuthenticationService authenticationService = new(Audience);
-        await authenticationService.TryAuthenticateAsync();
+        var result = await authenticationService.TryAuthenticateAsync();
+        if (result.IsAuthenticated is false)
+        {
+            throw new AuthenticationException();
+        }
 
         var baseAddress =
             new Endpoint(
@@ -38,7 +43,7 @@ public class LoggingInitializer : ILoggingInitializer
                         "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
                         "https://localhost:3001")));
 
-        LoggingServiceClient.MagicOnionClientFactory = new MagicOnionClientFactory(authenticationService.Context, baseAddress);
+        LoggingServiceClient.MagicOnionClientFactory = new MagicOnionClientFactory(result.Context, baseAddress);
 
         var repository = new SerilogConfigRepositoryClient(LoggingServiceClient.MagicOnionClientFactory);
         var config = await repository.GetClientSerilogConfigAsync(_applicationName);
