@@ -1,9 +1,15 @@
-﻿using PostSharp.Aspects.Advices;
+﻿using AdventureWorks.Authentication;
+using AdventureWorks.Authentication.Jwt.Rest.Client;
+using PostSharp.Aspects.Advices;
 
 var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.App,
     AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
+// 認証サービスを初期化する。
+var authenticationService = new AuthenticationService();
+builder.Services.AddSingleton<IAuthenticationService>(authenticationService);
+builder.Services.AddSingleton(authenticationService.Context);
 
 // 購買サービスのクライアントを初期化する。
 AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Initialize(builder);    

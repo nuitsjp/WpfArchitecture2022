@@ -55,37 +55,37 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
     public async Task<IHost> BuildAsync(string applicationName)
     {
-        // 認証サービスを初期化する。
-        IAuthenticationContext authenticationContext;
-        try
-        {
-            authenticationContext = await AuthenticationServiceClient.AuthenticateAsync();
-            Services.AddSingleton(authenticationContext);
-        }
-        catch (Exception e)
-        {
-            MessageBox.Show(
-                "ユーザー認証に失敗しました。",
-                "認証エラー",
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
+        //// 認証サービスを初期化する。
+        //IAuthenticationContext authenticationContext;
+        //try
+        //{
+        //    authenticationContext = await AuthenticationServiceClient.AuthenticateAsync();
+        //    Services.AddSingleton(authenticationContext);
+        //}
+        //catch (Exception e)
+        //{
+        //    MessageBox.Show(
+        //        "ユーザー認証に失敗しました。",
+        //        "認証エラー",
+        //        MessageBoxButton.OK,
+        //        MessageBoxImage.Error);
 
-            // アプリケーションを終了する。
-            Environment.Exit(1);
+        //    // アプリケーションを終了する。
+        //    Environment.Exit(1);
 
-            // ここには到達しない。
-            return default!;
-        }
+        //    // ここには到達しない。
+        //    return default!;
+        //}
 
         // MagicOnionの初期化
         _resolvers.InitializeResolver();
 
         // MagicOnionのクライアントファクトリーをDIコンテナに登録する。
-        Services.AddSingleton<IMagicOnionClientFactory>(
-            new MagicOnionClientFactory(authenticationContext, GetServiceEndpoint()));
+        Services.AddSingleton(GetServiceEndpoint());
+        Services.AddSingleton<IMagicOnionClientFactory, MagicOnionClientFactory>();
 
         // Serilogの初期化
-        await InitializeSerilogAsync(applicationName, authenticationContext);
+        //await InitializeSerilogAsync(applicationName, authenticationContext);
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();
@@ -95,44 +95,46 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         return app;
     }
 
-    private static async Task InitializeSerilogAsync(string applicationName, IAuthenticationContext authenticationContext)
-    {
-        var baseAddress = Environments.GetEnvironmentVariable(
-            "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
-            "https://localhost:3001");
+//    private static async Task InitializeSerilogAsync(string applicationName, IAuthenticationContext authenticationContext)
+//    {
+//        var baseAddress = Environments.GetEnvironmentVariable(
+//            "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
+//            "https://localhost:3001");
 
-        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, baseAddress));
-        var config = await repository.GetClientSerilogConfigAsync(applicationName);
-#if DEBUG
-        var minimumLevel = LogEventLevel.Debug;
-#else
-        var var maximumLevel = config.MinimumLevel;
-#endif
-        var settingString = config.Settings
-            .Replace("%MinimumLevel%", minimumLevel.ToString())
-            .Replace("%ApplicationName%", applicationName);
+//        var repository = new SerilogConfigRepositoryClient(new MagicOnionClientFactory(authenticationContext, baseAddress));
+//        var config = await repository.GetClientSerilogConfigAsync(applicationName);
+//#if DEBUG
+//        var minimumLevel = LogEventLevel.Debug;
+//#else
+//        var var maximumLevel = config.MinimumLevel;
+//#endif
+//        var settingString = config.Settings
+//            .Replace("%MinimumLevel%", minimumLevel.ToString())
+//            .Replace("%ApplicationName%", applicationName);
 
-        using (var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString)))
-        {
-            var configurationRoot = new ConfigurationBuilder()
-                .AddJsonStream(settings)
-                .Build();
+//        using (var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString)))
+//        {
+//            var configurationRoot = new ConfigurationBuilder()
+//                .AddJsonStream(settings)
+//                .Build();
 
-            Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(configurationRoot)
-#if DEBUG
-                .WriteTo.Debug()
-#endif
-                .CreateLogger();
-        }
+//            Log.Logger = new LoggerConfiguration()
+//                .ReadFrom.Configuration(configurationRoot)
+//#if DEBUG
+//                .WriteTo.Debug()
+//#endif
+//                .CreateLogger();
+//        }
 
-        LoggingAspect.Logger = new ViewModelLogger();
-    }
+//        LoggingAspect.Logger = new ViewModelLogger();
+//    }
 
-    private static string GetServiceEndpoint() =>
-        Environments.GetEnvironmentVariable(
-            "AdventureWorks.Business.Purchasing.MagicOnion.BaseAddress",
-            "https://localhost:5001");
+    private static Endpoint GetServiceEndpoint() =>
+        new(
+            new Uri(
+                Environments.GetEnvironmentVariable(
+                    "AdventureWorks.Business.Purchasing.MagicOnion.BaseAddress",
+                    "https://localhost:5001")));
 
     /// <summary>
     /// システム例外時の方針設計は、下記のブログを参照。

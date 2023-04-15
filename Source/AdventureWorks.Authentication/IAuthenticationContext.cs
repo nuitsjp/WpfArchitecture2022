@@ -12,5 +12,3 @@ public interface IAuthenticationContext
     /// </summary>
     User CurrentUser { get; }
 }
-
-

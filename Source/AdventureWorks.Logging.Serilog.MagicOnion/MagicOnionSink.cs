@@ -31,7 +31,7 @@ public class MagicOnionSink : ILogEventSink
         var context = AuthenticationServiceClient.AuthenticateAsync().Result;
         var endpoint = Environments.GetEnvironmentVariable(environmentVariableName, defaultAddress);
 
-        _clientFactory = new MagicOnionClientFactory(context, endpoint);
+        _clientFactory = new MagicOnionClientFactory(context, new Endpoint(new Uri(endpoint)));
         _authenticationContext = context;
     }
 

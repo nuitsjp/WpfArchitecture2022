@@ -8,6 +8,11 @@ namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 /// </summary>
 public static class AuthenticationServiceClient
 {
+    /// <summary>
+    /// Windows認証を有効化したHTTPクライアント
+    /// </summary>
+    private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
+
     public static async Task<IClientAuthenticationContext> AuthenticateAsync()
     {
         var baseAddress = Environments.GetEnvironmentVariable(
@@ -17,11 +22,6 @@ public static class AuthenticationServiceClient
         var context = new ClientAuthenticationContext(token, UserSerializer.Deserialize(token));
         return context;
     }
-
-    /// <summary>
-    /// Windows認証を有効化したHTTPクライアント
-    /// </summary>
-    private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
     /// <summary>
     /// IAuthenticationContextのJWTによる実装。
