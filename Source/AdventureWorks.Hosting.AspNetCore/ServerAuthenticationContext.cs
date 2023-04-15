@@ -11,6 +11,11 @@ public class ServerAuthenticationContext : IAuthenticationContext
     /// </summary>
     private readonly AsyncLocal<User?> _currentUserAsyncLocal = new();
 
+    /// <summary>
+    /// 認証トークン
+    /// </summary>
+    private readonly AsyncLocal<string?> _currentTokenString = new();
+
     private ServerAuthenticationContext()
     {
     }
@@ -33,10 +38,29 @@ public class ServerAuthenticationContext : IAuthenticationContext
         set => _currentUserAsyncLocal.Value = value;
     }
 
+    public string CurrentTokenString
+    {
+        get
+        {
+            if (_currentTokenString.Value is null)
+            {
+                throw new InvalidOperationException("認証処理の完了時に利用してください。");
+            }
+
+            return _currentTokenString.Value;
+        }
+
+        set => _currentTokenString.Value = value;
+    }
+
     /// <summary>
     /// 認証済ユーザーをクリアする。
     /// </summary>
-    public void ClearCurrentUser() => _currentUserAsyncLocal.Value = null;
+    public void ClearCurrentUser()
+    {
+        _currentUserAsyncLocal.Value = null;
+        _currentTokenString.Value = null;
+    }
 
     /// <summary>
     /// 認証済ユーザーかどうかを取得する。

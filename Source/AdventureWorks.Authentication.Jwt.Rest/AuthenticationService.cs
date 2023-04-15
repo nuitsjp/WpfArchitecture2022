@@ -37,9 +37,9 @@ public class AuthenticationService : IAuthenticationService
         }
     }
 
-    public IClientAuthenticationContext Context => _context;
+    public IAuthenticationContext Context => _context;
 
-    private class AuthenticationContext : IClientAuthenticationContext
+    private class AuthenticationContext : IAuthenticationContext
     {
         public User CurrentUser { get; internal set; } = default!;
         public string CurrentTokenString { get; internal set; } = default!;

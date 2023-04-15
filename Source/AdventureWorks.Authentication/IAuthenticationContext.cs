@@ -11,4 +11,9 @@ public interface IAuthenticationContext
     /// 認証済ユーザー
     /// </summary>
     User CurrentUser { get; }
+
+    /// <summary>
+    /// 認証済みトークンを取得する。
+    /// </summary>
+    public string CurrentTokenString { get; }
 }

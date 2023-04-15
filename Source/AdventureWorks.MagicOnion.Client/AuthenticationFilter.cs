@@ -1,13 +1,14 @@
-﻿using MagicOnion.Client;
+﻿using AdventureWorks.Authentication;
+using MagicOnion.Client;
 
 namespace AdventureWorks.MagicOnion.Client;
 
 public class AuthenticationFilter : IClientFilter
 {
-    private readonly IClientAuthenticationContext _authenticationContext;
+    private readonly IAuthenticationContext _authenticationContext;
 
     public AuthenticationFilter(
-        IClientAuthenticationContext authenticationContext)
+        IAuthenticationContext authenticationContext)
     {
         _authenticationContext = authenticationContext;
     }
