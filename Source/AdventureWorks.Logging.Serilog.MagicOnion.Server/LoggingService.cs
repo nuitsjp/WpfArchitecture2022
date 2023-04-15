@@ -7,21 +7,21 @@ namespace AdventureWorks.Logging.Serilog.MagicOnion.Server;
 
 public class LoggingService : ServiceBase<ILoggingService>, ILoggingService
 {
-    private readonly ILogRecordRepository _recordRepository;
+    private readonly ILogRepository _repository;
     private readonly IAuthenticationContext _authenticationContext;
 
     public LoggingService(
-        ILogRecordRepository recordRepository, 
+        ILogRepository repository, 
         IAuthenticationContext authenticationContext)
     {
-        _recordRepository = recordRepository;
+        _repository = repository;
         _authenticationContext = authenticationContext;
     }
 
-    public async UnaryResult RegisterAsync(LogRecordDto logRecord)
+    public async UnaryResult RegisterAsync(LogDto logRecord)
     {
-        await _recordRepository.RegisterAsync(
-            new LogRecord(
+        await _repository.RegisterAsync(
+            new Log(
                 logRecord.Message,
                 logRecord.Level,
                 logRecord.Exception,

@@ -16,6 +16,7 @@ using MessagePack;
 using MessagePack.Resolvers;
 using Serilog;
 using Serilog.Events;
+using Log = Serilog.Log;
 using MessageBoxButton = System.Windows.MessageBoxButton;
 using MessageBoxImage = System.Windows.MessageBoxImage;
 using MessageBoxResult = System.Windows.MessageBoxResult;

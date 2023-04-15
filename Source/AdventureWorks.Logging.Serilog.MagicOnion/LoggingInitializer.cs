@@ -31,10 +31,9 @@ public class LoggingInitializer : ILoggingInitializer
                         "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
                         "https://localhost:3001")));
 
-        MagicOnionSink.MagicOnionClientFactory = new MagicOnionClientFactory(authenticationService.Context, baseAddress);
-        MagicOnionSink.AuthenticationContext = authenticationService.Context;
+        LoggingServiceClient.MagicOnionClientFactory = new MagicOnionClientFactory(authenticationService.Context, baseAddress);
 
-        var repository = new SerilogConfigRepositoryClient(MagicOnionSink.MagicOnionClientFactory);
+        var repository = new SerilogConfigRepositoryClient(LoggingServiceClient.MagicOnionClientFactory);
         var config = await repository.GetClientSerilogConfigAsync(_applicationName);
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;
@@ -50,7 +49,7 @@ public class LoggingInitializer : ILoggingInitializer
             .AddJsonStream(settings)
             .Build();
 
-        Log.Logger = new LoggerConfiguration()
+        global::Serilog.Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configurationRoot)
 #if DEBUG
             .WriteTo.Debug()
@@ -65,17 +64,17 @@ public class LoggingInitializer : ILoggingInitializer
     {
         public void LogEntry(MethodBase method, object[] args)
         {
-            Log.Debug("{Type}.{Method}({Args}) Entry", method.ReflectedType!.FullName, method.Name, args);
+            global::Serilog.Log.Debug("{Type}.{Method}({Args}) Entry", method.ReflectedType!.FullName, method.Name, args);
         }
 
         public void LogSuccess(MethodBase method, object[] args)
         {
-            Log.Debug("{Type}.{Method}({Args}) Success", method.ReflectedType!.FullName, method.Name, args);
+            global::Serilog.Log.Debug("{Type}.{Method}({Args}) Success", method.ReflectedType!.FullName, method.Name, args);
         }
 
         public void LogException(MethodBase method, Exception exception, object[] args)
         {
-            Log.Warning(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
+            global::Serilog.Log.Warning(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
         }
     }
 }

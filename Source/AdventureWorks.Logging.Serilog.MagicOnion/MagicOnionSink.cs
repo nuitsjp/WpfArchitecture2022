@@ -17,12 +17,12 @@ namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public class MagicOnionSink : ILogEventSink
 {
-    public static IMagicOnionClientFactory MagicOnionClientFactory { get; set; } = new NullMagicOnionClientFactory();
     public static IAuthenticationContext AuthenticationContext { get; set; } = default!;
 
     private readonly string _hostName = System.Net.Dns.GetHostName();
     private readonly CompactJsonFormatter _formatter = new();
     private readonly LogEventLevel _restrictedToMinimumLevel;
+    private readonly ILoggingService _repository = new LoggingServiceClient();
 
     public MagicOnionSink(LogEventLevel restrictedToMinimumLevel)
     {
@@ -38,20 +38,14 @@ public class MagicOnionSink : ILogEventSink
 
         try
         {
-            await using var writer = new System.IO.StringWriter();
+            var message = logEvent.MessageTemplate.Render(logEvent.Properties).Replace("\"", "");
+
+            await using var writer = new StringWriter();
             _formatter.Format(logEvent, writer);
             var json = writer.ToString();
 
-            var message = logEvent.MessageTemplate.Render(logEvent.Properties).Replace("\"", "");
-            if (MagicOnionClientFactory is NullMagicOnionClientFactory)
-            {
-                Debug.WriteLine(message);
-                return;
-            }
-
-            var loggingService = MagicOnionClientFactory.Create<ILoggingService>();
-            await loggingService.RegisterAsync(
-                new LogRecordDto(
+            await _repository.RegisterAsync(
+                new LogDto(
                     message,
                     logEvent.Level,
                     logEvent.Exception?.StackTrace,
@@ -68,13 +62,6 @@ public class MagicOnionSink : ILogEventSink
         }
     }
 
-    private class NullMagicOnionClientFactory : IMagicOnionClientFactory
-    {
-        public T Create<T>() where T : IService<T>
-        {
-            return default!;
-        }
-    }
 }
 
 public static class MagicOnionExtensions
@@ -84,5 +71,34 @@ public static class MagicOnionExtensions
         LogEventLevel restrictedToMinimumLevel)
     {
         return loggerSinkConfiguration.Sink(new MagicOnionSink(restrictedToMinimumLevel));
+    }
+}
+
+public class LoggingServiceClient : ILoggingService
+{
+    public static IMagicOnionClientFactory MagicOnionClientFactory { get; set; } = new NullMagicOnionClientFactory();
+
+    private class NullMagicOnionClientFactory : IMagicOnionClientFactory
+    {
+        public T Create<T>() where T : IService<T>
+        {
+            return default!;
+        }
+    }
+
+    public ILoggingService WithOptions(CallOptions option) => this;
+
+    public ILoggingService WithHeaders(Metadata headers) => this;
+
+    public ILoggingService WithDeadline(DateTime deadline) => this;
+
+    public ILoggingService WithCancellationToken(CancellationToken cancellationToken) => this;
+
+    public ILoggingService WithHost(string host) => this;
+
+    public async UnaryResult RegisterAsync(LogDto logRecord)
+    {
+        var service = MagicOnionClientFactory.Create<ILoggingService>();
+        await service.RegisterAsync(logRecord);
     }
 }

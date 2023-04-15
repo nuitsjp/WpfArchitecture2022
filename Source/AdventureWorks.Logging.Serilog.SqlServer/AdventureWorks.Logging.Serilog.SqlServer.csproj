@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
-    <ProjectReference Include="..\AdventureWorks.Logging.Serilog.MagicOnion\AdventureWorks.Logging.Serilog.MagicOnion.csproj" />
     <ProjectReference Include="..\AdventureWorks.Logging.Serilog\AdventureWorks.Logging.Serilog.csproj" />
   </ItemGroup>
 

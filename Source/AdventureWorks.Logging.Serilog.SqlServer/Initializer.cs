@@ -1,5 +1,4 @@
 ﻿using AdventureWorks.Hosting;
-using AdventureWorks.Logging.Serilog.MagicOnion;
 using Dapper;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +12,6 @@ public static class Initializer
 
         builder.Services.AddTransient<SerilogDatabase>();
         builder.Services.AddTransient<ISerilogConfigRepository, SerilogConfigRepository>();
-        builder.Services.AddTransient<ILogRecordRepository, LogRecordRepository>();
+        builder.Services.AddTransient<ILogRepository, LogRepository>();
     }
 }

@@ -56,7 +56,7 @@ public abstract class AspNetCoreApplicationBuilder : IApplicationBuilder
             .AddJsonStream(settings)
             .Build();
 
-        Log.Logger = new LoggerConfiguration()
+        Serilog.Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configurationRoot)
             .Enrich.With<EmployeeIdEnricher>()
 #if DEBUG

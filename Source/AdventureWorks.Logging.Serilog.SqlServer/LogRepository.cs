@@ -1,18 +1,17 @@
-﻿using AdventureWorks.Logging.Serilog.MagicOnion;
-using Dapper;
+﻿using Dapper;
 
 namespace AdventureWorks.Logging.Serilog.SqlServer;
 
-public class LogRecordRepository : ILogRecordRepository
+public class LogRepository : ILogRepository
 {
     private readonly SerilogDatabase _database;
 
-    public LogRecordRepository(SerilogDatabase database)
+    public LogRepository(SerilogDatabase database)
     {
         _database = database;
     }
 
-    public async Task RegisterAsync(LogRecord logRecord)
+    public async Task RegisterAsync(Log log)
     {
         using var connection = _database.Open();
         await connection.ExecuteAsync(@"
@@ -44,6 +43,6 @@ insert into
     @LogEvent
 )
 ",
-            logRecord);
+            log);
     }
 }
