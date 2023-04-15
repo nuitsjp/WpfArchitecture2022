@@ -1,14 +1,4 @@
-﻿using AdventureWorks.Authentication;
-using AdventureWorks.Authentication.Jwt.Rest.Client;
-using AdventureWorks.Logging;
-using AdventureWorks.Logging.Serilog;
-using AdventureWorks.Logging.Serilog.MagicOnion;
-using Microsoft.Extensions.DependencyInjection;
-using PostSharp.Aspects.Advices;
-
-string applicationName = typeof(Program).Assembly.GetName().Name!;
-
-var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
+﻿var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.App,
     AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
@@ -20,5 +10,6 @@ AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Initializer.Initializ
 AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
+string applicationName = typeof(Program).Assembly.GetName().Name!;
 var app = await builder.BuildAsync(applicationName);
 await app.RunAsync();
