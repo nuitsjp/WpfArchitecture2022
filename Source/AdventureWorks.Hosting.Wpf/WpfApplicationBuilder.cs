@@ -57,28 +57,6 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
 
     public async Task<IHost> BuildAsync(string applicationName)
     {
-        //// 認証サービスを初期化する。
-        //IAuthenticationContext authenticationContext;
-        //try
-        //{
-        //    authenticationContext = await AuthenticationServiceClient.AuthenticateAsync();
-        //    Services.AddSingleton(authenticationContext);
-        //}
-        //catch (Exception e)
-        //{
-        //    MessageBox.Show(
-        //        "ユーザー認証に失敗しました。",
-        //        "認証エラー",
-        //        MessageBoxButton.OK,
-        //        MessageBoxImage.Error);
-
-        //    // アプリケーションを終了する。
-        //    Environment.Exit(1);
-
-        //    // ここには到達しない。
-        //    return default!;
-        //}
-
         // MagicOnionの初期化
         _resolvers.InitializeResolver();
 
