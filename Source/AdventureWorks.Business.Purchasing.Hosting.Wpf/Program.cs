@@ -12,14 +12,6 @@ var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.App,
     AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
-// 認証サービスを初期化する。
-var authenticationService = new AuthenticationService();
-builder.Services.AddSingleton<IAuthenticationService>(authenticationService);
-builder.Services.AddSingleton(authenticationService.Context);
-
-// ロギングサービスの初期化。
-builder.Services.AddTransient<ILoggingInitializer>(_ => new LoggingInitializer(applicationName));
-
 // 購買サービスのクライアントを初期化する。
 AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Initialize(builder);    
 AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Initializer.Initialize(builder);

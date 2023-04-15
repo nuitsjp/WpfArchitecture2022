@@ -64,8 +64,13 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         Services.AddSingleton(GetServiceEndpoint());
         Services.AddSingleton<IMagicOnionClientFactory, MagicOnionClientFactory>();
 
-        // Serilogの初期化
-        //await InitializeSerilogAsync(applicationName, authenticationContext);
+        // 認証サービスを初期化する。
+        var authenticationService = new AuthenticationService();
+        Services.AddSingleton<IAuthenticationService>(authenticationService);
+        Services.AddSingleton(authenticationService.Context);
+
+        // ロギングサービスの初期化。
+        Services.AddTransient<ILoggingInitializer>(_ => new LoggingInitializer(applicationName));
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();
