@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdventureWorks.Authentication.Jwt.MagicOnion.Server\AdventureWorks.Authentication.Jwt.MagicOnion.Server.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
     <ProjectReference Include="..\AdventureWorks.Hosting.AspNetCore\AdventureWorks.Hosting.AspNetCore.csproj" />
     <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
   </ItemGroup>

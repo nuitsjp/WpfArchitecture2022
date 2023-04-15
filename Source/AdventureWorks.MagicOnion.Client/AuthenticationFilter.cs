@@ -1,6 +1,6 @@
 ﻿using MagicOnion.Client;
 
-namespace AdventureWorks.Authentication.Jwt.MagicOnion.Client;
+namespace AdventureWorks.MagicOnion.Client;
 
 public class AuthenticationFilter : IClientFilter
 {

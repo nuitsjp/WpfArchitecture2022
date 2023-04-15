@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Authentication.Jwt.MagicOnion.Server;
-using Serilog.Core;
+﻿using Serilog.Core;
 using Serilog.Events;
 
 namespace AdventureWorks.Hosting.AspNetCore;

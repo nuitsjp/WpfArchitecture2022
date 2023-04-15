@@ -1,4 +1,6 @@
-﻿namespace AdventureWorks.Authentication.Jwt.MagicOnion.Client;
+﻿using AdventureWorks.Authentication;
+
+namespace AdventureWorks.MagicOnion.Client;
 
 public interface IClientAuthenticationContext : IAuthenticationContext
 {

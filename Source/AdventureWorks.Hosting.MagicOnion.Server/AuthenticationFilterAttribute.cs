@@ -1,9 +1,12 @@
-﻿using Grpc.Core;
+﻿using AdventureWorks.Authentication;
+using AdventureWorks.Authentication.Jwt;
+using AdventureWorks.Hosting.AspNetCore;
+using Grpc.Core;
 using MagicOnion.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
+namespace AdventureWorks.Hosting.MagicOnion.Server;
 
 public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
 {

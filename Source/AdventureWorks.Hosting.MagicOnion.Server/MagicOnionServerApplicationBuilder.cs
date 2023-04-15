@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using AdventureWorks.Authentication;
-using AdventureWorks.Authentication.Jwt.MagicOnion.Server;
 using AdventureWorks.Hosting.AspNetCore;
 using MagicOnion.Server;
 using MessagePack;

@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdventureWorks.Authentication.Jwt.MagicOnion.Server\AdventureWorks.Authentication.Jwt.MagicOnion.Server.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
     <ProjectReference Include="..\AdventureWorks.Database\AdventureWorks.Database.csproj" />
     <ProjectReference Include="..\AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj" />
   </ItemGroup>

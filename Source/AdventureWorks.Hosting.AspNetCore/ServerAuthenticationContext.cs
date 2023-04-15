@@ -1,6 +1,7 @@
-﻿using AdventureWorks.Business;
+﻿using AdventureWorks.Authentication;
+using AdventureWorks.Business;
 
-namespace AdventureWorks.Authentication.Jwt.MagicOnion.Server;
+namespace AdventureWorks.Hosting.AspNetCore;
 
 public class ServerAuthenticationContext : IAuthenticationContext
 {
@@ -29,13 +30,13 @@ public class ServerAuthenticationContext : IAuthenticationContext
             return _currentUserAsyncLocal.Value;
         }
 
-        internal set => _currentUserAsyncLocal.Value = value;
+        set => _currentUserAsyncLocal.Value = value;
     }
 
     /// <summary>
     /// 認証済ユーザーをクリアする。
     /// </summary>
-    internal void ClearCurrentUser() => _currentUserAsyncLocal.Value = null;
+    public void ClearCurrentUser() => _currentUserAsyncLocal.Value = null;
 
     /// <summary>
     /// 認証済ユーザーかどうかを取得する。
