@@ -56,7 +56,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
 
-    public IHost Build(string applicationName)
+    public IHost Build(string applicationName, Audience audience)
     {
         // MagicOnionの初期化
         _resolvers.InitializeResolver();
@@ -66,6 +66,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         Services.AddSingleton<IMagicOnionClientFactory, MagicOnionClientFactory>();
 
         // 認証サービスを初期化する。
+        Services.AddSingleton(audience);
         Services.AddSingleton<IAuthenticationService>(provider => new AuthenticationService(provider.GetRequiredService<Audience>()));
         Services.AddSingleton(provider => ((AuthenticationService)provider.GetRequiredService<IAuthenticationService>()).Context);
 

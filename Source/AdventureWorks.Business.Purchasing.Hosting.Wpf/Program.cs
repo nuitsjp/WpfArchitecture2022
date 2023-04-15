@@ -11,5 +11,7 @@ AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
 var applicationName = typeof(Program).Assembly.GetName().Name!;
-var app = builder.Build(applicationName);
+var app = builder.Build(
+    applicationName,
+    AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Audience);
 await app.RunAsync();

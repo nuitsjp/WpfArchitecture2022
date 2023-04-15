@@ -18,6 +18,5 @@ public static class Initializer
         builder.Services.AddTransient<IVendorRepository, VendorRepositoryClient>();
         builder.Services.AddTransient<IProductRepository, ProductRepositoryClient>();
         builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepositoryClient>();
-        builder.Services.AddSingleton(Audience);
     }
 }
