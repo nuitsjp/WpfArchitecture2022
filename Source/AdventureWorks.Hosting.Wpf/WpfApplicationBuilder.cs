@@ -55,7 +55,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
 
-    public async Task<IHost> BuildAsync(string applicationName)
+    public IHost BuildAsync(string applicationName)
     {
         // MagicOnionの初期化
         _resolvers.InitializeResolver();
