@@ -1,10 +1,13 @@
-﻿using AdventureWorks.Hosting.MagicOnion;
+﻿using AdventureWorks.Authentication.Jwt;
+using AdventureWorks.Hosting.MagicOnion;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Business.Purchasing.MagicOnion;
 
 public static class Initializer
 {
+    public static readonly Audience Audience = new("AdventureWorks.Business.Purchasing");
+
     public static void Initialize(IMagicOnionApplicationBuilder builder)
     {
         builder.AddFormatterResolver(CustomResolver.Instance);
@@ -15,5 +18,6 @@ public static class Initializer
         builder.Services.AddTransient<IVendorRepository, VendorRepositoryClient>();
         builder.Services.AddTransient<IProductRepository, ProductRepositoryClient>();
         builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepositoryClient>();
+        builder.Services.AddSingleton(Audience);
     }
 }

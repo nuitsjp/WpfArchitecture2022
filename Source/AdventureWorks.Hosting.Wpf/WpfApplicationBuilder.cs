@@ -66,9 +66,8 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         Services.AddSingleton<IMagicOnionClientFactory, MagicOnionClientFactory>();
 
         // 認証サービスを初期化する。
-        var authenticationService = new AuthenticationService();
-        Services.AddSingleton<IAuthenticationService>(authenticationService);
-        Services.AddSingleton(authenticationService.Context);
+        Services.AddSingleton<IAuthenticationService>(provider => new AuthenticationService(provider.GetRequiredService<Audience>()));
+        Services.AddSingleton(provider => ((AuthenticationService)provider.GetRequiredService<IAuthenticationService>()).Context);
 
         // ロギングサービスの初期化。
         Services.AddTransient<ILoggingInitializer>(_ => new LoggingInitializer(applicationName));

@@ -19,10 +19,6 @@ public class AuthenticationService : IAuthenticationService
         _audience = audience;
     }
 
-    public AuthenticationService() : this(new Audience("AdventureWorks"))
-    {
-    }
-
     public async Task<bool> TryAuthenticateAsync()
     {
         try

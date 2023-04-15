@@ -11,6 +11,6 @@ public static class Initializer
         builder.AddFormatterResolver(Business.MagicOnion.CustomResolver.Instance);
         builder.AddFormatterResolver(CustomResolver.Instance);
         builder.AddServiceAssembly(typeof(Initializer).Assembly);
-        builder.Services.AddSingleton(new Audience("AdventureWorks"));
+        builder.Services.AddSingleton(MagicOnion.Initializer.Audience);
     }
 }
