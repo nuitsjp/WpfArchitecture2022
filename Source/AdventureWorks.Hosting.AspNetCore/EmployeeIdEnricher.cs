@@ -2,7 +2,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace AdventureWorks.Logging.Serilog.Hosting.AspNetCore;
+namespace AdventureWorks.Hosting.AspNetCore;
 
 public class EmployeeIdEnricher : ILogEventEnricher
 {
