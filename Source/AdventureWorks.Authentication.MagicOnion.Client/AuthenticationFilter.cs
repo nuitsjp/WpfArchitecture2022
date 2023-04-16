@@ -1,7 +1,6 @@
-﻿using AdventureWorks.Authentication;
-using MagicOnion.Client;
+﻿using MagicOnion.Client;
 
-namespace AdventureWorks.MagicOnion.Client;
+namespace AdventureWorks.Authentication.MagicOnion.Client;
 
 public class AuthenticationFilter : IClientFilter
 {

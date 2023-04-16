@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
+	  <ProjectReference Include="..\AdventureWorks.Authentication.MagicOnion.Client\AdventureWorks.Authentication.MagicOnion.Client.csproj" />
 	  <ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
 	</ItemGroup>
 

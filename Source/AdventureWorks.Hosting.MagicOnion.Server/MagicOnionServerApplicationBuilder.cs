@@ -1,23 +1,34 @@
 ﻿using System.Reflection;
+using System.Text;
 using AdventureWorks.Authentication;
-using AdventureWorks.Hosting.AspNetCore;
+using AdventureWorks.Authentication.MagicOnion.Server;
 using AdventureWorks.Logging.Serilog;
+using AdventureWorks.Logging.Serilog.SqlServer;
 using MagicOnion.Server;
 using MessagePack;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog.Events;
+using Serilog;
 
 namespace AdventureWorks.Hosting.MagicOnion.Server
 {
-    public class MagicOnionServerApplicationBuilder : AspNetCoreApplicationBuilder, IMagicOnionServerApplicationBuilder
+    public class MagicOnionServerApplicationBuilder : IMagicOnionServerApplicationBuilder
     {
+        protected readonly WebApplicationBuilder Builder;
+
         private readonly FormatterResolverCollection _resolvers = new();
 
         private readonly List<Assembly> _serviceAssemblies = new();
 
-        public MagicOnionServerApplicationBuilder(WebApplicationBuilder builder) : base(builder)
+        public MagicOnionServerApplicationBuilder(WebApplicationBuilder builder)
         {
+            Builder = builder;
         }
+
+        public IServiceCollection Services => Builder.Services;
+        public IConfiguration Configuration => Builder.Configuration;
 
         public static MagicOnionServerApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
@@ -35,8 +46,10 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
             _serviceAssemblies.Add(serviceAssembly);
         }
 
-        public override async Task<WebApplication> BuildAsync(ApplicationName applicationName)
+        public async Task<WebApplication> BuildAsync(ApplicationName applicationName)
         {
+            Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
+
             // MagicOnionの初期化
             _resolvers.InitializeResolver();
 
@@ -52,9 +65,48 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
             // サーバー用認証コンテキストをDIコンテナーに登録
             Services.AddSingleton<IAuthenticationContext>(ServerAuthenticationContext.Instance);
 
-            var app = await base.BuildAsync(applicationName);
+            // Serilogの初期化
+            await InitializeSerilogAsync(applicationName);
+
+            var app = Builder.Build();
+            app.UseHttpsRedirection();
+            app.UseSerilogRequestLogging();
             app.MapMagicOnionService();
+
             return app;
         }
+
+        private async Task InitializeSerilogAsync(ApplicationName applicationName)
+        {
+            var database = new SerilogDatabase();
+            var repository = (ISerilogConfigRepository)new SerilogConfigRepository(database);
+            var config = await repository.GetServerSerilogConfigAsync(applicationName);
+
+#if DEBUG
+            var minimumLevel = LogEventLevel.Debug;
+#else
+        var var maximumLevel = config.MinimumLevel;
+#endif
+            var settingString = config.Settings
+                .Replace("%ConnectionString%", database.ConnectionString)
+                .Replace("%MinimumLevel%", minimumLevel.ToString())
+                .Replace("%ApplicationName%", applicationName.Value);
+
+            using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
+            var configurationRoot = new ConfigurationBuilder()
+                .AddJsonStream(settings)
+                .Build();
+
+            Serilog.Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configurationRoot)
+                .Enrich.With<EmployeeIdEnricher>()
+#if DEBUG
+                .WriteTo.Debug()
+#endif
+                .CreateLogger();
+
+            Builder.Host.UseSerilog();
+        }
+
     }
 }

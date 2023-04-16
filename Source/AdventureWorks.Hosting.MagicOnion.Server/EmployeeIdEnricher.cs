@@ -1,7 +1,8 @@
-﻿using Serilog.Core;
+﻿using AdventureWorks.Authentication.MagicOnion.Server;
+using Serilog.Core;
 using Serilog.Events;
 
-namespace AdventureWorks.Hosting.AspNetCore;
+namespace AdventureWorks.Hosting.MagicOnion.Server;
 
 public class EmployeeIdEnricher : ILogEventEnricher
 {

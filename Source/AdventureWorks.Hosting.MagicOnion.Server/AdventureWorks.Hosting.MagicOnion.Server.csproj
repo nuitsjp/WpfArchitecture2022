@@ -6,12 +6,20 @@
 
   <ItemGroup>
     <PackageReference Include="MagicOnion.Server" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" />
+    <PackageReference Include="Serilog.Enrichers.Environment" />
+    <PackageReference Include="Serilog.Enrichers.Process" />
+    <PackageReference Include="Serilog.Enrichers.Thread" />
+    <PackageReference Include="Serilog.Formatting.Compact" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj" />
-    <ProjectReference Include="..\AdventureWorks.Hosting.AspNetCore\AdventureWorks.Hosting.AspNetCore.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj" />
     <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>

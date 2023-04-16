@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Authentication;
+using AdventureWorks.Authentication.MagicOnion.Client;
 using Grpc.Net.Client;
 using MagicOnion;
 using MagicOnion.Client;

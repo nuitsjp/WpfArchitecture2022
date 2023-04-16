@@ -6,11 +6,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" />
+    <PackageReference Include="Serilog.Enrichers.Environment" />
+    <PackageReference Include="Serilog.Enrichers.Process" />
+    <PackageReference Include="Serilog.Enrichers.Thread" />
+    <PackageReference Include="Serilog.Formatting.Compact" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdventureWorks.Hosting.AspNetCore\AdventureWorks.Hosting.AspNetCore.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>

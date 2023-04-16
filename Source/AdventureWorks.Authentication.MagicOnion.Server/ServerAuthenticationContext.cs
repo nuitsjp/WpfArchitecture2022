@@ -1,7 +1,6 @@
-﻿using AdventureWorks.Authentication;
-using AdventureWorks.Business;
+﻿using AdventureWorks.Business;
 
-namespace AdventureWorks.Hosting.AspNetCore;
+namespace AdventureWorks.Authentication.MagicOnion.Server;
 
 public class ServerAuthenticationContext : IAuthenticationContext
 {
