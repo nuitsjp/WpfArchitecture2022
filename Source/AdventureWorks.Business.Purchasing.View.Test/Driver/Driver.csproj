@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-	<UseWindowsForms>true</UseWindowsForms>
-	<Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>disable</Nullable>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
