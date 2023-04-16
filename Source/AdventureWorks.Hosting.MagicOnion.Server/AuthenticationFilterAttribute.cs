@@ -1,5 +1,6 @@
 ﻿using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt;
+using AdventureWorks.Business;
 using AdventureWorks.Hosting.AspNetCore;
 using Grpc.Core;
 using MagicOnion.Server;
@@ -29,30 +30,17 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
     {
         try
         {
-            const string bearer = "Bearer ";
             var entry = context.CallContext.RequestHeaders.Get("authorization");
-            var value = entry.Value;
-            if (value.StartsWith(bearer) is false)
-            {
-                context.CallContext.GetHttpContext().Response.StatusCode = StatusCodes.Status401Unauthorized;
-                return;
-            }
-
-            var token = value.Substring(bearer.Length);
-            var user = UserSerializer.Deserialize(token, _audience);
-            _serverAuthenticationContext.CurrentUser = user;
+            var token = entry.Value.Substring("Bearer ".Length);
+            _serverAuthenticationContext.CurrentUser = UserSerializer.Deserialize(token, _audience);
             _serverAuthenticationContext.CurrentTokenString = token;
+
+            await next(context); // next
         }
         catch (Exception e)
         {
             _logger.LogWarning(e, e.Message);
             context.CallContext.GetHttpContext().Response.StatusCode = StatusCodes.Status401Unauthorized;
-            return;
-        }
-
-        try
-        {
-            await next(context); // next
         }
         finally
         {

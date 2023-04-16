@@ -8,7 +8,7 @@ namespace AdventureWorks.Authentication;
 public interface IAuthenticationContext
 {
     /// <summary>
-    /// 認証済ユーザー
+    /// 認証済ユーザーを取得する。
     /// </summary>
     User CurrentUser { get; }
 

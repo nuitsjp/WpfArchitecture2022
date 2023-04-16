@@ -12,7 +12,7 @@ public class AuthenticationService : IAuthenticationService
 
     private readonly Audience _audience;
 
-    private readonly AuthenticationContext _context = new ();
+    private readonly ClientAuthenticationContext _context = new ();
 
     public AuthenticationService(Audience audience)
     {
@@ -39,7 +39,7 @@ public class AuthenticationService : IAuthenticationService
 
     public IAuthenticationContext Context => _context;
 
-    private class AuthenticationContext : IAuthenticationContext
+    private class ClientAuthenticationContext : IAuthenticationContext
     {
         public User CurrentUser { get; internal set; } = default!;
         public string CurrentTokenString { get; internal set; } = default!;
