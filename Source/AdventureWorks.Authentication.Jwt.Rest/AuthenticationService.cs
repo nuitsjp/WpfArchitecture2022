@@ -37,10 +37,10 @@ public class AuthenticationService : IAuthenticationService
     }
 
     public IAuthenticationContext Context => _context;
+}
 
-    private class ClientAuthenticationContext : IAuthenticationContext
-    {
-        public User CurrentUser { get; internal set; } = default!;
-        public string CurrentTokenString { get; internal set; } = default!;
-    }
+public class ClientAuthenticationContext : IAuthenticationContext
+{
+    public User CurrentUser { get; internal set; } = default!;
+    public string CurrentTokenString { get; internal set; } = default!;
 }

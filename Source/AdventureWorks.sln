@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication", "AdventureWorks.Authentication\AdventureWorks.Authentication.csproj", "{7AB20E0E-303F-49F4-A9A5-861A6BAE2680}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Hosting.Rest", "AdventureWorks.Authentication.Hosting.Rest\AdventureWorks.Authentication.Hosting.Rest.csproj", "{9821145F-F4DC-42D7-BA15-1F5523C6B6C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt.Hosting.Rest", "AdventureWorks.Authentication.Hosting.Rest\AdventureWorks.Authentication.Jwt.Hosting.Rest.csproj", "{9821145F-F4DC-42D7-BA15-1F5523C6B6C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.Jwt", "AdventureWorks.Authentication.Jwt\AdventureWorks.Authentication.Jwt.csproj", "{770D86E3-366F-4E2F-BF94-AC084F74973B}"
 EndProject
