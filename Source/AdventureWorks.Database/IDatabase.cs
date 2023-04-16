@@ -1,4 +1,5 @@
 ﻿using System.Data;
+// ReSharper disable UnusedMemberInSuper.Global
 
 namespace AdventureWorks.Database;
 

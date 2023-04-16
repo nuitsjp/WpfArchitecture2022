@@ -4,7 +4,6 @@ using AdventureWorks.Hosting.AspNetCore;
 using AdventureWorks.Logging.Serilog;
 using MagicOnion.Server;
 using MessagePack;
-using MessagePack.Resolvers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

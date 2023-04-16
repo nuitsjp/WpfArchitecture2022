@@ -1,6 +1,5 @@
 ﻿using AdventureWorks.Authentication;
 using MagicOnion.Server;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 
 namespace AdventureWorks.Hosting.MagicOnion.Server

@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Authentication.Jwt;
-using AdventureWorks.Hosting.MagicOnion.Server;
+﻿using AdventureWorks.Hosting.MagicOnion.Server;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Business.Purchasing.MagicOnion.Server;

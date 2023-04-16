@@ -1,6 +1,5 @@
 ﻿using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt;
-using AdventureWorks.Business;
 using AdventureWorks.Hosting.AspNetCore;
 using Grpc.Core;
 using MagicOnion.Server;

@@ -1,7 +1,6 @@
 ﻿using AdventureWorks.Authentication;
 using MagicOnion;
 using MagicOnion.Server;
-using Microsoft.Extensions.Logging;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion.Server;
 

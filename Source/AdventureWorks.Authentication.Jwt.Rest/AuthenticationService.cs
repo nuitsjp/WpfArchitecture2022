@@ -1,5 +1,4 @@
 ﻿using AdventureWorks.Business;
-using AdventureWorks.MagicOnion.Client;
 
 namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 

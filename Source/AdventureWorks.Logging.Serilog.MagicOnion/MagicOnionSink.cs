@@ -1,5 +1,4 @@
-﻿using AdventureWorks.Authentication;
-using Serilog.Core;
+﻿using Serilog.Core;
 using Serilog.Events;
 using Serilog.Configuration;
 using Serilog;
