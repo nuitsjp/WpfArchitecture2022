@@ -1,6 +1,4 @@
-﻿using AdventureWorks.Business;
-
-namespace AdventureWorks.Authentication.Jwt.Rest.Client;
+﻿namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 
 public class AuthenticationService : IAuthenticationService
 {
@@ -9,12 +7,15 @@ public class AuthenticationService : IAuthenticationService
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
+    private readonly ClientAuthenticationContext _context;
+
     private readonly Audience _audience;
 
-    private readonly ClientAuthenticationContext _context = new ();
-
-    public AuthenticationService(Audience audience)
+    public AuthenticationService(
+        ClientAuthenticationContext context, 
+        Audience audience)
     {
+        _context = context;
         _audience = audience;
     }
 
@@ -28,19 +29,11 @@ public class AuthenticationService : IAuthenticationService
             var token = await HttpClient.GetStringAsync($"{baseAddress}/Authentication/{_audience.Value}");
             _context.CurrentTokenString = token;
             _context.CurrentUser = UserSerializer.Deserialize(token, _audience);
-            return new(true, Context);
+            return new(true, _context);
         }
         catch
         {
-            return new(false, Context);
+            return new(false, _context);
         }
     }
-
-    public IAuthenticationContext Context => _context;
-}
-
-public class ClientAuthenticationContext : IAuthenticationContext
-{
-    public User CurrentUser { get; internal set; } = default!;
-    public string CurrentTokenString { get; internal set; } = default!;
 }

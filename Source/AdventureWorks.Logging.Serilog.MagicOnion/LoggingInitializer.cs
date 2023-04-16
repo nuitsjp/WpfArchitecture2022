@@ -29,7 +29,7 @@ public class LoggingInitializer : ILoggingInitializer
 
     public async Task<bool> TryInitializeAsync()
     {
-        AuthenticationService authenticationService = new(Audience);
+        AuthenticationService authenticationService = new(new ClientAuthenticationContext(), Audience);
         var result = await authenticationService.TryAuthenticateAsync();
         if (result.IsAuthenticated is false)
         {
