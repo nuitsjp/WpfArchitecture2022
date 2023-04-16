@@ -46,10 +46,10 @@ namespace Driver.Windows.Native
     public static class SaveFileDialogDriverExtensions
     {
         [WindowDriverIdentify(CustomMethod = "TryAttach")]
-        public static SaveFileDialogDriver Attach_SaveFileDlialog(this WindowsAppFriend app, string title)
-            => new SaveFileDialogDriver(WindowControl.WaitForIdentifyFromWindowText(app, title));
+        public static SaveFileDialogDriver Attach_SaveFileDialog(this WindowsAppFriend app, string title)
+            => new(WindowControl.WaitForIdentifyFromWindowText(app, title));
 
-        public static SaveFileDialogDriver Attach_SaveFileDlialog(this WindowsAppFriend app, string title, Async async)
+        public static SaveFileDialogDriver Attach_SaveFileDialog(this WindowsAppFriend app, string title, Async async)
         {
             var core = WindowControl.WaitForIdentifyFromWindowText(app, title, async);
             if (core == null) return null;

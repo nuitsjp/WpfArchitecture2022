@@ -7,114 +7,6 @@
  * http://chainingassertion.codeplex.com/
  *--------------------------------------------------------------------------*/
 
-/* -- Tutorial --
- * | at first, include this file on NUnit Project.
- * 
- * | three example, "Is" overloads.
- * 
- * // This same as Assert.AreEqual(25, Math.Pow(5, 2))
- * Math.Pow(5, 2).Is(25);
- * 
- * // This same as Assert.IsTrue("foobar".StartsWith("foo") && "foobar".EndWith("bar"))
- * "foobar".Is(s => s.StartsWith("foo") && s.EndsWith("bar"));
- * 
- * // This same as CollectionAssert.AreEqual(Enumerable.Range(1,5), new[]{1, 2, 3, 4, 5})
- * Enumerable.Range(1, 5).Is(1, 2, 3, 4, 5);
- * 
- * | CollectionAssert
- * | if you want to use CollectionAssert Methods then use Linq to Objects and Is
- * 
- * var array = new[] { 1, 3, 7, 8 };
- * array.Count().Is(4);
- * array.Contains(8).IsTrue(); // IsTrue() == Is(true)
- * array.All(i => i < 5).IsFalse(); // IsFalse() == Is(false)
- * array.Any().Is(true);
- * new int[] { }.Any().Is(false);   // IsEmpty
- * array.OrderBy(x => x).Is(array); // IsOrdered
- *
- * | Other Assertions
- * 
- * // Null Assertions
- * Object obj = null;
- * obj.IsNull();             // Assert.IsNull(obj)
- * new Object().IsNotNull(); // Assert.IsNotNull(obj)
- *
- * // Not Assertion
- * "foobar".IsNot("fooooooo"); // Assert.AreNotEqual
- * new[] { "a", "z", "x" }.IsNot("a", "x", "z"); /// CollectionAssert.AreNotEqual
- *
- * // ReferenceEqual Assertion
- * var tuple = Tuple.Create("foo");
- * tuple.IsSameReferenceAs(tuple); // Assert.AreSame
- * tuple.IsNotSameReferenceAs(Tuple.Create("foo")); // Assert.AreNotSame
- *
- * // Type Assertion
- * "foobar".IsInstanceOf<string>(); // Assert.IsInstanceOf
- * (999).IsNotInstanceOf<double>(); // Assert.IsNotInstanceOf
- * 
- * | Advanced Collection Assertion
- * 
- * var lower = new[] { "a", "b", "c" };
- * var upper = new[] { "A", "B", "C" };
- *
- * // Comparer CollectionAssert, use IEqualityComparer<T> or Func<T,T,bool> delegate
- * lower.Is(upper, StringComparer.InvariantCultureIgnoreCase);
- * lower.Is(upper, (x, y) => x.ToUpper() == y.ToUpper());
- *
- * // or you can use Linq to Objects - SequenceEqual
- * lower.SequenceEqual(upper, StringComparer.InvariantCultureIgnoreCase).Is(true);
- * 
- * | StructuralEqual
- * 
- * class MyClass
- * {
- *     public int IntProp { get; set; }
- *     public string StrField;
- * }
- * 
- * var mc1 = new MyClass() { IntProp = 10, StrField = "foo" };
- * var mc2 = new MyClass() { IntProp = 10, StrField = "foo" };
- * 
- * mc1.IsStructuralEqual(mc2); // deep recursive value equality compare
- * 
- * mc1.IntProp = 20;
- * mc1.IsNotStructuralEqual(mc2);
- * 
- * | DynamicAccessor
- * 
- * // AsDynamic convert to "dynamic" that can call private method/property/field/indexer.
- * 
- * // a class and private field/property/method.
- * public class PrivateMock
- * {
- *     private string privateField = "homu";
- * 
- *     private string PrivateProperty
- *     {
- *         get { return privateField + privateField; }
- *         set { privateField = value; }
- *     }
- * 
- *     private string PrivateMethod(int count)
- *     {
- *         return string.Join("", Enumerable.Repeat(privateField, count));
- *     }
- * }
- * 
- * // call private property.
- * var actual = new PrivateMock().AsDynamic().PrivateProperty;
- * Assert.AreEqual("homuhomu", actual);
- * 
- * // dynamic can't invoke extension methods.
- * // if you want to invoke "Is" then cast type.
- * (new PrivateMock().AsDynamic().PrivateMethod(3) as string).Is("homuhomuhomu");
- * 
- * // set value
- * var mock = new PrivateMock().AsDynamic();
- * mock.PrivateProperty = "mogumogu";
- * (mock.privateField as string).Is("mogumogu");
- * 
- * -- more details see project home --*/
 
 using System.Collections;
 using System.Diagnostics.Contracts;
@@ -130,7 +22,7 @@ namespace NUnit.Framework
 
     [System.Diagnostics.DebuggerStepThroughAttribute]
     [ContractVerification(false)]
-    public static partial class AssertEx
+    public static class AssertEx
     {
         /// <summary>Assert.AreEqual, if T is IEnumerable then CollectionAssert.AreEqual</summary>
         public static void Is<T>(this T actual, T expected, string message = "")
@@ -367,12 +259,12 @@ namespace NUnit.Framework
             }
         }
 
-        static EqualInfo SequenceEqual(IEnumerable leftEnumerable, IEnumerable rightEnumarable, IEnumerable<string> names)
+        static EqualInfo SequenceEqual(IEnumerable leftEnumerable, IEnumerable rightEnumerable, IEnumerable<string> names)
         {
             var le = leftEnumerable.GetEnumerator();
             using (le as IDisposable)
             {
-                var re = rightEnumarable.GetEnumerator();
+                var re = rightEnumerable.GetEnumerator();
 
                 using (re as IDisposable)
                 {
@@ -404,7 +296,7 @@ namespace NUnit.Framework
                     }
                 }
             }
-            return new EqualInfo { IsEquals = true, Left = leftEnumerable, Right = rightEnumarable, Names = names };
+            return new EqualInfo { IsEquals = true, Left = leftEnumerable, Right = rightEnumerable, Names = names };
         }
 
         static EqualInfo StructuralEqual(object left, object right, IEnumerable<string> names)
@@ -441,7 +333,6 @@ namespace NUnit.Framework
             // is object
             var fields = left.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public);
             var properties = left.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(x => x.GetGetMethod(false) != null);
-            var members = fields.Cast<MemberInfo>().Concat(properties);
 
             foreach (dynamic mi in fields.Cast<MemberInfo>().Concat(properties))
             {
@@ -551,6 +442,7 @@ namespace NUnit.Framework
                     : null;
             }
 
+            // ReSharper disable once UnusedParameter.Local
             private MethodInfo MatchMethod(string methodName, object[] args, Type[] typeArgs, Type[] parameterTypes)
             {
                 // name match
@@ -625,8 +517,8 @@ namespace NUnit.Framework
                     $"\"{methodName}\" not match arguments : Type <{typeof(T).Name}>");
 
                 // non generic
-                var nongeneric = typedMethods.Where(a => a.TypeParameters == null).ToArray();
-                if (nongeneric.Length == 1) return nongeneric[0].MethodInfo;
+                var nonGeneric = typedMethods.Where(a => a.TypeParameters == null).ToArray();
+                if (nonGeneric.Length == 1) return nonGeneric[0].MethodInfo;
 
                 // generic--
                 var lessGeneric = typedMethods

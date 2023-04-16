@@ -11,7 +11,7 @@ namespace Driver.Windows.Native
     {
         public WindowControl Core { get; }
 
-        public NativeListControl ListView => new NativeListControl(Core.IdentifyFromWindowClass("SysListView32"));
+        public NativeListControl ListView => new(Core.IdentifyFromWindowClass("SysListView32"));
         public NativeButton Button_Open { get; set; }
         public NativeButton Button_Cancel { get; set; }
         public NativeComboBox ComboBox_FilePath { get; }
@@ -50,7 +50,7 @@ namespace Driver.Windows.Native
     {
         [WindowDriverIdentify(CustomMethod = "TryAttach")]
         public static OpenFileDialogDriver Attach_OpenFileDialog(this WindowsAppFriend app, string title)
-            => new OpenFileDialogDriver(WindowControl.WaitForIdentifyFromWindowText(app, title));
+            => new(WindowControl.WaitForIdentifyFromWindowText(app, title));
 
         public static bool TryAttach(WindowControl window, out string title)
         {
