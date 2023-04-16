@@ -115,7 +115,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Seri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.MagicOnion.Server", "AdventureWorks.Logging.Serilog.MagicOnion.Server\AdventureWorks.Logging.Serilog.MagicOnion.Server.csproj", "{E599ECFC-087B-4F6E-9764-EDCEB5833CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Logging", "AdventureWorks.Logging\AdventureWorks.Logging.csproj", "{932F6E12-7587-42C3-AB6F-9CC3BCF6CF1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging", "AdventureWorks.Logging\AdventureWorks.Logging.csproj", "{932F6E12-7587-42C3-AB6F-9CC3BCF6CF1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -94,7 +94,7 @@ public class LoggingInitializer : ILoggingInitializer
 
         public void LogException(MethodBase method, Exception exception, object[] args)
         {
-            _logger.LogDebug(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
+            _logger.LogError(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
         }
     }
 }

@@ -33,13 +33,17 @@ public class AuthenticationFilterAttribute : MagicOnionFilterAttribute
             var token = entry.Value.Substring("Bearer ".Length);
             _serverAuthenticationContext.CurrentUser = UserSerializer.Deserialize(token, _audience);
             _serverAuthenticationContext.CurrentTokenString = token;
-
-            await next(context); // next
         }
         catch (Exception e)
         {
-            _logger.LogWarning(e, e.Message);
+            _logger.LogError(e, e.Message);
             context.CallContext.GetHttpContext().Response.StatusCode = StatusCodes.Status401Unauthorized;
+            return;
+        }
+
+        try
+        {
+            await next(context);
         }
         finally
         {

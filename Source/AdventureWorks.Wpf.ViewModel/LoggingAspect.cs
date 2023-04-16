@@ -65,11 +65,3 @@ public class LoggingAspect : OnMethodBoundaryAspect
                || method.GetCustomAttributes(true).Any(a => a is RelayCommandAttribute);
     }
 }
-
-public interface IViewModelLogger
-{
-    void LogEntry(MethodBase method, object[] args);
-    void LogSuccess(MethodBase method, object[] args);
-    void LogException(MethodBase method, Exception exception, object[] args);
-}
-
