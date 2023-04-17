@@ -37,12 +37,13 @@ public class AuthenticationController : ControllerBase
     public async Task<string> AuthenticateAsync(string audience)
     {
         var account = User.Identity!.Name!;
-        if (await _userRepository.TryGetUserByIdAsync(new LoginId(account), out var user))
+        var user = await _userRepository.GetUserAsync(new LoginId(account));
+        if (user is null)
         {
-            // 認証が成功した場合、ユーザーからJWTトークンを生成する。
-            return UserSerializer.Serialize(user, Properties.Resources.PrivateKey, new Audience(audience));
+            throw new AuthenticationException();
         }
 
-        throw new AuthenticationException();
+        // 認証が成功した場合、ユーザーからJWTトークンを生成する。
+        return UserSerializer.Serialize(user, Properties.Resources.PrivateKey, new Audience(audience));
     }
 }

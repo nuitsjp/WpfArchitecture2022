@@ -11,25 +11,30 @@ public class UserRepository : IUserRepository
         _database = database;
     }
 
-    public Task<bool> TryGetUserByIdAsync(LoginId loginId, out User user)
+    public async Task<User?> GetUserAsync(LoginId loginId)
     {
         using var connection = _database.Open();
 
-        var task = connection.QuerySingleOrDefaultAsync<User>(@"
+        const string query = @"
 select
-	BusinessEntityID as EmployeeId
+	EmployeeId
 from
-	HumanResources.Employee
+	AdventureWorks.vUser
 where
-	LoginID = @LoginId
-",
+	LoginId = @LoginId
+";
+        return await connection.QuerySingleOrDefaultAsync<User>(
+            query,
             new
             {
                 LoginId = loginId
             });
-        task.Wait();
-        user = task.Result;
-
-        return Task.FromResult(user is not null);
     }
 }
+
+public partial struct ProductId
+{
+    
+}
+
+//public record ProductOrder(ProductId ProductId, EmployeeId EmployeeId);

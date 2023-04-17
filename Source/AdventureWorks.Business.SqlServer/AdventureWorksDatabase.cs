@@ -2,7 +2,7 @@
 
 public class AdventureWorksDatabase : Database.Database
 {
-    public AdventureWorksDatabase(string userId, string password) : base(userId, password)
+    public AdventureWorksDatabase() : base("AdventureWorks", "xR^g*BV2XX8d2p77")
     {
     }
 }
