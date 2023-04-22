@@ -31,10 +31,3 @@ where
             });
     }
 }
-
-public partial struct ProductId
-{
-    
-}
-
-//public record ProductOrder(ProductId ProductId, EmployeeId EmployeeId);
