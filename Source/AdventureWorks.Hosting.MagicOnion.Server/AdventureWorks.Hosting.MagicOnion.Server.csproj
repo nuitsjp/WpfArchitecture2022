@@ -20,6 +20,7 @@
     <ProjectReference Include="..\AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj" />
     <ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
     <ProjectReference Include="..\AdventureWorks.Logging.Serilog.SqlServer\AdventureWorks.Logging.Serilog.SqlServer.csproj" />
+    <ProjectReference Include="..\AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj" />
   </ItemGroup>
 
 </Project>

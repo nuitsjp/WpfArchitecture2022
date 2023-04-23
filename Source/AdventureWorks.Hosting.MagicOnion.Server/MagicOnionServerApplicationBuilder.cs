@@ -4,6 +4,7 @@ using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.MagicOnion.Server;
 using AdventureWorks.Logging.Serilog;
 using AdventureWorks.Logging.Serilog.SqlServer;
+using AdventureWorks.MagicOnion.Server;
 using MagicOnion.Server;
 using MessagePack;
 using Microsoft.AspNetCore.Builder;

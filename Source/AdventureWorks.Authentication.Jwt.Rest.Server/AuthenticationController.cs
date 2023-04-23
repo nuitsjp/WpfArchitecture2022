@@ -44,6 +44,7 @@ public class AuthenticationController : ControllerBase
         }
 
         // 認証が成功した場合、ユーザーからJWTトークンを生成する。
+        // ここでは秘密鍵をリソースから取得していますが、実際にはキーストアなどを利用してください。
         return UserSerializer.Serialize(user, Properties.Resources.PrivateKey, new Audience(audience));
     }
 }

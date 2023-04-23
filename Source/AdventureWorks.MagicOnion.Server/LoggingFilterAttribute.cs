@@ -1,7 +1,8 @@
-﻿using MagicOnion.Server;
+﻿using AdventureWorks.Authentication;
+using MagicOnion.Server;
 using Microsoft.Extensions.Logging;
 
-namespace AdventureWorks.Authentication.MagicOnion.Server
+namespace AdventureWorks.MagicOnion.Server
 {
     public class LoggingFilterAttribute : MagicOnionFilterAttribute
     {
