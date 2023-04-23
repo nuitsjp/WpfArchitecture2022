@@ -43,9 +43,9 @@ public class LoggingInitializer : ILoggingInitializer
                         "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
                         "https://localhost:3001")));
 
-        LoggingServiceClient.MagicOnionClientFactory = new MagicOnionClientFactory(result.Context, baseAddress);
+        MagicOnionSink.MagicOnionClientFactory = new MagicOnionClientFactory(result.Context, baseAddress);
 
-        var repository = new SerilogConfigRepositoryClient(LoggingServiceClient.MagicOnionClientFactory);
+        var repository = new SerilogConfigRepositoryClient(MagicOnionSink.MagicOnionClientFactory);
         var config = await repository.GetClientSerilogConfigAsync(_applicationName);
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;

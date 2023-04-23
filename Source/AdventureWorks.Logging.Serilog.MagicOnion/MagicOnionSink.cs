@@ -4,15 +4,18 @@ using Serilog.Configuration;
 using Serilog;
 using System.Diagnostics;
 using Serilog.Formatting.Compact;
+using AdventureWorks.MagicOnion.Client;
+using MagicOnion;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion;
 
 public class MagicOnionSink : ILogEventSink
 {
+    public static IMagicOnionClientFactory MagicOnionClientFactory { get; set; } = new NullMagicOnionClientFactory();
+
     private readonly string _hostName = System.Net.Dns.GetHostName();
     private readonly CompactJsonFormatter _formatter = new();
     private readonly LogEventLevel _restrictedToMinimumLevel;
-    private readonly ILoggingService _repository = new LoggingServiceClient();
 
     public MagicOnionSink(LogEventLevel restrictedToMinimumLevel)
     {
@@ -34,7 +37,8 @@ public class MagicOnionSink : ILogEventSink
             _formatter.Format(logEvent, writer);
             var json = writer.ToString();
 
-            await _repository.RegisterAsync(
+            var service = MagicOnionClientFactory.Create<ILoggingService>();
+            await service.RegisterAsync(
                 new LogDto(
                     message,
                     logEvent.Level,
@@ -49,6 +53,14 @@ public class MagicOnionSink : ILogEventSink
         catch (Exception e)
         {
             Debug.WriteLine(e);
+        }
+    }
+
+    private class NullMagicOnionClientFactory : IMagicOnionClientFactory
+    {
+        public T Create<T>() where T : IService<T>
+        {
+            return default!;
         }
     }
 }
