@@ -86,7 +86,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
 #if DEBUG
             var minimumLevel = LogEventLevel.Debug;
 #else
-        var var maximumLevel = config.MinimumLevel;
+            var maximumLevel = config.MinimumLevel;
 #endif
             var settingString = config.Settings
                 .Replace("%ConnectionString%", database.ConnectionString)

@@ -6,8 +6,15 @@ public class SerilogConfigRepository : ISerilogConfigRepository
 {
     private readonly SerilogDatabase _database;
 
+    static SerilogConfigRepository()
+    {
+        Initializer.InitializeTypeHandler();
+    }
+
     public SerilogConfigRepository(SerilogDatabase database)
     {
+        SqlMapper.AddTypeHandler(new LogEventLevelTypeHandler());
+        SqlMapper.AddTypeHandler(new ApplicationNameTypeHandler());
         _database = database;
     }
 

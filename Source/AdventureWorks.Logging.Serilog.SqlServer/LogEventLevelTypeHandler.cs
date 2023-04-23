@@ -13,6 +13,6 @@ public class LogEventLevelTypeHandler : SqlMapper.TypeHandler<LogEventLevel>
 
     public override LogEventLevel Parse(object value)
     {
-        throw new NotImplementedException();
+        return (LogEventLevel)Enum.Parse(typeof(LogEventLevel), value.ToString()!);
     }
 }

@@ -50,7 +50,7 @@ public class LoggingInitializer : ILoggingInitializer
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;
 #else
-                var var maximumLevel = config.MinimumLevel;
+        var maximumLevel = config.MinimumLevel;
 #endif
         var settingString = config.Settings
             .Replace("%MinimumLevel%", minimumLevel.ToString())
