@@ -119,7 +119,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authenticati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Authentication.MagicOnion.Server", "AdventureWorks.Authentication.MagicOnion.Server\AdventureWorks.Authentication.MagicOnion.Server.csproj", "{532178A4-E443-458E-A5AB-E71D12F41D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.MagicOnion.Server", "AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj", "{3ACDADB1-40A1-4DD8-A0C2-5424100A2298}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion.Server", "AdventureWorks.MagicOnion.Server\AdventureWorks.MagicOnion.Server.csproj", "{3ACDADB1-40A1-4DD8-A0C2-5424100A2298}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.MagicOnion.Client", "AdventureWorks.Logging.Serilog.MagicOnion.Client\AdventureWorks.Logging.Serilog.MagicOnion.Client.csproj", "{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -307,6 +309,10 @@ Global
 		{3ACDADB1-40A1-4DD8-A0C2-5424100A2298}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ACDADB1-40A1-4DD8-A0C2-5424100A2298}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ACDADB1-40A1-4DD8-A0C2-5424100A2298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -360,6 +366,7 @@ Global
 		{F850FB51-B9EC-4989-9156-7C3B9040C548} = {268E5C1B-D928-471D-BBA2-D55161D5CAAF}
 		{532178A4-E443-458E-A5AB-E71D12F41D21} = {268E5C1B-D928-471D-BBA2-D55161D5CAAF}
 		{3ACDADB1-40A1-4DD8-A0C2-5424100A2298} = {F9C3EA19-3B36-434D-B9E4-014CD7910B1B}
+		{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D94D4FE-7107-4204-8F73-4784BB3C648F}

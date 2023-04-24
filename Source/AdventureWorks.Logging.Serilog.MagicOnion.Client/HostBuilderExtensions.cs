@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace AdventureWorks.Logging.Serilog.MagicOnion;
+namespace AdventureWorks.Logging.Serilog.MagicOnion.Client;
 
 public static class HostBuilderExtensions
 {

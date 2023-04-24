@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
 using System.Text;
 using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
@@ -10,11 +9,10 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 
-namespace AdventureWorks.Logging.Serilog.MagicOnion;
+namespace AdventureWorks.Logging.Serilog.MagicOnion.Client;
 
 public class LoggingInitializer : ILoggingInitializer
 {
-    public static readonly Audience Audience = new("AdventureWorks.Logging");
 
     private readonly ApplicationName _applicationName;
     private readonly ILoggerFactory _loggerFactory;
@@ -29,7 +27,7 @@ public class LoggingInitializer : ILoggingInitializer
 
     public async Task<bool> TryInitializeAsync()
     {
-        AuthenticationService authenticationService = new(new ClientAuthenticationContext(), Audience);
+        AuthenticationService authenticationService = new(new ClientAuthenticationContext(), LoggingAudience.Audience);
         var result = await authenticationService.TryAuthenticateAsync();
         if (result.IsAuthenticated is false)
         {

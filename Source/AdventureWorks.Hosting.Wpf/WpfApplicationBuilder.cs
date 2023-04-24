@@ -6,6 +6,7 @@ using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Logging;
 using AdventureWorks.Logging.Serilog;
 using AdventureWorks.Logging.Serilog.MagicOnion;
+using AdventureWorks.Logging.Serilog.MagicOnion.Client;
 using AdventureWorks.MagicOnion.Client;
 using Kamishibai;
 using MessagePack;
