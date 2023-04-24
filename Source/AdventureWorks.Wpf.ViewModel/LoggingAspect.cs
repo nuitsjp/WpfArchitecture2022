@@ -1,21 +1,23 @@
-﻿using System.Diagnostics;
-using PostSharp.Aspects;
+﻿using PostSharp.Aspects;
 using PostSharp.Serialization;
 using System.Reflection;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using System;
 
 namespace AdventureWorks.Wpf.ViewModel;
 
 [PSerializable]
 public class LoggingAspect : OnMethodBoundaryAspect
 {
-    public static IViewModelLogger Logger { get; set; } = new NullLogger();
+    public static ILogger<LoggingAspect> Logger { get; set; } = new NullLogger<LoggingAspect>();
 
     public override void OnEntry(MethodExecutionArgs args)
     {
         if (IsMethodMatching(args.Method))
         {
-            Logger.LogEntry(args.Method, args.Arguments.ToArray());
+            Logger.LogDebug("{Type}.{Method}({Args}) Entry", args.Method.ReflectedType!.FullName, args.Method.Name, args);
         }
     }
 
@@ -23,7 +25,7 @@ public class LoggingAspect : OnMethodBoundaryAspect
     {
         if (IsMethodMatching(args.Method))
         {
-            Logger.LogSuccess(args.Method, args.Arguments.ToArray());
+            Logger.LogDebug("{Type}.{Method}({Args}) Success", args.Method.ReflectedType!.FullName, args.Method.Name, args);
         }
     }
 
@@ -36,29 +38,9 @@ public class LoggingAspect : OnMethodBoundaryAspect
     {
         if (IsMethodMatching(args.Method))
         {
-            Logger.LogException(args.Method, args.Exception, args.Arguments.ToArray());
+            Logger.LogError(args.Exception, "{Type}.{Method}({Args}) Exception", args.Method.ReflectedType!.FullName, args.Method.Name, args);
         }
     }
-
-    private class NullLogger : IViewModelLogger
-    {
-        public void LogEntry(MethodBase method, object[] args)
-        {
-            Debug.WriteLine($"{method.ReflectedType!.FullName}.{method.Name} Entry");
-        }
-
-        public void LogSuccess(MethodBase method, object[] args)
-        {
-            Debug.WriteLine($"{method.ReflectedType!.FullName}.{method.Name} Success");
-        }
-
-        public void LogException(MethodBase method, Exception exception, object[] args)
-        {
-            Debug.WriteLine($"{method.ReflectedType!.FullName}.{method.Name} Exception");
-            Debug.WriteLine(exception.StackTrace);
-        }
-    }
-
     private static bool IsMethodMatching(MethodBase method)
     {
         return method.Name.StartsWith("On") 

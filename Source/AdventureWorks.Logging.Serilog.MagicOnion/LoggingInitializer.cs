@@ -68,33 +68,8 @@ public class LoggingInitializer : ILoggingInitializer
 #endif
             .CreateLogger();
 
-        LoggingAspect.Logger = new ViewModelLogger(_loggerFactory.CreateLogger<ViewModelLogger>());
+        LoggingAspect.Logger = _loggerFactory.CreateLogger<LoggingAspect>();
 
         return true;
-    }
-
-    private class ViewModelLogger : IViewModelLogger
-    {
-        private readonly ILogger<ViewModelLogger> _logger;
-
-        public ViewModelLogger(ILogger<ViewModelLogger> logger)
-        {
-            _logger = logger;
-        }
-
-        public void LogEntry(MethodBase method, object[] args)
-        {
-            _logger.LogDebug("{Type}.{Method}({Args}) Entry", method.ReflectedType!.FullName, method.Name, args);
-        }
-
-        public void LogSuccess(MethodBase method, object[] args)
-        {
-            _logger.LogDebug("{Type}.{Method}({Args}) Success", method.ReflectedType!.FullName, method.Name, args);
-        }
-
-        public void LogException(MethodBase method, Exception exception, object[] args)
-        {
-            _logger.LogError(exception, "{Type}.{Method}({Args}) Exception", method.ReflectedType!.FullName, method.Name, args);
-        }
     }
 }
