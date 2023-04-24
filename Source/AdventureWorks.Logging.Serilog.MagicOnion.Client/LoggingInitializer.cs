@@ -1,6 +1,5 @@
 ﻿using System.Security.Authentication;
 using System.Text;
-using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
@@ -8,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using Serilog.Extensions.Logging;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion.Client;
 
@@ -66,7 +66,9 @@ public class LoggingInitializer : ILoggingInitializer
 #endif
             .CreateLogger();
 
-        LoggingAspect.Logger = _loggerFactory.CreateLogger<LoggingAspect>();
+        global::Serilog.Log.Logger.Error("Hello");
+        LoggerProviderProxy.Provider = new SerilogLoggerProvider(global::Serilog.Log.Logger);
+        LoggingAspect.Logger = LoggerProviderProxy.Provider.CreateLogger(typeof(LoggingAspect).FullName!);
 
         return true;
     }
