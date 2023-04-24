@@ -9,7 +9,12 @@
 		<PackageReference Include="MagicOnion.Client" />
 		<PackageReference Include="Serilog.Expressions" Version="3.4.1" />
 		<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
-	</ItemGroup>
+
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.Debug" />
+    <PackageReference Include="Serilog.Sinks.File" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\AdventureWorks.Authentication.Jwt.Rest\AdventureWorks.Authentication.Jwt.Rest.Client.csproj" />

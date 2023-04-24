@@ -8,11 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Kamishibai.Hosting" />
     <PackageReference Include="Kamishibai.View" />
-    <PackageReference Include="Serilog.Extensions.Hosting" />
     <PackageReference Include="Wpf.Extensions.Hosting" />
-    <PackageReference Include="Serilog.Settings.Configuration" />
-    <PackageReference Include="Serilog.Sinks.Debug" />
-    <PackageReference Include="Serilog.Sinks.File" />
   </ItemGroup>
 
 

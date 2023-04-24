@@ -67,9 +67,7 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicati
         Services.AddSingleton<IAuthenticationService, AuthenticationService>();
 
         // ロギングサービスの初期化。
-        Services.AddSingleton(applicationName);
-        Services.AddTransient<ILoggingInitializer, LoggingInitializer>();
-        Host.UseSerilog();
+        Host.UseMagicOnionLogging(applicationName);
 
         // アプリケーションのビルド
         var app = _applicationBuilder.Build();
