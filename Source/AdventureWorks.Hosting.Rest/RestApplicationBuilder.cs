@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog.Events;
 using Serilog;
 using System.Text;
+using MessagePack;
 
 namespace AdventureWorks.Hosting.Rest;
 
@@ -22,6 +23,10 @@ public class RestApplicationBuilder : IApplicationBuilder
 
     public IServiceCollection Services => Builder.Services;
     public IConfiguration Configuration => Builder.Configuration;
+    public void AddFormatterResolver(IFormatterResolver resolver)
+    {
+        throw new NotImplementedException();
+    }
 
     public static RestApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 

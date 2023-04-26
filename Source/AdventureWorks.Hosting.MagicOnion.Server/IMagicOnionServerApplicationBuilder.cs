@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.Hosting.MagicOnion.Server;
 
-public interface IMagicOnionServerApplicationBuilder : IMagicOnionApplicationBuilder
+public interface IMagicOnionServerApplicationBuilder : IApplicationBuilder
 {
     void AddServiceAssembly(Assembly serviceAssembly);
 }

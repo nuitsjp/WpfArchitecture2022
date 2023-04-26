@@ -13,7 +13,6 @@
 	  <ProjectReference Include="..\..\AdventureWorks.Business.Purchasing.ViewModel\AdventureWorks.Business.Purchasing.ViewModel.csproj" />
 	  <ProjectReference Include="..\..\AdventureWorks.Business.Purchasing.View\AdventureWorks.Business.Purchasing.View.csproj" />
 	  <ProjectReference Include="..\..\AdventureWorks.Business.Purchasing\AdventureWorks.Business.Purchasing.csproj" />
-	  <ProjectReference Include="..\..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
 	  <ProjectReference Include="..\..\AdventureWorks.Logging\AdventureWorks.Logging.csproj" />
 	</ItemGroup>
 

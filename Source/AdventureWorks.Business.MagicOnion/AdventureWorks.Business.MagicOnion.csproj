@@ -5,8 +5,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\AdventureWorks.Hosting.MagicOnion\AdventureWorks.Hosting.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business\AdventureWorks.Business.csproj" />
+		<ProjectReference Include="..\AdventureWorks.Hosting\AdventureWorks.Hosting.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

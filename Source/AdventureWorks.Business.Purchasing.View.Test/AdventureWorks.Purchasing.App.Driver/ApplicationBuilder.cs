@@ -23,6 +23,11 @@ public class ApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
 
     public IServiceCollection Services => _applicationBuilder.Services;
     public IConfiguration Configuration => _applicationBuilder.Configuration;
+    public void AddFormatterResolver(IFormatterResolver resolver)
+    {
+        throw new NotImplementedException();
+    }
+
     public IHost Build(string applicationName)
     {
         var app = _applicationBuilder.Build();

@@ -4,7 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
-	<ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MessagePack" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" />
 	</ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using MessagePack;
 using MessagePack.Resolvers;
 
-namespace AdventureWorks.Hosting.MagicOnion;
+namespace AdventureWorks.Hosting;
 
 public class FormatterResolverCollection
 {

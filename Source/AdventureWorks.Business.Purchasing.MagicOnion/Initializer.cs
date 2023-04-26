@@ -1,5 +1,5 @@
 ﻿using AdventureWorks.Authentication.Jwt;
-using AdventureWorks.Hosting.MagicOnion;
+using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Business.Purchasing.MagicOnion;
@@ -8,7 +8,7 @@ public static class Initializer
 {
     public static readonly Audience Audience = new("AdventureWorks.Business.Purchasing");
 
-    public static void Initialize(IMagicOnionApplicationBuilder builder)
+    public static void Initialize(IApplicationBuilder builder)
     {
         builder.AddFormatterResolver(CustomResolver.Instance);
 

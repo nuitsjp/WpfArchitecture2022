@@ -2,7 +2,6 @@
 using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
-using AdventureWorks.Hosting.MagicOnion;
 using AdventureWorks.Logging;
 using AdventureWorks.Logging.Serilog;
 using AdventureWorks.Logging.Serilog.MagicOnion;
@@ -23,7 +22,7 @@ namespace AdventureWorks.Hosting.Wpf;
 /// </summary>
 /// <typeparam name="TApplication"></typeparam>
 /// <typeparam name="TWindow"></typeparam>
-public class WpfApplicationBuilder<TApplication, TWindow> : IMagicOnionApplicationBuilder
+public class WpfApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
     where TApplication : Application
     where TWindow : Window
 
