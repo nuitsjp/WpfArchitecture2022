@@ -23,6 +23,8 @@ public class RestApplicationBuilder : IApplicationBuilder
 
     public IServiceCollection Services => Builder.Services;
     public IConfiguration Configuration => Builder.Configuration;
+    public IHostBuilder Host => Builder.Host;
+
     public void AddFormatterResolver(IFormatterResolver resolver)
     {
         throw new NotImplementedException();

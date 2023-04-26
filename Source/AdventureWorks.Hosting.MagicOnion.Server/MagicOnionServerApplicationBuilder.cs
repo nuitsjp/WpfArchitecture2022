@@ -10,6 +10,7 @@ using MessagePack;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Serilog.Events;
 using Serilog;
 
@@ -30,6 +31,7 @@ namespace AdventureWorks.Hosting.MagicOnion.Server
 
         public IServiceCollection Services => Builder.Services;
         public IConfiguration Configuration => Builder.Configuration;
+        public IHostBuilder Host => Builder.Host;
 
         public static MagicOnionServerApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
