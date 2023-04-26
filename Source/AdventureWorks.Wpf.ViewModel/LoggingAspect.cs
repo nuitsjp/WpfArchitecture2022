@@ -1,10 +1,8 @@
 ﻿using PostSharp.Aspects;
 using PostSharp.Serialization;
-using System.Reflection;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using System;
 
 namespace AdventureWorks.Wpf.ViewModel;
 
@@ -15,7 +13,7 @@ public class LoggingAspect : OnMethodBoundaryAspect
 
     public override void OnEntry(MethodExecutionArgs args)
     {
-        var logLevel = IsMethodMatching(args.Method) ? LogLevel.Debug : LogLevel.Trace;
+        var logLevel = GetLogLevel(args);
         Logger.Log(logLevel, "{Type}.{Method}({Args}) Entry", args.Method.ReflectedType!.FullName, args.Method.Name, args);
     }
 
@@ -31,11 +29,14 @@ public class LoggingAspect : OnMethodBoundaryAspect
 
     public override void OnException(MethodExecutionArgs args)
     {
-        Logger.LogError(args.Exception, "{Type}.{Method}({Args}) Exception", args.Method.ReflectedType!.FullName, args.Method.Name, args);
+        Logger.LogTrace(args.Exception, "{Type}.{Method}({Args}) Exception", args.Method.ReflectedType!.FullName, args.Method.Name, args);
     }
-    private static bool IsMethodMatching(MethodBase method)
+
+    private static LogLevel GetLogLevel(MethodExecutionArgs args)
     {
-        return method.Name.StartsWith("On") 
-               || method.GetCustomAttributes(true).Any(a => a is RelayCommandAttribute);
+        return args.Method.Name.StartsWith("On")
+               || args.Method.GetCustomAttributes(true).Any(a => a is RelayCommandAttribute)
+            ? LogLevel.Debug
+            : LogLevel.Trace;
     }
 }

@@ -8,6 +8,6 @@ public static class Initializer
     public static void Initialize(IMagicOnionServerApplicationBuilder builder)
     {
         builder.AddServiceAssembly(typeof(Initializer).Assembly);
-        builder.Services.AddSingleton(LoggingAudience.Audience);
+        builder.Services.AddSingleton(LoggingAudience.Instance);
     }
 }

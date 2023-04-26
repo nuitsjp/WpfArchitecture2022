@@ -1,11 +1,7 @@
-﻿using System.Security.Authentication;
-using System.Text;
-using AdventureWorks.Authentication.Jwt.Rest.Client;
+﻿using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Serilog;
 using Serilog.Events;
 using Serilog.Extensions.Logging;
 
@@ -25,50 +21,38 @@ public class LoggingInitializer : ILoggingInitializer
         _loggerFactory = loggerFactory;
     }
 
+    private Endpoint Endpoint =>
+        new(new Uri(
+            Environments.GetEnvironmentVariable(
+                "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
+                "https://localhost:3001")));
+
     public async Task<bool> TryInitializeAsync()
     {
-        AuthenticationService authenticationService = new(new ClientAuthenticationContext(), LoggingAudience.Audience);
+        // ロギングドメインの認証処理を行う
+        AuthenticationService authenticationService = new(new ClientAuthenticationContext(), LoggingAudience.Instance);
         var result = await authenticationService.TryAuthenticateAsync();
         if (result.IsAuthenticated is false)
         {
-            throw new AuthenticationException();
+            return false;
         }
 
-        var baseAddress =
-            new Endpoint(
-                new Uri(
-                    Environments.GetEnvironmentVariable(
-                        "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
-                        "https://localhost:3001")));
-
-        MagicOnionSink.MagicOnionClientFactory = new MagicOnionClientFactory(result.Context, baseAddress);
-
-        var repository = new SerilogConfigRepositoryClient(MagicOnionSink.MagicOnionClientFactory);
+        // ロギング設定を取得する
+        MagicOnionClientFactory factory = new(result.Context, Endpoint);
+        var repository = new SerilogConfigRepositoryClient(factory);
         var config = await repository.GetClientSerilogConfigAsync(_applicationName);
 #if DEBUG
-        var minimumLevel = LogEventLevel.Debug;
-#else
-        var maximumLevel = config.MinimumLevel;
+        config = config with { MinimumLevel = LogEventLevel.Debug };
 #endif
-        var settingString = config.Settings
-            .Replace("%MinimumLevel%", minimumLevel.ToString())
-            .Replace("%ApplicationName%", _applicationName.Value);
 
-        using var settings = new MemoryStream(Encoding.UTF8.GetBytes(settingString));
-        var configurationRoot = new ConfigurationBuilder()
-            .AddJsonStream(settings)
-            .Build();
+        // ロガーをビルドする
+        var logger = config.Build();
 
-        global::Serilog.Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(configurationRoot)
-#if DEBUG
-            .WriteTo.Debug()
-#endif
-            .CreateLogger();
-
-        global::Serilog.Log.Logger.Error("Hello");
-        LoggerProviderProxy.Provider = new SerilogLoggerProvider(global::Serilog.Log.Logger);
-        LoggingAspect.Logger = LoggerProviderProxy.Provider.CreateLogger(typeof(LoggingAspect).FullName!);
+        // ロギング設定を適用する
+        MagicOnionSink.MagicOnionClientFactory = factory;
+        var provider = new SerilogLoggerProvider(logger);
+        LoggerProviderProxy.Provider = provider;
+        LoggingAspect.Logger = provider.CreateLogger(typeof(LoggingAspect).FullName!);
 
         return true;
     }

@@ -28,7 +28,9 @@ public class SerilogConfigRepository : ISerilogConfigRepository
         return await GetSerilogConfigAsync(applicationName, new ApplicationName("Client Default"));
     }
 
-    private async Task<SerilogConfig> GetSerilogConfigAsync(ApplicationName applicationName, ApplicationName defaultName)
+    private async Task<SerilogConfig> GetSerilogConfigAsync(
+        ApplicationName applicationName, 
+        ApplicationName defaultName)
     {
         using var connection = _database.Open();
 
