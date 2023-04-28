@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Authentication.Jwt;
+using AdventureWorks.Business.MagicOnion;
 using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +13,7 @@ public static class Initializer
     {
         builder.AddFormatterResolver(CustomResolver.Instance);
 
-        Business.MagicOnion.Initializer.Initialize(builder);
+        builder.UseBusinessMagicOnion();
 
         builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepositoryClient>();
         builder.Services.AddTransient<IVendorRepository, VendorRepositoryClient>();

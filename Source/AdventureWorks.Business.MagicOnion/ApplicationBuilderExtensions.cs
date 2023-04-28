@@ -2,9 +2,9 @@
 
 namespace AdventureWorks.Business.MagicOnion;
 
-public static class Initializer
+public static class ApplicationBuilderExtensions
 {
-    public static void Initialize(IApplicationBuilder builder)
+    public static void UseBusinessMagicOnion(this IApplicationBuilder builder)
     {
         builder.AddFormatterResolver(CustomResolver.Instance);
     }

@@ -1,6 +1,6 @@
 ﻿using AdventureWorks.MagicOnion.Client;
 
-namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client;
 
 public class RePurchasingQueryClient : IRePurchasingQuery
 {
