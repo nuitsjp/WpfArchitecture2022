@@ -7,6 +7,6 @@ public static class ApplicationBuilderExtensions
 {
     public static void UseRePurchasingMagicOnionClient(this IApplicationBuilder builder)
     {
-        builder.Services.AddTransient<IRePurchasingQuery, RePurchasingQueryClient>();
+        builder.Services.AddTransient<IRequiringPurchaseProductQuery, RequiringPurchaseProductQueryClient>();
     }
 }

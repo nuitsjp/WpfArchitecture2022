@@ -22,7 +22,7 @@ builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepository>();
-builder.Services.AddTransient<IRePurchasingQuery, RePurchasingQuery>();
+builder.Services.AddTransient<IRequiringPurchaseProductQuery, RequiringPurchaseProductQuery>();
 
 // View & ViewModelを初期化する。
 Initializer.Initialize(builder);

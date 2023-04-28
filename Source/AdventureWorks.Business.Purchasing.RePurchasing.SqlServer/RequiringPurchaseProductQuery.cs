@@ -1,11 +1,11 @@
 ﻿using Dapper;
 
 namespace AdventureWorks.Business.Purchasing.RePurchasing.SqlServer;
-public class RePurchasingQuery : IRePurchasingQuery
+public class RequiringPurchaseProductQuery : IRequiringPurchaseProductQuery
 {
     private readonly RePurchasingDatabase _database;
 
-    public RePurchasingQuery(RePurchasingDatabase database)
+    public RequiringPurchaseProductQuery(RePurchasingDatabase database)
     {
         _database = database;
     }

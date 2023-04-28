@@ -11,7 +11,7 @@ public partial class RequiringPurchaseProductsViewModel :
     INavigatedAsyncAware,
     IResumingAsyncAware
 {
-    private readonly IRePurchasingQuery _rePurchasingQuery;
+    private readonly IRequiringPurchaseProductQuery _requiringPurchaseProductQuery;
     private readonly IVendorRepository _vendorRepository;
     private readonly IPresentationService _presentationService;
 
@@ -22,23 +22,23 @@ public partial class RequiringPurchaseProductsViewModel :
     public ObservableCollection<RequiringPurchaseProduct> RequiringPurchaseProducts { get; } = new();
 
     public RequiringPurchaseProductsViewModel(
-        [Inject] IRePurchasingQuery rePurchasingQuery, 
+        [Inject] IRequiringPurchaseProductQuery requiringPurchaseProductQuery, 
         [Inject] IVendorRepository vendorRepository, 
         [Inject] IPresentationService presentationService)
     {
-        _rePurchasingQuery = rePurchasingQuery;
+        _requiringPurchaseProductQuery = requiringPurchaseProductQuery;
         _vendorRepository = vendorRepository;
         _presentationService = presentationService;
     }
 
     public async Task OnNavigatedAsync(PostForwardEventArgs args)
     {
-        RequiringPurchaseProducts.Replace(await _rePurchasingQuery.GetRequiringPurchaseProductsAsync());
+        RequiringPurchaseProducts.Replace(await _requiringPurchaseProductQuery.GetRequiringPurchaseProductsAsync());
     }
 
     public async Task OnResumingAsync(PreBackwardEventArgs args)
     {
-        RequiringPurchaseProducts.Replace(await _rePurchasingQuery.GetRequiringPurchaseProductsAsync());
+        RequiringPurchaseProducts.Replace(await _requiringPurchaseProductQuery.GetRequiringPurchaseProductsAsync());
     }
 
     [RelayCommand]

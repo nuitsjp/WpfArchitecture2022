@@ -4,7 +4,7 @@ using AdventureWorks.Business.Purchasing.RePurchasing;
 
 namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
 
-public class RePurchasingQuery : IRePurchasingQuery
+public class RequiringPurchaseProductQuery : IRequiringPurchaseProductQuery
 {
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {

@@ -3,7 +3,7 @@ using MagicOnion;
 
 namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion;
 
-public interface IRePurchasingQueryService : IService<IRePurchasingQueryService>
+public interface IRequiringPurchaseProductQueryService : IService<IRequiringPurchaseProductQueryService>
 {
     UnaryResult<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync();
 }

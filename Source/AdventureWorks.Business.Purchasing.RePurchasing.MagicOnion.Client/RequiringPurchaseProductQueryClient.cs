@@ -2,18 +2,18 @@
 
 namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client;
 
-public class RePurchasingQueryClient : IRePurchasingQuery
+public class RequiringPurchaseProductQueryClient : IRequiringPurchaseProductQuery
 {
     private readonly IMagicOnionClientFactory _clientFactory;
 
-    public RePurchasingQueryClient(IMagicOnionClientFactory clientFactory)
+    public RequiringPurchaseProductQueryClient(IMagicOnionClientFactory clientFactory)
     {
         _clientFactory = clientFactory;
     }
 
     public async Task<IList<RequiringPurchaseProduct>> GetRequiringPurchaseProductsAsync()
     {
-        var client = _clientFactory.Create<IRePurchasingQueryService>();
+        var client = _clientFactory.Create<IRequiringPurchaseProductQueryService>();
         return await client.GetRequiringPurchaseProductsAsync();
     }
 }

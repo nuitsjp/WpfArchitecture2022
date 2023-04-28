@@ -8,10 +8,10 @@ namespace AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Server;
 /// 警告を抑制する。
 /// </remarks>
 // ReSharper disable once UnusedMember.Global
-public class RePurchasingQueryService : ServiceBase<IRePurchasingQueryService>, IRePurchasingQueryService
+public class RequiringPurchaseProductQueryService : ServiceBase<IRequiringPurchaseProductQueryService>, IRequiringPurchaseProductQueryService
 {
-    private readonly IRePurchasingQuery _service;
-    public RePurchasingQueryService(IRePurchasingQuery service)
+    private readonly IRequiringPurchaseProductQuery _service;
+    public RequiringPurchaseProductQueryService(IRequiringPurchaseProductQuery service)
     {
         _service = service;
     }
