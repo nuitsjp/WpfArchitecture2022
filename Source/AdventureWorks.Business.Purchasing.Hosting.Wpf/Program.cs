@@ -1,4 +1,6 @@
-﻿using AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client;
+﻿using AdventureWorks.Business.Purchasing.MagicOnion;
+using AdventureWorks.Business.Purchasing.MagicOnion.Client;
+using AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client;
 using AdventureWorks.Logging.Serilog;
 
 var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
@@ -6,7 +8,7 @@ var builder = AdventureWorks.Hosting.Wpf.WpfApplicationBuilder<
     AdventureWorks.Business.Purchasing.View.MainWindow>.CreateBuilder();
 
 // 購買サービスのクライアントを初期化する。
-AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Initialize(builder);    
+builder.UsePurchasingMagicOnionClient();    
 builder.UseRePurchasingMagicOnionClient();
 
 // View & ViewModelを初期化する。
@@ -14,7 +16,5 @@ AdventureWorks.Business.Purchasing.View.Initializer.Initialize(builder);
 
 // アプリケーションをビルドし実行する。
 var applicationName = typeof(Program).Assembly.GetName().Name!;
-var app = builder.Build(
-    new ApplicationName(applicationName),
-    AdventureWorks.Business.Purchasing.MagicOnion.Initializer.Audience);
+var app = builder.Build(new ApplicationName(applicationName), PurchasingAudience.Instance);
 await app.RunAsync();

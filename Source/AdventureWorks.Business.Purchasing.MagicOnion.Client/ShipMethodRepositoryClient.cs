@@ -1,6 +1,6 @@
 ﻿using AdventureWorks.MagicOnion.Client;
 
-namespace AdventureWorks.Business.Purchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.MagicOnion.Client;
 
 public class ShipMethodRepositoryClient : IShipMethodRepository
 {

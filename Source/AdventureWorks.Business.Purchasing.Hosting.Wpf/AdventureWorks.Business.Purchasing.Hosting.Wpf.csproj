@@ -21,9 +21,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion.Client\AdventureWorks.Business.Purchasing.MagicOnion.Client.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Hosting.Wpf\AdventureWorks.Hosting.Wpf.csproj" />
-		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.MagicOnion\AdventureWorks.Business.Purchasing.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Business.Purchasing.View\AdventureWorks.Business.Purchasing.View.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Logging.Serilog.MagicOnion\AdventureWorks.Logging.Serilog.MagicOnion.csproj" />
 		<ProjectReference Include="..\AdventureWorks.Logging\AdventureWorks.Logging.csproj" />

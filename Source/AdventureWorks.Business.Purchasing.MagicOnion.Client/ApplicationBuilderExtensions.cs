@@ -3,16 +3,15 @@ using AdventureWorks.Business.MagicOnion;
 using AdventureWorks.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdventureWorks.Business.Purchasing.MagicOnion;
+namespace AdventureWorks.Business.Purchasing.MagicOnion.Client;
 
-public static class Initializer
+public static class ApplicationBuilderExtensions
 {
     public static readonly Audience Audience = new("AdventureWorks.Business.Purchasing");
 
-    public static void Initialize(IApplicationBuilder builder)
+    public static void UsePurchasingMagicOnionClient(this IApplicationBuilder builder)
     {
-        builder.AddFormatterResolver(CustomResolver.Instance);
-
+        builder.UsePurchasingMagicOnion();
         builder.UseBusinessMagicOnion();
 
         builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepositoryClient>();

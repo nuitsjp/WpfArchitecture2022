@@ -121,7 +121,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.MagicOnion.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Logging.Serilog.MagicOnion.Client", "AdventureWorks.Logging.Serilog.MagicOnion.Client\AdventureWorks.Logging.Serilog.MagicOnion.Client.csproj", "{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client", "AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client.csproj", "{098FCF13-CF87-4395-851A-FB8670331224}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client", "AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client\AdventureWorks.Business.Purchasing.RePurchasing.MagicOnion.Client.csproj", "{098FCF13-CF87-4395-851A-FB8670331224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Business.Purchasing.MagicOnion.Client", "AdventureWorks.Business.Purchasing.MagicOnion.Client\AdventureWorks.Business.Purchasing.MagicOnion.Client.csproj", "{B96E6DF1-AD51-4845-B69B-339300BC68C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -313,6 +315,10 @@ Global
 		{098FCF13-CF87-4395-851A-FB8670331224}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{098FCF13-CF87-4395-851A-FB8670331224}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{098FCF13-CF87-4395-851A-FB8670331224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B96E6DF1-AD51-4845-B69B-339300BC68C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B96E6DF1-AD51-4845-B69B-339300BC68C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B96E6DF1-AD51-4845-B69B-339300BC68C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B96E6DF1-AD51-4845-B69B-339300BC68C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -367,6 +373,7 @@ Global
 		{3ACDADB1-40A1-4DD8-A0C2-5424100A2298} = {F9C3EA19-3B36-434D-B9E4-014CD7910B1B}
 		{8ADD5C51-24B0-4656-8B4D-D2A8633F6F1F} = {7F2AE51B-0C04-471B-8C2B-354E6D1B94F9}
 		{098FCF13-CF87-4395-851A-FB8670331224} = {4494AA86-CAAD-475B-AA9C-7CB0971879EF}
+		{B96E6DF1-AD51-4845-B69B-339300BC68C5} = {534C7D2C-47D8-4E76-94F0-5BBA3520850D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D94D4FE-7107-4204-8F73-4784BB3C648F}

@@ -7,9 +7,9 @@ public static class Initializer
 {
     public static void Initialize(IMagicOnionServerApplicationBuilder builder)
     {
+        builder.UsePurchasingMagicOnion();
         builder.AddFormatterResolver(Business.MagicOnion.CustomResolver.Instance);
-        builder.AddFormatterResolver(CustomResolver.Instance);
         builder.AddServiceAssembly(typeof(Initializer).Assembly);
-        builder.Services.AddSingleton(MagicOnion.Initializer.Audience);
+        builder.Services.AddSingleton(PurchasingAudience.Instance);
     }
 }
