@@ -1,6 +1,7 @@
 ﻿namespace AdventureWorks.Business.Purchasing;
 
-public record Vendor(VendorId VendorId, 
+public record Vendor(
+    VendorId VendorId, 
     AccountNumber AccountNumber, 
     string Name, 
     CreditRating CreditRating, 

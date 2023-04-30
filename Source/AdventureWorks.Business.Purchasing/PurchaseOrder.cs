@@ -1,55 +1,38 @@
 ﻿namespace AdventureWorks.Business.Purchasing;
 
-public class PurchaseOrder
+/// <summary>
+/// 発注
+/// </summary>
+/// <param name="Id"></param>
+/// <param name="RevisionNumber"></param>
+/// <param name="Status"></param>
+/// <param name="EmployeeId"></param>
+/// <param name="VendorId"></param>
+/// <param name="ShipMethodId"></param>
+/// <param name="OrderDate"></param>
+/// <param name="ShipDate"></param>
+/// <param name="SubTotal"></param>
+/// <param name="TaxAmount"></param>
+/// <param name="Freight"></param>
+/// <param name="TotalDue"></param>
+/// <param name="ModifiedDateTime"></param>
+/// <param name="Details"></param>
+public record PurchaseOrder(
+        PurchaseOrderId Id, 
+        RevisionNumber RevisionNumber, 
+        OrderStatus Status, 
+        EmployeeId EmployeeId, 
+        VendorId VendorId, 
+        ShipMethodId ShipMethodId,
+        Date OrderDate,
+        Date? ShipDate, 
+        Dollar SubTotal, 
+        Dollar TaxAmount, 
+        Dollar Freight, 
+        Dollar TotalDue, 
+        ModifiedDateTime ModifiedDateTime, 
+        IReadOnlyList<PurchaseOrderDetail> Details)
 {
-    /// <summary>
-    /// 既存の発注をインスタンス化する。
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="revisionNumber"></param>
-    /// <param name="status"></param>
-    /// <param name="employeeId"></param>
-    /// <param name="vendorId"></param>
-    /// <param name="shipMethodId"></param>
-    /// <param name="orderDate"></param>
-    /// <param name="shipDate"></param>
-    /// <param name="subTotal"></param>
-    /// <param name="taxAmount"></param>
-    /// <param name="freight"></param>
-    /// <param name="totalDue"></param>
-    /// <param name="modifiedDateTime"></param>
-    /// <param name="details"></param>
-    public PurchaseOrder(
-        PurchaseOrderId id, 
-        RevisionNumber revisionNumber, 
-        OrderStatus status, 
-        EmployeeId employeeId, 
-        VendorId vendorId, 
-        ShipMethodId shipMethodId,
-        Date orderDate,
-        Date? shipDate, 
-        Dollar subTotal, 
-        Dollar taxAmount, 
-        Dollar freight, 
-        Dollar totalDue, 
-        ModifiedDateTime modifiedDateTime, 
-        IReadOnlyList<PurchaseOrderDetail> details)
-    {
-        Id = id;
-        RevisionNumber = revisionNumber;
-        Status = status;
-        EmployeeId = employeeId;
-        VendorId = vendorId;
-        ShipMethodId = shipMethodId;
-        OrderDate = orderDate;
-        ShipDate = shipDate;
-        SubTotal = subTotal;
-        TaxAmount = taxAmount;
-        Freight = freight;
-        TotalDue = totalDue;
-        ModifiedDateTime = modifiedDateTime;
-        Details = details;
-    }
 
     /// <summary>
     /// 新規の発注をインスタンス化する。
@@ -88,20 +71,4 @@ public class PurchaseOrder
             ModifiedDateTime.Unregistered,
             details);
     }
-
-    public PurchaseOrderId Id { get; }
-    public RevisionNumber RevisionNumber { get; }
-    public OrderStatus Status  { get; }
-    public EmployeeId EmployeeId { get; }
-    public VendorId VendorId { get; }
-    public ShipMethodId ShipMethodId { get; }
-    public Date OrderDate { get; }
-    public Date? ShipDate { get; }
-    public Dollar SubTotal { get; }
-    public Dollar TaxAmount { get; }
-    public Dollar Freight { get; }
-    public Dollar TotalDue { get; }
-    public ModifiedDateTime ModifiedDateTime { get; }
-    public IReadOnlyList<PurchaseOrderDetail> Details { get; }
-
 }
