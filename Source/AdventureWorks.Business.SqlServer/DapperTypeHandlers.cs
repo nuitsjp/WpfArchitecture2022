@@ -1,6 +1,5 @@
 ﻿
 // ReSharper disable RedundantNameQualifier
-
 using System.Data;
 using Dapper;
 
@@ -174,6 +173,20 @@ public class DoubleQuantityTypeHandler : SqlMapper.TypeHandler<DoubleQuantity>
     }
 }
 
+public class DecimalQuantityTypeHandler : SqlMapper.TypeHandler<DecimalQuantity>
+{
+    public override void SetValue(IDbDataParameter parameter, DecimalQuantity value)
+    {
+        parameter.DbType = DbType.Decimal;
+        parameter.Value = value.AsPrimitive();
+    }
+
+    public override DecimalQuantity Parse(object value)
+    {
+        return new DecimalQuantity((System.Decimal)value);
+    }
+}
+
 
 public static class TypeHandlerInitializer
 {
@@ -191,6 +204,7 @@ public static class TypeHandlerInitializer
         SqlMapper.AddTypeHandler(new TaxRateTypeHandler());
         SqlMapper.AddTypeHandler(new QuantityTypeHandler());
         SqlMapper.AddTypeHandler(new DoubleQuantityTypeHandler());
+        SqlMapper.AddTypeHandler(new DecimalQuantityTypeHandler());
     }
 }
 

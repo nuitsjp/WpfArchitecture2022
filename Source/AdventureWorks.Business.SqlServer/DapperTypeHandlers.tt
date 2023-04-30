@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "AdventureWorks.SqlServer";
+	var @namespace = "AdventureWorks.Business.SqlServer";
 	var types = new []
 	{
 		(UnitName: "Date", UnitType: typeof(DateTime)),
@@ -22,6 +22,7 @@
 		(UnitName: "TaxRate", UnitType: typeof(decimal)),
 		(UnitName: "Quantity", UnitType: typeof(int)),
 		(UnitName: "DoubleQuantity", UnitType: typeof(double)),
+		(UnitName: "DecimalQuantity", UnitType: typeof(decimal)),
 	};
 #>
 
