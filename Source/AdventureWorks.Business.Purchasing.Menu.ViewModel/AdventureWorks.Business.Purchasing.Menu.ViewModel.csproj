@@ -4,13 +4,17 @@
 		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" />
-		<PackageReference Include="Kamishibai" />
-		<PackageReference Include="PostSharp" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Kamishibai" />
+    <PackageReference Include="PostSharp" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel\AdventureWorks.Business.Purchasing.RePurchasing.ViewModel.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Logging\AdventureWorks.Logging.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
+  </ItemGroup>
+
 </Project>

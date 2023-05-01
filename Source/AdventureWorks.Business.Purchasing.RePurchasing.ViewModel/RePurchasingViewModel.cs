@@ -83,7 +83,7 @@ public partial class RePurchasingViewModel : INavigatedAsyncAware
 
         _logger.LogInformation("Ordered to {VendorId}.", purchaseOrder.VendorId);
 
-        _presentationService.ShowMessage(Properties.Resources.RegistrationCompleted);
+        _presentationService.ShowMessage(Purchasing.ViewModel.Properties.Resources.RegistrationCompleted);
         await _presentationService.GoBackAsync();
     }
 

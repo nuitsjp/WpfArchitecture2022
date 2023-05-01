@@ -2,7 +2,7 @@
 using AdventureWorks.Logging;
 using Kamishibai;
 
-namespace AdventureWorks.Business.Purchasing.ViewModel;
+namespace AdventureWorks.Business.Purchasing.Menu.ViewModel;
 
 public class MainViewModel : INavigatedAsyncAware
 {

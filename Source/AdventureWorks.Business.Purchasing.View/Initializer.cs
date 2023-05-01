@@ -2,7 +2,6 @@
 using AdventureWorks.Business.Purchasing.RePurchasing.ViewModel;
 using AdventureWorks.Business.Purchasing.View.Menu;
 using AdventureWorks.Business.Purchasing.View.RePurchasing;
-using AdventureWorks.Business.Purchasing.ViewModel;
 using AdventureWorks.Hosting;
 using Kamishibai;
 

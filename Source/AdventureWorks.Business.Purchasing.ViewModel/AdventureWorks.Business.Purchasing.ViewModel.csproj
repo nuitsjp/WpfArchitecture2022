@@ -5,20 +5,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" />
-	  <PackageReference Include="Kamishibai" />
-	  <PackageReference Include="PostSharp" />
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\AdventureWorks.Authentication\AdventureWorks.Authentication.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Business.Purchasing.Menu.ViewModel\AdventureWorks.Business.Purchasing.Menu.ViewModel.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Logging\AdventureWorks.Logging.csproj" />
-	  <ProjectReference Include="..\AdventureWorks.Wpf.ViewModel\AdventureWorks.Wpf.ViewModel.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Properties\" />
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
