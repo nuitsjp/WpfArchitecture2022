@@ -117,19 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthenticationFailed" xml:space="preserve">
-    <value>ユーザー認証に失敗しました。</value>
-  </data>
-  <data name="AuthenticationFailedCaption" xml:space="preserve">
-    <value>認証エラー</value>
-  </data>
-  <data name="RegistrationCompleted" xml:space="preserve">
-    <value>登録が完了しました。</value>
-  </data>
-  <data name="SystemErrorOccurred" xml:space="preserve">
-    <value>システムエラーが発生しました。作業を継続しますか？</value>
+  <data name="SystemErrorOccurredAlert" xml:space="preserve">
+    <value>システムエラーが発生しました。システムを終了します。</value>
   </data>
   <data name="SystemErrorOccurredCaption" xml:space="preserve">
     <value>システムエラー</value>
+  </data>
+  <data name="SystemErrorOccurredConfirm" xml:space="preserve">
+    <value>システムエラーが発生しました。作業を継続しますか？</value>
   </data>
 </root>

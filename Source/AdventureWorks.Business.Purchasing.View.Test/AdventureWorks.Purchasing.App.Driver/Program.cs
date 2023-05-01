@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Runtime.InteropServices;
+﻿using System.IO;
 using AdventureWorks.Business.Purchasing.View;
 using AdventureWorks.Purchasing.App.Driver;
-using Scenario = AdventureWorks.Purchasing.App.Driver.Scenario;
 
 string? testName = Environment.GetEnvironmentVariable("TestName");
 File.AppendAllText("log.txt", $"TestName: {testName}\r\n");
@@ -34,10 +31,4 @@ catch (Exception exception)
             exception.StackTrace ?? string.Empty
         });
     throw;
-}
-
-
-public interface IContainerBuilder
-{
-    void Build(IServiceCollection services);
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdventureWorks.Business.Purchasing.ViewModel.Properties {
+namespace AdventureWorks.Wpf.ViewModel.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AdventureWorks.Business.Purchasing.ViewModel.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.Business.Purchasing.ViewModel.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdventureWorks.Wpf.ViewModel.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,11 @@ namespace AdventureWorks.Business.Purchasing.ViewModel.Properties {
         }
         
         /// <summary>
-        ///   ユーザー認証に失敗しました。 に類似しているローカライズされた文字列を検索します。
+        ///   システムエラーが発生しました。システムを終了します。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string AuthenticationFailed {
+        public static string SystemErrorOccurredAlert {
             get {
-                return ResourceManager.GetString("AuthenticationFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   認証エラー に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string AuthenticationFailedCaption {
-            get {
-                return ResourceManager.GetString("AuthenticationFailedCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   登録が完了しました。 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string RegistrationCompleted {
-            get {
-                return ResourceManager.GetString("RegistrationCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   システムエラーが発生しました。作業を継続しますか？ に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string SystemErrorOccurred {
-            get {
-                return ResourceManager.GetString("SystemErrorOccurred", resourceCulture);
+                return ResourceManager.GetString("SystemErrorOccurredAlert", resourceCulture);
             }
         }
         
@@ -102,6 +75,15 @@ namespace AdventureWorks.Business.Purchasing.ViewModel.Properties {
         public static string SystemErrorOccurredCaption {
             get {
                 return ResourceManager.GetString("SystemErrorOccurredCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   システムエラーが発生しました。作業を継続しますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SystemErrorOccurredConfirm {
+            get {
+                return ResourceManager.GetString("SystemErrorOccurredConfirm", resourceCulture);
             }
         }
     }
