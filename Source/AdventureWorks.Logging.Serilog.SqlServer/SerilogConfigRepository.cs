@@ -8,7 +8,7 @@ public class SerilogConfigRepository : ISerilogConfigRepository
 
     static SerilogConfigRepository()
     {
-        Initializer.InitializeTypeHandler();
+        ApplicationBuilderExtensions.InitializeTypeHandler();
     }
 
     public SerilogConfigRepository(SerilogDatabase database)

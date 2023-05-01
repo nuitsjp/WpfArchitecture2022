@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Logging.Serilog.SqlServer;
 
-public static class Initializer
+public static class ApplicationBuilderExtensions
 {
     internal static void InitializeTypeHandler()
     {
@@ -12,7 +12,7 @@ public static class Initializer
         SqlMapper.AddTypeHandler(new ApplicationNameTypeHandler());
     }
 
-    public static void Initialize(IApplicationBuilder builder)
+    public static void UseSerilogSqlServer(this IApplicationBuilder builder)
     {
         InitializeTypeHandler();
 

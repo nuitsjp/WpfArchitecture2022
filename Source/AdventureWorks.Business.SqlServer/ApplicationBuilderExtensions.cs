@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Business.SqlServer;
 
-public static class Initializer
+public static class ApplicationBuilderExtensions
 {
-    public static void Initialize(IApplicationBuilder builder)
+    public static void UseBusinessSqlServer(this IApplicationBuilder builder)
     {
         TypeHandlerInitializer.Initialize();
 
