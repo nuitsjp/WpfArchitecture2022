@@ -1,6 +1,6 @@
 ﻿using AdventureWorks.Logging;
 
-namespace AdventureWorks.Purchasing.App.Driver.Logging;
+namespace AdventureWorks.Purchasing.App.Driver.Scenario.RePurchasingTest.再発注する.Logging;
 
 public class LoggingInitializer : ILoggingInitializer
 {

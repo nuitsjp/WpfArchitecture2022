@@ -29,7 +29,7 @@ namespace Driver.TestController
                 if (!exist) _app = null;
             }
 
-            if (_app == null) _app = ProcessController.Start();
+            if (_app == null) _app = ProcessController.Start(TestContext.CurrentContext);
             else _app.ResetTimeout();
 
             return _app;

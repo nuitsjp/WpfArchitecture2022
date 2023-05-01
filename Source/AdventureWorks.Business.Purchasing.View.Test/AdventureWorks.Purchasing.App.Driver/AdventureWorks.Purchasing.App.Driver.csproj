@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Logging\" />
+	  <Folder Include="Scenario.RePurchasingTest.再発注する\Logging\" />
 	</ItemGroup>
 
 	</Project>

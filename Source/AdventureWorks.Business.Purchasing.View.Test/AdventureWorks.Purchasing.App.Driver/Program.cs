@@ -1,32 +1,43 @@
-﻿using AdventureWorks.Authentication;
-using AdventureWorks.Business.Purchasing;
-using AdventureWorks.Business.Purchasing.RePurchasing;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 using AdventureWorks.Business.Purchasing.View;
-using AdventureWorks.Logging;
 using AdventureWorks.Purchasing.App.Driver;
-using AdventureWorks.Purchasing.App.Driver.Authentication;
-using AdventureWorks.Purchasing.App.Driver.Logging;
-using AdventureWorks.Purchasing.App.Driver.Purchasing;
+using Scenario = AdventureWorks.Purchasing.App.Driver.Scenario;
+
+string? testName = Environment.GetEnvironmentVariable("TestName");
+File.AppendAllText("log.txt", $"TestName: {testName}\r\n");
 
 var builder = ApplicationBuilder<App, MainWindow>.CreateBuilder();
 
-// 認証サービスを初期化する。
-builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
-builder.Services.AddTransient<IAuthenticationContext, AuthenticationContext>();
+try
+{
+    var builderName = $"AdventureWorks.Purchasing.App.Driver.{testName}.ContainerBuilder";
+    var builderTye = Type.GetType(builderName)!;
+    var builderInstance = Activator.CreateInstance(builderTye) as IContainerBuilder;
+    builderInstance!.Build(builder.Services);
 
-// ロギングサービスを初期化する。
-builder.Services.AddTransient<ILoggingInitializer, LoggingInitializer>();
+    // View & ViewModelを初期化する。
+    Initializer.Initialize(builder);
 
-// 購買サービスのクライアントを初期化する。
-builder.Services.AddTransient<IShipMethodRepository, ShipMethodRepository>();
-builder.Services.AddTransient<IVendorRepository, VendorRepository>();
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
-builder.Services.AddTransient<IPurchaseOrderRepository, PurchaseOrderRepository>();
-builder.Services.AddTransient<IRequiringPurchaseProductQuery, RequiringPurchaseProductQuery>();
+    // アプリケーションをビルドし実行する。
+    var app = builder.Build("AdventureWorks.Purchasing.App");
+    await app.RunAsync();
+}
+catch (Exception exception)
+{
+    File.AppendAllLines(
+        "log.txt", 
+        new []
+        {
+            exception.Message,
+            exception.StackTrace ?? string.Empty
+        });
+    throw;
+}
 
-// View & ViewModelを初期化する。
-Initializer.Initialize(builder);
 
-// アプリケーションをビルドし実行する。
-var app = builder.Build("AdventureWorks.Purchasing.App");
-await app.RunAsync();
+public interface IContainerBuilder
+{
+    void Build(IServiceCollection services);
+}

@@ -15,7 +15,7 @@ namespace Scenario
         WindowsAppFriend _app;
 
         [SetUp]
-        public void TestInitialize() => _app = ProcessController.Start();
+        public void SetUp() => _app = ProcessController.Start(TestContext.CurrentContext);
 
         [TearDown]
         public void TestCleanup() => _app.Kill();

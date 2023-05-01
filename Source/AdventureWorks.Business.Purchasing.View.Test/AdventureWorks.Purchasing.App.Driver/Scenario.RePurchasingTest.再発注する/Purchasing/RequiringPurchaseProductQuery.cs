@@ -2,7 +2,7 @@
 using AdventureWorks.Business.Purchasing;
 using AdventureWorks.Business.Purchasing.RePurchasing;
 
-namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
+namespace AdventureWorks.Purchasing.App.Driver.Scenario.RePurchasingTest.再発注する.Purchasing;
 
 public class RequiringPurchaseProductQuery : IRequiringPurchaseProductQuery
 {
@@ -11,9 +11,9 @@ public class RequiringPurchaseProductQuery : IRequiringPurchaseProductQuery
         await Task.CompletedTask;
         return VendorRepository
             .Vendors
-            .SelectMany(vendor => 
+            .SelectMany(vendor =>
                 vendor.VendorProducts
-                    .Select(product => 
+                    .Select(product =>
                         new RequiringPurchaseProduct(
                             vendor.VendorId,
                             vendor.Name,

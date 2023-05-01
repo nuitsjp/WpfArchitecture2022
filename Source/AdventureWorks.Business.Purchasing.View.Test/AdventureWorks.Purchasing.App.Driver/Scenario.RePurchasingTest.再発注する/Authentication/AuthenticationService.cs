@@ -1,6 +1,6 @@
 ﻿using AdventureWorks.Authentication;
 
-namespace AdventureWorks.Purchasing.App.Driver.Authentication;
+namespace AdventureWorks.Purchasing.App.Driver.Scenario.RePurchasingTest.再発注する.Authentication;
 
 public class AuthenticationService : IAuthenticationService
 {

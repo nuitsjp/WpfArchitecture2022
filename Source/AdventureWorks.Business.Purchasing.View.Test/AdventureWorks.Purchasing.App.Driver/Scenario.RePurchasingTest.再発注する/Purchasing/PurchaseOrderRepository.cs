@@ -1,6 +1,6 @@
 ﻿using AdventureWorks.Business.Purchasing;
 
-namespace AdventureWorks.Purchasing.App.Driver.Purchasing;
+namespace AdventureWorks.Purchasing.App.Driver.Scenario.RePurchasingTest.再発注する.Purchasing;
 
 public class PurchaseOrderRepository : IPurchaseOrderRepository
 {

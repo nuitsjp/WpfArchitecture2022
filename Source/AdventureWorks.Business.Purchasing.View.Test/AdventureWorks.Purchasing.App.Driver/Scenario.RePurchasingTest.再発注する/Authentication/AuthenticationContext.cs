@@ -1,7 +1,7 @@
 ﻿using AdventureWorks.Authentication;
 using AdventureWorks.Business;
 
-namespace AdventureWorks.Purchasing.App.Driver.Authentication;
+namespace AdventureWorks.Purchasing.App.Driver.Scenario.RePurchasingTest.再発注する.Authentication;
 
 public class AuthenticationContext : IAuthenticationContext
 {
