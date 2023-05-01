@@ -1,5 +1,8 @@
 ﻿namespace AdventureWorks.Authentication.Jwt.Rest.Client;
 
+/// <summary>
+/// 認証サービスのクライアント実装
+/// </summary>
 public class AuthenticationService : IAuthenticationService
 {
     /// <summary>
@@ -7,10 +10,21 @@ public class AuthenticationService : IAuthenticationService
     /// </summary>
     private static readonly HttpClient HttpClient = new(new HttpClientHandler { UseDefaultCredentials = true });
 
+    /// <summary>
+    /// クライアント認証コンテキスト
+    /// </summary>
     private readonly ClientAuthenticationContext _context;
 
+    /// <summary>
+    /// 認証対象の受信者
+    /// </summary>
     private readonly Audience _audience;
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="audience"></param>
     public AuthenticationService(
         ClientAuthenticationContext context, 
         Audience audience)
@@ -19,6 +33,10 @@ public class AuthenticationService : IAuthenticationService
         _audience = audience;
     }
 
+    /// <summary>
+    /// 認証を試行する。
+    /// </summary>
+    /// <returns></returns>
     public async Task<AuthenticateResult> TryAuthenticateAsync()
     {
         try
@@ -33,6 +51,7 @@ public class AuthenticationService : IAuthenticationService
         }
         catch
         {
+            // 認証に失敗した場合は、認証コンテキストを初期化して、認証失敗を返す。
             return new(false, _context);
         }
     }

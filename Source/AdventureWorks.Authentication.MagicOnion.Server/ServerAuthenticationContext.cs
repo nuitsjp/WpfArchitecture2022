@@ -2,8 +2,14 @@
 
 namespace AdventureWorks.Authentication.MagicOnion.Server;
 
+/// <summary>
+/// 認証コンテキスト
+/// </summary>
 public class ServerAuthenticationContext : IAuthenticationContext
 {
+    /// <summary>
+    /// シングルトンインスタンス
+    /// </summary>
     public static readonly ServerAuthenticationContext Instance = new();
     /// <summary>
     /// 認証済ユーザー
@@ -15,6 +21,9 @@ public class ServerAuthenticationContext : IAuthenticationContext
     /// </summary>
     private readonly AsyncLocal<string?> _currentTokenString = new();
 
+    /// <summary>
+    /// シングルトンのためコンストラクターを隠蔽する。
+    /// </summary>
     private ServerAuthenticationContext()
     {
     }
@@ -37,6 +46,9 @@ public class ServerAuthenticationContext : IAuthenticationContext
         set => _currentUserAsyncLocal.Value = value;
     }
 
+    /// <summary>
+    /// 認証トークンを取得する。
+    /// </summary>
     public string CurrentTokenString
     {
         get

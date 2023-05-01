@@ -6,8 +6,18 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AdventureWorks.Authentication.Jwt;
 
+/// <summary>
+/// UserオブジェクトのJWTとのシリアライズ、デシリアライズを提供する
+/// </summary>
 public static class UserSerializer
 {
+    /// <summary>
+    /// UserオブジェクトをJWTにシリアライズする。
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="privateKey"></param>
+    /// <param name="audience"></param>
+    /// <returns></returns>
     public static string Serialize(User user, string privateKey, Audience audience)
     {
         // 署名資格を作成する
@@ -38,6 +48,12 @@ public static class UserSerializer
         return handler.WriteToken(token);
     }
 
+    /// <summary>
+    /// JWTをUserオブジェクトにデシリアライズする。
+    /// </summary>
+    /// <param name="tokenString"></param>
+    /// <param name="audience"></param>
+    /// <returns></returns>
     public static User Deserialize(string tokenString, Audience audience)
     {
         // 署名検証用の鍵を作成する。

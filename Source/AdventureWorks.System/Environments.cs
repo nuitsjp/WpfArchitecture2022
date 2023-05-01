@@ -1,5 +1,8 @@
 ﻿namespace AdventureWorks;
 
+/// <summary>
+/// 環境関連の共通ライブラリ
+/// </summary>
 public static class Environments
 {
     /// <summary>
