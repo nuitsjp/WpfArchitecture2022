@@ -18,6 +18,9 @@ do
     fi
 done
 
-/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./wpfarchitecture2022.sql
-/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./detach.sql
-
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./01_create_user.sql
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./02_create_table.sql
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./03_create_function.sql
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./04_create_view.sql
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./05_grant.sql
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd! -d master -i ./06_setup_data.sql

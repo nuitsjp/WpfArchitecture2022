@@ -2,7 +2,6 @@
 // ReSharper disable RedundantNameQualifier
 // ReSharper disable ArrangeTrailingCommaInMultilineLists
 // ReSharper disable BuiltInTypeReferenceStyle
-
 using MessagePack;
 using MessagePack.Formatters;
 
@@ -152,6 +151,18 @@ public class DoubleQuantityFormatter : IMessagePackFormatter<DoubleQuantity>
         return new DoubleQuantity(options.Resolver.GetFormatterWithVerify<System.Double>().Deserialize(ref reader, options));
     }
 }
+public class DecimalQuantityFormatter : IMessagePackFormatter<DecimalQuantity>
+{
+    public void Serialize(ref MessagePackWriter writer, DecimalQuantity value, MessagePackSerializerOptions options)
+    {
+        options.Resolver.GetFormatterWithVerify<System.Decimal>().Serialize(ref writer, value.AsPrimitive(), options);
+    }
+
+    public DecimalQuantity Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options)
+    {
+        return new DecimalQuantity(options.Resolver.GetFormatterWithVerify<System.Decimal>().Deserialize(ref reader, options));
+    }
+}
 
 public class CustomResolver : IFormatterResolver
 {
@@ -197,6 +208,7 @@ internal static class CustomResolverGetFormatterHelper
         {typeof(TaxRate), new TaxRateFormatter()},
         {typeof(Quantity), new QuantityFormatter()},
         {typeof(DoubleQuantity), new DoubleQuantityFormatter()},
+        {typeof(DecimalQuantity), new DecimalQuantityFormatter()},
     };
 
     internal static object GetFormatter(Type t)
