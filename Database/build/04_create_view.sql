@@ -21,16 +21,16 @@ go
 -- 製品別標準購入先ベンダー
 -- 不定期不定量発注方式に利用するリードタイムと在庫日数を持つ
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.vStandardProductVendor
+drop view if exists RePurchasing.vStandardProductVendor
 go
 
-create view Purchasing.vStandardProductVendor 
+create view RePurchasing.vStandardProductVendor 
 as
 select
 	RankedProductVendor.ProductID,
 	RankedProductVendor.BusinessEntityID,
 	AverageLeadTime,
-	Purchasing.GetInventoryDays(AverageLeadTime) as InventoryDays,
+	RePurchasing.GetInventoryDays(AverageLeadTime) as InventoryDays,
 	StandardPrice,
 	LastReceiptCost,
 	LastReceiptDate,
@@ -72,10 +72,10 @@ go
 --------------------------------------------------------------------------------------
 -- すべての製品の製品別在庫
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.vProductInventory
+drop view if exists RePurchasing.vProductInventory
 go
 
-create view Purchasing.vProductInventory as
+create view RePurchasing.vProductInventory as
 select
 	Product.ProductID,
 	isnull(sum(ProductInventory.Quantity), 0) as Quantity
@@ -91,10 +91,10 @@ go
 -- すべての製品の製品別未受領数
 -- 発注しているがまだ未受領の数量
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.vProductUnclaimedPurchase
+drop view if exists RePurchasing.vProductUnclaimedPurchase
 go
 
-create view Purchasing.vProductUnclaimedPurchase as
+create view RePurchasing.vProductUnclaimedPurchase as
 select
 	Product.ProductID,
 	isnull(convert(int, sum(OrderQty)), 0) as Quantity
@@ -116,13 +116,13 @@ go
 -- 販売実績のある製品の、製品別の１日当たり平均出荷量（不定期不定量発注方式の用語）
 -- 実際には販売量を利用する
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.vProductAverageDailyShipment
+drop view if exists RePurchasing.vProductAverageDailyShipment
 go
 
-create view Purchasing.vProductAverageDailyShipment as
+create view RePurchasing.vProductAverageDailyShipment as
 select
 	SpecialOfferProduct.ProductID,
-	convert(float, sum(SalesOrderDetail.OrderQty)) / Purchasing.GetAverageDailyShipmentsPeriodDays() as Quantity
+	convert(float, sum(SalesOrderDetail.OrderQty)) / RePurchasing.GetAverageDailyShipmentsPeriodDays() as Quantity
 from
 	Sales.SpecialOfferProduct
 	inner join Sales.SalesOrderDetail
@@ -131,7 +131,7 @@ from
 	inner join Sales.SalesOrderHeader
 		on	SalesOrderDetail.SalesOrderID = SalesOrderHeader.SalesOrderID
 where
-	SalesOrderHeader.OrderDate between DATEADD(DAY, Purchasing.GetAverageDailyShipmentsPeriodDays() * -1, dbo.GetToday()) and dbo.GetToday()
+	SalesOrderHeader.OrderDate between DATEADD(DAY, RePurchasing.GetAverageDailyShipmentsPeriodDays() * -1, dbo.GetToday()) and dbo.GetToday()
 group by
 	SpecialOfferProduct.ProductID
 go
@@ -139,10 +139,10 @@ go
 --------------------------------------------------------------------------------------
 -- 販売実績のある製品の、製品別の出荷対応日数（不定期不定量発注方式の用語）
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.vProductShipmentResponseDays
+drop view if exists RePurchasing.vProductShipmentResponseDays
 go
 
-create view Purchasing.vProductShipmentResponseDays
+create view RePurchasing.vProductShipmentResponseDays
 as
 select
 	-- 製品ID
@@ -156,20 +156,20 @@ select
 	-- １日当たり平均出荷量
 	vProductAverageDailyShipment.Quantity as AverageDailyShipmentQuantity
 from
-	Purchasing.vProductAverageDailyShipment
-	inner join Purchasing.vProductInventory
+	RePurchasing.vProductAverageDailyShipment
+	inner join RePurchasing.vProductInventory
 		on	vProductAverageDailyShipment.ProductID = vProductInventory.ProductID
-	inner join Purchasing.vProductUnclaimedPurchase
+	inner join RePurchasing.vProductUnclaimedPurchase
 		on	vProductAverageDailyShipment.ProductID = vProductUnclaimedPurchase.ProductID
 go
 
 --------------------------------------------------------------------------------------
 -- 要購入製品
 --------------------------------------------------------------------------------------
-drop view if exists Purchasing.vProductRequiringPurchase
+drop view if exists RePurchasing.vProductRequiringPurchase
 go
 
-create view Purchasing.vProductRequiringPurchase as
+create view RePurchasing.vProductRequiringPurchase as
 select
 	-- 発注先ベンダーID
 	vStandardProductVendor.BusinessEntityID as VendorID,
@@ -205,10 +205,10 @@ from
 	-- 製品
 	Production.Product
 	-- 製品別標準購入先ベンダー
-	inner join Purchasing.vStandardProductVendor
+	inner join RePurchasing.vStandardProductVendor
 		on	Product.ProductID = vStandardProductVendor.ProductID
 	-- 製品別の出荷対応日数
-	inner join Purchasing.vProductShipmentResponseDays
+	inner join RePurchasing.vProductShipmentResponseDays
 		on	Product.ProductID = vProductShipmentResponseDays.ProductID
 	-- 製品サブカテゴリー
 	inner join Production.ProductSubcategory

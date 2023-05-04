@@ -21,10 +21,10 @@ go
 --------------------------------------------------------------------------------------
 -- 平均リードタイムから、不定期不定量発注方式の在庫日数を取得する
 --------------------------------------------------------------------------------------
-drop function if exists Purchasing.GetInventoryDays
+drop function if exists RePurchasing.GetInventoryDays
 go
 
-create function Purchasing.GetInventoryDays(
+create function RePurchasing.GetInventoryDays(
 	@AverageLeadTime int
 )
 returns int
@@ -37,10 +37,10 @@ go
 --------------------------------------------------------------------------------------
 -- 日別平均出荷数を求める期間の日数を取得する
 --------------------------------------------------------------------------------------
-drop function if exists Purchasing.GetAverageDailyShipmentsPeriodDays
+drop function if exists RePurchasing.GetAverageDailyShipmentsPeriodDays
 go
 
-create function Purchasing.GetAverageDailyShipmentsPeriodDays()
+create function RePurchasing.GetAverageDailyShipmentsPeriodDays()
 returns int
 as
 begin
