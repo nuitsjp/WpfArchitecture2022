@@ -17,13 +17,13 @@ public class ShipMethodRepository : IShipMethodRepository
 
         return (await connection.QueryAsync<ShipMethod>(@"
 select
-	ShipMethodID as ShipMethodId,
+	ShipMethodId,
 	Name,
 	ShipBase,
 	ShipRate,
-	ModifiedDate as ModifiedDateTime
+	ModifiedDateTime
 from
-	Purchasing.ShipMethod"))
+	Purchasing.vShipMethod"))
             .ToList();
     }
 }

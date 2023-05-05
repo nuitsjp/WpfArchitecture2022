@@ -16,7 +16,7 @@ public class LogRepository : ILogRepository
         using var connection = _database.Open();
         await connection.ExecuteAsync(@"
 insert into
-    Serilog.Log
+    Serilog.vLog
 (
     Message,
     Level,

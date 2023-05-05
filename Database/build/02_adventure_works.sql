@@ -1,6 +1,35 @@
 use AdventureWorks;
 
 --------------------------------------------------------------------------------------
+-- Login
+--------------------------------------------------------------------------------------
+if exists
+    (select name from master.sys.server_principals where name = 'AdventureWorks')
+begin
+	drop login AdventureWorks
+end
+
+create login AdventureWorks with password = 'xR^g*BV2XX8d2p77';
+go
+
+--------------------------------------------------------------------------------------
+-- User
+--------------------------------------------------------------------------------------
+drop user if exists AdventureWorks
+go
+create user AdventureWorks for login AdventureWorks;
+go
+
+--------------------------------------------------------------------------------------
+-- Schema
+--------------------------------------------------------------------------------------
+drop schema if exists AdventureWorks
+go
+create schema AdventureWorks
+go
+
+--------------------------------------------------------------------------------------
+-- Function : GetToday
 -- 「今日」のdatetimeを取得する。
 -- getdate()から変換した場合、テストが困難になるためスカラー関数を利用する。
 -- 
@@ -19,34 +48,25 @@ end
 go
 
 --------------------------------------------------------------------------------------
--- 平均リードタイムから、不定期不定量発注方式の在庫日数を取得する
+-- View : vUser
 --------------------------------------------------------------------------------------
-drop function if exists RePurchasing.GetInventoryDays
+drop view if exists AdventureWorks.vUser
 go
 
-create function RePurchasing.GetInventoryDays(
-	@AverageLeadTime int
-)
-returns int
+create view 
+	AdventureWorks.vUser
 as
-begin
-	return @AverageLeadTime + GREATEST(4, CEILING(@AverageLeadTime * 0.2));
-end
+select
+	BusinessEntityID as EmployeeId,
+	LoginID as LoginId
+from
+	HumanResources.Employee;
 go
 
 --------------------------------------------------------------------------------------
--- 日別平均出荷数を求める期間の日数を取得する
+-- Grant
 --------------------------------------------------------------------------------------
-drop function if exists RePurchasing.GetAverageDailyShipmentsPeriodDays
-go
-
-create function RePurchasing.GetAverageDailyShipmentsPeriodDays()
-returns int
-as
-begin
-	return 90;
-end
-go
+grant select on AdventureWorks.vUser to AdventureWorks;
 
 --------------------------------------------------------------------------------------
 -- 構築した内容をファイルへ書き出す

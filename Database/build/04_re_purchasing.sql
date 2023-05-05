@@ -1,23 +1,71 @@
+--------------------------------------------------------------------------------------
+-- RePurchasing：再発注ユースケース
+--------------------------------------------------------------------------------------
 use AdventureWorks;
+
+--------------------------------------------------------------------------------------
+-- Login
+--------------------------------------------------------------------------------------
+if exists
+    (select name from master.sys.server_principals where name = 'RePurchasing')
+begin
+	drop login RePurchasing
+end
+
+create login RePurchasing with password = '%&^h6cGpWW4Q*u';
 go
 
 --------------------------------------------------------------------------------------
--- AdventureWorks
+-- User
 --------------------------------------------------------------------------------------
-drop view if exists AdventureWorks.vUser
+drop user if exists RePurchasing
+go
+create user RePurchasing for login RePurchasing;
 go
 
-create view 
-	AdventureWorks.vUser
+--------------------------------------------------------------------------------------
+-- Schema
+--------------------------------------------------------------------------------------
+drop schema if exists RePurchasing
+go
+create schema RePurchasing
+go
+
+
+--------------------------------------------------------------------------------------
+-- Function : GetInventoryDays
+-- 平均リードタイムから、不定期不定量発注方式の在庫日数を取得する
+--------------------------------------------------------------------------------------
+drop function if exists RePurchasing.GetInventoryDays
+go
+
+create function RePurchasing.GetInventoryDays(
+	@AverageLeadTime int
+)
+returns int
 as
-select
-	BusinessEntityID as EmployeeId,
-	LoginID as LoginId
-from
-	HumanResources.Employee;
+begin
+	return @AverageLeadTime + GREATEST(4, CEILING(@AverageLeadTime * 0.2));
+end
 go
 
 --------------------------------------------------------------------------------------
+-- Function : GetAverageDailyShipmentsPeriodDays
+-- 日別平均出荷数を求める期間の日数を取得する
+--------------------------------------------------------------------------------------
+drop function if exists RePurchasing.GetAverageDailyShipmentsPeriodDays
+go
+
+create function RePurchasing.GetAverageDailyShipmentsPeriodDays()
+returns int
+as
+begin
+	return 90;
+end
+go
+
+--------------------------------------------------------------------------------------
+-- View : vStandardProductVendor
 -- 製品別標準購入先ベンダー
 -- 不定期不定量発注方式に利用するリードタイムと在庫日数を持つ
 --------------------------------------------------------------------------------------
@@ -70,6 +118,7 @@ where
 go
 
 --------------------------------------------------------------------------------------
+-- View : vProductInventory
 -- すべての製品の製品別在庫
 --------------------------------------------------------------------------------------
 drop view if exists RePurchasing.vProductInventory
@@ -88,6 +137,7 @@ group by
 go
 
 --------------------------------------------------------------------------------------
+-- View : vProductRequiringPurchase
 -- すべての製品の製品別未受領数
 -- 発注しているがまだ未受領の数量
 --------------------------------------------------------------------------------------
@@ -113,6 +163,7 @@ group by
 go
 
 --------------------------------------------------------------------------------------
+-- View : vProductAverageDailyShipment
 -- 販売実績のある製品の、製品別の１日当たり平均出荷量（不定期不定量発注方式の用語）
 -- 実際には販売量を利用する
 --------------------------------------------------------------------------------------
@@ -137,6 +188,7 @@ group by
 go
 
 --------------------------------------------------------------------------------------
+-- View : vProductShipmentResponseDays
 -- 販売実績のある製品の、製品別の出荷対応日数（不定期不定量発注方式の用語）
 --------------------------------------------------------------------------------------
 drop view if exists RePurchasing.vProductShipmentResponseDays
@@ -164,12 +216,14 @@ from
 go
 
 --------------------------------------------------------------------------------------
+-- View : vProductRequiringPurchase
 -- 要購入製品
 --------------------------------------------------------------------------------------
 drop view if exists RePurchasing.vProductRequiringPurchase
 go
 
-create view RePurchasing.vProductRequiringPurchase as
+create view RePurchasing.vProductRequiringPurchase 
+as
 select
 	-- 発注先ベンダーID
 	vStandardProductVendor.BusinessEntityID as VendorID,
@@ -225,21 +279,9 @@ where
 go
 
 --------------------------------------------------------------------------------------
--- Serilog
--- ログの出力先と、出力設定に関するオブジェクト
+-- Grant
 --------------------------------------------------------------------------------------
-
--- View
-create view 
-	Serilog.vLogSettings 
-as
-select 
-	ApplicationName, 
-	MinimumLevel,
-	Settings
-from 
-	Serilog.LogSettings;
-go
+grant select on RePurchasing.vProductRequiringPurchase to RePurchasing;
 
 --------------------------------------------------------------------------------------
 -- 構築した内容をファイルへ書き出す

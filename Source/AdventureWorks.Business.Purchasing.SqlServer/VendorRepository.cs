@@ -18,19 +18,19 @@ public class VendorRepository : IVendorRepository
         var products = await connection
             .QueryAsync<VendorProduct>(@"
 select
-	ProductID,
+	ProductId,
 	AverageLeadTime,
 	StandardPrice,
 	LastReceiptCost,
-	MinOrderQty as MinOrderQuantity,
-	MaxOrderQty as MaxOrderQuantity,
-	OnOrderQty as OnOrderQuantity,
+	MinOrderQuantity,
+	MaxOrderQuantity,
+	OnOrderQuantity,
 	UnitMeasureCode,
-	ModifiedDate as ModifiedDateTime
+	ModifiedDateTime
 from
-	Purchasing.ProductVendor
+	Purchasing.vProductVendor
 where
-	BusinessEntityID = @VendorId",
+	VendorId = @VendorId",
                 new
                 {
                     VendorId = vendorId
@@ -39,32 +39,20 @@ where
         var vendor = await connection
             .QuerySingleAsync(@"
 select
-	Vendor.BusinessEntityID as VendorId,
-	Vendor.AccountNumber,
-	Vendor.Name,
-	Vendor.CreditRating,
-	Vendor.PreferredVendorStatus as IsPreferredVendor,
-	Vendor.ActiveFlag as IsActive,
-	Vendor.PurchasingWebServiceURL as PurchasingWebServiceUrl,
-	StateProvince.StateProvinceID,
-    -- 税率が設定されていないデータがあるが、おそらくデータ不備のため一律10%を適用する
-	case
-		when SalesTaxRate.TaxRate is null then 10.0
-		else SalesTaxRate.TaxRate
-	end as TaxRate,
-	Vendor.ModifiedDate as ModifiedDateTime
+	VendorId,
+	AccountNumber,
+	Name,
+	CreditRating,
+	IsPreferredVendor,
+	IsActive,
+	PurchasingWebServiceUrl,
+	StateProvinceID,
+    TaxRate,
+	ModifiedDateTime
 from
-	Purchasing.Vendor
-	inner join Person.BusinessEntityAddress
-		on	Vendor.BusinessEntityID = BusinessEntityAddress.BusinessEntityID
-	inner join Person.Address
-		on	BusinessEntityAddress.AddressID = Address.AddressID
-	inner join Person.StateProvince
-		on	Address.StateProvinceID = StateProvince.StateProvinceID
-	left outer join Sales.SalesTaxRate
-		on	StateProvince.StateProvinceID = SalesTaxRate.StateProvinceID
+	Purchasing.vVendor
 where
-	Vendor.BusinessEntityID = @VendorId",
+	VendorId = @VendorId",
                 new
                 {
                     VendorId = vendorId

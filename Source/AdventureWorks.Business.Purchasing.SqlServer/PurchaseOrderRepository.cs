@@ -15,8 +15,8 @@ public class PurchaseOrderRepository : IPurchaseOrderRepository
     {
         #region Query
         const string headerQuery = @"
-INSERT INTO 
-	Purchasing.PurchaseOrderHeader
+insert into 
+	Purchasing.vPurchaseOrder
 (
 	EmployeeID,
 	VendorID,
@@ -25,7 +25,7 @@ INSERT INTO
 	SubTotal,
 	TaxAmt,
 	Freight
-) VALUES (
+) values (
 	@EmployeeId,
 	@VendorId,
 	@ShipMethodId,
@@ -38,7 +38,8 @@ INSERT INTO
 select SCOPE_IDENTITY();
 ";
         const string detailQuery = @"
-INSERT INTO Purchasing.PurchaseOrderDetail
+insert into
+    Purchasing.vPurchaseOrderDetail
 (
 	PurchaseOrderID,
 	DueDate,
@@ -47,7 +48,7 @@ INSERT INTO Purchasing.PurchaseOrderDetail
 	UnitPrice,
 	ReceivedQty,
 	RejectedQty
-) VALUES (
+) values (
 	@PurchaseOrderId,
 	@DueDate,
 	@OrderQuantity,

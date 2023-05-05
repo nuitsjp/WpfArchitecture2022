@@ -17,16 +17,16 @@ public class ProductRepository : IProductRepository
 
         return await connection.QuerySingleAsync<Product>(@"
 select
-	ProductID,
+	ProductId,
 	Name,
 	ProductNumber,
-	ISNULL(Color, '') as Color,
-	StandardCost as StandardPrice,
+	Color,
+	StandardPrice,
 	ListPrice,
-	ISNULL(Weight, 0) as Weight,
-	ModifiedDate as ModifiedDateTime
+	Weight,
+	ModifiedDateTime
 from
-	Production.Product
+	Purchasing.vProduct
 where
     ProductID = @ProductId",
             new { ProductId = productId });
