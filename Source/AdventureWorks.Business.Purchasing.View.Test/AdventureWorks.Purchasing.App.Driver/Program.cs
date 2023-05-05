@@ -15,7 +15,7 @@ try
     builderInstance!.Build(builder.Services);
 
     // View & ViewModelを初期化する。
-    Initializer.Initialize(builder);
+    builder.UsePurchasingView();
 
     // アプリケーションをビルドし実行する。
     var app = builder.Build("AdventureWorks.Purchasing.App");
