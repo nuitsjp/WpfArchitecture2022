@@ -3,8 +3,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureWorks.Business.Purchasing.MagicOnion.Server;
 
+/// <summary>
+/// 初期化拡張メソッド
+/// </summary>
 public static class MagicOnionServerApplicationBuilderExtensions
 {
+    /// <summary>
+    /// 初期化する。
+    /// </summary>
+    /// <param name="builder"></param>
     public static void UsePurchasingMagicOnionServer(this IMagicOnionServerApplicationBuilder builder)
     {
         builder.UsePurchasingMagicOnion();

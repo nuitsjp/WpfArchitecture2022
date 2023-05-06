@@ -6,11 +6,25 @@ using MagicOnion.Client;
 
 namespace AdventureWorks.MagicOnion.Client;
 
+/// <summary>
+/// MagicOnionクライアントファクトリー
+/// </summary>
 public class MagicOnionClientFactory : IMagicOnionClientFactory
 {
+    /// <summary>
+    /// 認証コンテキスト
+    /// </summary>
     private readonly IAuthenticationContext _authenticationContext;
+    /// <summary>
+    /// エンドポイント
+    /// </summary>
     private readonly Endpoint _endpoint;
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="authenticationContext"></param>
+    /// <param name="endpoint"></param>
     public MagicOnionClientFactory(
         IAuthenticationContext authenticationContext,
         Endpoint endpoint)
@@ -19,6 +33,11 @@ public class MagicOnionClientFactory : IMagicOnionClientFactory
         _endpoint = endpoint;
     }
 
+    /// <summary>
+    /// サービスクライアントを生成する。
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public T Create<T>() where T : IService<T>
     {
         return MagicOnionClient.Create<T>(

@@ -1,5 +1,8 @@
 ﻿namespace AdventureWorks.Business.Purchasing.RePurchasing.SqlServer;
 
+/// <summary>
+/// 再発注データベース
+/// </summary>
 public class RePurchasingDatabase : Database.Database
 {
     /// <summary>

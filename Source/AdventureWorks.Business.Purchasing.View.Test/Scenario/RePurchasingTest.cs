@@ -9,6 +9,9 @@ using Driver.Windows.Native;
 
 namespace Scenario
 {
+    /// <summary>
+    /// 再発注ユースケーステスト
+    /// </summary>
     [TestFixture]
     public class RePurchasingTest
     {
@@ -20,6 +23,9 @@ namespace Scenario
         [TearDown]
         public void TestCleanup() => _app.Kill();
 
+        /// <summary>
+        /// 再発注する
+        /// </summary>
         [Test]
         public void 再発注する()
         {

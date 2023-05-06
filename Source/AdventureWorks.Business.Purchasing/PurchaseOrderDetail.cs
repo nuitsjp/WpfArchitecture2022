@@ -1,5 +1,19 @@
 ﻿namespace AdventureWorks.Business.Purchasing;
 
+/// <summary>
+/// 発注明細
+/// </summary>
+/// <param name="PurchaseOrderId"></param>
+/// <param name="PurchaseOrderDetailId"></param>
+/// <param name="DueDate"></param>
+/// <param name="OrderQuantity"></param>
+/// <param name="ProductId"></param>
+/// <param name="UnitPrice"></param>
+/// <param name="LineTotal"></param>
+/// <param name="ReceiveQuantity"></param>
+/// <param name="RejectedQuantity"></param>
+/// <param name="StockedQuantity"></param>
+/// <param name="ModifiedDateTime"></param>
 public record PurchaseOrderDetail(
     PurchaseOrderId PurchaseOrderId,
     PurchaseOrderDetailId PurchaseOrderDetailId,

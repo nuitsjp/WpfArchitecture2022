@@ -1,5 +1,8 @@
 ﻿namespace AdventureWorks.Business.Purchasing;
 
+/// <summary>
+/// 発注リポジトリ
+/// </summary>
 public interface IPurchaseOrderRepository
 {
     /// <summary>

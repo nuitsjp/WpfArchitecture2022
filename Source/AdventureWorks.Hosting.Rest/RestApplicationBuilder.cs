@@ -12,26 +12,60 @@ using MessagePack;
 
 namespace AdventureWorks.Hosting.Rest;
 
+/// <summary>
+/// RESTサービスアプリケーションを構築する。
+/// </summary>
 public class RestApplicationBuilder : IApplicationBuilder
 {
+    /// <summary>
+    /// ベースとなるWebApplicationBuilder
+    /// </summary>
     protected readonly WebApplicationBuilder Builder;
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="builder"></param>
     protected RestApplicationBuilder(WebApplicationBuilder builder)
     {
         Builder = builder;
     }
 
+    /// <summary>
+    /// サービス
+    /// </summary>
     public IServiceCollection Services => Builder.Services;
+    /// <summary>
+    /// コンフィギュレーション
+    /// </summary>
     public IConfiguration Configuration => Builder.Configuration;
+    /// <summary>
+    /// ホスト
+    /// </summary>
     public IHostBuilder Host => Builder.Host;
 
+    /// <summary>
+    /// IFormatterResolverを追加する。
+    /// </summary>
+    /// <param name="resolver"></param>
+    /// <exception cref="NotImplementedException"></exception>
     public void AddFormatterResolver(IFormatterResolver resolver)
     {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="args"></param>
+    /// <returns></returns>
     public static RestApplicationBuilder CreateBuilder(string[] args) => new(WebApplication.CreateBuilder(args));
 
+    /// <summary>
+    /// ビルダーを構築する。
+    /// </summary>
+    /// <param name="applicationName"></param>
+    /// <returns></returns>
     public async Task<WebApplication> BuildAsync(ApplicationName applicationName)
     {
         Builder.Configuration.SetBasePath(Path.GetDirectoryName(Environment.ProcessPath!)!);
@@ -67,6 +101,11 @@ public class RestApplicationBuilder : IApplicationBuilder
         return app;
     }
 
+    /// <summary>
+    /// Serilogを初期化する。
+    /// </summary>
+    /// <param name="applicationName"></param>
+    /// <returns></returns>
     private async Task InitializeSerilogAsync(ApplicationName applicationName)
     {
         var database = new SerilogDatabase();

@@ -7,9 +7,16 @@ using Kamishibai;
 
 namespace AdventureWorks.Business.Purchasing.View;
 
-public static class Initializer
+/// <summary>
+/// 初期化処理拡張メソッドクラス
+/// </summary>
+public static class ApplicationBuilderExtensions
 {
-    public static void Initialize(IApplicationBuilder builder)
+    /// <summary>
+    /// 購買サービスのクライアントを初期化する。
+    /// </summary>
+    /// <param name="builder"></param>
+    public static void UsePurchasingView(this IApplicationBuilder builder)
     {
         // メニュー
         builder.Services.AddPresentation<MainWindow, MainViewModel>();

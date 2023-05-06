@@ -5,8 +5,18 @@ using Serilog.Events;
 
 namespace AdventureWorks.Logging.Serilog;
 
+/// <summary>
+/// Serilog設定。
+/// </summary>
+/// <param name="ApplicationName"></param>
+/// <param name="MinimumLevel"></param>
+/// <param name="Settings"></param>
 public record SerilogConfig(ApplicationName ApplicationName, LogEventLevel MinimumLevel, string Settings)
 {
+    /// <summary>
+    /// ロガーをビルドする。
+    /// </summary>
+    /// <returns></returns>
     public ILogger Build()
     {
         var settingString = Settings

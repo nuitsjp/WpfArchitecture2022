@@ -17,5 +17,6 @@ builder.UseBusinessSqlServer();
 builder.UsePurchasingSqlServer();
 builder.UseRePurchasingSqlServer();
 
+// アプリケーションをビルドし実行する。
 var app = await builder.BuildAsync(new ApplicationName(typeof(Program).Assembly.GetName().Name!));
 app.Run();

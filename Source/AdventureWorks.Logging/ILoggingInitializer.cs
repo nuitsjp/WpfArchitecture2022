@@ -1,7 +1,13 @@
-﻿namespace AdventureWorks.Logging
+﻿namespace AdventureWorks.Logging;
+
+/// <summary>
+/// ロガーを初期化クラス。
+/// </summary>
+public interface ILoggingInitializer
 {
-    public interface ILoggingInitializer
-    {
-        Task<bool> TryInitializeAsync();
-    }
+    /// <summary>
+    /// 初期化を行う。
+    /// </summary>
+    /// <returns></returns>
+    Task<bool> TryInitializeAsync();
 }

@@ -7,12 +7,25 @@ using Serilog.Extensions.Logging;
 
 namespace AdventureWorks.Logging.Serilog.MagicOnion.Client;
 
+/// <summary>
+/// クライアントロギングの初期化クラス
+/// </summary>
 public class LoggingInitializer : ILoggingInitializer
 {
-
+    /// <summary>
+    /// アプリケーション名
+    /// </summary>
     private readonly ApplicationName _applicationName;
+    /// <summary>
+    /// ロガーファクトリー
+    /// </summary>
     private readonly ILoggerFactory _loggerFactory;
 
+    /// <summary>
+    /// インスタンスを生成する。
+    /// </summary>
+    /// <param name="applicationName"></param>
+    /// <param name="loggerFactory"></param>
     public LoggingInitializer(
         ApplicationName applicationName, 
         ILoggerFactory loggerFactory)
@@ -21,12 +34,19 @@ public class LoggingInitializer : ILoggingInitializer
         _loggerFactory = loggerFactory;
     }
 
+    /// <summary>
+    /// エンドポイントを取得する。
+    /// </summary>
     private Endpoint Endpoint =>
         new(new Uri(
             Environments.GetEnvironmentVariable(
                 "AdventureWorks.Logging.Serilog.MagicOnion.BaseAddress",
                 "https://localhost:3001")));
 
+    /// <summary>
+    /// ロガーを初期化する。
+    /// </summary>
+    /// <returns></returns>
     public async Task<bool> TryInitializeAsync()
     {
         // ロギングドメインの認証処理を行う

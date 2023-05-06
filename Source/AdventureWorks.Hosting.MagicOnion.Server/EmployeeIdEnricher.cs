@@ -4,8 +4,16 @@ using Serilog.Events;
 
 namespace AdventureWorks.Hosting.MagicOnion.Server;
 
+/// <summary>
+/// ログに従業員IDを追加する。
+/// </summary>
 public class EmployeeIdEnricher : ILogEventEnricher
 {
+    /// <summary>
+    /// ログに従業員IDを追加する。
+    /// </summary>
+    /// <param name="logEvent"></param>
+    /// <param name="propertyFactory"></param>
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
         if (ServerAuthenticationContext.Instance.IsAuthenticated)

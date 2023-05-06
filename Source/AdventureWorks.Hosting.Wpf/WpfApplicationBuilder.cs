@@ -141,6 +141,10 @@ public class WpfApplicationBuilder<TApplication, TWindow> : IApplicationBuilder
         _resolvers.Add(resolver);
     }
 
+    /// <summary>
+    /// ビルダーを生成する。
+    /// </summary>
+    /// <returns></returns>
     public static WpfApplicationBuilder<TApplication, TWindow> CreateBuilder()
     {
         return new(KamishibaiApplication<TApplication, TWindow>.CreateBuilder());
