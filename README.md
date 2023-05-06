@@ -53,17 +53,25 @@ SQL Serverコンテナーをビルドして起動します。
 .\Start-Dev.ps1
 ```
 
-
-
 Visual Studioでソリューションを開きます。UIから開いても、もちろん問題ありません。
 
 ```powershell
 .\Source\AdventureWorks.sln
 ```
 
+下記の手順でスタートアッププロジェクトを構成します。
+
+1. ソリューションを右クリックし「スタートアッププロジェクトの構成」を選択
+2. 「マルチスタートアップ プロジェクト」を選択
+3. 下記のプロジェクトを「開始」に変更
+   1. AdventureWorks.Authentication.Jwt.Hosting.Rest
+   2. AdventureWorks.Business.Purchasing.Hosting.MagicOnion
+   3. AdventureWorks.Business.Purchasing.Hosting.Wpf
+   4. AdventureWorks.Logging.Hosting.MagicOnion
+
 あとはF5で実行してください。
 
-SQL Serverを停止して終了します。
+最後に、SQL Serverを停止して終了します。
 
 ```powershell
 .\Stop-Dev.ps1
