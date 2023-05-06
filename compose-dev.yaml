@@ -1,7 +1,7 @@
 version: '3'
 services:
     mssql:
-      build: Database
+      build: Docker
       image: nuitsjp/wpf-architecture-2022:latest
       container_name: SQL-Server
       ports:
