@@ -1,7 +1,6 @@
 ﻿using AdventureWorks.Authentication.Jwt.Rest.Client;
 using AdventureWorks.MagicOnion.Client;
 using AdventureWorks.Wpf.ViewModel;
-using Microsoft.Extensions.Logging;
 using Serilog.Events;
 using Serilog.Extensions.Logging;
 
@@ -16,22 +15,14 @@ public class LoggingInitializer : ILoggingInitializer
     /// アプリケーション名
     /// </summary>
     private readonly ApplicationName _applicationName;
-    /// <summary>
-    /// ロガーファクトリー
-    /// </summary>
-    private readonly ILoggerFactory _loggerFactory;
 
     /// <summary>
     /// インスタンスを生成する。
     /// </summary>
     /// <param name="applicationName"></param>
-    /// <param name="loggerFactory"></param>
-    public LoggingInitializer(
-        ApplicationName applicationName, 
-        ILoggerFactory loggerFactory)
+    public LoggingInitializer(ApplicationName applicationName)
     {
         _applicationName = applicationName;
-        _loggerFactory = loggerFactory;
     }
 
     /// <summary>

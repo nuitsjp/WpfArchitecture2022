@@ -2,14 +2,11 @@
 using AdventureWorks.Authentication;
 using AdventureWorks.Authentication.Jwt;
 using AdventureWorks.Authentication.Jwt.Rest.Client;
-using AdventureWorks.Logging;
 using AdventureWorks.Logging.Serilog;
-using AdventureWorks.Logging.Serilog.MagicOnion;
 using AdventureWorks.Logging.Serilog.MagicOnion.Client;
 using AdventureWorks.MagicOnion.Client;
 using Kamishibai;
 using MessagePack;
-using Serilog;
 using Log = Serilog.Log;
 using MessageBoxButton = System.Windows.MessageBoxButton;
 using MessageBoxImage = System.Windows.MessageBoxImage;

@@ -11,8 +11,14 @@ namespace Driver.TestController
         {
             //target path
             var targetPath = @"..\..\..\..\AdventureWorks.Purchasing.App.Driver\bin\Debug\net6.0-windows\AdventureWorks.Purchasing.App.Driver.exe";
-            var info = new ProcessStartInfo(targetPath) { WorkingDirectory = Path.GetDirectoryName(targetPath)! };
-            info.Environment["TestName"] = context.Test.FullName;
+            var info = new ProcessStartInfo(targetPath)
+            {
+                WorkingDirectory = Path.GetDirectoryName(targetPath)!,
+                Environment =
+                {
+                    ["TestName"] = context.Test.FullName
+                }
+            };
             var app = new WindowsAppFriend(Process.Start(info));
             app.ResetTimeout();
             return app;
