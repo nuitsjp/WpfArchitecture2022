@@ -137,7 +137,7 @@ public class MagicOnionServerApplicationBuilder : IMagicOnionServerApplicationBu
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;
 #else
-            var maximumLevel = config.MinimumLevel;
+        var minimumLevel = config.MinimumLevel;
 #endif
         var settingString = config.Settings
             .Replace("%ConnectionString%", database.ConnectionString)

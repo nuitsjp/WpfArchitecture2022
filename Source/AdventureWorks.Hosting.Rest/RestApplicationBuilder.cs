@@ -115,7 +115,7 @@ public class RestApplicationBuilder : IApplicationBuilder
 #if DEBUG
         var minimumLevel = LogEventLevel.Debug;
 #else
-        var var maximumLevel = config.MinimumLevel;
+        var minimumLevel = config.MinimumLevel;
 #endif
         var settingString = config.Settings
             .Replace("%ConnectionString%", database.ConnectionString)
